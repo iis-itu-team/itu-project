@@ -1,11 +1,11 @@
 
 # Správa Návrhu
 
-## Téma
+# Téma
 Ako téma sme si vybrali aplikáciu pre upravovanie a objednávanie hamburgerov. Chceme aby si každý užívateľ mohol pripraviť a objednať svôj burger podľa jeho vlastných predstáv. Hamburgery by mali mať možnosť nastavovania žemle, mäsa, syra, omáčok, atd.
 
-## Priezkum uživatelských potrieb
-### Dotazník
+# Priezkum uživatelských potrieb
+## Dotazník
 - 1. Používali jste někdy aplikaci na objednávání jídla? (rozdělení uživatelů na skupinu s povědomím o ostatních aplikacích)
 - 2. Jsou pro vás ostatní aplikace uspokojivé?
 - 3. Narazili jste na nejaký problém při objednávání burgeru?
@@ -32,34 +32,86 @@ Ako téma sme si vybrali aplikáciu pre upravovanie a objednávanie hamburgerov.
     - [ ] Barevný
     - [ ] Vysoký kontrast
 
-### Poznatky
-### Analýza
+### Matúš
+#### Poznatky    
+Respondenti si všímajú hlavne prehladnosť aplikácie. Pri väčšine aplikácií majú problém s nedostatočnou možnosťou úpravy jedla. Niektoré aplikácie ponúkajú možnosti odstránenie ingrediencií položiek, ale nemajú možnosť pridania ingrediencií navyše. Taktiež je pre nich dôležité aby bolo hlavná stránka prehladná a nebolo na nej nič čo nepotrebujú. 
+
+#### Potreby užívateľov
+- prehladnosť aplikácie
+- obrázky ingredienií a jedál
+- nevyžadovanie registrácie
+
+#### Kľúčové problémy
+- potreba upraviť si jedlo podla seba
+
+### Marek
+#### Poznatky    
 #### Potreby užívateľov
 #### Kľúčové problémy
 
-### Existujúca aplikácia
+### Martin
+#### Poznatky    
+#### Potreby užívateľov
+#### Kľúčové problémy
+
+## Existujúca aplikácia
+- kiosk McDonalds
+
+### Matúš
 #### Prednosti
-#### Nedostatky
-#### Inšpirácia
+##### Nedostatky
+##### Inšpirácia
+
+#### Marek
+##### Prednosti
+##### Nedostatky
+##### Inšpirácia
+
+#### Martin
+##### Prednosti
+- jednoduchosť
+- rýchlosť
+##### Nedostatky
+- nedostatočná možnosť úpravy jedla
+- neni zlava na ISIC
+##### Inšpirácia
+- jednoduchý dizajn
 
 ### Kľúčové potreby užívateľov
+- nedostatočné úpravy jedla
+
 ### Uživateľské procesy
+Ostatné aplikácie sú málo prehladné. 
+Najvýraznejšou funkciou na home page bude vytvorenie novej objednávky. Ďalšou funkciou na home page bude ponuka jedál. Ako posledná možnosť bude vytvorenie nového burgeru. História a nastavenie budú schované. 
+
 ### Kľúčové vlastnosti budúcej aplikácie
+- prehladnosť
+- filtrovanie položiek
+- vidieť fotky jedla
+- pred vytvorené jedlá 
+- uprava pred vytvorených jedál
+- cena jednotlivých položiek
+- upravovanie jedla podľa vlastných potrieb (diety, jedálníčku, chuti)
+- prehladná homepage
+- zvyšovanie množstva prísad (namiesto klikania znovu)
+- nevyžadovať registáciu
+- zlavy (out of scope)
 
 ## Rozdelenie práce
 - 2. Každý člen pracuje na části aplikace, výsledkem je jedna aplikace.
+
 ### Marek
 ### Martin
 ### Matúš
 
-## Maketa / Diagram / Screenshot
-## Riešenie problémov uživateľov
+# Maketa / Diagram / Screenshot
+# Riešenie problémov uživateľov
 
-## Testovanie
-### Metriky
-### Priebeh
-### Výsledky
+# Testovanie
+## Metriky
+## Priebeh
+## Výsledky
 
-## Architektura
-### FE
-### BE
+# Architektura
+## FE
+## BE
