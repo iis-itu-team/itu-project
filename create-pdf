@@ -30,4 +30,5 @@ if [[ -n $LOGIN ]]; then
 fi
 echo "Generating $PDF_NAME"
 
-pandoc -s -V geometry:margin=20mm -o "$PDF_NAME" zn.md
+# Ignore lines starting with "//", this allows for comments
+cat zn.md | grep -v ^\/\/.* | pandoc -s -V geometry:margin=20mm -o "$PDF_NAME"
