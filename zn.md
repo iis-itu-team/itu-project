@@ -8,6 +8,12 @@
 // TODO: Matúš
 // TODO: Marek
 
+### Webová aplikácia pre EDR (Endpoint Detection and Response)
+
+Navrhol: Matúš Hubinský
+
+EDR systémy analyzujú chovania viacerých zariadení a vyhodnocujú bezpečnostné hrozby na základe udalostí zaznamenaných v databáze. Ak vyhodnotia chovanie ako nebezpečné vygenerujú alert. Tento alert je následne spracovaný bezpečnostným analytikom, ktorý sa venuje monitoringu. Bezpečnostný analytici môžu naraz monitorovať viarece systémov a preto potrebujú také grafické rozhranie, z ktorého vedia na prvý pohľad určiť počet nových bezpečnostných alertov a zároveň ich závažnosť. Existuje viacero riešení, ale každé má svoje problémy a dalo by sa vylepšiť.
+
 ### Mobilní aplikace pro BAM (Brněnský Architektonický Manuál)
 
 Navrhl: Martin Otradovec
@@ -23,37 +29,30 @@ Po hlasování a domluvě jsme vybrali aplikaci pro objednávání jídel - konk
 
 # Průzkum
 
+// dopísať dotazníky
+// TODO: Marek
 ## Matúš
 
 ### Dotazník
-1. Používali jste někdy aplikaci na objednávání jídla? (rozdělení uživatelů na skupinu s povědomím o ostatních aplikacích)
-2. Jsou pro vás ostatní aplikace uspokojivé?
-3. Narazili jste na nejaký problém při objednávání burgeru?
-4. Je nějaká specifická funkce, která podle vás chybí ostatním aplikacím na jídlo?
-5. Jak jste spokojeni s jednotlivými aplikacemi, co se vám na nich líbí/nelíbí? (zjištění dalších možných features pro aplikaci, případně čemu se vyvarovat)
-    - Jaký funkce se vám líbili?
-    - Co se vám líbilo na jich GUI?
-    - Co se vám líbilo na jich dizajnu?
-6. Máte někdy potřebu upravit si složení jídla, např. burgeru v restauraci dle vlastních potřeb?
-7. Jaký je pro vás nejdůležitejší faktor při výběru burgeru? (rozložení prvků u burgeru (např. cena větším písmem))
-8. Jsou pro vás možnosti výběru burgeru dostačující?
-9. Jak by jste si představovali výběr burgeru?
-10. Pokud by jste měli možnost poskládat (nastavit si konkrétní složení) vašeho jídla, využili by jste ji, nebo zvolili zhotovené jídlo?
-11. Pokud by jste měli možnost sdílet takto poskládaný burger s ostatními uživateli, kteří by si jej mohli objednat, využili by jste ji?
-12. V případě, že by jste sdíleli svůj poskládaný burger, chtěli by jste u něj mít uvedené své jméno? (další otázka na rozseknutí účty vs. bez účtů)
-13. Seřaďte prosím jednotlivé akce podle důležitosti (zjištění důležitosti akcí pro uživatele - rozložení UI):
-    - Prohlédnout si předešlé objednávky
-    - Poskládat si nový burger
-    - Prohlédnout si burgery vytvořené od ostatních
-    - Vytvořit novou objednávku
-14. Jaké přísady podle vás patří do správného burgeru? (zjištění přísad pro aplikaci)
-15. Jaký typ uživatelského rozhraní vám přijde nejpřívětivější?
-    - [ ] Jednoduchý a minimalistický
-    - [ ] Barevný
-    - [ ] Vysoký kontrast
+1. Používali ste niekedy aplikáciu na objednávanie jedla?
+2. Ak áno, popíšte čo sa vám na nich páčilo.
+3. Aké funkcie sa vám na nej páčili?
+4. Čo sa vám páčilo na ich GUI?
+5. Čo sa vám páčilo na ich dizajne?
+6. Aký je pre vás najdôležitejší faktor pri výbere hamburgeru?
+7. Ako by ste si predstavovali výber hamburgeru?
+8. Sú pre vás možnosti výberu burgerov dostačujúce?
+9. Sú pre vás možnosti prispôsobenia burgerov dostačujúce?
+10. Sú pre vás aplikácie, ktoré sú momentálne na trhu, uspokojivé?
+11. Narazili ste na problém pri objednávaní burgeru?
+12. Je nejaká špecifická funkcia ktorá podla vás chýba ostatným aplikáciam na jedlo?
+13. Aký typ uživatelského rozhrania vám príde najprívetivejší?
+- [ ] jednoduchý a minimalistický
+- [ ] farebný 
+- [ ] vysoký kontrast
 
 ### Poznatky    
-Respondenti si všímajú hlavne prehladnosť aplikácie. Pri väčšine aplikácií majú problém s nedostatočnou možnosťou úpravy jedla. Niektoré aplikácie ponúkajú možnosti odstránenie ingrediencií položiek, ale nemajú možnosť pridania ingrediencií navyše. Taktiež je pre nich dôležité aby bolo hlavná stránka prehladná a nebolo na nej nič čo nepotrebujú.
+Všetci respondenti mali skúsenosti s používaním aplikácií na obejdnávanie jedlo. Respondenti si všímajú hlavne prehladnosť aplikácie. Pri väčšine aplikácií majú problém s nedostatočnou možnosťou úpravy jedla. Niektoré aplikácie ponúkajú možnosti odstránenie ingrediencií položiek, ale nemajú možnosť pridania ingrediencií navyše. Taktiež je pre nich dôležité aby bolo hlavná stránka prehladná a nebolo na nej nič čo nepotrebujú.
 
 #### Potreby užívateľov
 - prehladnosť aplikácie
@@ -63,11 +62,22 @@ Respondenti si všímajú hlavne prehladnosť aplikácie. Pri väčšine apliká
 #### Kľúčové problémy
 - potreba upraviť si jedlo podla seba
 
-// TODO
 ### Porovnání s existujícími aplikacemi
+- foodora
+
 #### Prednosti
+- rozdelovanie jedla podľa kategorií
+- široká ponuka predvytvorených jedál
+- jednochuchá paleta farieb
+- veľké obrázky s jedlami
 #### Nedostatky
-#### Inšpirácia
+- nutnosť registrácie
+- chýba možnosť úpravy jedál (pridávanie a odoberanie ingrediencií)
+#### Inšpirácia a Riešenie nedostatkov
+- naša aplikácia bude používať malú paletu farieb (maximálne 3 farby)
+- nebudeme vyžadovať registráciu
+- veľký dôraz na možnosti upravovania jedľa
+- predvytvorenie širokej ponuky hotových jedál
 
 ## Marek
 
@@ -78,7 +88,7 @@ Respondenti si všímajú hlavne prehladnosť aplikácie. Pri väčšine apliká
 ### Porovnání s existujícími aplikacemi
 #### Prednosti
 #### Nedostatky
-#### Inšpirácia
+#### Inšpirácia a riešenie nedostatkov
 
 ## Martin
 
@@ -174,6 +184,7 @@ Dotazník byl veden formou rozhovoru se 3 subjekty.
 
     => na úvodní stránce aplikace zobrazit předvytvořená jídla a jídla vytvořená ostatními; zobrazit velké tlačítko na vytvoření nové objednávky; poskládání nového jídla a předešlé objednávky schovat, udělat menší, zapadlé
 
+// TODO: Inšpirácia a Riešenie nedostatkov
 ### Porovnání s existujícími aplikacemi
 - Dáme Jídlo
 
@@ -183,6 +194,7 @@ Dotazník byl veden formou rozhovoru se 3 subjekty.
 #### Nedostatky
 - Možnost změnit přísady jídel je nepřehledné, je možné pouze naklikat předem zadané přísady v seznamu (pokud to restaurace takto předvytvoří - není to funkce podporovaná aplikací)
 - Chybí konkrétní informace o způsobu, jakým proběhne doručení jídla, aby uživatel, který vidí aplikaci poprvé věděl, co se bude dít a co má čekat
+#### Inšpirácia a riešenie nedostatkov
 
 ## Výstup průzkumu
 
