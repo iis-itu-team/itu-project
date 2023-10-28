@@ -4,10 +4,6 @@
 
 ## Návrhy
 
-// - Sepsat návrhy
-// TODO: Matúš
-// TODO: Marek
-
 ### Webová aplikácia pre EDR (Endpoint Detection and Response)
 
 Navrhol: Matúš Hubinský
@@ -20,12 +16,16 @@ Navrhl: Martin Otradovec
 
 BAM je projekt poskytující databázi architektonicky významných objektů v Brně. Cílem realizace by bylo vytvořit k již existujícímu webu mobilní aplikaci poskytující přístup k objektům, trasám a audioprůvodcům přívětivě a offline. Dalším možným prvkem je skenování kódú, které jsou po Brně rozmístěny u budov nebo detekce budov v okolí podle GPS. Aplikaci by bylo možné v případě kvalitní realizace nabídnout BAMu pro reálné využití, případně rozvinout do bakalářské práce. Zájem mezi uživateli existujícího webu je značný. Podobná applikace existuje pouze ve formě postarší bakalářské práce, ale není veřejně přístupná.
 
+### Mobilní aplikace pro objednávání a sestavování burgerů - Food Blueprint
+
+Navrhl: Marek Vandík
+
+Aplikace Food Blueprint má za cíl umožnit svým uživatelům nejen objednávat, ale rovnou poskládat burger podle preferencí uživatelů. Inspirací pro toto téma jsou zejména samoobslužné systémy v restauracích jako jsou McDonald's, Burger King apod. Bylo by zajímavé, kdyby uživatelé aplikace mohli sami vytvářet burgery podle svých představ (sestavit burger z oblíbeného typu žemle, masa atp.) a byli schopni mezi sebou své výtvory sdílet. Funkcionalitu sestavit burger sice dříve zmíněné systémy umožňují, ale není to jejich hlavní záměr a např. nenabízí (z mého předběžného průzkumu) / je příliš složité prohodit pořadí ingrediencí.
+
 ## Vybrané téma
 
-Po hlasování a domluvě jsme vybrali aplikaci pro objednávání jídel - konkrétně hamburgerů.Aplikace je relativně jednoduchá na realizaci a sběr dat pro průzkum uživatelských potřeb.
+Po hlasování a domluvě jsme vybrali aplikaci pro objednávání a sestavování hamburgerů - Food Blueprint. Aplikace je relativně jednoduchá na realizaci a sběr dat pro průzkum uživatelských potřeb.
 
-// TODO: *"stačí uvést vybrané téma a zdůvodnění"*, tohle tedy přepsat Markem na jeho návrh, pak smazat
-// Ako téma sme si vybrali aplikáciu pre upravovanie a objednávanie hamburgerov. Chceme aby si každý užívateľ mohol pripraviť a objednať svôj burger podľa jeho vlastných predstáv.Hamburgery by mali mať možnosť nastavovania žemle, mäsa, syra, omáčok, atd.
 
 # Průzkum
 
