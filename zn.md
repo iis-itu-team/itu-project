@@ -85,83 +85,83 @@ Všetci respondenti mali skúsenosti s používaním aplikácií na obejdnávani
 // TODO - závěry, předmluva
 ### Dotazník
 
-X uživatelům byl zaslán následující dotazník a byla provedena krátká diskuze nad odpověďmi a případnými nejasnostmi a dalšími náměty.
+Sedmi uživatelům byl zaslán následující dotazník a dále byla provedena krátká diskuze nad odpověďmi a případnými nejasnostmi a dalšími náměty.
 
 1. Uvítali byste možnost získat doporučení na dobrý burger od ostatních uživatelů?
 	* Ano / Ne
 	* Cíl zjištění: Má uživatel potřebu objednávat jídla podle ostatních uživatelů? - relevance modulu komunitního workshopu / sdílení burgerů
-	* Zjištění:
+	* Zjištění: 6/7 uživatelů shledalo tuto funkcionalitu jako užitečnou, vhodné pro zařazení do projektu
 
 2. Když navštěvujete nějakou restauraci, máte při vstupu jasno, co konkrétně budete jíst?
 	* Ano / Ne
 	* Cíl zjištění: Potřebuje uživatel nejprve vidět představení restaurace nebo přímo objednávat? - přivítat uživatele informacemi o restauraci / jídelním menu
-	* Zjištění:
+	* Zjištění: Všichni dotazovaní vybírají až na místě - bylo by vhodné řádně představit menu / možnosti
 
 3. Uvítali byste možnost uložit si recept na dobrý burger, který byste si snadno mohli objednat v budocnousti?
 	* Ano / Ne
 	* Cíl zjištění: Má uživatel potřebu ukládat si oblíbená jídla? - relevance modulu pro ukládání receptů
-	* Zjištění:
+	* Zjištění: 3:4 část uživatelů by modul pro ukládání receptů využila, zřejmě vhodné pro zařazení do projektu
 
 4. Jak často v restauracích jako je McDonald's nebo KFC upřednostníte objednávku u samoobslužného kiosku před klasickou objednávkou na pokladně?
 	* Vždy (téměř vždy) / Využívám obě možnosti / Jen výjimečně, např. je-li příliš dlouhá fronta / Vůbec
 	* Cíl zjištění: Familiarita uživatele s těmito systémy - relevance dalších odpovědí zaměřených konkrétněji na GUI
-	* Zjištění:
+	* Zjištění: Všichni dotazovaní až na jediného respondenta, který odpověděl "Jen výjimečně", zvolili možnost "Vždy / téměř vždy" - výsledek odpovědí na GUI bude rozdělen váhově následujícím způsobem: Odpovědí respondentů, kteří vybrali "Vždy / téměř vždy", budou mít váhu 1. Zbývající respondent bude mít váhu 0.5
 
 5. Kolik přibližně ingrediencí je podle Vás ideální počet v burgeru (housky se nepočítají)?
 	* 2 a méně / 3 - 5 / 6 a více
 	* Cíl zjištění: Přizpůsobení GUI pro nejčastější počet ingrediencí - velikost vykreslovaných položek
-	* Zjištění:
+	* Zjištění: S váhou 3.5 lze předpokládat jako nejčastější počet položek možnost "6 a více". Možnost "3 - 5" měla váhu 3, a zbývající možnost "2 a méně" měla váhu 0
 
 6. Stalo se vám někdy, že jste v burgeru chtěli mít nějakou ingredienci vícekrát / v jiné vrstvě burgeru?
 	* Ano / Ne
-	* Cíl zjištění: Potřeba uživatele měnit složení burgeru. Zpětně krajně zbytečné - lépe pokryto otázkou 10. Takhle se jedná více o zkušenost uživatele, než o jeho potřebu.
-	* Zjištění:
+	* Cíl zjištění: Potřeba uživatele měnit složení burgeru. Zpětně krajně zbytečné - pokryto otázkou 10, ale tahle otázka pro změnu zjišťuje příčinnou souvislost
+	* Zjištění: 4:3 - Někteří uživatelé tuto funkcionalitu jistě uvítají, právě díky zkušenosti uvedené v otázce
 
 7. Využili byste možnost sestavit si burger z předem daných ingrediencí dle vašich představ?
 	* Ano / Ne
 	* Cíl zjištění: Má uživatel potřebu sestavovat vlastní burgery? - relevance této aplikace
-	* Zjištění:
+	* Zjištění: 6:1 Většina uživatelů by takovou možnost ráda využila - tato aplikace má smysl
 
 8. Prosím, zařaďte následující ingredience do rozumného množství skupin.
 	* ingredience: rajče, majonéza, slanina, hovězí, tatarka, okurek, tofu, chilli paprička, kuřecí, salát, zelí, sojové maso, hořčice
 	* Cíl zjištění: Jak uživatelé nejčastěji nazývají různé kategorie ingrediencí - jak prezentovat ingredience
-	* Zjištění:
+	* Zjištění: Uživatelé měli dosti různorodé řazení do skupin, ale z odpovědi lze vypozorovat, že většina uživatelů volila kategorizaci spíše na druhy jídla - omáčka, maso, zelenina, popř. vegan nebo specialita pro tofu a chilli. Jen minorita uživatelů volila nějak více odlišné rozdělení - po chodech (hlavní - maso, příloha - salát atp.) nebo podle toho, jak mají danou ingredienci rádi (nejlepší - maso, dobré - rajče atp.)
 
 9. Prosím, zařaďte vyjmenované ingredience do uvedených kategorií. V případě, že nelze ingredienci logicky zařadit, vymyslete vlastní kategorii.
 	* ingredience: rajče, slanina, hovězí, okurek, tofu, chilli paprička, kuřecí, salát, zelí, sojové maso
 	* kategorie: maso, zelenina
 	* Cíl zjištění: Jako 8) se zaměřením na specifické ingredience: slanina, chilli, tofu - nelze jednoznačně určit, jak tyto ingredience kategorizovat + porovnání s 8)
-	* Zjištění:
+	* Zjištění: Bohužel z výsledků nelze jednoznačně určit zařazení sledovaných surovin. Pro slaninu část lidí volila kategorii maso, ale části lidem toto zařazení nevyhovovalo a raději vymysleli jinou kategorii jako např. specialita nebo doplněk. Pro chilli většina lidí volila kategorii zelenina, ale stále se našli repsondenti, kteří by preferovali speciální zařazení mimo zeleninu opět jako specialita atp. U tofu byl střet rozhodování asi největší - objevily se kategorie maso, zelenina i specialita, popř. vegan (respondent, který je vegan, uvedl, že mu nejlépe vyhovuje zařazení specialita)
 
 10. Při výběru předem sestaveného burgeru, uvítali byste možnost tento burger upravit?
 	* Upravit / Ponechat bez úprav
 	* Cíl zjištění: Potřeba uživatele měnit předem připravené burgery
-	* Zjištění:
+	* Zjištění: 6:1 uživatelů by uvítalo možnost měnit složení předem sestavených burgerů
 
-11. Při ukládání Vašeho burgeru, přali byste si, aby tento burger mohli vidět i ostatní uživatelé?
+11. Při ukládání Vašeho burgeru, přáli byste si, aby tento burger mohli vidět i ostatní uživatelé?
 	* Uložit viditelně pro všechny / Uložit jen pro sebe / Uvítal bych obě možnosti
-	* Cíl zjištění: Má uživatel potřebuj svůj burger ukládat a sdílet jej?
-	* Zjištění:
+	* Cíl zjištění: Má uživatel potřebu svůj burger ukládat a sdílet jej?
+	* Zjištění: 2:0:4 a "vůbec neukládat" - Většina uživatelů by uvítala tuto možnost včetně rozlišení soukromých a veřejných burgerů. Odpověď "vůbec neukládat" pramení ze špatně formulované otázky
 
 12. Chtěli byste sestavovat burger pomocí tlačítek pro přidávání jednotlivých ingrediencí do určité vrstvy, nebo raději dotykově přesouvat ingredience z nabídky přímo do burgeru?
 	* Tlačítka / Přesouvat / Jiné
 	* Cíl zjištění: Jáky způsob zadávání ingrediencí je pro uživatele nejlepší?
-	* Zjištění:
+	* Zjištění: 1:4.5:1 - Většina uživatelů by preferovala přesouvání ingrediencí přímo do burgeru
 
 13. Co chcete vidět jako první, když otevřete aplikaci pro objednání jídla z konkrétní restaurace?
 	* Nabídku standardních burgerů / Sestavovač burgeru / Nabídku komunitních burgerů (doporučení burgerů od ostatních uživatelů) / Jiné
 	* Cíl zjištění: Co má uživatel potřebu vidět jako první?
-	* Zjištění:
+	* Zjištění: 0.5:3:3.5 - Uživatelé by preferovali nabídku komunitních burgerů nebo sestavovač. Hodnocení 0.5 z důvodu výběru 2 možností u jednoho respondenta
 
 14. Je pro Vás důležité vidět cenu burgeru a jeho ingrediencí při sestavování
 	* Ano, tuto informaci chci vidět hned / Ne, na obrazovce by bylo příliš mnoho informací (stačí až při platbě)
 	* Cíl zjištění: Má uživatel potřebu vidět průběžně cenu burgeru a jeho ingrediencí při sestavování?
-	* Zjištění:
+	* Zjištění: 7:0 - Uživatelé potřebují vidět cenu burgeru a jeho položek již při sestavování
 
 15. Představte si, že v naší aplikaci sestavujete vlastní burger. Jak by se Vám líbilo řešení situace, když máte více stejných ingrediencí nad sebou?
 	* Zobrazovat počet u každé ingredience a vykreslit ji pouze jednou / Zobrazovat každou ingredienci zvlášť - tedy i např. 2x maso nad sebou apod.
 	* Cíl zjištění: Jak nejlépe zobrazovat ingredience při sestavování burgeru?
-	* Zjištění:
+	* Zjištění: 3:4 - Většina uživatelů zvolila možnost vykroslování jednotlivě. V diskuzi po vyplnění dotazníku bylo zjištěno, že obě varianty jsou vyhovující pro všechny respondenty
 
 #### Uživatelské potřeby
 #### Klíčové problémy
