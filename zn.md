@@ -29,8 +29,6 @@ Po hlasování a domluvě jsme vybrali aplikaci pro objednávání a sestavován
 
 # Průzkum
 
-// dopísať dotazníky
-// TODO: Marek
 ## Matúš
 
 ### Dotazník
@@ -82,7 +80,6 @@ Všetci respondenti mali skúsenosti s používaním aplikácií na obejdnávani
 
 ## Marek
 
-// TODO - závěry, předmluva
 ### Dotazník
 
 Sedmi uživatelům byl zaslán následující dotazník a dále byla provedena krátká diskuze nad odpověďmi a případnými nejasnostmi a dalšími náměty.
@@ -161,14 +158,20 @@ Sedmi uživatelům byl zaslán následující dotazník a dále byla provedena k
 15. Představte si, že v naší aplikaci sestavujete vlastní burger. Jak by se Vám líbilo řešení situace, když máte více stejných ingrediencí nad sebou?
 	* Zobrazovat počet u každé ingredience a vykreslit ji pouze jednou / Zobrazovat každou ingredienci zvlášť - tedy i např. 2x maso nad sebou apod.
 	* Cíl zjištění: Jak nejlépe zobrazovat ingredience při sestavování burgeru?
-	* Zjištění: 3:4 - Většina uživatelů zvolila možnost vykroslování jednotlivě. V diskuzi po vyplnění dotazníku bylo zjištěno, že obě varianty jsou vyhovující pro všechny respondenty
+	* Zjištění: 3:4 - Většina uživatelů zvolila možnost vykreslování jednotlivě. V diskuzi po vyplnění dotazníku bylo zjištěno, že obě varianty jsou vyhovující pro všechny respondenty
 
-#### Uživatelské potřeby
-#### Klíčové problémy
 ### Porovnání s existujícími aplikacemi
-#### Prednosti
+- McDonald's mobilní aplikace pro iOS
+#### Přednosti
+- hezky řešené kalorické hodnoty jídel;
+- dobře rozdělené burgery do kategorií;
 #### Nedostatky
-#### Inšpirácia a riešenie nedostatkov
+- 2 různé pohledy na jídla, přičemž jeden se použivá pro objednání na pobočce a zároveň pro prezentaci jídla, a druhý pro objednání z Foodory apod, což je dost matoucí. Proč?;
+- neumožňuje sdílení burgerů;
+- neumožňuje ukládat oblibené burgery;
+#### Inspirace a řešení nedostatků
+- inspirace: rozdělení burgerů - grafika i kategorie;
+- nedostatky: implementace dané funkcionality, pouze jeden pohled jak pro objednání tak pro prezentaci jídla;
 
 ## Martin
 
