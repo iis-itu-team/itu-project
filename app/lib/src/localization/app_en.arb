@@ -1,0 +1,6 @@
+{
+  "appTitle": "food_blueprint",
+  "@appTitle": {
+    "description": "The title of the application"
+  }
+}
