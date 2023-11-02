@@ -8,286 +8,331 @@
 
 Navrhol: Matúš Hubinský
 
-EDR systémy analyzujú chovania viacerých zariadení a vyhodnocujú bezpečnostné hrozby na základe udalostí zaznamenaných v databáze. Ak vyhodnotia chovanie ako nebezpečné vygenerujú alert. Tento alert je následne spracovaný bezpečnostným analytikom, ktorý sa venuje monitoringu. Bezpečnostný analytici môžu naraz monitorovať viarece systémov a preto potrebujú také grafické rozhranie, z ktorého vedia na prvý pohľad určiť počet nových bezpečnostných alertov a zároveň ich závažnosť. Existuje viacero riešení, ale každé má svoje problémy a dalo by sa vylepšiť.
+EDR systémy analyzujú chovania viacerých zariadení a vyhodnocujú bezpečnostné hrozby na základe udalostí zaznamenaných v databáze. Ak vyhodnotia chovanie ako nebezpečné vygenerujú alert. Tento alert je následne spracovaný bezpečnostným analytikom, ktorý sa venuje monitoringu. Bezpečnostný analytici môžu naraz monitorovať viarece systémov a preto potrebujú také grafické rozhranie, z ktorého vedia na prvý pohľad určiť počet nových bezpečnostných alertov a zároveň ich závažnosť. Existuje viacero riešení, ale každé má svoje preblémy a dalo by sa vylepšiť.
 
-### Mobilní aplikace pro BAM (Brněnský Architektonický Manuál)
+### Mobilná aplikácia pre BAM (Brnenský Architektonický Manuál)
 
-Navrhl: Martin Otradovec
+Navrhol: Martin Otradovec
 
-BAM je projekt poskytující databázi architektonicky významných objektů v Brně. Cílem realizace by bylo vytvořit k již existujícímu webu mobilní aplikaci poskytující přístup k objektům, trasám a audioprůvodcům přívětivě a offline. Dalším možným prvkem je skenování kódú, které jsou po Brně rozmístěny u budov nebo detekce budov v okolí podle GPS. Aplikaci by bylo možné v případě kvalitní realizace nabídnout BAMu pro reálné využití, případně rozvinout do bakalářské práce. Zájem mezi uživateli existujícího webu je značný. Podobná applikace existuje pouze ve formě postarší bakalářské práce, ale není veřejně přístupná.
+BAM je prejekt poskytujúci databázu architektonicky významných objektov v Brne. Cielom realizácie bolo vytvoriť k už existujúcemu webu mobilnú aplikáciu poskytujúcu prístup k objektom, trasám a audiosprievodcom prívetivo a offline. Ďalším možným prvkom je skenovanie kódov, ktoré sú po Brne rozmiestnené pri budovách alebo detekvia budov v okolí podľa GPS. Aplikáciu by bolo možné v prípade kvalitnej realizácie ponúknuť BAMu pre reálne využitie, pripadne rozvinúť do bakalárskej práce. Záujem medzi užívateľmi existujúceho webu je nezanedbateľný. Podobná aplikácia existuje vo forme postaršej bakalárskej práce, ale nieje verejne prístupná.
 
-### Mobilní aplikace pro objednávání a sestavování burgerů - Food Blueprint
+### Mobilná aplikácia pre objednávánie a zostavanie burgerov - Food Blueprint
 
-Navrhl: Marek Vandík
+Navrhol: Marek Vandík
 
-Aplikace Food Blueprint má za cíl umožnit svým uživatelům nejen objednávat, ale rovnou poskládat burger podle preferencí uživatelů. Inspirací pro toto téma jsou zejména samoobslužné systémy v restauracích jako jsou McDonald's, Burger King apod. Bylo by zajímavé, kdyby uživatelé aplikace mohli sami vytvářet burgery podle svých představ (sestavit burger z oblíbeného typu žemle, masa atp.) a byli schopni mezi sebou své výtvory sdílet. Funkcionalitu sestavit burger sice dříve zmíněné systémy umožňují, ale není to jejich hlavní záměr a např. nenabízí (z mého předběžného průzkumu) / je příliš složité prohodit pořadí ingrediencí.
+Aplikácia Food Blueprint má za cieľ umožniť svojim užívateľom nielen objednávať, ale rovno poskladať burger podľa prefrencí užívateľov. Inšpiráciou pre toto téma sú hlavne samoobslužné systému v reštauráciách ako sú McDonald's, Burger King apod. Bolo by zaujímavé, keby užívatelia aplikácie mohli sami vytvárať burgery podľa svojich predstáv (zostaviť burger z obľúbeného typu žemle, mäsa atp.) a boli by schopný medzi sebou svoje výtvory zdieľať. Funkcionalitu zostaviť burger síce predtým zmienené systémy umožňují, ale nieje to ich hlavný zámer a napr. neponúkajú (z môjho predchádzajúceho priezkumu) alebo je príliž zložité prehodiť poradie ingrediencií.
 
 ## Vybrané téma
 
-Po hlasování a domluvě jsme vybrali aplikaci pro objednávání a sestavování hamburgerů - Food Blueprint. Aplikace je relativně jednoduchá na realizaci a sběr dat pro průzkum uživatelských potřeb.
-
+Po hlasovaní a dohode sme vybrali aplikáciu pre objednávanie a zostavanie hamburgerov - Food Blueprint. Aplikácia je relatívne jednoduchá na realizáciu a zber dár pre priezkum uživateľských potrieb.
 
 # Průzkum
 
 ## Matúš
 
 ### Dotazník
+
 1. Používali ste niekedy aplikáciu na objednávanie jedla?
+    * Možnosti: Áno/Nie
+    * Cieľ otázky:
+    * Zistenie:
+    
 2. Ak áno, popíšte čo sa vám na nich páčilo.
+    * Možnosti: Áno/Nie
+    * Cieľ otázky:
+    * Zistenie:
+
 3. Aké funkcie sa vám na nej páčili?
+    * Možnosti: Áno/Nie
+    * Cieľ otázky:
+    * Zistenie:
+
 4. Čo sa vám páčilo na ich GUI?
+    * Možnosti: Áno/Nie
+    * Cieľ otázky:
+    * Zistenie:
+
 5. Čo sa vám páčilo na ich dizajne?
+    * Možnosti: Áno/Nie
+    * Cieľ otázky:
+    * Zistenie:
+
 6. Aký je pre vás najdôležitejší faktor pri výbere hamburgeru?
+    * Možnosti: Áno/Nie
+    * Cieľ otázky:
+    * Zistenie:
+
 7. Ako by ste si predstavovali výber hamburgeru?
-8. Sú pre vás možnosti výberu burgerov dostačujúce?
-9. Sú pre vás možnosti prispôsobenia burgerov dostačujúce?
+    * Možnosti: Áno/Nie
+    * Cieľ otázky:
+    * Zistenie:
+
+8. Sú pre vás možnosť výberu burgerov dostačujúce?
+    * Možnosti: Áno/Nie
+    * Cieľ otázky:
+    * Zistenie:
+
+9. Sú pre vás možnosť prispôsobenia burgerov dostačujúce?
+    * Možnosti: Áno/Nie
+    * Cieľ otázky:
+    * Zistenie:
+
 10. Sú pre vás aplikácie, ktoré sú momentálne na trhu, uspokojivé?
-11. Narazili ste na problém pri objednávaní burgeru?
+    * Možnosti: Áno/Nie
+    * Cieľ otázky:
+    * Zistenie:
+
+11. Narazili ste na preblém pri objednávaní burgeru?
+    * Možnosti: Áno/Nie
+    * Cieľ otázky:
+    * Zistenie:
+
 12. Je nejaká špecifická funkcia ktorá podla vás chýba ostatným aplikáciam na jedlo?
-13. Aký typ uživatelského rozhrania vám príde najprívetivejší?
-- [ ] jednoduchý a minimalistický
-- [ ] farebný 
-- [ ] vysoký kontrast
+    * Áno/Nie
+    * Cieľ otázky:
+    * Zistenie:
+
+13. Aký typ užívateľského rozhrania vám príde najprívetivejší?
+    * Možnosti: Áno/Nie
+    * Cieľ otázky:
+    * Zistenie:
+
+    - [ ] jednoduchý a minimalistický
+    - [ ] farebný 
+    - [ ] vysoký kontrast
 
 ### Poznatky    
-Všetci respondenti mali skúsenosti s používaním aplikácií na obejdnávanie jedlo. Respondenti si všímajú hlavne prehladnosť aplikácie. Pri väčšine aplikácií majú problém s nedostatočnou možnosťou úpravy jedla. Niektoré aplikácie ponúkajú možnosti odstránenie ingrediencií položiek, ale nemajú možnosť pridania ingrediencií navyše. Taktiež je pre nich dôležité aby bolo hlavná stránka prehladná a nebolo na nej nič čo nepotrebujú.
+
+Všetci respondenti mali skúsenosti s používaním aplikácií na obejdnávanie jedlo. Respondenti si všímajú hlavne prehladnosť aplikácie. Pri väčšine aplikácií majú preblém s nedostatočnou možnosťou úpravy jedla. Niektoré aplikácie ponúkajú možnosť odstránenie ingrediencií položiek, ale nemajú možnosť pridania ingrediencií navyše. Taktiež je pre nich dôležité aby bolo hlavná stránka prehladná a alebolo na nej nič čo nepotrebujú.
 
 #### Potreby užívateľov
+
 - prehladnosť aplikácie
 - obrázky ingredienií a jedál
 - nevyžadovanie registrácie
 
-#### Kľúčové problémy
+#### Kľúčové preblémy
+
 - potreba upraviť si jedlo podla seba
 
 ### Porovnání s existujícími aplikacemi
 - foodora
 
 #### Prednosti
+
 - rozdelovanie jedla podľa kategorií
 - široká ponuka predvytvorených jedál
 - jednochuchá paleta farieb
 - veľké obrázky s jedlami
+
 #### Nedostatky
+
 - nutnosť registrácie
 - chýba možnosť úpravy jedál (pridávanie a odoberanie ingrediencií)
+
 #### Inšpirácia a Riešenie nedostatkov
+
 - naša aplikácia bude používať malú paletu farieb (maximálne 3 farby)
 - nebudeme vyžadovať registráciu
-- veľký dôraz na možnosti upravovania jedľa
+- veľký dôraz na možnosť upravovania jedľa
 - predvytvorenie širokej ponuky hotových jedál
-
 
 ## Marek
 
 ### Dotazník
 
-Sedmi uživatelům byl zaslán následující dotazník a dále byla provedena krátká diskuze nad odpověďmi a případnými nejasnostmi a dalšími náměty.
+Siedmim užívateľom bol zaslaný nasledujúci dotazník a ďalej následne bola uskutočnená krátka diskusia nad odpoveďami a prípadnými nejasnosťami a ďalšími námetmy.
 
-1. Uvítali byste možnost získat doporučení na dobrý burger od ostatních uživatelů?
-	* Ano / Ne
-	* Cíl zjištění: Má uživatel potřebu objednávat jídla podle ostatních uživatelů? - relevance modulu komunitního workshopu / sdílení burgerů
-	* Zjištění: 6/7 uživatelů shledalo tuto funkcionalitu jako užitečnou, vhodné pro zařazení do projektu
+1. Uvítali by ste možnosť získať doporučenie na dobrý burger od ostatných užívatelov?
+	* Možnosti: Áno/Nie
+	* Cieľ otázky: Má užívateľ potrebu objednávať jedlo podľa ostatných užívateĺov? - Relevancia modulu komunitného workshopu / zdielanie burgerov
+	* Zistenie: 6/7 užívateľov považuje túto funkcionalitu ako užitočnú, vhodné pre zaradenie do projektu.
 
-2. Když navštěvujete nějakou restauraci, máte při vstupu jasno, co konkrétně budete jíst?
-	* Ano / Ne
-	* Cíl zjištění: Potřebuje uživatel nejprve vidět představení restaurace nebo přímo objednávat? - přivítat uživatele informacemi o restauraci / jídelním menu
-	* Zjištění: Všichni dotazovaní vybírají až na místě - bylo by vhodné řádně představit menu / možnosti
+2. Keď navštevujete nejakú reštauráciu, máte pri vstupu jasno, čo konkrétne budete jesť?
+	* Možnosti: Áno/Nie
+	* Cieľ otázky: Potrebuje užívateľ najskôr vidieť vidieť prestavenie reštaurácie alebo priamo objednať? - Privítať užívateľa informáciámi o reštautácií / výberom jedál
+	* Zistenie: Všetci respondenti vyberajú až na mieste - bolo by vhodné dôkladne predstaviť menu / možnosti
 
-3. Uvítali byste možnost uložit si recept na dobrý burger, který byste si snadno mohli objednat v budocnousti?
-	* Ano / Ne
-	* Cíl zjištění: Má uživatel potřebu ukládat si oblíbená jídla? - relevance modulu pro ukládání receptů
-	* Zjištění: 3:4 část uživatelů by modul pro ukládání receptů využila, zřejmě vhodné pro zařazení do projektu
+3. Privítali by ste možnosť uložiť si recept na dobrý burger, ktorý by ste si mohli jednoducho objednať v budúcnosti?
+	* Možnosti: Áno/Nie
+	* Cieľ otázky: Má užívateľ potrebu ukladať si oblíbená jedlá? - relevancia modulu pre ukladanie receptov
+	* Zistenie: 3:4 časť užívateľov by modul pre ukladanie receptov využila, zrejme vhodné pre zaradanie do projektu
 
-4. Jak často v restauracích jako je McDonald's nebo KFC upřednostníte objednávku u samoobslužného kiosku před klasickou objednávkou na pokladně?
-	* Vždy (téměř vždy) / Využívám obě možnosti / Jen výjimečně, např. je-li příliš dlouhá fronta / Vůbec
-	* Cíl zjištění: Familiarita uživatele s těmito systémy - relevance dalších odpovědí zaměřených konkrétněji na GUI
-	* Zjištění: Všichni dotazovaní až na jediného respondenta, který odpověděl "Jen výjimečně", zvolili možnost "Vždy / téměř vždy" - výsledek odpovědí na GUI bude rozdělen váhově následujícím způsobem: Odpovědí respondentů, kteří vybrali "Vždy / téměř vždy", budou mít váhu 1. Zbývající respondent bude mít váhu 0.5
+4. Ako často v restauracích ako je McDonald's alebo KFC uprednostníte objednávku pri samoobslužnom kiosku pred klasickou objednávkou na pokladne?
+	* Možnosti: Vždy (takmer vždy) / Využívám obe možnosť / Len výnimočne, napr. ak je príliš dlhá rada / Vôbec
+	* Cieľ otázky: Familiarita užívateľe s týmyto systémami - relevancia dalších odpovedí zameraných konkrétnejšie na GUI
+	* Zistenie: Všetci respondenti až na jediného respondenta, ktorý odpovedal "Len výnimočne", zvolili možnosť "Vždy / takmer vždy" - výsledok odpovedí na GUI bude rozdelený váhovo nasledujúcím zpôsobom: Odpovedi respondentov, ktorý vybrali "Vždy / takmer vždy", budú mať váhu 1. Zostávajúci respondent bude mít váhu 0.5
 
-5. Kolik přibližně ingrediencí je podle Vás ideální počet v burgeru (housky se nepočítají)?
-	* 2 a méně / 3 - 5 / 6 a více
-	* Cíl zjištění: Přizpůsobení GUI pro nejčastější počet ingrediencí - velikost vykreslovaných položek
-	* Zjištění: S váhou 3.5 lze předpokládat jako nejčastější počet položek možnost "6 a více". Možnost "3 - 5" měla váhu 3, a zbývající možnost "2 a méně" měla váhu 0
+5. Koľko približně ingrediencií je podľa vás ideálny počet v burgeru? (žemle sa nepočítajú)
+	* Možnosti: 2 a menej / 3 - 5 / 6 a viac
+	* Cieľ otázky: Prizpôsobenie GUI pre najčastejší počet ingrediencií - veľkosť vykreslovaných položiek
+	* Zistenie: S váhou 3.5 možno predpokladať ako najčastejší počet položiek možnosť "6 a viac". možnosť "3 - 5" mala váhu 3, a zostávajúca možnosť "2 a menej" mala váhu 0
 
-6. Stalo se vám někdy, že jste v burgeru chtěli mít nějakou ingredienci vícekrát / v jiné vrstvě burgeru?
-	* Ano / Ne
-	* Cíl zjištění: Potřeba uživatele měnit složení burgeru. Zpětně krajně zbytečné - pokryto otázkou 10, ale tahle otázka pro změnu zjišťuje příčinnou souvislost
-	* Zjištění: 4:3 - Někteří uživatelé tuto funkcionalitu jistě uvítají, právě díky zkušenosti uvedené v otázce
+6. Stalo se vám niekedy, že jste v burgeru chceli mať nejakú ingredienciu viackrát / v inej vrstve burgeru?
+	* Možnosti: Áno/Nie
+	* Cieľ otázky: Potreba užívateľa menit zloženie burgeru. Zpätne veľmi zbytočné - obsiahnuté v otázke 10, ale táto otázka pre zmenu zisťuje príčinu
+	* Zistenie: 4:3 - Niektorý užívateľia túto funkcionalitu určite ocenia, práve vďaka zkúsenostiam uvedených v otázke
 
-7. Využili byste možnost sestavit si burger z předem daných ingrediencí dle vašich představ?
-	* Ano / Ne
-	* Cíl zjištění: Má uživatel potřebu sestavovat vlastní burgery? - relevance této aplikace
-	* Zjištění: 6:1 Většina uživatelů by takovou možnost ráda využila - tato aplikace má smysl
+7. Využili by ste možnosť zostaviť si burger z dopredu daných ingrediencí podľa vašich predstáv?
+	* Možnosti: Áno/Nie
+	* Cieľ otázky: Má užívateľ potrebu zostavovať vlastné burgery? - relevancia tejto aplikácie
+	* Zistenie: 6:1 Väčšina užívateľov by takúto možnosť ráda využila - táto aplikácia má zmysel
 
-8. Prosím, zařaďte následující ingredience do rozumného množství skupin.
-	* ingredience: rajče, majonéza, slanina, hovězí, tatarka, okurek, tofu, chilli paprička, kuřecí, salát, zelí, sojové maso, hořčice
-	* Cíl zjištění: Jak uživatelé nejčastěji nazývají různé kategorie ingrediencí - jak prezentovat ingredience
-	* Zjištění: Uživatelé měli dosti různorodé řazení do skupin, ale z odpovědi lze vypozorovat, že většina uživatelů volila kategorizaci spíše na druhy jídla - omáčka, maso, zelenina, popř. vegan nebo specialita pro tofu a chilli. Jen minorita uživatelů volila nějak více odlišné rozdělení - po chodech (hlavní - maso, příloha - salát atp.) nebo podle toho, jak mají danou ingredienci rádi (nejlepší - maso, dobré - rajče atp.)
+8. Prosím, zaraďte následujúce ingrediencie do skupín.
+	* Možnosti: : rajčina, majonéza, slanina, hovädzie, tatárka, uhorka, tofu, chilli paprička, kuracie, šalát, kapusta, sojové mäso, horčica
+	* Cieľ otázky: Ako užívatelia najčastejšue nazývajú rôzne kategórie ingrediencí - ako prezentovat ingrediencie
+	* Zistenie: Užívatelia mali veľmi odlišné radenie do skupin, ale z odpovedí sa dá vypozorovat, že väčšina užívateľov zvolila kategorizáciu skôr na druhy jedál - omáčka, mäso, zelenina, prípadne vegán alebo špecialita pre tofu a chilli. Len minorita užívateľov volila odlišnejšie rozdelenie - po chodoch (hlavný - mäso, príloha - šalát atp.) alebo podľa toho, ako majú danú ingredienciu radi (najlepšie - mäso, dobré - rajčina atď.)
 
-9. Prosím, zařaďte vyjmenované ingredience do uvedených kategorií. V případě, že nelze ingredienci logicky zařadit, vymyslete vlastní kategorii.
-	* ingredience: rajče, slanina, hovězí, okurek, tofu, chilli paprička, kuřecí, salát, zelí, sojové maso
-	* kategorie: maso, zelenina
-	* Cíl zjištění: Jako 8) se zaměřením na specifické ingredience: slanina, chilli, tofu - nelze jednoznačně určit, jak tyto ingredience kategorizovat + porovnání s 8)
-	* Zjištění: Bohužel z výsledků nelze jednoznačně určit zařazení sledovaných surovin. Pro slaninu část lidí volila kategorii maso, ale části lidem toto zařazení nevyhovovalo a raději vymysleli jinou kategorii jako např. specialita nebo doplněk. Pro chilli většina lidí volila kategorii zelenina, ale stále se našli repsondenti, kteří by preferovali speciální zařazení mimo zeleninu opět jako specialita atp. U tofu byl střet rozhodování asi největší - objevily se kategorie maso, zelenina i specialita, popř. vegan (respondent, který je vegan, uvedl, že mu nejlépe vyhovuje zařazení specialita)
+9. Prosím, zaraďte vymenované ingrediencie do uvedených kategorií. V případe, že sa nedá ingredienciu logicky zaradiť, vymyslite vlastnú kategoriu.
+	* Možnosti: rajčina, slanina, hovädzie, uhorka, tofu, chilli paprička, kuracie, šalát, kapusta, sojové mäso
+	* Kategórie: mäso, zelenina
+	* Cieľ otázky: ako 8) s zameraním na špecifické ingrediencie: slanina, chilli, tofu - nedá sa jednoznačne určiť, ako tieto ingredience kategorizovať + porovnávanie s 8)
+	* Zistenie: Z výsledkov nedá sa jednoznačne určiť zaradenie vspomínaných surovín. Pre slaninu časť ľudí zvolila kategoriu mäso, ale časť ľudom toto zaradenie nevyhovovalo a radšej vymysleli inú kategóriu ako napríklad špecialita alebo doplnok. Pre chilli väčšina ľudí zvolila kategóriu zelenina, ale stále sa našli repsondenti, ktorý by preferovali špeciálne zaradenie mimo zeleninu opäť ako špecialita. U tofu bolo rozhodovanie najzložitejšie - objavily sa kategórie mäso, zelenina aj specialita, prípadne vegán (respondent, ktorý je vegán, uviedol, že mu nejviac vyhovuje zaradenie špecialita)
 
-10. Při výběru předem sestaveného burgeru, uvítali byste možnost tento burger upravit?
-	* Upravit / Ponechat bez úprav
-	* Cíl zjištění: Potřeba uživatele měnit předem připravené burgery
-	* Zjištění: 6:1 uživatelů by uvítalo možnost měnit složení předem sestavených burgerů
+10. Pri výbere dopredu zostaveného burgeru, uvítali by ste možnosť tento burger upravit?
+	* Možnosti: Upravit / Ponechať bez úprav
+	* Cieľ otázky: Potreba užívateľa meniť dopredu pripravené burgery
+	* Zistenie: 6:1 užívateľov by uvítalo možnosť meniť zloženie dopredu zostavené burgery
 
-11. Při ukládání Vašeho burgeru, přáli byste si, aby tento burger mohli vidět i ostatní uživatelé?
-	* Uložit viditelně pro všechny / Uložit jen pro sebe / Uvítal bych obě možnosti
-	* Cíl zjištění: Má uživatel potřebu svůj burger ukládat a sdílet jej?
-	* Zjištění: 2:0:4 a "vůbec neukládat" - Většina uživatelů by uvítala tuto možnost včetně rozlišení soukromých a veřejných burgerů. Odpověď "vůbec neukládat" pramení ze špatně formulované otázky
+11. Pri ukladaní Vašeho burgeru, priali by ste si, aby tento burger mohli vidieť aj ostatný užívatelia?
+	* Možnosti: Uložiť viditelně pre všetkých / Uložit len pre seba / Uprednostnil by som obe možnosti
+	* Cieľ otázky: Má užívateľ potrebu svôj burger ukladať a zdielať ho?
+	* Zistenie: 2:0:4 a "vôbec neukladať" - Väčšina užívateľov by uvítala túto možnosť vrátane rozlišenia soukromých a verejných burgerov. Odpoveď "vôbec neukladať" je zpôsobené zle formulovanou otázkou
 
-12. Chtěli byste sestavovat burger pomocí tlačítek pro přidávání jednotlivých ingrediencí do určité vrstvy, nebo raději dotykově přesouvat ingredience z nabídky přímo do burgeru?
-	* Tlačítka / Přesouvat / Jiné
-	* Cíl zjištění: Jáky způsob zadávání ingrediencí je pro uživatele nejlepší?
-	* Zjištění: 1:4.5:1 - Většina uživatelů by preferovala přesouvání ingrediencí přímo do burgeru
+12. Chceli by ste zostavovať burger pomocou tlačítiek pre pridávanie jednotlivých ingrediencií do určitej vrstvy, alebo radšej dotykovo presúvať ingredience z ponuky priamo do burgeru?
+	* Možnosti: Tlačítka / Presúvať / Iné
+	* Cieľ otázky: Aký zpôsob zadávania ingrediencií je pre užívateľa najlepší?
+	* Zistenie: 1:4.5:1 - Väčšina užívateľov by preferovala presúvanie ingrediencií priamo do burgeru
 
-13. Co chcete vidět jako první, když otevřete aplikaci pro objednání jídla z konkrétní restaurace?
-	* Nabídku standardních burgerů / Sestavovač burgeru / Nabídku komunitních burgerů (doporučení burgerů od ostatních uživatelů) / Jiné
-	* Cíl zjištění: Co má uživatel potřebu vidět jako první?
-	* Zjištění: 0.5:3:3.5 - Uživatelé by preferovali nabídku komunitních burgerů nebo sestavovač. Hodnocení 0.5 z důvodu výběru 2 možností u jednoho respondenta
+13. Čo chcete vidieť ako prvé, keď otvoríte aplikáciu pre objednanie jedla z konkrétnej reštaurácie?
+	* Možnosti: Ponuku štandartných burgerov / Zostavovač burgeru / Ponuku komunitných burgerov (odporúčanie burgerov od ostatných užívateľov) / Iné
+	* Cieľ otázky: o má užívateľ za potrebu vidieť ako prvé?
+	* Zistenie: 0.5:3:3.5 - užívatelia by preferovali ponuku komunitných burgerov alebo zostavovač. Hodnotenie 0.5 z dôvodu výberu 2 pri jednom respondentovy
 
-14. Je pro Vás důležité vidět cenu burgeru a jeho ingrediencí při sestavování
-	* Ano, tuto informaci chci vidět hned / Ne, na obrazovce by bylo příliš mnoho informací (stačí až při platbě)
-	* Cíl zjištění: Má uživatel potřebu vidět průběžně cenu burgeru a jeho ingrediencí při sestavování?
-	* Zjištění: 7:0 - Uživatelé potřebují vidět cenu burgeru a jeho položek již při sestavování
+14. Je pre vás dôležité vidieť cenu burgeru a jeho ingrediencií pri zostavovaní? 
+	* Áno, túto informáciu chcem vidieť hneď / Nie, na obrazovke by bolo príliš veľa informácií (stačí až pri platbe)
+	* Cieľ otázky: Má užívateľ potrebu vidieť priebežne cenu burgeru a jeho ingrediencí pri zostatovaní?
+	* Zistenie: 7:0 - užívatelia majú potrebu vidieť cenu burgeru a jeho ingrediencí pri zostavovaní.
 
-15. Představte si, že v naší aplikaci sestavujete vlastní burger. Jak by se Vám líbilo řešení situace, když máte více stejných ingrediencí nad sebou?
-	* Zobrazovat počet u každé ingredience a vykreslit ji pouze jednou / Zobrazovat každou ingredienci zvlášť - tedy i např. 2x maso nad sebou apod.
-	* Cíl zjištění: Jak nejlépe zobrazovat ingredience při sestavování burgeru?
-	* Zjištění: 3:4 - Většina uživatelů zvolila možnost vykreslování jednotlivě. V diskuzi po vyplnění dotazníku bylo zjištěno, že obě varianty jsou vyhovující pro všechny respondenty
+15. Predstavte si, že v našej aplikácií zostavujete vlastný burger. Ako by sa vám páčilo riešenie situácie, keď máte viac rovnakých ingrediencií nad sebou?
+	* Možnosti: Zobrazovať počet pri každej ingrediencie a vykrasliť ju iba raz / Zobrazovať každú ingredienciu zvlášť - napríklad 2x mäso nad sebou atď.
+	* Cieľ otázky: Ako najlepšie zobrazovať ingrediencie pri zostavovaní burgeru?
+	* Zistenie: 3:4 - Väčšina užívateľov by zvolila moźnosť vykreslovania jednotlivo. V diskusí po vyplnení dotazníku bolo zistené, že obidve varianty sú vyhovujúce pre všetkých respondetov.
 
 ### Porovnání s existujícími aplikacemi
-- McDonald's mobilní aplikace pro iOS
-#### Přednosti
-- hezky řešené kalorické hodnoty jídel;
-- dobře rozdělené burgery do kategorií;
+- McDonald's mobilnej aplikácie pre iOS
+#### Prednosti
+- pekne riešené kalorické hodnoty jedál
+- dobre rozdelené burgery do kategórií
 #### Nedostatky
-- 2 různé pohledy na jídla, přičemž jeden se použivá pro objednání na pobočce a zároveň pro prezentaci jídla, a druhý pro objednání z Foodory apod, což je dost matoucí. Proč?;
-- neumožňuje sdílení burgerů;
-- neumožňuje ukládat oblibené burgery;
+- 2 rôzne pohlady na jedlá, jeden sa používa pri objednávaní na pobočke a zároveň pri prezentáciu jedál, a druhý pre objednávanie z Foodory atď, čo je dosť metúce.
+- neumožňuje zdielanie burgerov
+- neumožňuje ukladať obľúbené burgery
+
 #### Inspirace a řešení nedostatků
-- inspirace: rozdělení burgerů - grafika i kategorie;
-- nedostatky: implementace dané funkcionality, pouze jeden pohled jak pro objednání tak pro prezentaci jídla;
+- inšpirovať sa budeme grafikou a kategóriami rozdelenie burgerov
+- nedostatky vyriešime implementáciou danej funkcionality a iba jedným podľadom pre objednávanie aj prezentovanie jedál
 
 ## Martin
 
 ### Dotazník
-Dotazník byl veden formou rozhovoru se 3 subjekty.
+Dotazník bol vedený formou rozhovoru s tromi subjektami.
 
-"**\***" Nejspíš bude mimo rozsah naší realizace
-"=>" implikace pro naši realizace aplikace z odpovědi
+"**\***" Pravdepodobne mimo rozsah našej aplikácie
 
-1. Využíváte aplikace pro dovozové služby jídla, popř. které?
+1. Využívate aplikácie pre dovoz jedál, poprípade ktoré?
+    * Odpovede: Áno/Nie
+    * Cieľ otázky: Zistenie nedostatkov / predností ostaných aplikácí
+    * Zistenie:
 
-    Cíl: úvodní zjištění nedostatků/super prvků ostatních aplikací
+2. Ako ste spokojný s jednotlivými aplikáciami, čo sa vám na nich páči/nepáči?
+    * Odpovede: Nedostatočne presné a nepredlané určenie adresy pre doručenie / Nešpecifikované pokyny a priebeh doručovaní jedla (viedlo k zmätku, panike, často odradilo od objednania) / Nepresná špecifikácia zľavy, nezobrazuje sa správne / Nieje presne špecifikované, čo je zahrnuté v cene
+    * Cieľ otázky: Zistanie možných prvkov pre aplikácie, prípadne čomu sa vyvarovať.
+    * Zistenie: 
+        - pridať do aplikácie možnosť špecifikovať presnú adresu.
+        - pridať do poslednej obrazovky informáciu o tom, ako doručenie prebehne
+        - prehladná špecifikácia zliiav v checkoute, prípadne už v košíku
+        - jasný súpus cien jedlotlivých položiek, ingrediencií
 
-2. Jak jste spokojeni s jednotlivými aplikacemi, co se vám na nich líbí/nelíbí?
+3. Je nejaká špedcifická funkcia, ktorá podľa vás chýba ostatným aplikáciám na jedlo?
+    * Odpovede: chýbajúce online platby / pokročilé a zábavné zľavy
+    * Cieľ otázky: 
+    * Zistenie: 
+        - nutnosť implementácie platobnej brány 
+        - implenetovať gamifikáciu zliav / ruletu / minihry
 
-    Cíl: zjištění možných prvků pro aplikaci, případně čemu se vyvarovat
+4. Máte niekedy potrebu upraviť si zloženie jedál, napr. burger, pizzy v reštaurácií podľa vlastných potrieb?
+    * Odpovede: Áno, upravenie jedál podľa vlastnej diéty
+    * Cieľ otázky: Zistenie, či užívatelia majú potrebu pre hlavnú funkciu navrhovanej aplikácie
+    * Zistenie: Funkia skladanie jedál má využitie
 
-    Poznatky:
-    - Nedostatečně přesné a nepřehledné určení adresy doručení => přidat do aplikace možnost specifikovat přesnou adresu (adresa, patro, číslo bytu?)
-    - Nespecifikované pokyny a průběh doručení jídla (vedlo ke zmatku, panice, často odradilo od objednání) => přidat do poslední obrazovky checkoutu informace o tom, jak doručení proběhne
-    - Nepřesné specifikace slev, nezobrazují se správně => přehlednou indikaci slev do checkoutu, případně už do košíku (objednávky při vytváření) **\***
-    - Není přesně specifikované, co je zahrnuto v ceně => jasný soupis cen jednotlivých položek, ingrediencí
 
-3. Je nějaká specifická funkce, která podle vás chybí ostatním aplikacím na jídlo?
+5. Aké prísady patria do správneho burgeru?
+    * Odpovede: Slanina, tofu, sójové mäso, majonéza, kečup, rajčina, uhorka, šalár, kapary
+    * Cieľ otázky: Zistenie prísad, ktoré by v aplikácií mali byť
+    * Zistenie: 
 
-    Poznatky:
-    - Chybí online platby => implementovat platební bránu **\***
-    - Pokročilé a zábavné slevy => implementovat gamifikaci slev, ruletu? minihry?; opakované objednávky povedou ke slevě? **\***
+6. Pokiaľ by ste mali možnosť poskladať (nastaviť si konkrétne zloženie) vašeho jedla, využili by ste ho, alebo by ste si zvolili predvytvorené jedlo? 
+    * Odpovede: Záleží na miere hladu, po aplikácií človek väčšinou siahne keď má hlad a nechce sa mu tráviť čas "skladaní" jedál. Ak má čas a napadne ho zaujímavá kombinácia tak túto funckiu využije.
+    * Cieľ otázky: Zistenie, či užívatelia majú potrebu pre hlavnú funkciu navhovanej aplikácie
+    * Zistenie: Pridať do výberu jedál aj predvytvorené kombinácie, ponúknuť zdielané jedlá od ostatných užívateľov
 
-4. Máte někdy potřebu upravit si složení jídla, např. burgeru, pizzy v restauraci dle vlastních potřeb?
+7. Ako by malo vyzeraŤť UI pre skladanie burgerov?
+    * Odpovede: Možnosť upraviť už existujúce jedlá (predvytvorené, komunitné, vlastné) / Mierna gamifikácia štýlom "candy factory" hry, t.j. skladnanie jedla pomocou výrobnej linky / Prehladne zobrazovať čo najviac prísad naraz, čo nejmenej zdržovať užívateľa, zobraziť výsledné jedlo a jednotlivé vrstvy, možnosť prehadzovať
+    * Cieľ otázky: Rozvíjajúca otázka ako má skaladanie vyzerať.
+    * Zistenie: Nutnosť implementovania funkcie upravovanie existujúcich jedál
 
-    Cíl: zjištění, zda uživatelé mají potřebu pro hlavní funkci navrhované aplikace
+8. Pokiaľ by ste mali možnosť zdielať vaše poskladané jedlo s ostatnýmu užívateľmi, využili by ste ju?
+    * Odpovede: Áno
+    * Cieľ otázky: zistenie ći je zdielanie jedál užívaľmi využitelná funkcia
+    * Zistenie: Užívatelia by jedlo zdielali
 
-    Poznatky: Ano, upravení jídla dle vlastní diety, bez limitací => funkce pro skládání jídla má využití
-    
-5. Jaké přísady patří do správného burgeru?
+9. V prípade, že by ste zdielali svoje "poskladané" jedlo, chceli by ste pri ňom mať uvedené svoje meno? Zahrňovalo by to vytvorenie uživatelského účtu pomocou e-mailu a hesla
+    * Odpovede: Uživateľské účty sú zbytočné zdržovanie
+    * Cieľ otázky: Je nutné vyžadovať alebo poskytovať vytvorenie uživateľských účtov pre zdielanie?
+    * Zistenie: Užívatelia nechcú registráciu a uživateľské účty 
 
-    Cíl: zjištění přísad, které by v aplikaci měli být
+10. Využívali by ste vytvorenie uživateľského účtu pre prístup k svojim dátam - objednávkam?
+    * Odpovede: 
+    * Cieľ otázky: Rozhodnutie či vyžadovať alebo poskytovať vytvorenie účtu alebo iba ukladanie dát lokálne na zariadenie
+    * Zistenie: Lokálne ukladanie dát stačí, uživateľské účty niesu nutné. Prípadný prenos dát na viac zariadní pomocou QR kódu, bluetooth alebo exportu.
 
-    Poznatky: Anglická slanina, tofu, sójové maso, majonéza, kečup, rajče, okurek, salát, kapary,...
-
-6. Pokud by jste měli možnost poskládat (nastavit si konkrétní složení) vašeho jídla, využili by jste ji, nebo zvolili zhotovené jídlo?
-
-    Cíl: zjištění, zda uživatelé mají potřebu pro hlavní funkci navrhované aplikace
-
-    Poznatky: Záleží na míře hladu, po aplikaci většinou člověk sáhne, když má hlad, tzn. nechce se mu trávit čas "skládáním" jídla. V případě, že čas má a napadne člověka zajímavá kombinace, využije => přidat do výběru jídel i předhotovené kombinace, nabízet sdílená jídla od ostatních uživatelů
-
-7. Jak by mělo vypadat UI pro skládání burgeru?
-
-    Cíl: rozvíjející otázka, jak má skládání jídla vypadat
-
-    Poznatky:
-    - Možnost upravit již existující jídla (předhotovená, komunitní, vlastní) => implementovat funkcni
-    - Mírná gamifikace stylem "candy factory" hry, tzn. skládání jídla pomocí výrobní linky **\***
-    - Přehledně, zobrazovat co nejvíce přísad najednou, co nejmíň zdržovat uživatele, zobrazit výsledné jídlo a jednotlivé vrstvy, možnost přehazovat
-
-8. Pokud by jste měli možnost sdílet vaše poskládané jídlo s ostatními uživateli, využili by jste ji? 
-
-    Cíl: zjištění, zda je sdílení jídel uživateli využitelná funkce
-
-    Poznatky: Ano, jídlo by sdíleli
-
-9. V případě, že by jste sdíleli své "poskládaný" jídlo, chtěli by jste u něj mít uvedené své jméno? Zahrnovalo by to vytvoření uživatelského účtu pomocí e-mailu a hesla.
-
-    Cíl: vyžadovat/poskytovat vytvoření uživatelských účtů pro sdílení?
-
-    Poznatky: Uživatelské účty jsou zbytečné zdržování => uživatelé nechcou registraci, účty
-
-10. Využili by jste vytvoření uživatelského účtu pro přístup ke svým datům - objednávkám, 
-
-    Cíl:
-    - vyžadovat/poskytovat vytvoření uživatelských účtů, nebo pouze lokální data?
-
-    Poznatky: Lokální data stačí, uživatelské účty nejsou nutné; případný přenos dat na více zařízení pomocí QR kódů / Bluetooth / Exportů **\***
-
-11. Seřaďte prosím jednotlivé akce podle důležitosti:
-    - Prohlédnout si jídla vytvořená ostatními
-    - Prohlédnout si své předešlé objednávky
-    - Prohlédnout si svá předem poskládaná jídla
-    - Poskládat si nové jídlo
-    - Vytvořit novou objednávku (v rámci vytvoření je dostupné poskládání jídla, prohlédnutí jídel od ostatních a prohlédnutí zhotovených jídel)
-
-    Cíl: jakým způsobem skládat domovskou obrazovku? co je pro uživatele nejdůležitější?
-
-    Výsledné pořadí:
-    - 12b: Prohlédnout si jídla vytvořená ostatními
-    - 11b: Vytvořit novou objednávku
-    - 9b: Prohlédnout si svá poskládaná jídla
-    - 8b: Prohlédnout si své předešlé objednávky
-    - 5b: Poskládat si nové jídlo
-
-    *body jsou přiřazené podle toho, jak vysoko položky jednotliví uživatelé umístili, potom sečtené*
-
-    => na úvodní stránce aplikace zobrazit předvytvořená jídla a jídla vytvořená ostatními; zobrazit velké tlačítko na vytvoření nové objednávky; poskládání nového jídla a předešlé objednávky schovat, udělat menší, zapadlé
+11. Zoraďte, prosím, jednotlivé akcie podľa dôležitosti:
+    * Možnosti: 
+        - prehliadnutie si jedál od ostatných užívateľov
+        - prehliadnutie si svojich predošlých objednávok
+        - prehliadnutie si svojich poskladaných jedlá
+        - poskladanie nového jedla
+        - vytvorenie novej objednávky
+    * Cieľ otázky: Akým spôsobom poskladať domovskú stránku? Čo je pre užívateľa najdôležitejšie?
+    * Zistenie:
+        - 12b: prehliadnutie si jedál od ostatných užívateľov
+        - 11b: vytvorenie novej objednávky
+        - 9b:  prehliadnutie si svojich poskladaných jedlá
+        - 8b:  prehliadnutie si svojich predošlých objednávok
+        - 5b:  poskladanie nového jedla
+    *body jsou přiřazené popodľa toho, ako vysoko položky jednotliví užívateľé umístili, potom sečtené*
+        - na úvodnej stránke aplikácie budú zobrazené predvytvorené jedlá a jedlá vytvorené ostatnými. Zobraziť veľké tlačítko na vytvorenie novej objednávky. Poskladanmie nového jedla a predošlé objenávky schovať, urobiť menšie a nenápadné
 
 ### Porovnání s existujícími aplikacemi
 - Dáme Jídlo
 
 #### Přednosti
-- Přehledné zadávání objednávek, checkout
-- Nevyžaduje uživatelský účet pro objednání
-
+- prehladné zadávanie objednávok
+- nevyžaduje uživateľský úceť pre objednanie
 #### Nedostatky
-- Možnost změnit přísady jídel je nepřehledné, je možné pouze naklikat předem zadané přísady v seznamu (pokud to restaurace takto předvytvoří)
-- Chybí konkrétní informace o způsobu, jakým proběhne doručení jídla, aby uživatel, který vidí aplikaci poprvé věděl, co se bude dít a co má čekat
+- možnosť meniť prísady jedla je neprehladná, je možné iba naklikať dopredu zadané prísady v zozname (pokiaľ ho reštaurácia takto predvytvorí nieje to funkcia podporovaná aplikáciou)
+- chýba konkrétna informácia o zpôsobe, akým spôsobom prebehne doručenie jedla. Užívateľ, ktorý vídí aplikáciu prvý krát, vedel čo sa bude diať a čo má čakať
+#### Inšpirácia a riešenie nedostatkov
+- Hlavný zoznam reštaurácií, prehlad košíku a checkout sú prehladné a pre užívateľa prívetivé. Použiť podobné rozloženie.
+- Doplniť do posledného kroku checkoutu informácie o doručení a možnosť výberu z viacerých variant
 
-#### Inspirace a řešení nedostatků
-- Hlavní seznam restaurací, přehled košíku a checkout jsou přehledné a pro uživatele přívětivé, použít podobné rozložení
-- Doplnit do posledního kroku checkoutu informace o doručení, možnost nastavit více možností
-
-## Výstup průzkumu
+## Výstup priezkumu
 
 ### Kľúčové potreby užívateľov
 - nedostatočné úpravy jedla
 
-### Uživateľské procesy
+### Uživateľské precesy
 Ostatné aplikácie sú málo prehladné. 
 Najvýraznejšou funkciou na home page bude vytvorenie novej objednávky. Ďalšou funkciou na home page bude ponuka jedál. Ako posledná možnosť bude vytvorenie nového burgeru. História a nastavenie budú schované. 
 
@@ -305,14 +350,14 @@ Najvýraznejšou funkciou na home page bude vytvorenie novej objednávky. Ďalš
 - zlavy (out of scope)
 
 ## Rozdelenie práce
-- 2. Každý člen pracuje na části aplikace, výsledkem je jedna aplikace.
+- 2. Každý člen pracuje na časti aplikácie, výsledkom je jedna aplikácia
 
 ### Marek
 ### Martin
 ### Matúš
 
 # Maketa / Diagram / Screenshot
-# Riešenie problémov uživateľov
+# Riešenie preblémov uživateľov
 
 # Testovanie
 ## Metriky
