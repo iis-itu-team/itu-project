@@ -267,17 +267,20 @@ Dotazník byl veden formou rozhovoru se 3 subjekty.
 
     => na úvodní stránce aplikace zobrazit předvytvořená jídla a jídla vytvořená ostatními; zobrazit velké tlačítko na vytvoření nové objednávky; poskládání nového jídla a předešlé objednávky schovat, udělat menší, zapadlé
 
-// TODO: Inšpirácia a Riešenie nedostatkov
 ### Porovnání s existujícími aplikacemi
 - Dáme Jídlo
 
 #### Přednosti
 - Přehledné zadávání objednávek, checkout
 - Nevyžaduje uživatelský účet pro objednání
+
 #### Nedostatky
-- Možnost změnit přísady jídel je nepřehledné, je možné pouze naklikat předem zadané přísady v seznamu (pokud to restaurace takto předvytvoří - není to funkce podporovaná aplikací)
+- Možnost změnit přísady jídel je nepřehledné, je možné pouze naklikat předem zadané přísady v seznamu (pokud to restaurace takto předvytvoří)
 - Chybí konkrétní informace o způsobu, jakým proběhne doručení jídla, aby uživatel, který vidí aplikaci poprvé věděl, co se bude dít a co má čekat
-#### Inšpirácia a riešenie nedostatkov
+
+#### Inspirace a řešení nedostatků
+- Hlavní seznam restaurací, přehled košíku a checkout jsou přehledné a pro uživatele přívětivé, použít podobné rozložení
+- Doplnit do posledního kroku checkoutu informace o doručení, možnost nastavit více možností
 
 ## Výstup průzkumu
 
