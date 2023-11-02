@@ -19,7 +19,7 @@ const updateIngredientSchema = schema.create({
 export default class IngredientController {
     private readonly ingredientService = new IngredientService();
 
-    public async index({ request, response }: HttpContextContract) {
+    public async index({ response }: HttpContextContract) {
         const ingredients = await this.ingredientService.listIngredients()
 
         response.status(200).json({

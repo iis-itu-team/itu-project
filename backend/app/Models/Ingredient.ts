@@ -1,4 +1,4 @@
-import { BaseModel, beforeCreate, column } from "@ioc:Adonis/Lucid/Orm";
+import { BaseModel, beforeCreate, column, computed } from "@ioc:Adonis/Lucid/Orm";
 import { DateTime } from "luxon";
 import generateId from "utils/generate-id";
 
@@ -19,6 +19,13 @@ export default class Ingredient extends BaseModel {
 
     @column.dateTime({ autoCreate: true, autoUpdate: true })
     public updatedAt: DateTime
+
+    // load amount from extras if possible
+    @computed()
+    public get amount() {
+        if ("pivot_amount" in this.$extras)
+            return this.$extras.pivot_amount;
+    }
 
     @beforeCreate()
     public static async assignId(ingredient: Ingredient) {

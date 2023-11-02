@@ -14,8 +14,8 @@ export default class FailureException extends Exception {
     }
 
     public static notFound(name: string, id: string) {
-        return new FailureException(404, `not_found`, {
-            [`${name}Id`]: id
+        return new FailureException(404, `not_found`, `${name} by id ${id} not found`, {
+            [`${name}_id`]: id
         })
     }
 }   
