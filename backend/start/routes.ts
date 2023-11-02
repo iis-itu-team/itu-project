@@ -20,6 +20,13 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', async () => {
-  return { hello: 'world' }
-})
+Route.group(() => {
+  Route.get('/', async () => {
+    return {
+      status: "alive"
+    }
+  })
+
+  Route.resource("ingredients", "IngredientController")
+    .only(["index", "show", "store", "update", "destroy"])
+}).prefix('api')
