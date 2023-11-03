@@ -35,4 +35,4 @@ Route.group(() => {
 
   Route.resource("orders", "OrderController")
     .only(["index", "show", "store"])
-}).prefix('api')
+}).prefix('api').middleware("requireApiKey")
