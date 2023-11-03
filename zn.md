@@ -384,8 +384,31 @@ Uživatelia nemali problémy pri plnení úloh. Nepotrebovali žiadne nápovedy 
 
 ## Martin
 ### Metriky
+- Počet požádání o nápovědu
+- Počet stížností / připomínek na rozložení / přehlednost rozhraní
+
 ### Priebeh
+Rozhraní bylo testováno na 3 uživatelích formou scénáře s konkrétnímy úkoly. Každý uživatel dostal základní kontext o aplikaci. Kvůli limitacím neplacené figmy některá funkcionalita nebyla v prototypu simulována - např. drag n drop (přidávání ingrediencí; přidávání burgerů do objednávky).
+
+Úkoly:
+- Vytvořit nový burgr, pojmenovat jej, přidat surovinu, uložit
+    - 1/3 uživatelů nenašli přejmenování burgeru, symbol nevýrazný
+    - 0/3 uživatelů měli připomínky
+- Přidat burger do objednávky, projít checkout a odeslat objednávku
+    - 0/3 uživatelů žádali o nápovědu
+    - 2/3 uživatelů měli problémy trefit tlačítka (malý UI scale)
+- Vytvořit nový burger, pojmenovat jej, zveřejnit
+    - 0/3 uživatelů vyžadovali nápovědu
+    - 2/3 uživatelé měli připomínky - zveřejnění se provede okamžitě (chybí prompt)
+- Odstranit položku z objednávky
+    - 1/3 uživatelů nepřišel na funkčnost (drag burgeru mimo objednávkový prostor)
+    - 0/3 uživatelů měli připomínky
+- Prohlédnout si své objednávky
+    - 1/3 uživatelů vyžadoval nápovědu - malé tlačítko, schované
+    - 0/3 uživatelů měli připomínky
+
 ### Výsledky
+12/15 úkolů bylo splněno bez žádosti o nápovědu. Většina připomínek a žádostí o nápovědy byla způsobena malými velikostmi tlačítek, textů a inputů, jinak aplikace působí přehledně a přívětivě.
 
 # Maketa / Diagram / Screenshot
 # Riešenie preblémov uživateľov
