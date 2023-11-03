@@ -339,16 +339,15 @@ Najvýraznejšou funkciou na home page bude vytvorenie novej objednávky. Ďalš
 - 2. Každý člen pracuje na časti aplikácie, výsledkom je jedna aplikácia
 
 ### Matúš
-- úvodná obrazovka
-- história objednávok
+- dokonečenie objednávky (checkout) 
+- hlavná stránka (home page)
 
 ### Marek
-- zdielanie burgerov
-- ukladanie vytvorených burgerov
+- zdielanie burgerov (community workshop)
 
 ### Martin
-- vtvorenie novej objednávky
 - skladanie burgerov
+- ukladanie vytvorených burgerov
 
 # Testovanie
 
