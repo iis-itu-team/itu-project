@@ -414,11 +414,17 @@ Rozhraní bylo testováno na 3 uživatelích formou scénáře s konkrétnímy �
 # Riešenie preblémov uživateľov
 
 # Architektura
-## Platforma
-- Android
 
-## FE
-- Flutter
+Aplikace je rozdělena na backend server a mobilní aplikaci, které spolu komunikují pomocí HTTP Rest API. Mobilní aplikace posílá požadavky na backendový server, který odpovídá s data z databáze. Zvolená architektura se dá nazvat MVC přístupem, pokud přemýšlíme nad daty vrácenými z API a jejich namapování na struktury v paměti jako nad "Modelem".
+
+## Platforma
+
+Jedinou podporovanou platformou je Android. Cílem bylo vyvinout mobilní aplikaci, bohužel vývoj pro iOS vyžaduje sestavení aplikace na stroji od společnosti Apple, který nikdo z týmu nevlastní. Nebylo by tedy možné aplikaci sestavit, ani ladit při vývoji.
+
+## Frontend
+
+Pro vývoj mobilní aplikace jsme zvolili platformu Flutter. Převážně z důvodu stability, ekosystému a skvělých vývojářských nástrojů. Programovací jazyk dart, který flutter využívá je flexibiní a umožňuje rychlý vývoj, zároveň je velice podobný jazykům, které jsme dříve využívali. Flutter podporuje sestavování aplikací na více platforem. Tuto funkcionalitu v projektu nevyužijeme, i přes to jsme se rozhodli flutter využít oproti např. React Native nebo čistému Android SDK s Javou/Kotlinem.
 
 ## BE
-- Addonis
+
+Backendový server je postavený na frameworku adonis.js, který je napsaný v typescriptu a běží v nodejs prostředí. Je relativně nový a silně inspirovaný php frameworkem Laravel. Zvolili jsme jej převážně kvůli flexibilně jazyka a jednoduchosti frameworku vzhledem k tomu, že hlavní prioritou projektu je mobilní aplikace. Framework už v základu obsahuje spoustu věcí a přidávání další funkcionality je relativně snadné. Máme s ním také předchozí zkušenosti.
