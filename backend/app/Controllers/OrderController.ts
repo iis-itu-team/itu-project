@@ -32,7 +32,7 @@ const createOrderSchema = schema.create({
 export default class OrderController {
     private readonly orderService = new OrderService()
 
-    public async index({ request, response }: HttpContextContract) {
+    public async index({ response }: HttpContextContract) {
         const orders = await this.orderService.listOrders()
 
         response.status(200).json({
