@@ -34,72 +34,58 @@ Po hlasovaní a dohode sme vybrali aplikáciu pre objednávanie a zostavanie ham
 
 1. Používali ste niekedy aplikáciu na objednávanie jedla?
     * Možnosti: Áno/Nie
-    * Cieľ otázky:
-    * Zistenie:
-    
-2. Ak áno, popíšte čo sa vám na nich páčilo.
+    * Cieľ otázky: Prefiltrovanie responedtov na vhodných a nevhodných pre náš priezkum
+    * Zistenie: Všetci respondeti odpovedali áno a sú teda vhodný pre náš priezkum
+
+2. Čo sa vám páčilo na ich GUI?
+    * Možnosti: Páči sa mi ich vzhlad, na dáme jídlo sa mi nepáči úvodná stránka ktorá je moc chaotická
+    * Cieľ otázky: Aké GUI je pre užívateľov najlepšie? Majú radi GUI ostatných aplikácií?
+    * Zistenie: Aplikácie ktoré sú momentálne na trhu majú ideálne GUI pre užívateľov a 
+
+3. Čo sa vám páčilo na ich dizajne?
+    * Možnosti: Majú tak akurát myšlienok, ani veľa ani málo. / Sú prívetivé a nemajú veľa farieb.
+    * Cieľ otázky: Aký dizajn aplikácií sa respondentom najviac páči?
+    * Zistenie: Respondenti preferujú jednoduché aplikácie ktoré majú minimálnu paletu farieb.
+
+4. Aký je pre vás najdôležitejší faktor pri výbere hamburgeru?
+    * Možnosti: Ingrediencie, suroviny / Ingrediencie, zloženie
+    * Cieľ otázky: Na základne čoho sa užívatelia rozhodujú pri výbere hamburgeru?
+    * Zistenie: Užívateľom najviac záleží na surovinách, ingredienciách a zložení hamburgeru.
+
+5. Ako by ste si predstavovali výber hamburgeru?
+    * Možnosti: Chcem si vyberať suroviny / Základná šablóna ktorú neskôr doupravím
+    * Cieľ otázky: Aký je pre užívateľov najlepší spôsob ako si vybrať svôj burger?
+    * Zistenie: Užívatelia si chcú upraviť svoje hamburgeri, z toho vyplýva že, naša aplikácia má zmysel.
+
+6. Sú pre vás možnosť prispôsobenia burgerov dostačujúce?
+    * Odpovede: Nie. Málo nevídám kuřecí burgery. Kamarátka hovädzie nemá rada, takže sme nemohli ísť na burger / Nie, chcela by som vidieť niečo nové. 
+    * Cieľ otázky: Zistenie či naša aplikácia má zmysel a či užívatelia chcú viac prispôsobiť ingrediencie v svojich burgeroch.
+    * Zistenie: Respondeti majú potrebu prispôsobiť si burgre.
+
+7. Sú pre vás aplikácie, ktoré sú momentálne na trhu, uspokojivé?
     * Možnosti: Áno/Nie
-    * Cieľ otázky:
-    * Zistenie:
+    * Cieľ otázky: Sú užívatelia spokojný s aplikáciami ktoré sú momentálne na trhu?
+    * Zistenie: Respondeti odpovedali pol na pol. Nedá sa jednoznačne určiť či sú spokojný s aplikáciami ktoré sú momentálne na trhu.
 
-3. Aké funkcie sa vám na nej páčili?
-    * Možnosti: Áno/Nie
-    * Cieľ otázky:
-    * Zistenie:
+8. Narazili ste na preblém pri objednávaní burgeru?
+    * Možnosti: Áno, chýbala mi možnosť výberu mäsa / Nikdy som neobjednavala burger
+    * Cieľ otázky: Majú respondeti problémy pri objednávaní burgerov? 
+    * Zistenie: Užívatelia sa pri objednávaní burgerov stretávajú s problémami. Chcú upravovať zloženie burgerov.
 
-4. Čo sa vám páčilo na ich GUI?
-    * Možnosti: Áno/Nie
-    * Cieľ otázky:
-    * Zistenie:
+9. Je nejaká špecifická funkcia ktorá podla vás chýba ostatným aplikáciam na jedlo?
+    * Možnosti: Áno, chýba mi upravovanie jedla / Upravovanie surovín v burgery
+    * Cieľ otázky: Potrebuje naša aplikácia novú funkciu, inú ako konkurečné aplikácie na objednávanie jedla?
+    * Zistenie: Respondenti majú záujem o aplikáciu ktorá by umožňovala detailne upravovať jedlo.
 
-5. Čo sa vám páčilo na ich dizajne?
-    * Možnosti: Áno/Nie
-    * Cieľ otázky:
-    * Zistenie:
+10. Aký typ užívateľského rozhrania vám príde najprívetivejší?
+    * Možnosti: jednoduchý a minimalistický / farebný / vysoký kontrasy
+    * Cieľ otázky: Aký vzhľad UI príde respondentom najprívetivejší?
+    * Zistenie: Respondeti preferujú farebné, jednoduché a minimalistické aplikácie.
 
-6. Aký je pre vás najdôležitejší faktor pri výbere hamburgeru?
-    * Možnosti: Áno/Nie
-    * Cieľ otázky:
-    * Zistenie:
-
-7. Ako by ste si predstavovali výber hamburgeru?
-    * Možnosti: Áno/Nie
-    * Cieľ otázky:
-    * Zistenie:
-
-8. Sú pre vás možnosť výberu burgerov dostačujúce?
-    * Možnosti: Áno/Nie
-    * Cieľ otázky:
-    * Zistenie:
-
-9. Sú pre vás možnosť prispôsobenia burgerov dostačujúce?
-    * Možnosti: Áno/Nie
-    * Cieľ otázky:
-    * Zistenie:
-
-10. Sú pre vás aplikácie, ktoré sú momentálne na trhu, uspokojivé?
-    * Možnosti: Áno/Nie
-    * Cieľ otázky:
-    * Zistenie:
-
-11. Narazili ste na preblém pri objednávaní burgeru?
-    * Možnosti: Áno/Nie
-    * Cieľ otázky:
-    * Zistenie:
-
-12. Je nejaká špecifická funkcia ktorá podla vás chýba ostatným aplikáciam na jedlo?
-    * Áno/Nie
-    * Cieľ otázky:
-    * Zistenie:
-
-13. Aký typ užívateľského rozhrania vám príde najprívetivejší?
-    * Možnosti: Áno/Nie
-    * Cieľ otázky:
-    * Zistenie:
-
-    - [ ] jednoduchý a minimalistický
-    - [ ] farebný 
-    - [ ] vysoký kontrast
+11. Aké prísady podla vás patria do hamburgeru?
+    * Odpovede: hovädzie mäso, bravčové mäso, kuracie mäso, mix mäso, svetlá a tmavá žemľa, cheddar, hermelín, niva, šalár, rajčina, cibuľa, uhorky, olivy, majonéza, BBQ, chilli, volské oko
+    * Cieľ otázky: Zistenie aké ingriencie má naša aplikácia obsahovať.
+    * Zistenie: Zoznam ingrediencií ktoré užívatelia chcú od našej aplikácie.
 
 ### Poznatky    
 
@@ -347,23 +333,70 @@ Najvýraznejšou funkciou na home page bude vytvorenie novej objednávky. Ďalš
 - prehladná homepage
 - zvyšovanie množstva prísad (namiesto klikania znovu)
 - nevyžadovať registáciu
-- zlavy (out of scope)
+- zľavy (mimo rozsah)
 
 ## Rozdelenie práce
 - 2. Každý člen pracuje na časti aplikácie, výsledkom je jedna aplikácia
 
-### Marek
-### Martin
 ### Matúš
+- úvodná obrazovka
+- história objednávok
+
+### Marek
+- zdielanie burgerov
+- ukladanie vytvorených burgerov
+
+### Martin
+- vtvorenie novej objednávky
+- skladanie burgerov
+
+# Testovanie
+
+## Matúš
+
+### Metriky
+- počet pokusov na splnenie úlohy
+- počet otázok
+- využitie nápovedy
+
+#### Úlohy:
+1. Vytvorenie novej objednávky 
+2. Voľba suroviny 
+3. Zaplatenie objednávky
+4. Stornovanie objednávky
+5. Prehlad objednávok
+6. Zmena nastavení
+7. Prehlad uloženého jedla
+8. Prehlad vytvoreného jedla
+9. Návrat na hlavnú stránku
+
+### Priebeh
+Uživatelia nemali problémy pri plnení úloh. Nepotrebovali žiadne nápovedy a zvládli splniť všeky úlohy. Jedinú komplikáciu spôsobil zlý piktogram pre návrat na hlavnú stránku a absencia tlačítka pri dokončení objednácky, ktoré by tiež umožňovalo návrat na hlavnú stránku.
+
+### Výsledky
+- Úspešnosť oboch užívatelov bola 89%. Splinili 8 z 9 úloh na prvý pokus a 1 úlohu na druhý pokus
+- Je nutné zmeniť tlačítko pre návrat na hlavnú stránku
+- Piktogramu pre návrat na hlavnú stránku je mätúci a vyžaduje zmenu
+
+## Marek
+### Metriky
+### Priebeh
+### Výsledky
+
+## Martin
+### Metriky
+### Priebeh
+### Výsledky
 
 # Maketa / Diagram / Screenshot
 # Riešenie preblémov uživateľov
 
-# Testovanie
-## Metriky
-## Priebeh
-## Výsledky
-
 # Architektura
+## Platforma
+- Android
+
 ## FE
+- Flutter
+
 ## BE
+- Addonis
