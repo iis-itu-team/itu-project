@@ -1,4 +1,4 @@
-import { BaseModel, ManyToMany, beforeCreate, column, manyToMany } from "@ioc:Adonis/Lucid/Orm";
+import { BaseModel, ManyToMany, beforeCreate, column, computed, manyToMany } from "@ioc:Adonis/Lucid/Orm";
 import Ingredient from "./Ingredient";
 import generateId from "utils/generate-id";
 
@@ -26,8 +26,14 @@ export default class Food extends BaseModel {
     })
     public ingredients: ManyToMany<typeof Ingredient>
 
+    @computed()
+    public get amount() {
+        if ("pivot_amount" in this.$extras)
+            return this.$extras.pivot_amount
+    }
+
     @beforeCreate()
-    public static beforeCreate(food: Food) {
+    public static async beforeCreate(food: Food) {
         food.id = generateId(food.id, "food")
     }
 }

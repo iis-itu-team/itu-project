@@ -32,4 +32,7 @@ Route.group(() => {
 
   Route.resource("foods", "FoodController")
     .only(["index", "show", "store", "destroy"])
+
+  Route.resource("orders", "OrderController")
+    .only(["index", "show", "store"])
 }).prefix('api')
