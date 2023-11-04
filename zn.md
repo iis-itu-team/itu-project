@@ -415,7 +415,9 @@ Rozhraní bylo testováno na 3 uživatelích formou scénáře s konkrétnímy �
 
 # Architektura
 
-Aplikace je rozdělena na backend server a mobilní aplikaci, které spolu komunikují pomocí HTTP Rest API. Mobilní aplikace posílá požadavky na backendový server, který odpovídá s data z databáze. Zvolená architektura se dá nazvat MVC přístupem, pokud přemýšlíme nad daty vrácenými z API a jejich namapování na struktury v paměti jako nad "Modelem".
+Aplikace je rozdělena na backend server a mobilní aplikaci, které spolu komunikují pomocí HTTP Rest API. Mobilní aplikace posílá požadavky na backendový server, který provede nějakou operaci (případně nad daty z databáze) a odpovídá. Zvolená architektura se dá s přimhouřením oka nazvat MVC přístupem - databázový model, byznys logika a zobrazení pro uživatele jsou jasně odděleny. Jediným rozdílem je rozdělení ve více úrovních. Backendový server bude obsahovat model (databázový; struktury mapující záznamy), controller (byznys logika jednotlivých přístupových bodů rozhraní). Frontend potom znovu model (namapování odpovědí z API na struktury v paměti), controller (byznys logika pracující nad daty v paměti) a výsledné view, tedy zobrazení uživateli. Architektura je tímto vcelku komplikovaná a obsahuje přebytečné vrstvy (dalo by se zjednodušit použitím lokálního uložení dat - "čisté" MVC), jde ale o realizaci, která se běžně používá v praxi a je nutná pro naši funkcionalitu. Díky rozdělení backendového serveru a poskytnutí veřejné API je možné připojit více zařízení na stejný zdroj dat, je tedy možné mezi uživateli interagovat.
+
+Jedním z požadavků uživatelů bylo nevytvářet uživatelské účty pro správu jídel a objednání. Při nainstalování aplikace se tedy každému uživateli vygeneruje unikátní identifikátor, který bude uložený lokálně na jejich telefonu. Podle něj budou přiřazena vytvořená jídla a objednávky. Jako jedno z rozšíření aplikace se nabízí možnost exportovat tento klíč na jiné zařízení.
 
 ## Platforma
 
@@ -423,8 +425,23 @@ Jedinou podporovanou platformou je Android. Cílem bylo vyvinout mobilní aplika
 
 ## Frontend
 
-Pro vývoj mobilní aplikace jsme zvolili platformu Flutter. Převážně z důvodu stability, ekosystému a skvělých vývojářských nástrojů. Programovací jazyk dart, který flutter využívá je flexibiní a umožňuje rychlý vývoj, zároveň je velice podobný jazykům, které jsme dříve využívali. Flutter podporuje sestavování aplikací na více platforem. Tuto funkcionalitu v projektu nevyužijeme, i přes to jsme se rozhodli flutter využít oproti např. React Native nebo čistému Android SDK s Javou/Kotlinem.
+Definuje jednotlivé modely dat `Food { name: str, published: bool, ingredients: [{ ...Ingredient, amount }] }`, `Ingredient { name: str, price: num }`, `Order { foods: [{ ...Food, amount }], ...delivery details }`, které odpovídají datům vráceným z backendového serveru.
+// TODO: doplnit definované funkce a datový struktury dle toho, co reálně kostra obsahuje
 
-## BE
+Pro vývoj mobilní aplikace jsme zvolili framework Flutter. Převážně z důvodu stability, ekosystému a skvělých vývojářských nástrojů. Programovací jazyk dart, který flutter využívá je flexibiní a umožňuje rychlý vývoj, zároveň je velice podobný jazykům, které jsme dříve využívali. Flutter podporuje sestavování aplikací na více platforem. Tuto funkcionalitu v projektu nevyužijeme, i přes to jsme se rozhodli flutter využít oproti např. React Native nebo čistému Android SDK s Javou/Kotlinem.
+
+## Backend
+
+Backendový server definuje následující datové struktury:
+`Ingredient` - ingredience, jsou předvytvořené v databázi (uvažujme, že je přidává a spravuje strana restaurace), definují název a cenu
+`Food` - vytvořené jídlo, má název a přiřazené ingredience s počtem kusů.
+`Order` - objednávka, obsahuje objednaná jídla a informace o doručení objednávky
+
+a skupiny přístupových bodů:
+`/ingredients` - pro správu ingrediencí ze strany restaurace, v aplikaci pravděpodobně nebude využito, dovoluje všechny CRUD operace, operauje nad moodelem `Ingredient`
+`/foods` - vytvořená jídla uživateli a jídla sdílená s ostatními, dovoluje všechny CRUD operace, operuje nad modelem `Food`
+`/orders` - objednávky vytvořené uživatelem, dovoluje všechny CRUD operace, operuje nad modelem `Order`
+
+Server je zabezpečený přístupovým klíčem, který je nutno specifikovat v hlavičce HTTP požadavků `API-Key`, jde převážně o zamezení přístupu nechtěným stranám. V případě veřejné distribuce aplikace ale není nutné a ani by správně nefungovalo (klíč by musel být distribuovaný v aplikaci - získatelný).
 
 Backendový server je postavený na frameworku adonis.js, který je napsaný v typescriptu a běží v nodejs prostředí. Je relativně nový a silně inspirovaný php frameworkem Laravel. Zvolili jsme jej převážně kvůli flexibilně jazyka a jednoduchosti frameworku vzhledem k tomu, že hlavní prioritou projektu je mobilní aplikace. Framework už v základu obsahuje spoustu věcí a přidávání další funkcionality je relativně snadné. Máme s ním také předchozí zkušenosti.
