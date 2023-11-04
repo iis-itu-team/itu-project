@@ -2,6 +2,8 @@ import { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
 import OrderService from "App/Services/OrderService";
 import { schema, rules } from "@ioc:Adonis/Core/Validator";
 import { DeliveryType, PaymentType } from "App/Models/Order";
+import KeeperService from "App/Services/KeeperService";
+import FailureException from "App/Exceptions/FailureException";
 
 const createOrderSchema = schema.create({
     foods: schema.array().members(schema.object().members({
@@ -27,10 +29,13 @@ const createOrderSchema = schema.create({
     note: schema.string.optional(),
 
     paymentType: schema.enum(Object.values(PaymentType)),
+
+    keeperId: schema.string()
 })
 
 export default class OrderController {
     private readonly orderService = new OrderService()
+    private readonly keeperService = new KeeperService()
 
     public async index({ response }: HttpContextContract) {
         const orders = await this.orderService.listOrders()
@@ -58,7 +63,13 @@ export default class OrderController {
             schema: createOrderSchema
         })
 
-        const order = await this.orderService.createOrder(validated)
+        const keeper = await this.keeperService.getKeeper(validated.keeperId)
+
+        if (!keeper) {
+            throw FailureException.notFound("keeper", validated.keeperId)
+        }
+
+        const order = await this.orderService.createOrder(keeper, validated)
 
         response.status(201).json({
             status: "success",

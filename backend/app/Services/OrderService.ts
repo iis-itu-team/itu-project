@@ -1,5 +1,6 @@
 import FailureException from "App/Exceptions/FailureException"
 import Food from "App/Models/Food"
+import Keeper from "App/Models/Keeper"
 import Order, { DeliveryType, PaymentType } from "App/Models/Order"
 
 export type ListOrdersInput = {
@@ -41,7 +42,7 @@ export default class OrderService {
         return order
     }
 
-    public createOrder = async (input: CreateOrderInput) => {
+    public createOrder = async (keeper: Keeper, input: CreateOrderInput) => {
 
         // todo: don't associate existing foods, create new ones with same ingredients
         // we want to avoid users changing already ordered foods - aka changing the past
@@ -57,6 +58,8 @@ export default class OrderService {
         const order = await Order.create({
             ...input
         })
+
+        await order.related("keeper").associate(keeper)
 
         return order
     }
