@@ -417,25 +417,27 @@ Rozhraní bylo testováno na 3 uživatelích formou scénáře s konkrétnímy �
 
 Aplikace je rozdělena na backend server a mobilní aplikaci, které spolu komunikují pomocí HTTP Rest API. Mobilní aplikace posílá požadavky na backendový server, který provede nějakou operaci (případně nad daty z databáze) a odpovídá. Zvolená architektura se dá s přimhouřením oka nazvat MVC přístupem - databázový model, byznys logika a zobrazení pro uživatele jsou jasně odděleny. Jediným rozdílem je rozdělení ve více úrovních. Backendový server bude obsahovat model (databázový; struktury mapující záznamy), controller (byznys logika jednotlivých přístupových bodů rozhraní). Frontend potom znovu model (namapování odpovědí z API na struktury v paměti), controller (byznys logika pracující nad daty v paměti) a výsledné view, tedy zobrazení uživateli. Architektura je tímto vcelku komplikovaná a obsahuje přebytečné vrstvy (dalo by se zjednodušit použitím lokálního uložení dat - "čisté" MVC), jde ale o realizaci, která se běžně používá v praxi a je nutná pro naši funkcionalitu. Díky rozdělení backendového serveru a poskytnutí veřejné API je možné připojit více zařízení na stejný zdroj dat, je tedy možné mezi uživateli interagovat.
 
-Jedním z požadavků uživatelů bylo nevytvářet uživatelské účty pro správu jídel a objednání. Při nainstalování aplikace se tedy každému uživateli vygeneruje unikátní identifikátor, který bude uložený lokálně na jejich telefonu. Podle něj budou přiřazena vytvořená jídla a objednávky. Jako jedno z rozšíření aplikace se nabízí možnost exportovat tento klíč na jiné zařízení.
+Jedním z požadavků uživatelů bylo nevytvářet uživatelské účty pro správu jídel a objednání. Při nainstalování aplikace (popř. prvním požadavku na BE server) se tedy uživateli vygeneruje unikátní identifikátor, který bude uložený lokálně na jejich telefonu. Podle něj budou přiřazena vytvořená jídla a objednávky. Toto řešení je pro reálný svět nejspíš nedostatečné. Při získání identifikátoru nebezpečnou třetí stranou získá přístup k adrese, atp. 
 
 ## Platforma
 
 Jedinou podporovanou platformou je Android. Cílem bylo vyvinout mobilní aplikaci, bohužel vývoj pro iOS vyžaduje sestavení aplikace na stroji od společnosti Apple, který nikdo z týmu nevlastní. Nebylo by tedy možné aplikaci sestavit, ani ladit při vývoji.
 
-## Frontend
+## Mobilní aplikace
 
 Definuje jednotlivé modely dat `Food { name: str, published: bool, ingredients: [{ ...Ingredient, amount }] }`, `Ingredient { name: str, price: num }`, `Order { foods: [{ ...Food, amount }], ...delivery details }`, které odpovídají datům vráceným z backendového serveru.
+
 // TODO: doplnit definované funkce a datový struktury dle toho, co reálně kostra obsahuje
 
 Pro vývoj mobilní aplikace jsme zvolili framework Flutter. Převážně z důvodu stability, ekosystému a skvělých vývojářských nástrojů. Programovací jazyk dart, který flutter využívá je flexibiní a umožňuje rychlý vývoj, zároveň je velice podobný jazykům, které jsme dříve využívali. Flutter podporuje sestavování aplikací na více platforem. Tuto funkcionalitu v projektu nevyužijeme, i přes to jsme se rozhodli flutter využít oproti např. React Native nebo čistému Android SDK s Javou/Kotlinem.
 
-## Backend
+## Backendový server s Rest API
 
 Backendový server definuje následující datové struktury:
 `Ingredient` - ingredience, jsou předvytvořené v databázi (uvažujme, že je přidává a spravuje strana restaurace), definují název a cenu
 `Food` - vytvořené jídlo, má název a přiřazené ingredience s počtem kusů.
 `Order` - objednávka, obsahuje objednaná jídla a informace o doručení objednávky
+`Keeper` - identifikátory uživatelů, definuje pouze vytvoření nového identifikátoru a kontrolu, zda identifikátor existuje
 
 a skupiny přístupových bodů:
 `/ingredients` - pro správu ingrediencí ze strany restaurace, v aplikaci pravděpodobně nebude využito, dovoluje všechny CRUD operace, operauje nad moodelem `Ingredient`
