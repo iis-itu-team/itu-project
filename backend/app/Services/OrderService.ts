@@ -4,7 +4,7 @@ import Keeper from "App/Models/Keeper"
 import Order, { DeliveryType, PaymentType } from "App/Models/Order"
 
 export type ListOrdersInput = {
-    //
+    keeperId?: string
 }
 
 export type FoodInput = {
@@ -28,8 +28,14 @@ export type CreateOrderInput = {
 }
 
 export default class OrderService {
-    public listOrders = async () => {
-        return await Order.all()
+    public listOrders = async (input: ListOrdersInput) => {
+        const q = Order.query()
+
+        if (input.keeperId) {
+            q.andWhere("keeper_id", input.keeperId)
+        }
+
+        return await q
     }
 
     public getOrder = async (id: string) => {

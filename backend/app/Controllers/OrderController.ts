@@ -5,6 +5,10 @@ import { DeliveryType, PaymentType } from "App/Models/Order";
 import KeeperService from "App/Services/KeeperService";
 import FailureException from "App/Exceptions/FailureException";
 
+const listOrdersSchema = schema.create({
+    keeperId: schema.string.optional()
+})
+
 const createOrderSchema = schema.create({
     foods: schema.array().members(schema.object().members({
         id: schema.string(),
@@ -37,8 +41,11 @@ export default class OrderController {
     private readonly orderService = new OrderService()
     private readonly keeperService = new KeeperService()
 
-    public async index({ response }: HttpContextContract) {
-        const orders = await this.orderService.listOrders()
+    public async index({ request, response }: HttpContextContract) {
+        const validated = await request.validate({
+            schema: listOrdersSchema
+        })
+        const orders = await this.orderService.listOrders(validated)
 
         response.status(200).json({
             status: "success",

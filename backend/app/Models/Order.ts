@@ -57,6 +57,9 @@ export default class Order extends BaseModel {
     @column()
     public paymentType: PaymentType
 
+    @column({ columnName: "keeper_id" })
+    public keeperId: string
+
     @belongsTo(() => Keeper)
     public keeper: BelongsTo<typeof Keeper>
 
