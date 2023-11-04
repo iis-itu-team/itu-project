@@ -384,31 +384,31 @@ Uživatelia nemali problémy pri plnení úloh. Nepotrebovali žiadne nápovedy 
 
 ## Martin
 ### Metriky
-- Počet požádání o nápovědu
-- Počet stížností / připomínek na rozložení / přehlednost rozhraní
+- Počet žiadostí o nápovedu
+- Počet sťažností / pripomienok na rozloženie / prehladnosť rozhrania
 
 ### Priebeh
-Rozhraní bylo testováno na 3 uživatelích formou scénáře s konkrétnímy úkoly. Každý uživatel dostal základní kontext o aplikaci. Kvůli limitacím neplacené figmy některá funkcionalita nebyla v prototypu simulována - např. drag n drop (přidávání ingrediencí; přidávání burgerů do objednávky).
+Rozhranie bolo testované na 3 užívateloch formou scenára s konkrétnými úlohami. Každý užívateľ dostal základný kontext o aplikácií. Kvôli limontáciám neplatenej figmy niektorá funkcionalita nebola v prototype similovaná. Napríklad drag and drop (pridávanie ingrediencií alebo pridávanie burgerov do objednávky).
 
-Úkoly:
-- Vytvořit nový burgr, pojmenovat jej, přidat surovinu, uložit
-    - 1/3 uživatelů nenašli přejmenování burgeru, symbol nevýrazný
-    - 0/3 uživatelů měli připomínky
-- Přidat burger do objednávky, projít checkout a odeslat objednávku
-    - 0/3 uživatelů žádali o nápovědu
-    - 2/3 uživatelů měli problémy trefit tlačítka (malý UI scale)
-- Vytvořit nový burger, pojmenovat jej, zveřejnit
-    - 0/3 uživatelů vyžadovali nápovědu
-    - 2/3 uživatelé měli připomínky - zveřejnění se provede okamžitě (chybí prompt)
-- Odstranit položku z objednávky
-    - 1/3 uživatelů nepřišel na funkčnost (drag burgeru mimo objednávkový prostor)
-    - 0/3 uživatelů měli připomínky
-- Prohlédnout si své objednávky
-    - 1/3 uživatelů vyžadoval nápovědu - malé tlačítko, schované
-    - 0/3 uživatelů měli připomínky
+Úlohy:
+- Vytvoriť nový burger, pomenovať ho, pridať surovinu, uložiť
+    - 1/3 užívatelov nenašla premenovanie burgeru, symbol je moc nevýrazný
+    - 0/3 užívatelov malo pripomienky
+- Pridať burger do objednávky, prejsť checkou a odoslať objednávku
+    - 0/3 užívatelov vyžadovalo nápovedu 
+    - 2/3 užívatelov malo problém trafiť tlačítko kvôli malej veľkosti UI
+- Vytvoriť nový burger, pomenovať ho, zverejniť
+    - 0/3 užívatelov vyžadovalo nápovedu, zverejnenie sa uskutoční okamžite a chýba potvrdzovacie okno
+    - 2/3 užívatelov malo pripomienky
+- Odstrániť položku z objednávky
+    - 1/3 užívatelov neodhalili funkčnosť (drag and drop mimo objednávkového priestora)
+    - 0/3 užívatelov malo pripomienky
+- Prehliadnuť si svoje objednávky
+    - 1/3 užívatelov vyžadovalo nápovedu, malé tlačítko, schované
+    - 0/3 užívatelov malo pripomienky
 
 ### Výsledky
-12/15 úkolů bylo splněno bez žádosti o nápovědu. Většina připomínek a žádostí o nápovědy byla způsobena malými velikostmi tlačítek, textů a inputů, jinak aplikace působí přehledně a přívětivě.
+12/15 úloh bolo splnených bez žiadosti o nápovedu. Väčšina pripomienok a žiadostí o nápovedu bolo zpôsobená malými veľkosťami tlačítok, texto a polí na vkladanie. Inak pôsobí aplikácia prehlane a prívetivo.
 
 # Maketa / Diagram / Screenshot
 # Riešenie preblémov uživateľov
