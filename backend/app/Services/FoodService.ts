@@ -1,9 +1,11 @@
 import FailureException from "App/Exceptions/FailureException";
 import Food from "App/Models/Food"
 import Ingredient from "App/Models/Ingredient";
+import Keeper from "App/Models/Keeper";
 
 export type ListFoodsInput = {
-    published?: boolean
+    published: boolean|null
+    keeperId?: string
 }
 
 export type IngredientInput = {
@@ -24,8 +26,12 @@ export default class FoodService {
                 query.pivotColumns(["amount"])
             });
 
-        if (input.published) {
-            q.where("published", true)
+        if (input.keeperId) {
+            q.andWhere("keeper_id", input.keeperId)
+        }
+
+        if (input.published != null) {
+            q.andWhere("published", input.published)
         }
 
         return await q
@@ -46,8 +52,7 @@ export default class FoodService {
         return food
     }
 
-    public createFood = async (input: CreateFoodInput): Promise<Food> => {
-
+    public createFood = async (keeper: Keeper, input: CreateFoodInput): Promise<Food> => {
         await Promise.all(input.ingredients.map(async (ingredient: IngredientInput) => {
             const ingredientModel = await Ingredient.find(ingredient.id)
 
@@ -62,6 +67,8 @@ export default class FoodService {
             name: input.name,
             published: input.publish
         })
+
+        await food.related("keeper").associate(keeper)
 
         await Promise.all(input.ingredients.map(async (ingredient: IngredientInput) => {
             await food.related("ingredients").attach({

@@ -42,6 +42,10 @@ export default class OrderService {
     }
 
     public createOrder = async (input: CreateOrderInput) => {
+
+        // todo: don't associate existing foods, create new ones with same ingredients
+        // we want to avoid users changing already ordered foods - aka changing the past
+
         await Promise.all(input.foods.map(async (food: FoodInput) => {
             const foodModel = await Food.find(food.id)
 

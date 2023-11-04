@@ -27,6 +27,11 @@ Route.group(() => {
     }
   })
 
+  Route.group(() => {
+    Route.post("/", "KeeperController.store")
+    Route.get("/:id/exists", "KeeperController.exists")
+  }).prefix("keepers")
+
   Route.resource("ingredients", "IngredientController")
     .only(["index", "show", "store", "update", "destroy"])
 

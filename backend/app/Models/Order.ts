@@ -1,6 +1,7 @@
-import { column, BaseModel, beforeCreate, manyToMany, ManyToMany } from "@ioc:Adonis/Lucid/Orm";
+import { column, BaseModel, beforeCreate, manyToMany, ManyToMany, BelongsTo, belongsTo } from "@ioc:Adonis/Lucid/Orm";
 import generateId from "utils/generate-id";
 import Food from "./Food";
+import Keeper from "./Keeper";
 
 export enum DeliveryType {
     HOUSE = "house",
@@ -55,6 +56,9 @@ export default class Order extends BaseModel {
 
     @column()
     public paymentType: PaymentType
+
+    @belongsTo(() => Keeper)
+    public keeper: BelongsTo<typeof Keeper>
 
     @beforeCreate()
     public static async beforeCreate(order: Order) {

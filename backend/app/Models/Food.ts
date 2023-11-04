@@ -1,6 +1,7 @@
-import { BaseModel, ManyToMany, beforeCreate, column, computed, manyToMany } from "@ioc:Adonis/Lucid/Orm";
+import { BaseModel, BelongsTo, ManyToMany, beforeCreate, belongsTo, column, computed, manyToMany } from "@ioc:Adonis/Lucid/Orm";
 import Ingredient from "./Ingredient";
 import generateId from "utils/generate-id";
+import Keeper from "./Keeper";
 
 export default class Food extends BaseModel {
     public static selfAssignPrimaryKey = true;
@@ -25,6 +26,12 @@ export default class Food extends BaseModel {
         ]
     })
     public ingredients: ManyToMany<typeof Ingredient>
+
+    @column({ columnName: "keeper_id" })
+    public keeperId: string
+
+    @belongsTo(() => Keeper)
+    public keeper: BelongsTo<typeof Keeper>
 
     @computed()
     public get amount() {

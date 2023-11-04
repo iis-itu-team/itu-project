@@ -1,10 +1,13 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import { schema } from '@ioc:Adonis/Core/Validator'
+import { schema, rules } from '@ioc:Adonis/Core/Validator'
+import FailureException from 'App/Exceptions/FailureException';
 
 import FoodService from "App/Services/FoodService";
+import KeeperService from 'App/Services/KeeperService';
 
 const indexFoodSchema = schema.create({
-    published: schema.boolean.optional()
+    published: schema.enum.optional(["true", "false"]),
+    keeperId: schema.string.optional()
 })
 
 const createFoodSchema = schema.create({
@@ -13,16 +16,21 @@ const createFoodSchema = schema.create({
     ingredients: schema.array().members(schema.object().members({
         id: schema.string(),
         amount: schema.number(),
-    }))
+    })),
+    keeperId: schema.string()
 })
 
 export default class FoodController {
     private readonly foodService = new FoodService()
+    private readonly keeperService = new KeeperService()
 
     public async index({ request, response }: HttpContextContract) {
         const validated = await request.validate({ schema: indexFoodSchema })
 
-        const foods = await this.foodService.listFoods(validated)
+        const foods = await this.foodService.listFoods({
+            ...validated,
+            published: validated.published == null ? null : validated.published === "true"
+        })
 
         response.status(200).json({
             status: "success",
@@ -47,7 +55,13 @@ export default class FoodController {
             schema: createFoodSchema
         })
 
-        const food = await this.foodService.createFood(validated)
+        const keeper = await this.keeperService.getKeeper(validated.keeperId)
+
+        if (!keeper) {
+            throw FailureException.notFound("keeper", validated.keeperId)
+        }
+
+        const food = await this.foodService.createFood(keeper, validated)
 
         response.status(201).json({
             status: "success",
