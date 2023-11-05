@@ -10,10 +10,15 @@ jobs:
   build-pdf:
     runs-on: ubuntu-latest
     steps:
-      - name: Publish Markdown As PDF
-        # You may pin to the exact commit or the version.
-        # uses: shrink/actions-document-publish@8cff7c0e74cfb9e3c2fc3fb8dda2ce4aef966d95
-        uses: shrink/actions-document-publish@v1
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+      - name: Setup pandoc
+        uses: nikeee/setup-pandoc@master
+      - name: Build PDF
+        run: "./create-pdf"
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        id: upload-document
         with:
-          # List of glob patterns to Markdown files in order of their inclusion in the PDF
-          sources: zn.md
+          name: 'zn.pdf'
+          path: ${{ steps.publish-document.outputs.pdf }}
