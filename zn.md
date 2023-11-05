@@ -8,23 +8,23 @@
 
 Navrhol: Matúš Hubinský
 
-EDR systémy analyzujú chovania viacerých zariadení a vyhodnocujú bezpečnostné hrozby na základe udalostí zaznamenaných v databáze. Ak vyhodnotia chovanie ako nebezpečné vygenerujú alert. Tento alert je následne spracovaný bezpečnostným analytikom, ktorý sa venuje monitoringu. Bezpečnostný analytici môžu naraz monitorovať viarece systémov a preto potrebujú také grafické rozhranie, z ktorého vedia na prvý pohľad určiť počet nových bezpečnostných alertov a zároveň ich závažnosť. Existuje viacero riešení, ale každé má svoje preblémy a dalo by sa vylepšiť.
+EDR systémy analyzujú chovania viacerých zariadení a vyhodnocujú bezpečnostné hrozby na základe udalostí zaznamenaných v databáze. Ak vyhodnotia chovanie ako nebezpečné vygenerujú alert. Tento alert je následne spracovaný bezpečnostným analytikom, ktorý sa venuje monitoringu. Bezpečnostný analytici môžu naraz monitorovať viaceré systémov a preto potrebujú také grafické rozhranie, z ktorého vedia na prvý pohľad určiť počet nových bezpečnostných upozornení a zároveň ich závažnosť. Existuje viacero riešení, ale každé má svoje problémy a dalo by sa vylepšiť.
 
 ### Mobilná aplikácia pre BAM (Brnenský Architektonický Manuál)
 
 Navrhol: Martin Otradovec
 
-BAM je prejekt poskytujúci databázu architektonicky významných objektov v Brne. Cielom realizácie bolo vytvoriť k už existujúcemu webu mobilnú aplikáciu poskytujúcu prístup k objektom, trasám a audiosprievodcom prívetivo a offline. Ďalším možným prvkom je skenovanie kódov, ktoré sú po Brne rozmiestnené pri budovách alebo detekvia budov v okolí podľa GPS. Aplikáciu by bolo možné v prípade kvalitnej realizácie ponúknuť BAMu pre reálne využitie, pripadne rozvinúť do bakalárskej práce. Záujem medzi užívateľmi existujúceho webu je nezanedbateľný. Podobná aplikácia existuje vo forme postaršej bakalárskej práce, ale nieje verejne prístupná.
+BAM je projekt poskytujúci databázu architektonicky významných objektov v Brne. Cielom realizácie bolo vytvoriť k už existujúcemu webu mobilnú aplikáciu poskytujúcu prístup k objektom, trasám a audios sprievodcom prívetivo a offline. Ďalším možným prvkom je skenovanie kódov, ktoré sú po Brne rozmiestnené pri budovách alebo detekcia budov v okolí podľa GPS. Aplikáciu by bolo možné v prípade kvalitnej realizácie ponúknuť BAMu pre reálne využitie, pripadne rozvinúť do bakalárskej práce. Záujem medzi užívateľmi existujúceho webu je nezanedbateľný. Podobná aplikácia existuje vo forme postaršej bakalárskej práce, ale nie je verejne prístupná.
 
-### Mobilná aplikácia pre objednávánie a zostavanie burgerov - Food Blueprint
+### Mobilná aplikácia pre objednávanie a zostavanie hamburgerov - Food Blueprint
 
 Navrhol: Marek Vandík
 
-Aplikácia Food Blueprint má za cieľ umožniť svojim užívateľom nielen objednávať, ale rovno poskladať burger podľa prefrencí užívateľov. Inšpiráciou pre toto téma sú hlavne samoobslužné systému v reštauráciách ako sú McDonald's, Burger King apod. Bolo by zaujímavé, keby užívatelia aplikácie mohli sami vytvárať burgery podľa svojich predstáv (zostaviť burger z obľúbeného typu žemle, mäsa atp.) a boli by schopný medzi sebou svoje výtvory zdieľať. Funkcionalitu zostaviť burger síce predtým zmienené systémy umožňují, ale nieje to ich hlavný zámer a napr. neponúkajú (z môjho predchádzajúceho priezkumu) alebo je príliž zložité prehodiť poradie ingrediencií.
+Aplikácia Food Blueprint má za cieľ umožniť svojim užívateľom nielen objednávať, ale rovno poskladať burger podľa prefrencií užívateľov. Inšpiráciou pre toto téma sú hlavne samoobslužné systému v reštauráciách ako sú McDonald's, Burger King apod. Bolo by zaujímavé, keby užívatelia aplikácie mohli sami vytvárať hamburgery podľa svojich predstáv (zostaviť burger z obľúbeného typu žemle, mäsa atp.) a boli by schopný medzi sebou svoje výtvory zdieľať. Funkcionalitu zostaviť burger síce predtým zmienené systémy umožňujú, ale nie je to ich hlavný zámer a napr. neponúkajú (z môjho predchádzajúceho prieskumu) alebo je moc zložité prehodiť poradie ingrediencií.
 
 ## Vybrané téma
 
-Po hlasovaní a dohode sme vybrali aplikáciu pre objednávanie a zostavanie hamburgerov - Food Blueprint. Aplikácia je relatívne jednoduchá na realizáciu a zber dár pre priezkum uživateľských potrieb.
+Po hlasovaní a dohode sme vybrali aplikáciu pre objednávanie a zostavanie hamburgerov - Food Blueprint. Aplikácia je relatívne jednoduchá na realizáciu a zber dár pre prieskum uživateľských potrieb.
 
 # Průzkum
 
@@ -34,11 +34,11 @@ Po hlasovaní a dohode sme vybrali aplikáciu pre objednávanie a zostavanie ham
 
 1. Používali ste niekedy aplikáciu na objednávanie jedla?
     * Možnosti: Áno/Nie
-    * Cieľ otázky: Prefiltrovanie responedtov na vhodných a nevhodných pre náš priezkum
-    * Zistenie: Všetci respondeti odpovedali áno a sú teda vhodný pre náš priezkum
+    * Cieľ otázky: Prefiltrovanie respondentov na vhodných a nevhodných pre náš prieskum
+    * Zistenie: Všetci respondenti odpovedali áno a sú teda vhodný pre náš prieskum
 
 2. Čo sa vám páčilo na ich GUI?
-    * Možnosti: Páči sa mi ich vzhlad, na dáme jídlo sa mi nepáči úvodná stránka ktorá je moc chaotická
+    * Možnosti: Páči sa mi ich vzhlad, na "dáme jídlo" sa mi nepáči úvodná stránka ktorá je moc chaotická
     * Cieľ otázky: Aké GUI je pre užívateľov najlepšie? Majú radi GUI ostatných aplikácií?
     * Zistenie: Aplikácie ktoré sú momentálne na trhu majú ideálne GUI pre užívateľov a 
 
@@ -224,8 +224,6 @@ Siedmim užívateľom bol zaslaný nasledujúci dotazník a ďalej následne bol
 ### Dotazník
 Dotazník bol vedený formou rozhovoru s tromi subjektami.
 
-"**\***" Pravdepodobne mimo rozsah našej aplikácie
-
 1. Využívate aplikácie pre dovoz jedál, poprípade ktoré?
     * Odpovede: Áno/Nie
     * Cieľ otázky: Zistenie nedostatkov / predností ostaných aplikácí
@@ -297,7 +295,7 @@ Dotazník bol vedený formou rozhovoru s tromi subjektami.
         - 9b:  prehliadnutie si svojich poskladaných jedlá
         - 8b:  prehliadnutie si svojich predošlých objednávok
         - 5b:  poskladanie nového jedla
-    *body jsou přiřazené popodľa toho, ako vysoko položky jednotliví užívateľé umístili, potom sečtené*
+    *body sú priradné podľa toho, ako vysoko užívatelia jednotlivé položky umiestnili, následne boli body sčítané*
         - na úvodnej stránke aplikácie budú zobrazené predvytvorené jedlá a jedlá vytvorené ostatnými. Zobraziť veľké tlačítko na vytvorenie novej objednávky. Poskladanmie nového jedla a predošlé objenávky schovať, urobiť menšie a nenápadné
 
 ### Porovnání s existujícími aplikacemi
@@ -313,7 +311,7 @@ Dotazník bol vedený formou rozhovoru s tromi subjektami.
 - Hlavný zoznam reštaurácií, prehlad košíku a checkout sú prehladné a pre užívateľa prívetivé. Použiť podobné rozloženie.
 - Doplniť do posledného kroku checkoutu informácie o doručení a možnosť výberu z viacerých variant
 
-## Výstup priezkumu
+## Výstup prieskumu
 
 ### Kľúčové potreby užívateľov
 - nedostatočné úpravy jedla
@@ -334,6 +332,19 @@ Najvýraznejšou funkciou na home page bude vytvorenie novej objednávky. Ďalš
 - zvyšovanie množstva prísad (namiesto klikania znovu)
 - nevyžadovať registáciu
 - zľavy (mimo rozsah)
+
+## Makety
+### Matúš
+- TODO: obrázok
+- TODO: popis
+
+### Marek
+- TODO: obrázok
+- TODO: popis
+
+### Martin
+- TODO: obrázok
+- TODO: popis
 
 ## Rozdelenie práce
 - 2. Každý člen pracuje na časti aplikácie, výsledkom je jedna aplikácia
