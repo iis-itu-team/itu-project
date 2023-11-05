@@ -1,4 +1,15 @@
-# Správa Návrhu
+---
+title: Správa návrhu
+author:
+    - Matúš Hubínsky
+    - Marek Vandík
+    - Martin Otradovec
+geometry: margin=25mm
+fontsize: 12pt
+header-includes:
+    \usepackage{setspace}
+    \doublespacing
+---
 
 # Téma
 

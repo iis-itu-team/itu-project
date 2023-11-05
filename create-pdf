@@ -31,4 +31,4 @@ fi
 echo "Generating $PDF_NAME"
 
 # Ignore lines starting with "//", this allows for comments
-cat zn.md | grep -v ^\/\/.* | pandoc -s -V geometry:margin=20mm -o "$PDF_NAME"
+cat zn.md | grep -v ^\/\/.* | pandoc -s -o "$PDF_NAME"
