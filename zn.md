@@ -448,8 +448,8 @@ Závery:
 
 Z rozhovoru s užívateľmi vyplynuli aj ďalšie námety ako:
 - pridať zhrnutie / potvrdenie objednávky
-- história objednávok a prípadné alergény (pomerne dôležitá funkcionalita vhodná pre implemntáciu pri nedostatočnom rozsahu)
-- zmeniť názov community worshop - užívatelom nebolo na prvý pohlad jasné, čo to má vlastne byť
+- história objednávok a prípadné alergény (pomerne dôležitá funkcionalita vhodná pre implementáciu pri nedostatočnom rozsahu)
+- zmeniť názov community worshop - užívateľom nebolo na prvý pohlad jasné, čo to má vlastne byť
 - grafika riešenia drag & drop integrácií, ktorú nebolo možné jednoducho realizovať v aplikácií Figma
 
 ## Martin
@@ -485,69 +485,73 @@ Rozhranie bolo testované na 3 užívateľoch formou scenára s konkrétnymi úl
 
 # Architektura
 
-Aplikace je rozdělena na backend server a mobilní aplikaci, které spolu komunikují pomocí HTTP Rest API. Mobilní aplikace posílá požadavky na backendový server, který provede nějakou operaci (případně nad daty z databáze) a odpovídá. Zvolená architektura se dá s přimhouřením oka nazvat MVC přístupem - databázový model, byznys logika a zobrazení pro užívatele jsou jasně odděleny. Jediným rozdílem je rozdělení ve více úrovních. Backendový server bude obsahovat model (databázový; struktury mapující záznamy), controller (byznys logika jednotlivých přístupových bodů rozhraní). Frontend potom znovu model (namapování odpovědí z API na struktury v paměti), controller (byznys logika pracující nad daty v paměti) a výsledné view, tedy zobrazení užívateli. Architektura je tímto vcelku komplikovaná a obsahuje přebytečné vrstvy (dalo by se zjednodušit použitím lokálního uložení dat - "čisté" MVC), jde ale o realizaci, která se běžně používá v praxi a je nutná pro naši funkcionalitu. Díky rozdělení backendového serveru a poskytnutí veřejné API je možné připojit více zařízení na stejný zdroj dat, je tedy možné mezi užívateli interagovat.
+Aplikácia je rozdelená na backend server a mobilnú aplikáciu, ktoré spolu komunikujú pomocou HTTP Rest API. Mobilná aplikácia posiela požiadavky na backendový server, ktorú urobí nejakú operáciu (prípadne nad dátami z databáze) a odpovedá. Zvolená architektúra sa dá s prižmúrením oka nazvať MVC prístupom - databázový model, biznis logika a zobrazenie pre užívateľa sú jasne oddelené. Jediným rozdielom je rozdelenie vo viacerých úrovniach. Backendový server bude obsahovať model (databázový, štruktúry mapujúca záznamy), controler (biznis logika jednotlivých prístupových bodov rozhrania). Frontend potom znovu model (namapované odpovede z API štruktúry v pamäti), controler (biznis logika pracujúca nad dátami v pamäti) a výsledné view, teda zobrazenie užívateľovi. Architektura je týmto vcelku komplikovaná a obsahuje nadbytočné vrstvy (dala by sa zjednodušiť použitím lokálneho ukladania dát - "čisté" MVC), ide ale o realizáciu, ktorá sa bežne používa v praxi a je nutná pre našu funkcionalitu. Vďaka rozdeleniu backendového serveru a poskytnutie verejného API je možné pripojiť viac zariadení na rovnaký zdroj dát, je preto možné medzi užívateľmi interagovať.
 
-Jedním z požadavků užívatelů bylo nevytvářet užívatelské účty pro správu jídel a objednání. Při nainstalování aplikace (popř. prvním požadavku na BE server) se tedy užívateli vygeneruje unikátní identifikátor, který bude uložený lokálně na jejich telefonu. Podle něj budou přiřazena vytvořená jídla a objednávky. Toto řešení je pro reálný svět nejspíš nedostatečné. Při získání identifikátoru nebezpečnou třetí stranou získá přístup k adrese, atp. 
+Jedným z požiadavkou užívateľov bolo nevytvárať užívateľské účty pre správu jedál a objednania. Pri inštalovaní aplikácie (prípadne prvom požiadavku na BE server) sa užívateľovi vygeneruje unikátny identifikátor, ktorý bude uložený lokálne na užívateľovom telefóne. Podla neho budú priradené vytvorené jedlá a objednávky. Toto riešenie je pre reálny svet pravdepodobne nedostatočné. Pri získaní identifikátoru útočníkom, získa prístup k adrese.
 
 ## Platforma
 
-Jedinou podporovanou platformou je Android. Cílem bylo vyvinout mobilní aplikaci, bohužel vývoj pro iOS vyžaduje sestavení aplikace na stroji od společnosti Apple, který nikdo z týmu nevlastní. Nebylo by tedy možné aplikaci sestavit, ani ladit při vývoji.
+Jedinou podporovanou platformou je Android. Cielom bolo vyvinutie mobilnej aplikácie, bohužiaľ pre vývoj pre iOS vyžaduje zostavanie aplikácie na stroji od spoločnosti Apple, ktorý nikdy z týmu nevlastní. Nebolo by teda možné aplikáciu zostaviť, ani ladiť pri vývoji.
 
 ## Mobilní aplikace
 
-Pro vývoj mobilní aplikace jsme zvolili framework Flutter. Převážně z důvodu stability, ekosystému a skvělých vývojářských nástrojů. Programovací jazyk dart, který flutter využívá je flexibiní a umožňuje rychlý vývoj, zároveň je velice podobný jazykům, které jsme dříve využívali. Flutter podporuje sestavování aplikací na více platforem. Tuto funkcionalitu v projektu nevyužijeme, i přes to jsme se rozhodli flutter využít oproti např. React Native nebo čistému Android SDK s Javou/Kotlinem.
+Pre vývoj mobilnej aplikácie sme zvolili framework Flutter. Prevážne z dôvodu stability, ekosystému a skvelých vývojárskych nástrojov. Programovací jazyk Dark, ktorý Flutter využíva jke flexibilný a umožňuje rýchly vývoj, zároveň je veľmi podobný jazykom, ktoré sme predtým používali. Flutter podporuje zostavovanie aplikácií na viac platforiem. Túto funkcionalitu v projekte nevyužijeme, ale aj tak sme sa rozhodli Flutter použiť namiesto napríklad React Native alebo čistému Android SDK s Javou alebo Kotlinom.
 
-Kód je rozdělen podle paradigma MVC následovně:
+Kód je rozdelený presne podľa paradigma MVC nasledovne"
+
 ```
 pages/ - jednotlivé stránky - "views"
     home/
     my_foods/
     [...]
-services/ - byznys logika pro views - "controllers"
-models/ - datové struktury - "models"
+services/ - biznis logika pro views - "controllers"
+models/ - dátové struktury - "models"
 components/
 utils/
 ```
 
-Definuje jednotlivé modely dat `Food { name: str, published: bool, ingredients: [{ ...Ingredient, amount }] }`, `Ingredient { name: str, price: num }`, `Order { foods: [{ ...Food, amount }], ...delivery details }`, které odpovídají datům vráceným z backendového serveru.
+Definuje jednotlivé modely dát `Food { name: str, published: bool, ingredients: [{ ...Ingredient, amount }] }`, `Ingredient { name: str, price: num }`, `Order { foods: [{ ...Food, amount }], ...delivery details }`, ktoré zodpovedajú dátam vráteným z backend serveru.
 
-Backend mobilní aplikace (dart service - "controller") definuje následující základní rozhraní:
-`listMyFoods() => Food[]` - vrátí seznam jídel vlastněné uživatelem
-`listCommunityFoods() => Food[]` - vrátí seznam jídel, které jsou veřejné
+Backend mobilní aplikácia (dart service - "controller") definuje následujúce základní rozhraní:
+`listMyFoods() => Food[]` - vráti zoznam jedál vlastnených užívateľom
+`listCommunityFoods() => Food[]` - vráti zoznam jedál ktoré sú verejné 
 
-`addIngredient(id)` - přidá ingredienci do akt. upravovaného jídla
-`createFood() => Food` - vytvoří nové jídlo se základními vlastnostmi
-`saveFood()` - uloží jídlo (perzistentně přes Rest API; odpovídá tlačítku "uložit")
-`deleteFood() => void` - smaže akt. upravované jídlo
-`publishFood() => void` - zveřejní akt. upravované jídlo
+`addIngredient(id)` -  pridá ingredienciu do aktuálne upravovaného jedla
+`createFood() => Food` - vytvorí nové jedlo so základnými vlastnosťami
+`saveFood()` -uloží jedlo (perzistentne cez Rest API, rovnaká akcia ako pri tlačítku "uložiť")
+`deleteFood() => void` - zmaže aktuálne upravované jedlo
+`publishFood() => void` - zverejní aktuálne upravované jedlo
 
 ## Backendový server s Rest API
 
-Backendový server je postavený na frameworku adonis.js, který je napsaný v typescriptu a běží v nodejs prostředí. Je relativně nový a silně inspirovaný php frameworkem Laravel. Zvolili jsme jej převážně kvůli flexibilně jazyka a jednoduchosti frameworku vzhledem k tomu, že hlavní prioritou projektu je mobilní aplikace. Framework už v základu obsahuje spoustu věcí a přidávání další funkcionality je relativně snadné. Máme s ním také předchozí zkušenosti.
+Backendový server je postavený na frameworku adonis.js, ktorý je napísaný v Typescripte a beží v nodejs prostredí. Je relatívne nový a silne inšpirovaný PHP frameworkom Laravel.Zvolili sme ho prevažne kvôli flexibilite jazyka a jednoduchosti frameworku vzhľadom k tomu, že hlavnou prioritou projektu je mobilná aplikácia. Framework už v základe obsahuje veľa vecí a pridávanie ďalšej funkcionality je relativne jednoduché. Máme s ním taktiež predchádzajúce skúsenosti.
 
-Pro uložení dat na jsme zvolili databázový server PostgreSQL, převážně kvůli velkému využití při vývoji v dnešních moderních aplikacích. Zkušenosti s jeho použitím se nám tedy v budoucnu můžou hodit. Pro rozsah naší aplikace by ale bohatě stačilo např. SQLite, které vše ukládá do jediného souboru a má rychlejší a jednodušší přístup k datům.
+Pre uloženie dát sme zvolili databázový server PostgreSQL, prevažne kvôli veľkému využitiu pri vývoji v dnešným moderných aplikáciách. Skúsenosti s jeho použitím sa nám budú v budúcnosti hodiť. Pre rozsah našej aplikácie by ale bohato stačilo napríklad SQLite, ktoré všetko ukladá do jediného súboru a má rýchlejší a jednoduchší prístup.
 
-Backendový server definuje následující datové struktury:
-`Ingredient` - ingredience, jsou předvytvořené v databázi (uvažujme, že je přidává a spravuje strana restaurace), definují název a cenu
-`Food` - vytvořené jídlo, má název a přiřazené ingredience s počtem kusů.
-`Order` - objednávka, obsahuje objednaná jídla a informace o doručení objednávky
-`Keeper` - identifikátory užívatelů, definuje pouze vytvoření nového identifikátoru a kontrolu, zda identifikátor existuje
+Backendový server definuje následujúce dátové struktury:
+`Ingredient` - ingrediencie, sú pred vytvorené v databáze (uvažujeme, že je pridáva a spravuje strana reštaurácie), definujú názov a cenu
+`Food` - vytvorené jedlo, má názov a priradené ingrediencie s počtom kusou
+`Order` - objednávka, obsahuje objednané jedlá a informácie o doručení objednávky
+`Keeper` - identifikátory užívateľov, definuje iba vytvorenie nového identifikátoru a kontrolu, či tento identifikátor existuje
 
-a skupiny přístupových bodů:
-`/ingredients` - pro správu ingrediencií ze strany restaurace, v aplikaci pravděpodobně nebude využito, dovoluje všechny CRUD operace, operauje nad moodelem `Ingredient`
-`/foods` - vytvořená jídla užívateli a jídla sdílená s ostatními, dovoluje všechny CRUD operace, operuje nad modelem `Food`
-`/orders` - objednávky vytvořené užívatelem, dovoluje všechny CRUD operace, operuje nad modelem `Order`
+a skupiny prístupových bodov:
+`/ingredients` - - pre správu ingrediencií zo strany reštaurácie, v aplikácií pravdepodobne nebude využité, dovoľuje všetky CRUP operácie, operuje nad modelom `Ingredient`
+`/foods` - vytvorené jedlá užívateľmi a jedlá zdielané s ostatnými, dovoluje všetky CRUD operácie nad modelom `Food`
+`/orders` - objednávky vytvorené užívateľom, dovoluje všetky CRUD operácie, operuje nad modulom  `Order`
 
+
+ 
 Struktura backendového serveru:
 ```
 app/
-    Controllers/ - zpracování požadavků přístupových bodů
-    Services/ - komunikace s databází, samotná byznys logika
-    Models/ - datové modely
+    Controllers/ - spracovanie požiadavkov prístupových bodov na spracovanie
+    Services/ - komunikácia s databázou, samotná biznis logika
+    Models/ - dátové modeli
     [...]
 start/
-    routes.ts - definice API přístupových bodů
+    routes.ts - definícia API prístupových bodov
 [...]
 ```
 
-Server je zabezpečený přístupovým klíčem, který je nutno specifikovat v hlavičce HTTP požadavků `API-Key`, jde převážně o zamezení přístupu nechtěným stranám. V případě veřejné distribuce aplikace ale není nutné a ani by správně nefungovalo (klíč by musel být distribuovaný v aplikaci - získatelný).
+Server je zabezpečený prístupovým kľúčom, ktorý je nutné špecifikovať v hlavičke HTTP požiadavkou`API-Key`, ide prevažne o zabránenie prístupu útočníkom. V prípade verejnej distribúcie aplikácie, nie je nutné a ani by správne nefungovalo (kľúč by musel byť distribuovaný v aplikácií kde je ľahko získateľný) 
+
