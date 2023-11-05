@@ -517,7 +517,7 @@ Jedným z požiadavkou užívateľov bolo nevytvárať užívateľské účty pr
 
 Jedinou podporovanou platformou je Android.
 
-## Mobilní aplikace
+## Mobilní aplikácia
 
 Pre vývoj mobilnej aplikácie sme zvolili framework Flutter. Prevážne z dôvodu stability, ekosystému a skvelých vývojárskych nástrojov. Programovací jazyk Dart, ktorý Flutter využíva je flexibilný a umožňuje rýchly vývoj. Flutter podporuje zostavovanie aplikácií na viac platforiem. Túto funkcionalitu v projekte nevyužijeme, ale aj tak sme sa rozhodli Flutter použiť.
 
@@ -536,15 +536,14 @@ utils/
 
 Definuje jednotlivé modely dát `Food`, `Ingredient`, `Order`, ktoré zodpovedajú dátam vráteným z backend serveru.
 
-Backend mobilní aplikácia (dart service - "controller") definuje následujúce základní rozhraní:
-`listMyFoods() => Food[]` - vráti zoznam jedál vlastnených užívateľom
-`listCommunityFoods() => Food[]` - vráti zoznam jedál ktoré sú verejné 
+Backend mobilní aplikácia (services) definujú následujúce základní funkcie:
 
-`addIngredient(id)` -  pridá ingredienciu do aktuálne upravovaného jedla
-`createFood() => Food` - vytvorí nové jedlo so základnými vlastnosťami
-`saveFood()` -uloží jedlo (perzistentne cez Rest API, rovnaká akcia ako pri tlačítku "uložiť")
-`deleteFood() => void` - zmaže aktuálne upravované jedlo
-`publishFood() => void` - zverejní aktuálne upravované jedlo
+- `listFoods() => Food[]` - vráti zoznam jedál vlastnených užívateľom
+- `addIngredient(id)` -  pridá ingredienciu do aktuálne upravovaného jedla
+- `createFood() => Food` - vytvorí nové jedlo so základnými vlastnosťami
+- `saveFood()` -uloží jedlo (perzistentne cez Rest API, rovnaká akcia ako pri tlačítku "uložiť")
+- `deleteFood() => void` - zmaže aktuálne upravované jedlo
+- `publishFood() => void` - zverejní aktuálne upravované jedlo
 
 ## Backendový server s Rest API
 
@@ -552,24 +551,17 @@ Backendový server je postavený na frameworku adonis.js, ktorý je napísaný v
 
 Pre uloženie dát sme zvolili databázový server PostgreSQL, prevažne kvôli veľkému využitiu pri vývoji v dnešným moderných aplikáciách. Skúsenosti s jeho použitím sa nám budú v budúcnosti hodiť. Pre rozsah našej aplikácie by ale bohato stačilo napríklad SQLite, ktoré všetko ukladá do jediného súboru a má rýchlejší a jednoduchší prístup.
 
-Backendový server definuje následujúce dátové struktury:
-`Ingredient` - ingrediencie, sú pred vytvorené v databáze (uvažujeme, že je pridáva a spravuje strana reštaurácie), definujú názov a cenu
-`Food` - vytvorené jedlo, má názov a priradené ingrediencie s počtom kusou
-`Order` - objednávka, obsahuje objednané jedlá a informácie o doručení objednávky
-`Keeper` - identifikátory užívateľov, definuje iba vytvorenie nového identifikátoru a kontrolu, či tento identifikátor existuje
+Prístupové body definované aplikáciou
 
-a skupiny prístupových bodov:
-`/ingredients` - - pre správu ingrediencií zo strany reštaurácie, v aplikácií pravdepodobne nebude využité, dovoľuje všetky CRUP operácie, operuje nad modelom `Ingredient`
-`/foods` - vytvorené jedlá užívateľmi a jedlá zdielané s ostatnými, dovoluje všetky CRUD operácie nad modelom `Food`
-`/orders` - objednávky vytvorené užívateľom, dovoluje všetky CRUD operácie, operuje nad modulom  `Order`
-
-
+- `/ingredients` - - pre správu ingrediencií zo strany reštaurácie, v aplikácií pravdepodobne nebude využité, dovoľuje všetky CRUP operácie, operuje nad modelom `Ingredient`
+- `/foods` - vytvorené jedlá užívateľmi a jedlá zdielané s ostatnými, dovoluje všetky CRUD operácie nad modelom `Food`
+- `/orders` - objednávky vytvorené užívateľom, dovoluje všetky CRUD operácie, operuje nad modulom  `Order`
  
 Struktura backendového serveru:
 ```
 app/
     Controllers/ - spracovanie požiadavkov prístupových bodov na spracovanie
-    Services/ - komunikácia s databázou, samotná biznis logika
+    Services/ - komunikácia s databázou
     Models/ - dátové modeli
     [...]
 start/
