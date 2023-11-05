@@ -20,11 +20,11 @@ BAM je projekt poskytujúci databázu architektonicky významných objektov v Br
 
 Navrhol: Marek Vandík
 
-Aplikácia Food Blueprint má za cieľ umožniť svojim užívateľom nielen objednávať, ale rovno poskladať burger podľa prefrencií užívateľov. Inšpiráciou pre toto téma sú hlavne samoobslužné systému v reštauráciách ako sú McDonald's, Burger King apod. Bolo by zaujímavé, keby užívatelia aplikácie mohli sami vytvárať hamburgery podľa svojich predstáv (zostaviť burger z obľúbeného typu žemle, mäsa atp.) a boli by schopný medzi sebou svoje výtvory zdieľať. Funkcionalitu zostaviť burger síce predtým zmienené systémy umožňujú, ale nie je to ich hlavný zámer a napr. neponúkajú (z môjho predchádzajúceho prieskumu) alebo je moc zložité prehodiť poradie ingrediencií.
+Aplikácia Food Blueprint má za cieľ umožniť svojim užívateľom nielen objednávať, ale rovno poskladať hamburger podľa preferencií užívateľov. Inšpiráciou pre toto téma sú hlavne samoobslužné systému v reštauráciách ako sú McDonald's, hamburger King apod. Bolo by zaujímavé, keby užívatelia aplikácie mohli sami vytvárať hamburgery podľa svojich predstáv (zostaviť hamburger z obľúbeného typu žemle, mäsa atp.) a boli by schopný medzi sebou svoje výtvory zdieľať. Funkcionalitu zostaviť hamburger síce predtým zmienené systémy umožňujú, ale nie je to ich hlavný zámer a napr. neponúkajú (z môjho predchádzajúceho prieskumu) alebo je moc zložité prehodiť poradie ingrediencií.
 
 ## Vybrané téma
 
-Po hlasovaní a dohode sme vybrali aplikáciu pre objednávanie a zostavanie hamburgerov - Food Blueprint. Aplikácia je relatívne jednoduchá na realizáciu a zber dár pre prieskum uživateľských potrieb.
+Po hlasovaní a dohode sme vybrali aplikáciu pre objednávanie a zostavanie hamburgerov - Food Blueprint. Aplikácia je relatívne jednoduchá na realizáciu a zber dár pre prieskum užívateľských potrieb.
 
 # Průzkum
 
@@ -53,62 +53,62 @@ Po hlasovaní a dohode sme vybrali aplikáciu pre objednávanie a zostavanie ham
     * Zistenie: Užívateľom najviac záleží na surovinách, ingredienciách a zložení hamburgeru.
 
 5. Ako by ste si predstavovali výber hamburgeru?
-    * Možnosti: Chcem si vyberať suroviny / Základná šablóna ktorú neskôr doupravím
-    * Cieľ otázky: Aký je pre užívateľov najlepší spôsob ako si vybrať svôj burger?
+    * Možnosti: Chcem si vyberať suroviny / Základná šablóna ktorú neskôr do upravím
+    * Cieľ otázky: Aký je pre užívateľov najlepší spôsob ako si vybrať svoj hamburger?
     * Zistenie: Užívatelia si chcú upraviť svoje hamburgeri, z toho vyplýva že, naša aplikácia má zmysel.
 
-6. Sú pre vás možnosť prispôsobenia burgerov dostačujúce?
-    * Odpovede: Nie. Málo nevídám kuřecí burgery. Kamarátka hovädzie nemá rada, takže sme nemohli ísť na burger / Nie, chcela by som vidieť niečo nové. 
-    * Cieľ otázky: Zistenie či naša aplikácia má zmysel a či užívatelia chcú viac prispôsobiť ingrediencie v svojich burgeroch.
-    * Zistenie: Respondeti majú potrebu prispôsobiť si burgre.
+6. Sú pre vás možnosť prispôsobenia hamburgerov dostačujúce?
+    * Odpovede: Nie. Málo vídam kuracie hamburgery. Kamarátka hovädzie nemá rada, takže sme nemohli ísť na hamburger / Nie, chcela by som vidieť niečo nové. 
+    * Cieľ otázky: Zistenie či naša aplikácia má zmysel a či užívatelia chcú viac prispôsobiť ingrediencie v svojich hamburgeroch.
+    * Zistenie: Respondenti majú potrebu prispôsobiť si svoj hamburger.
 
 7. Sú pre vás aplikácie, ktoré sú momentálne na trhu, uspokojivé?
     * Možnosti: Áno/Nie
     * Cieľ otázky: Sú užívatelia spokojný s aplikáciami ktoré sú momentálne na trhu?
-    * Zistenie: Respondeti odpovedali pol na pol. Nedá sa jednoznačne určiť či sú spokojný s aplikáciami ktoré sú momentálne na trhu.
+    * Zistenie: Respondenti odpovedali pol na pol. Nedá sa jednoznačne určiť či sú spokojný s aplikáciami ktoré sú momentálne na trhu.
 
-8. Narazili ste na preblém pri objednávaní burgeru?
-    * Možnosti: Áno, chýbala mi možnosť výberu mäsa / Nikdy som neobjednavala burger
-    * Cieľ otázky: Majú respondeti problémy pri objednávaní burgerov? 
-    * Zistenie: Užívatelia sa pri objednávaní burgerov stretávajú s problémami. Chcú upravovať zloženie burgerov.
+8. Narazili ste na problém pri objednávaní hamburgeru?
+    * Možnosti: Áno, chýbala mi možnosť výberu mäsa / Nikdy som neobjednavala hamburger
+    * Cieľ otázky: Majú Respondenti problémy pri objednávaní hamburgerov? 
+    * Zistenie: Užívatelia sa pri objednávaní hamburgerov stretávajú s problémami. Chcú upravovať zloženie hamburgerov.
 
 9. Je nejaká špecifická funkcia ktorá podla vás chýba ostatným aplikáciam na jedlo?
-    * Možnosti: Áno, chýba mi upravovanie jedla / Upravovanie surovín v burgery
-    * Cieľ otázky: Potrebuje naša aplikácia novú funkciu, inú ako konkurečné aplikácie na objednávanie jedla?
+    * Možnosti: Áno, chýba mi upravovanie jedla / Upravovanie surovín v hamburgery
+    * Cieľ otázky: Potrebuje naša aplikácia novú funkciu, inú ako konkurenčné aplikácie na objednávanie jedla?
     * Zistenie: Respondenti majú záujem o aplikáciu ktorá by umožňovala detailne upravovať jedlo.
 
 10. Aký typ užívateľského rozhrania vám príde najprívetivejší?
-    * Možnosti: jednoduchý a minimalistický / farebný / vysoký kontrasy
+    * Možnosti: jednoduchý a minimalistický / farebný / vysoký kontrasty
     * Cieľ otázky: Aký vzhľad UI príde respondentom najprívetivejší?
-    * Zistenie: Respondeti preferujú farebné, jednoduché a minimalistické aplikácie.
+    * Zistenie: Respondenti preferujú farebné, jednoduché a minimalistické aplikácie.
 
 11. Aké prísady podla vás patria do hamburgeru?
-    * Odpovede: hovädzie mäso, bravčové mäso, kuracie mäso, mix mäso, svetlá a tmavá žemľa, cheddar, hermelín, niva, šalár, rajčina, cibuľa, uhorky, olivy, majonéza, BBQ, chilli, volské oko
-    * Cieľ otázky: Zistenie aké ingriencie má naša aplikácia obsahovať.
+    * Odpovede: hovädzie mäso, bravčové mäso, kuracie mäso, mix mäso, svetlá a tmavá žemľa, cheddar, hermelín, niva, šalát, rajčina, cibuľa, uhorky, olivy, majonéza, BBQ, chilli, volské oko
+    * Cieľ otázky: Zistenie aké ingrediencie má naša aplikácia obsahovať.
     * Zistenie: Zoznam ingrediencií ktoré užívatelia chcú od našej aplikácie.
 
 ### Poznatky    
 
-Všetci respondenti mali skúsenosti s používaním aplikácií na obejdnávanie jedlo. Respondenti si všímajú hlavne prehladnosť aplikácie. Pri väčšine aplikácií majú preblém s nedostatočnou možnosťou úpravy jedla. Niektoré aplikácie ponúkajú možnosť odstránenie ingrediencií položiek, ale nemajú možnosť pridania ingrediencií navyše. Taktiež je pre nich dôležité aby bolo hlavná stránka prehladná a alebolo na nej nič čo nepotrebujú.
+Všetci respondenti mali skúsenosti s používaním aplikácií na objednávanie jedlo. Respondenti si všímajú hlavne prehľadnosť aplikácie. Pri väčšine aplikácií majú problém s nedostatočnou možnosťou úpravy jedla. Niektoré aplikácie ponúkajú možnosť odstránenie ingrediencií položiek, ale nemajú možnosť pridania ingrediencií navyše. Taktiež je pre nich dôležité aby bolo hlavná stránka prehľadná a alebo na nej nič čo nepotrebujú.
 
 #### Potreby užívateľov
 
-- prehladnosť aplikácie
-- obrázky ingredienií a jedál
+- prehľadnosť aplikácie
+- obrázky ingrediencií a jedál
 - nevyžadovanie registrácie
 
-#### Kľúčové preblémy
+#### Kľúčové problémy
 
 - potreba upraviť si jedlo podla seba
 
-### Porovnání s existujícími aplikacemi
+### Porovnávanie s existujúcimi aplikáciami
 - foodora
 
 #### Prednosti
 
-- rozdelovanie jedla podľa kategorií
-- široká ponuka predvytvorených jedál
-- jednochuchá paleta farieb
+- rozdelovanie jedla podľa kategórií
+- široká ponuka pred vytvorených jedál
+- jednoduchá paleta farieb
 - veľké obrázky s jedlami
 
 #### Nedostatky
@@ -121,103 +121,109 @@ Všetci respondenti mali skúsenosti s používaním aplikácií na obejdnávani
 - naša aplikácia bude používať malú paletu farieb (maximálne 3 farby)
 - nebudeme vyžadovať registráciu
 - veľký dôraz na možnosť upravovania jedľa
-- predvytvorenie širokej ponuky hotových jedál
+- pred vytvorenie širokej ponuky hotových jedál
 
 ## Marek
 
 ### Dotazník
 
-Siedmim užívateľom bol zaslaný nasledujúci dotazník a ďalej následne bola uskutočnená krátka diskusia nad odpoveďami a prípadnými nejasnosťami a ďalšími námetmy.
+Siedmim užívateľom bol zaslaný nasledujúci dotazník a ďalej následne bola uskutočnená krátka diskusia nad odpoveďami a prípadnými nejasnosťami a ďalšími pripomienkami.
 
-1. Uvítali by ste možnosť získať doporučenie na dobrý burger od ostatných užívatelov?
+1. Uvítali by ste možnosť získať doporučenie na dobrý hamburger od ostatných užívateľov?
 	* Možnosti: Áno/Nie
-	* Cieľ otázky: Má užívateľ potrebu objednávať jedlo podľa ostatných užívateĺov? - Relevancia modulu komunitného workshopu / zdielanie burgerov
+	* Cieľ otázky: Má užívateľ potrebu objednávať jedlo podľa ostatných užívateľov? - Relevancia modulu komunitného workshopu / zdielanie hamburgerov
 	* Zistenie: 6/7 užívateľov považuje túto funkcionalitu ako užitočnú, vhodné pre zaradenie do projektu.
 
 2. Keď navštevujete nejakú reštauráciu, máte pri vstupu jasno, čo konkrétne budete jesť?
 	* Možnosti: Áno/Nie
-	* Cieľ otázky: Potrebuje užívateľ najskôr vidieť vidieť prestavenie reštaurácie alebo priamo objednať? - Privítať užívateľa informáciámi o reštautácií / výberom jedál
+	* Cieľ otázky: Potrebuje užívateľ najskôr vidieť vidieť prestavenie reštaurácie alebo priamo objednať? - Privítať užívateľa informáciami o reštaurácií / výberom jedál
 	* Zistenie: Všetci respondenti vyberajú až na mieste - bolo by vhodné dôkladne predstaviť menu / možnosti
 
-3. Privítali by ste možnosť uložiť si recept na dobrý burger, ktorý by ste si mohli jednoducho objednať v budúcnosti?
+3. Privítali by ste možnosť uložiť si recept na dobrý hamburger, ktorý by ste si mohli jednoducho objednať v budúcnosti?
 	* Možnosti: Áno/Nie
-	* Cieľ otázky: Má užívateľ potrebu ukladať si oblíbená jedlá? - relevancia modulu pre ukladanie receptov
-	* Zistenie: 3:4 časť užívateľov by modul pre ukladanie receptov využila, zrejme vhodné pre zaradanie do projektu
+	* Cieľ otázky: Má užívateľ potrebu ukladať si obľúbené jedlá? - relevancia modulu pre ukladanie receptov
+	* Zistenie: 3:4 časť užívateľov by modul pre ukladanie receptov využila, zrejme vhodné pre zaradenie do projektu
 
-4. Ako často v restauracích ako je McDonald's alebo KFC uprednostníte objednávku pri samoobslužnom kiosku pred klasickou objednávkou na pokladne?
-	* Možnosti: Vždy (takmer vždy) / Využívám obe možnosť / Len výnimočne, napr. ak je príliš dlhá rada / Vôbec
-	* Cieľ otázky: Familiarita užívateľe s týmyto systémami - relevancia dalších odpovedí zameraných konkrétnejšie na GUI
-	* Zistenie: Všetci respondenti až na jediného respondenta, ktorý odpovedal "Len výnimočne", zvolili možnosť "Vždy / takmer vždy" - výsledok odpovedí na GUI bude rozdelený váhovo nasledujúcím zpôsobom: Odpovedi respondentov, ktorý vybrali "Vždy / takmer vždy", budú mať váhu 1. Zostávajúci respondent bude mít váhu 0.5
+4. Ako často v reštauráciách ako je McDonald's alebo KFC uprednostníte objednávku pri samoobslužnom kiosku pred klasickou objednávkou na pokladne?
+	* Možnosti: Vždy (takmer vždy) / Využívam obe možnosť / Len výnimočne, napr. ak je príliš dlhá rada / Vôbec
+	* Cieľ otázky: Skúsenosti užívateľa s takýmito systémami - relevancia ďalších odpovedí zameraných konkrétnejšie na GUI
+	* Zistenie: Všetci respondenti až na jediného respondenta, ktorý odpovedal "Len výnimočne", zvolili možnosť "Vždy / takmer vždy" - výsledok odpovedí na GUI bude rozdelený váhovo nasledujúcim spôsobom: Odpovedi respondentov, ktorý vybrali "Vždy / takmer vždy", budú mať váhu 1. Zostávajúci respondent bude mít váhu 0.5
 
-5. Koľko približně ingrediencií je podľa vás ideálny počet v burgeru? (žemle sa nepočítajú)
+5. Koľko približne ingrediencií je podľa vás ideálny počet v hamburgeru? (žemle sa nepočítajú)
 	* Možnosti: 2 a menej / 3 - 5 / 6 a viac
-	* Cieľ otázky: Prizpôsobenie GUI pre najčastejší počet ingrediencií - veľkosť vykreslovaných položiek
+	* Cieľ otázky: Prispôsobenie GUI pre najčastejší počet ingrediencií - veľkosť položiek
 	* Zistenie: S váhou 3.5 možno predpokladať ako najčastejší počet položiek možnosť "6 a viac". možnosť "3 - 5" mala váhu 3, a zostávajúca možnosť "2 a menej" mala váhu 0
 
-6. Stalo se vám niekedy, že jste v burgeru chceli mať nejakú ingredienciu viackrát / v inej vrstve burgeru?
+6. Stalo se vám niekedy, že ste v hamburgeru chceli mať nejakú ingredienciu viackrát / v inej vrstve hamburgeru?
 	* Možnosti: Áno/Nie
-	* Cieľ otázky: Potreba užívateľa menit zloženie burgeru. Zpätne veľmi zbytočné - obsiahnuté v otázke 10, ale táto otázka pre zmenu zisťuje príčinu
-	* Zistenie: 4:3 - Niektorý užívateľia túto funkcionalitu určite ocenia, práve vďaka zkúsenostiam uvedených v otázke
+	* Cieľ otázky: Potreba užívateľa menit zloženie hamburgeru. Spätne veľmi zbytočné - obsiahnuté v otázke 10, ale táto otázka pre zmenu zisťuje príčinu
+	* Zistenie: 4:3 - Niektorý užívatelia túto funkcionalitu určite ocenia, práve vďaka skúsenostiam uvedených v otázke
 
-7. Využili by ste možnosť zostaviť si burger z dopredu daných ingrediencí podľa vašich predstáv?
+7. Využili by ste možnosť zostaviť si hamburger z dopredu daných ingrediencií podľa vašich predstáv?
 	* Možnosti: Áno/Nie
-	* Cieľ otázky: Má užívateľ potrebu zostavovať vlastné burgery? - relevancia tejto aplikácie
-	* Zistenie: 6:1 Väčšina užívateľov by takúto možnosť ráda využila - táto aplikácia má zmysel
+	* Cieľ otázky: Má užívateľ potrebu zostavovať vlastné hamburgery? - relevancia tejto aplikácie
+	* Zistenie: 6:1 Väčšina užívateľov by takúto možnosť rada využila - táto aplikácia má zmysel
 
 8. Prosím, zaraďte následujúce ingrediencie do skupín.
-	* Možnosti: : rajčina, majonéza, slanina, hovädzie, tatárka, uhorka, tofu, chilli paprička, kuracie, šalát, kapusta, sojové mäso, horčica
-	* Cieľ otázky: Ako užívatelia najčastejšue nazývajú rôzne kategórie ingrediencí - ako prezentovat ingrediencie
+	* Možnosti: : rajčina, majonéza, slanina, hovädzie, tatárka, uhorka, tofu, chilli paprička, kuracie, šalát, kapusta, sójové mäso, horčica
+	* Cieľ otázky: Ako užívatelia najčastejšie nazývajú rôzne kategórie ingrediencií - ako prezentovat ingrediencie
 	* Zistenie: Užívatelia mali veľmi odlišné radenie do skupin, ale z odpovedí sa dá vypozorovat, že väčšina užívateľov zvolila kategorizáciu skôr na druhy jedál - omáčka, mäso, zelenina, prípadne vegán alebo špecialita pre tofu a chilli. Len minorita užívateľov volila odlišnejšie rozdelenie - po chodoch (hlavný - mäso, príloha - šalát atp.) alebo podľa toho, ako majú danú ingredienciu radi (najlepšie - mäso, dobré - rajčina atď.)
 
-9. Prosím, zaraďte vymenované ingrediencie do uvedených kategorií. V případe, že sa nedá ingredienciu logicky zaradiť, vymyslite vlastnú kategoriu.
-	* Možnosti: rajčina, slanina, hovädzie, uhorka, tofu, chilli paprička, kuracie, šalát, kapusta, sojové mäso
+9. Prosím, zaraďte vymenované ingrediencie do uvedených kategórií. V prípade, že sa nedá ingredienciu logicky zaradiť, vymyslite vlastnú kategoriu.
+	* Možnosti: rajčina, slanina, hovädzie, uhorka, tofu, chilli paprička, kuracie, šalát, kapusta, sójové mäso
 	* Kategórie: mäso, zelenina
-	* Cieľ otázky: ako 8) s zameraním na špecifické ingrediencie: slanina, chilli, tofu - nedá sa jednoznačne určiť, ako tieto ingredience kategorizovať + porovnávanie s 8)
-	* Zistenie: Z výsledkov nedá sa jednoznačne určiť zaradenie vspomínaných surovín. Pre slaninu časť ľudí zvolila kategoriu mäso, ale časť ľudom toto zaradenie nevyhovovalo a radšej vymysleli inú kategóriu ako napríklad špecialita alebo doplnok. Pre chilli väčšina ľudí zvolila kategóriu zelenina, ale stále sa našli repsondenti, ktorý by preferovali špeciálne zaradenie mimo zeleninu opäť ako špecialita. U tofu bolo rozhodovanie najzložitejšie - objavily sa kategórie mäso, zelenina aj specialita, prípadne vegán (respondent, ktorý je vegán, uviedol, že mu nejviac vyhovuje zaradenie špecialita)
+	* Cieľ otázky: ako 8) s zameraním na špecifické ingrediencie: slanina, chilli, tofu - nedá sa jednoznačne určiť, ako tieto ingrediencie kategorizovať + porovnávanie s 8)
+	* Zistenie: Z výsledkov nedá sa jednoznačne určiť zaradenie spomínaných surovín. Pre slaninu časť ľudí zvolila kategoriu mäso, ale časť ľudom toto zaradenie nevyhovovalo a radšej vymysleli inú kategóriu ako napríklad špecialita alebo doplnok. Pre chilli väčšina ľudí zvolila kategóriu zelenina, ale stále sa našli respondenti, ktorý by preferovali špeciálne zaradenie mimo zeleninu opäť ako špecialita. U tofu bolo rozhodovanie najzložitejšie - objavili sa kategórie mäso, zelenina aj specialita, prípadne vegán (respondent, ktorý je vegán, uviedol, že mu najviac vyhovuje zaradenie špecialita)
 
-10. Pri výbere dopredu zostaveného burgeru, uvítali by ste možnosť tento burger upravit?
+10. Pri výbere dopredu zostaveného hamburgeru, uvítali by ste možnosť tento hamburger upravit?
 	* Možnosti: Upravit / Ponechať bez úprav
-	* Cieľ otázky: Potreba užívateľa meniť dopredu pripravené burgery
-	* Zistenie: 6:1 užívateľov by uvítalo možnosť meniť zloženie dopredu zostavené burgery
+	* Cieľ otázky: Potreba užívateľa meniť dopredu pripravené hamburgery
+	* Zistenie: 6:1 užívateľov by uvítalo možnosť meniť zloženie dopredu zostavené hamburgery
 
-11. Pri ukladaní Vašeho burgeru, priali by ste si, aby tento burger mohli vidieť aj ostatný užívatelia?
-	* Možnosti: Uložiť viditelně pre všetkých / Uložit len pre seba / Uprednostnil by som obe možnosti
-	* Cieľ otázky: Má užívateľ potrebu svôj burger ukladať a zdielať ho?
-	* Zistenie: 2:0:4 a "vôbec neukladať" - Väčšina užívateľov by uvítala túto možnosť vrátane rozlišenia soukromých a verejných burgerov. Odpoveď "vôbec neukladať" je zpôsobené zle formulovanou otázkou
+11. Pri ukladaní Vašeho hamburgeru, priali by ste si, aby tento hamburger mohli vidieť aj ostatný užívatelia?
+	* Možnosti: Uložiť viditelne pre všetkých / Uložiť len pre seba / Uprednostnil by som obe možnosti
+	* Cieľ otázky: Má užívateľ potrebu svoj hamburger ukladať a zdielať ho?
+	* Zistenie: 2:0:4 a "vôbec neukladať" - Väčšina užívateľov by uvítala túto možnosť vrátane rozlíšenia súkromných a verejných hamburgerov. Odpoveď "vôbec neukladať" je spôsobené zle formulovanou otázkou
 
-12. Chceli by ste zostavovať burger pomocou tlačítiek pre pridávanie jednotlivých ingrediencií do určitej vrstvy, alebo radšej dotykovo presúvať ingredience z ponuky priamo do burgeru?
+12. Chceli by ste zostavovať hamburger pomocou tlačítiek pre pridávanie jednotlivých ingrediencií do určitej vrstvy, alebo radšej dotykovo presúvať ingrediencie z ponuky priamo do hamburgeru?
 	* Možnosti: Tlačítka / Presúvať / Iné
-	* Cieľ otázky: Aký zpôsob zadávania ingrediencií je pre užívateľa najlepší?
-	* Zistenie: 1:4.5:1 - Väčšina užívateľov by preferovala presúvanie ingrediencií priamo do burgeru
+	* Cieľ otázky: Aký spôsob zadávania ingrediencií je pre užívateľa najlepší?
+	* Zistenie: 1:4.5:1 - Väčšina užívateľov by preferovala presúvanie ingrediencií priamo do hamburgeru
 
 13. Čo chcete vidieť ako prvé, keď otvoríte aplikáciu pre objednanie jedla z konkrétnej reštaurácie?
-	* Možnosti: Ponuku štandartných burgerov / Zostavovač burgeru / Ponuku komunitných burgerov (odporúčanie burgerov od ostatných užívateľov) / Iné
+	* Možnosti: Ponuku štandartných hamburgerov / Skladanie hamburgeru / Ponuku komunitných hamburgerov (odporúčanie hamburgerov od ostatných užívateľov) / Iné
 	* Cieľ otázky: o má užívateľ za potrebu vidieť ako prvé?
-	* Zistenie: 0.5:3:3.5 - užívatelia by preferovali ponuku komunitných burgerov alebo zostavovač. Hodnotenie 0.5 z dôvodu výberu 2 pri jednom respondentovy
+	* Zistenie: 0.5:3:3.5 - užívatelia by preferovali ponuku komunitných hamburgerov alebo skladanie hamburgeru. Hodnotenie 0.5 z dôvodu výberu 2 pri jednom respondentovi
 
-14. Je pre vás dôležité vidieť cenu burgeru a jeho ingrediencií pri zostavovaní? 
+14. Je pre vás dôležité vidieť cenu hamburgeru a jeho ingrediencií pri zostavovaní? 
 	* Áno, túto informáciu chcem vidieť hneď / Nie, na obrazovke by bolo príliš veľa informácií (stačí až pri platbe)
-	* Cieľ otázky: Má užívateľ potrebu vidieť priebežne cenu burgeru a jeho ingrediencí pri zostatovaní?
-	* Zistenie: 7:0 - užívatelia majú potrebu vidieť cenu burgeru a jeho ingrediencí pri zostavovaní.
+	* Cieľ otázky: Má užívateľ potrebu vidieť priebežne cenu hamburgeru a jeho ingrediencií pri skladaní?
+	* Zistenie: 7:0 - užívatelia majú potrebu vidieť cenu hamburgeru a jeho ingrediencií pri zostavovaní.
 
-15. Predstavte si, že v našej aplikácií zostavujete vlastný burger. Ako by sa vám páčilo riešenie situácie, keď máte viac rovnakých ingrediencií nad sebou?
-	* Možnosti: Zobrazovať počet pri každej ingrediencie a vykrasliť ju iba raz / Zobrazovať každú ingredienciu zvlášť - napríklad 2x mäso nad sebou atď.
-	* Cieľ otázky: Ako najlepšie zobrazovať ingrediencie pri zostavovaní burgeru?
-	* Zistenie: 3:4 - Väčšina užívateľov by zvolila moźnosť vykreslovania jednotlivo. V diskusí po vyplnení dotazníku bolo zistené, že obidve varianty sú vyhovujúce pre všetkých respondetov.
+15. Predstavte si, že v našej aplikácií zostavujete vlastný hamburger. Ako by sa vám páčilo riešenie situácie, keď máte viac rovnakých ingrediencií nad sebou?
+	* Možnosti: Zobrazovať počet pri každej ingrediencie a vykresliť ju iba raz / Zobrazovať každú ingredienciu zvlášť - napríklad 2x mäso nad sebou atď.
+	* Cieľ otázky: Ako najlepšie zobrazovať ingrediencie pri zostavovaní hamburgeru?
+	* Zistenie: 3:4 - Väčšina užívateľov by zvolila možnosť vykreslovania jednotlivo. V diskusií po vyplnení dotazníku bolo zistené, že obidve varianty sú vyhovujúce pre všetkých respondentov.
 
-### Porovnání s existujícími aplikacemi
+### Porovnávanie s existujúcimi aplikáciami
+
 - McDonald's mobilnej aplikácie pre iOS
-#### Prednosti
-- pekne riešené kalorické hodnoty jedál
-- dobre rozdelené burgery do kategórií
-#### Nedostatky
-- 2 rôzne pohlady na jedlá, jeden sa používa pri objednávaní na pobočke a zároveň pri prezentáciu jedál, a druhý pre objednávanie z Foodory atď, čo je dosť metúce.
-- neumožňuje zdielanie burgerov
-- neumožňuje ukladať obľúbené burgery
 
-#### Inspirace a řešení nedostatků
-- inšpirovať sa budeme grafikou a kategóriami rozdelenie burgerov
-- nedostatky vyriešime implementáciou danej funkcionality a iba jedným podľadom pre objednávanie aj prezentovanie jedál
+#### Prednosti
+
+- pekne riešené kalorické hodnoty jedál
+- dobre rozdelené hamburgery do kategórií
+
+#### Nedostatky
+
+- 2 rôzne pohlady na jedlá, jeden sa používa pri objednávaní na pobočke a zároveň pri prezentáciu jedál, a druhý pre objednávanie z Foodory atď, čo je pre užívateľov nepraktické.
+- neumožňuje zdielanie hamburgerov
+- neumožňuje ukladať obľúbené hamburgery
+
+#### Inšpirácia a Riešenie nedostatkov
+
+- inšpirovať sa budeme grafikou a kategóriami rozdelenie hamburgerov
+- nedostatky vyriešime implementáciou danej funkcionality a iba jedným pohľadom pre objednávanie aj prezentovanie jedál
 
 ## Martin
 
@@ -226,60 +232,60 @@ Dotazník bol vedený formou rozhovoru s tromi subjektami.
 
 1. Využívate aplikácie pre dovoz jedál, poprípade ktoré?
     * Odpovede: Áno/Nie
-    * Cieľ otázky: Zistenie nedostatkov / predností ostaných aplikácí
+    * Cieľ otázky: Zistenie nedostatkov / predností ostatných aplikácií
     * Zistenie:
 
 2. Ako ste spokojný s jednotlivými aplikáciami, čo sa vám na nich páči/nepáči?
-    * Odpovede: Nedostatočne presné a nepredlané určenie adresy pre doručenie / Nešpecifikované pokyny a priebeh doručovaní jedla (viedlo k zmätku, panike, často odradilo od objednania) / Nepresná špecifikácia zľavy, nezobrazuje sa správne / Nieje presne špecifikované, čo je zahrnuté v cene
-    * Cieľ otázky: Zistanie možných prvkov pre aplikácie, prípadne čomu sa vyvarovať.
+    * Odpovede: Nedostatočne presné a neprehľadné určenie adresy pre doručenie / Nešpecifikované pokyny a priebeh doručovaní jedla (viedlo k zmätku, panike, často odradilo od objednania) / Nepresná špecifikácia zľavy, nezobrazuje sa správne / Nie je presne špecifikované, čo je zahrnuté v cene
+    * Cieľ otázky: Zistenie možných prvkov pre aplikácie, prípadne čomu sa vyvarovať.
     * Zistenie: 
         - pridať do aplikácie možnosť špecifikovať presnú adresu.
         - pridať do poslednej obrazovky informáciu o tom, ako doručenie prebehne
-        - prehladná špecifikácia zliiav v checkoute, prípadne už v košíku
-        - jasný súpus cien jedlotlivých položiek, ingrediencií
+        - prehľadná špecifikácia zliav pri dokončení objednávky, prípadne už v košíku
+        - jasný súpis cien jednotlivých položiek, ingrediencií
 
-3. Je nejaká špedcifická funkcia, ktorá podľa vás chýba ostatným aplikáciám na jedlo?
+3. Je nejaká špecifická funkcia, ktorá podľa vás chýba ostatným aplikáciám na jedlo?
     * Odpovede: chýbajúce online platby / pokročilé a zábavné zľavy
     * Cieľ otázky: 
     * Zistenie: 
         - nutnosť implementácie platobnej brány 
-        - implenetovať gamifikáciu zliav / ruletu / minihry
+        - implementovať hry o zľavy (ruletu, minihry)
 
-4. Máte niekedy potrebu upraviť si zloženie jedál, napr. burger, pizzy v reštaurácií podľa vlastných potrieb?
+4. Máte niekedy potrebu upraviť si zloženie jedál, napr. hamburger, pizzy v reštaurácií podľa vlastných potrieb?
     * Odpovede: Áno, upravenie jedál podľa vlastnej diéty
     * Cieľ otázky: Zistenie, či užívatelia majú potrebu pre hlavnú funkciu navrhovanej aplikácie
-    * Zistenie: Funkia skladanie jedál má využitie
+    * Zistenie: Funkcia skladanie jedál má využitie
 
 
-5. Aké prísady patria do správneho burgeru?
-    * Odpovede: Slanina, tofu, sójové mäso, majonéza, kečup, rajčina, uhorka, šalár, kapary
+5. Aké prísady patria do správneho hamburgeru?
+    * Odpovede: Slanina, tofu, sójové mäso, majonéza, kečup, rajčina, uhorka, šalát, kapary
     * Cieľ otázky: Zistenie prísad, ktoré by v aplikácií mali byť
     * Zistenie: 
 
-6. Pokiaľ by ste mali možnosť poskladať (nastaviť si konkrétne zloženie) vašeho jedla, využili by ste ho, alebo by ste si zvolili predvytvorené jedlo? 
-    * Odpovede: Záleží na miere hladu, po aplikácií človek väčšinou siahne keď má hlad a nechce sa mu tráviť čas "skladaní" jedál. Ak má čas a napadne ho zaujímavá kombinácia tak túto funckiu využije.
-    * Cieľ otázky: Zistenie, či užívatelia majú potrebu pre hlavnú funkciu navhovanej aplikácie
-    * Zistenie: Pridať do výberu jedál aj predvytvorené kombinácie, ponúknuť zdielané jedlá od ostatných užívateľov
+6. Pokiaľ by ste mali možnosť poskladať (nastaviť si konkrétne zloženie) vašeho jedla, využili by ste ho, alebo by ste si zvolili pred vytvorené jedlo? 
+    * Odpovede: Záleží na miere hladu, po aplikácií človek väčšinou siahne keď má hlad a nechce sa mu tráviť čas "skladaní" jedál. Ak má čas a napadne ho zaujímavá kombinácia tak túto funkciu využije.
+    * Cieľ otázky: Zistenie, či užívatelia majú potrebu pre hlavnú funkciu navrhovanej aplikácie
+    * Zistenie: Pridať do výberu jedál aj pred vytvorené kombinácie, ponúknuť zdielané jedlá od ostatných užívateľov
 
-7. Ako by malo vyzeraŤť UI pre skladanie burgerov?
-    * Odpovede: Možnosť upraviť už existujúce jedlá (predvytvorené, komunitné, vlastné) / Mierna gamifikácia štýlom "candy factory" hry, t.j. skladnanie jedla pomocou výrobnej linky / Prehladne zobrazovať čo najviac prísad naraz, čo nejmenej zdržovať užívateľa, zobraziť výsledné jedlo a jednotlivé vrstvy, možnosť prehadzovať
-    * Cieľ otázky: Rozvíjajúca otázka ako má skaladanie vyzerať.
+7. Ako by malo vyzeraŤť UI pre skladanie hamburgerov?
+    * Odpovede: Možnosť upraviť už existujúce jedlá (pred vytvorené, komunitné, vlastné) / Jednoduché hry o zľavy štýlom "candy factory" hry, t.j. skladanie jedla pomocou výrobnej linky / Prehladne zobrazovať čo najviac prísad naraz, čo najmenej zdržovať užívateľa, zobraziť výsledné jedlo a jednotlivé vrstvy, možnosť prehadzovať
+    * Cieľ otázky: Rozvíjajúca otázka ako má skladanie vyzerať.
     * Zistenie: Nutnosť implementovania funkcie upravovanie existujúcich jedál
 
-8. Pokiaľ by ste mali možnosť zdielať vaše poskladané jedlo s ostatnýmu užívateľmi, využili by ste ju?
+8. Pokiaľ by ste mali možnosť zdielať vaše poskladané jedlo s ostatnými užívateľmi, využili by ste ju?
     * Odpovede: Áno
-    * Cieľ otázky: zistenie ći je zdielanie jedál užívaľmi využitelná funkcia
+    * Cieľ otázky: zistenie či je zdielanie jedál užívateľmi využiteľná funkcia
     * Zistenie: Užívatelia by jedlo zdielali
 
-9. V prípade, že by ste zdielali svoje "poskladané" jedlo, chceli by ste pri ňom mať uvedené svoje meno? Zahrňovalo by to vytvorenie uživatelského účtu pomocou e-mailu a hesla
-    * Odpovede: Uživateľské účty sú zbytočné zdržovanie
-    * Cieľ otázky: Je nutné vyžadovať alebo poskytovať vytvorenie uživateľských účtov pre zdielanie?
-    * Zistenie: Užívatelia nechcú registráciu a uživateľské účty 
+9. V prípade, že by ste zdielali svoje "poskladané" jedlo, chceli by ste pri ňom mať uvedené svoje meno? Zahrňovalo by to vytvorenie užívateľského účtu pomocou e-mailu a hesla
+    * Odpovede: Užívateľské účty sú zbytočné zdržovanie
+    * Cieľ otázky: Je nutné vyžadovať alebo poskytovať vytvorenie užívateľských účtov pre zdielanie?
+    * Zistenie: Užívatelia nechcú registráciu a užívateľské účty 
 
-10. Využívali by ste vytvorenie uživateľského účtu pre prístup k svojim dátam - objednávkam?
+10. Využívali by ste vytvorenie užívateľského účtu pre prístup k svojim dátam - objednávkam?
     * Odpovede: 
     * Cieľ otázky: Rozhodnutie či vyžadovať alebo poskytovať vytvorenie účtu alebo iba ukladanie dát lokálne na zariadenie
-    * Zistenie: Lokálne ukladanie dát stačí, uživateľské účty niesu nutné. Prípadný prenos dát na viac zariadní pomocou QR kódu, bluetooth alebo exportu.
+    * Zistenie: Lokálne ukladanie dát stačí, užívateľské účty niesu nutné. Prípadný prenos dát na viac zariadení pomocou QR kódu, bluetooth alebo exportu.
 
 11. Zoraďte, prosím, jednotlivé akcie podľa dôležitosti:
     * Možnosti: 
@@ -295,42 +301,46 @@ Dotazník bol vedený formou rozhovoru s tromi subjektami.
         - 9b:  prehliadnutie si svojich poskladaných jedlá
         - 8b:  prehliadnutie si svojich predošlých objednávok
         - 5b:  poskladanie nového jedla
-    *body sú priradné podľa toho, ako vysoko užívatelia jednotlivé položky umiestnili, následne boli body sčítané*
-        - na úvodnej stránke aplikácie budú zobrazené predvytvorené jedlá a jedlá vytvorené ostatnými. Zobraziť veľké tlačítko na vytvorenie novej objednávky. Poskladanmie nového jedla a predošlé objenávky schovať, urobiť menšie a nenápadné
+    *body sú pridelené podľa toho, ako vysoko užívatelia jednotlivé položky umiestnili, následne boli body sčítané*
+        - na úvodnej stránke aplikácie budú zobrazené pred vytvorené jedlá a jedlá vytvorené ostatnými. Zobraziť veľké tlačítko na vytvorenie novej objednávky. Poskladanie nového jedla a predošlé objednávky schovať, urobiť menšie a nenápadné
 
-### Porovnání s existujícími aplikacemi
+### Porovnávanie s existujúcimi aplikáciami
+
 - Dáme Jídlo
 
-#### Přednosti
-- prehladné zadávanie objednávok
-- nevyžaduje uživateľský úceť pre objednanie
+#### Prednosti
+
+- prehľadné zadávanie objednávok
+- nevyžaduje užívateľský účet pre objednanie
+
 #### Nedostatky
-- možnosť meniť prísady jedla je neprehladná, je možné iba naklikať dopredu zadané prísady v zozname (pokiaľ ho reštaurácia takto predvytvorí nieje to funkcia podporovaná aplikáciou)
-- chýba konkrétna informácia o zpôsobe, akým spôsobom prebehne doručenie jedla. Užívateľ, ktorý vídí aplikáciu prvý krát, vedel čo sa bude diať a čo má čakať
+- možnosť meniť prísady jedla je neprehľadná, je možné iba na klikať dopredu zadané prísady v zozname (pokiaľ ho reštaurácia takto pred vytvorí nie je to funkcia podporovaná aplikáciou)
+- chýba konkrétna informácia o spôsobe, akým spôsobom prebehne doručenie jedla. Užívateľ, ktorý vidí aplikáciu prvý krát, vedel čo sa bude diať a čo má čakať
+
 #### Inšpirácia a riešenie nedostatkov
-- Hlavný zoznam reštaurácií, prehlad košíku a checkout sú prehladné a pre užívateľa prívetivé. Použiť podobné rozloženie.
-- Doplniť do posledného kroku checkoutu informácie o doručení a možnosť výberu z viacerých variant
+- Hlavný zoznam reštaurácií, prehlad košíku a checkout sú prehľadné a pre užívateľa prívetivé. Použiť podobné rozloženie.
+- Doplniť do posledného kroku objednávky informácie o doručení a možnosť výberu z viacerých variant
 
 ## Výstup prieskumu
 
 ### Kľúčové potreby užívateľov
 - nedostatočné úpravy jedla
 
-### Uživateľské potreby
-Ostatné aplikácie sú málo prehladné. 
-Najvýraznejšou funkciou na home page bude vytvorenie novej objednávky. Ďalšou funkciou na home page bude ponuka jedál. Ako posledná možnosť bude vytvorenie nového burgeru. História a nastavenie budú najmenej nápadné. 
+### užívateľské potreby
+Ostatné aplikácie sú málo prehľadné. 
+Najvýraznejšou funkciou na home page bude vytvorenie novej objednávky. Ďalšou funkciou na home page bude ponuka jedál. Ako posledná možnosť bude vytvorenie nového hamburgeru. História a nastavenie budú najmenej nápadné. 
 
 ### Kľúčové vlastnosti budúcej aplikácie
-- prehladnosť
+- prehľadnosť
 - filtrovanie položiek
 - vidieť fotky jedla
-- predvytvorené jedlá 
-- uprava predvytvorených jedál
+- pred vytvorené jedlá 
+- uprava pred vytvorených jedál
 - cena jednotlivých položiek
-- upravovanie jedla podľa vlastných potrieb (diety, jedálníčku, chuti)
-- prehladná homepage
+- upravovanie jedla podľa vlastných potrieb (diety, chuti)
+- prehľadná homepage
 - zvyšovanie množstva prísad (namiesto klikania znovu)
-- nevyžadovať registáciu
+- nevyžadovať registráciu
 - zľavy (mimo rozsah)
 
 ## Makety
@@ -350,15 +360,15 @@ Najvýraznejšou funkciou na home page bude vytvorenie novej objednávky. Ďalš
 - 2. Každý člen pracuje na časti aplikácie, výsledkom je jedna aplikácia
 
 ### Matúš
-- dokonečenie objednávky (checkout) 
+- dokončenie objednávky (checkout) 
 - hlavná stránka (home page)
 
 ### Marek
-- zdielanie burgerov (community workshop)
+- zdielanie hamburgerov (community workshop)
 
 ### Martin
-- skladanie burgerov
-- ukladanie vytvorených burgerov
+- skladanie hamburgerov
+- ukladanie vytvorených hamburgerov
 
 # Testovanie
 
@@ -381,10 +391,10 @@ Najvýraznejšou funkciou na home page bude vytvorenie novej objednávky. Ďalš
 9. Návrat na hlavnú stránku
 
 ### Priebeh
-Uživatelia nemali problémy pri plnení úloh. Nepotrebovali žiadne nápovedy a zvládli splniť všeky úlohy. Jedinú komplikáciu spôsobil zlý piktogram pre návrat na hlavnú stránku a absencia tlačítka pri dokončení objednácky, ktoré by tiež umožňovalo návrat na hlavnú stránku.
+užívatelia nemali problémy pri plnení úloh. Nepotrebovali žiadne nápovedy a zvládli splniť všetky úlohy. Jedinú komplikáciu spôsobil zlý piktogram pre návrat na hlavnú stránku a absencia tlačítka pri dokončení objednávky, ktoré by tiež umožňovalo návrat na hlavnú stránku.
 
 ### Výsledky
-- Úspešnosť oboch užívatelov bola 89%. Splinili 8 z 9 úloh na prvý pokus a 1 úlohu na druhý pokus
+- Úspešnosť oboch užívateľov bola 89%. Splnili 8 z 9 úloh na prvý pokus a 1 úlohu na druhý pokus
 - Je nutné zmeniť tlačítko pre návrat na hlavnú stránku
 - Piktogramu pre návrat na hlavnú stránku je mätúci a vyžaduje zmenu
 
@@ -396,39 +406,39 @@ Uživatelia nemali problémy pri plnení úloh. Nepotrebovali žiadne nápovedy 
 ## Martin
 ### Metriky
 - Počet žiadostí o nápovedu
-- Počet sťažností / pripomienok na rozloženie / prehladnosť rozhrania
+- Počet sťažností / pripomienok na rozloženie / prehľadnosť rozhrania
 
 ### Priebeh
-Rozhranie bolo testované na 3 užívateloch formou scenára s konkrétnými úlohami. Každý užívateľ dostal základný kontext o aplikácií. Kvôli limontáciám neplatenej figmy niektorá funkcionalita nebola v prototype similovaná. Napríklad drag and drop (pridávanie ingrediencií alebo pridávanie burgerov do objednávky).
+Rozhranie bolo testované na 3 užívateľoch formou scenára s konkrétnymi úlohami. Každý užívateľ dostal základný kontext o aplikácií. Kvôli limitáciám neplatenej figmy niektorá funkcionalita nebola v prototype simulovaná. Napríklad drag and drop (pridávanie ingrediencií alebo pridávanie hamburgerov do objednávky).
 
 Úlohy:
-- Vytvoriť nový burger, pomenovať ho, pridať surovinu, uložiť
-    - 1/3 užívatelov nenašla premenovanie burgeru, symbol je moc nevýrazný
-    - 0/3 užívatelov malo pripomienky
-- Pridať burger do objednávky, prejsť checkou a odoslať objednávku
-    - 0/3 užívatelov vyžadovalo nápovedu 
-    - 2/3 užívatelov malo problém trafiť tlačítko kvôli malej veľkosti UI
-- Vytvoriť nový burger, pomenovať ho, zverejniť
-    - 0/3 užívatelov vyžadovalo nápovedu, zverejnenie sa uskutoční okamžite a chýba potvrdzovacie okno
-    - 2/3 užívatelov malo pripomienky
+- Vytvoriť nový hamburger, pomenovať ho, pridať surovinu, uložiť
+    - 1/3 užívateľov nenašla premenovanie hamburgeru, symbol je moc nevýrazný
+    - 0/3 užívateľov malo pripomienky
+- Pridať hamburger do objednávky, prejsť do posledného kroku objednávky a odoslať objednávku
+    - 0/3 užívateľov vyžadovalo nápovedu 
+    - 2/3 užívateľov malo problém trafiť tlačítko kvôli malej veľkosti UI
+- Vytvoriť nový hamburger, pomenovať ho, zverejniť
+    - 0/3 užívateľov vyžadovalo nápovedu, zverejnenie sa uskutoční okamžite a chýba potvrdzovacie okno
+    - 2/3 užívateľov malo pripomienky
 - Odstrániť položku z objednávky
-    - 1/3 užívatelov neodhalili funkčnosť (drag and drop mimo objednávkového priestora)
-    - 0/3 užívatelov malo pripomienky
+    - 1/3 užívateľov neodhalili funkčnosť (drag and drop mimo objednávkového priestora)
+    - 0/3 užívateľov malo pripomienky
 - Prehliadnuť si svoje objednávky
-    - 1/3 užívatelov vyžadovalo nápovedu, malé tlačítko, schované
-    - 0/3 užívatelov malo pripomienky
+    - 1/3 užívateľov vyžadovalo nápovedu, malé tlačítko, schované
+    - 0/3 užívateľov malo pripomienky
 
 ### Výsledky
-12/15 úloh bolo splnených bez žiadosti o nápovedu. Väčšina pripomienok a žiadostí o nápovedu bolo zpôsobená malými veľkosťami tlačítok, texto a polí na vkladanie. Inak pôsobí aplikácia prehlane a prívetivo.
+12/15 úloh bolo splnených bez žiadosti o nápovedu. Väčšina pripomienok a žiadostí o nápovedu bolo spôsobená malými veľkosťami tlačítiek, textových a polí na vkladanie. Inak pôsobí aplikácia prehľadne a prívetivo.
 
 # Maketa / Diagram / Screenshot
-# Riešenie preblémov uživateľov
+# Riešenie preblémov užívateľov
 
 # Architektura
 
-Aplikace je rozdělena na backend server a mobilní aplikaci, které spolu komunikují pomocí HTTP Rest API. Mobilní aplikace posílá požadavky na backendový server, který provede nějakou operaci (případně nad daty z databáze) a odpovídá. Zvolená architektura se dá s přimhouřením oka nazvat MVC přístupem - databázový model, byznys logika a zobrazení pro uživatele jsou jasně odděleny. Jediným rozdílem je rozdělení ve více úrovních. Backendový server bude obsahovat model (databázový; struktury mapující záznamy), controller (byznys logika jednotlivých přístupových bodů rozhraní). Frontend potom znovu model (namapování odpovědí z API na struktury v paměti), controller (byznys logika pracující nad daty v paměti) a výsledné view, tedy zobrazení uživateli. Architektura je tímto vcelku komplikovaná a obsahuje přebytečné vrstvy (dalo by se zjednodušit použitím lokálního uložení dat - "čisté" MVC), jde ale o realizaci, která se běžně používá v praxi a je nutná pro naši funkcionalitu. Díky rozdělení backendového serveru a poskytnutí veřejné API je možné připojit více zařízení na stejný zdroj dat, je tedy možné mezi uživateli interagovat.
+Aplikace je rozdělena na backend server a mobilní aplikaci, které spolu komunikují pomocí HTTP Rest API. Mobilní aplikace posílá požadavky na backendový server, který provede nějakou operaci (případně nad daty z databáze) a odpovídá. Zvolená architektura se dá s přimhouřením oka nazvat MVC přístupem - databázový model, byznys logika a zobrazení pro užívatele jsou jasně odděleny. Jediným rozdílem je rozdělení ve více úrovních. Backendový server bude obsahovat model (databázový; struktury mapující záznamy), controller (byznys logika jednotlivých přístupových bodů rozhraní). Frontend potom znovu model (namapování odpovědí z API na struktury v paměti), controller (byznys logika pracující nad daty v paměti) a výsledné view, tedy zobrazení užívateli. Architektura je tímto vcelku komplikovaná a obsahuje přebytečné vrstvy (dalo by se zjednodušit použitím lokálního uložení dat - "čisté" MVC), jde ale o realizaci, která se běžně používá v praxi a je nutná pro naši funkcionalitu. Díky rozdělení backendového serveru a poskytnutí veřejné API je možné připojit více zařízení na stejný zdroj dat, je tedy možné mezi užívateli interagovat.
 
-Jedním z požadavků uživatelů bylo nevytvářet uživatelské účty pro správu jídel a objednání. Při nainstalování aplikace (popř. prvním požadavku na BE server) se tedy uživateli vygeneruje unikátní identifikátor, který bude uložený lokálně na jejich telefonu. Podle něj budou přiřazena vytvořená jídla a objednávky. Toto řešení je pro reálný svět nejspíš nedostatečné. Při získání identifikátoru nebezpečnou třetí stranou získá přístup k adrese, atp. 
+Jedním z požadavků užívatelů bylo nevytvářet užívatelské účty pro správu jídel a objednání. Při nainstalování aplikace (popř. prvním požadavku na BE server) se tedy užívateli vygeneruje unikátní identifikátor, který bude uložený lokálně na jejich telefonu. Podle něj budou přiřazena vytvořená jídla a objednávky. Toto řešení je pro reálný svět nejspíš nedostatečné. Při získání identifikátoru nebezpečnou třetí stranou získá přístup k adrese, atp. 
 
 ## Platforma
 
@@ -448,12 +458,12 @@ Backendový server definuje následující datové struktury:
 `Ingredient` - ingredience, jsou předvytvořené v databázi (uvažujme, že je přidává a spravuje strana restaurace), definují název a cenu
 `Food` - vytvořené jídlo, má název a přiřazené ingredience s počtem kusů.
 `Order` - objednávka, obsahuje objednaná jídla a informace o doručení objednávky
-`Keeper` - identifikátory uživatelů, definuje pouze vytvoření nového identifikátoru a kontrolu, zda identifikátor existuje
+`Keeper` - identifikátory užívatelů, definuje pouze vytvoření nového identifikátoru a kontrolu, zda identifikátor existuje
 
 a skupiny přístupových bodů:
-`/ingredients` - pro správu ingrediencí ze strany restaurace, v aplikaci pravděpodobně nebude využito, dovoluje všechny CRUD operace, operauje nad moodelem `Ingredient`
-`/foods` - vytvořená jídla uživateli a jídla sdílená s ostatními, dovoluje všechny CRUD operace, operuje nad modelem `Food`
-`/orders` - objednávky vytvořené uživatelem, dovoluje všechny CRUD operace, operuje nad modelem `Order`
+`/ingredients` - pro správu ingrediencií ze strany restaurace, v aplikaci pravděpodobně nebude využito, dovoluje všechny CRUD operace, operauje nad moodelem `Ingredient`
+`/foods` - vytvořená jídla užívateli a jídla sdílená s ostatními, dovoluje všechny CRUD operace, operuje nad modelem `Food`
+`/orders` - objednávky vytvořené užívatelem, dovoluje všechny CRUD operace, operuje nad modelem `Order`
 
 Server je zabezpečený přístupovým klíčem, který je nutno specifikovat v hlavičce HTTP požadavků `API-Key`, jde převážně o zamezení přístupu nechtěným stranám. V případě veřejné distribuce aplikace ale není nutné a ani by správně nefungovalo (klíč by musel být distribuovaný v aplikaci - získatelný).
 
