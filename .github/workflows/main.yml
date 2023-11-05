@@ -13,7 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.1.1
       - name: Install pandoc & texlive
-        run: "apt install pandoc texlive"
+        run: "sudo apt install pandoc texlive"
       - name: Build PDF
         run: "./create-pdf"
       - name: Upload
