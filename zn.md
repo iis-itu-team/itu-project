@@ -368,7 +368,7 @@ V tejto makete je použitá jednoduchá paletu troch farieb. Od užívateľov ne
 
 ![Marekov návrh](./assets/maketa-marek.png)
 
-Maketa obsahuje všetky relevantné moduly potvrdené užívateľským prieskumom - modul pre zostavovanie hamburgerov, komunitný workshop, uložené / obľúbuné burgery a pokladňa / košík. Zostavovanie hamburgerov funguje na princípe drag-n-drop, ktorý v aplikácií Figma nebolo možné jednoducho simulovať. Rozsah komunitného workshopu sa ďalej bude odvíjať od výstupu pitch meetingu. 
+Maketa obsahuje všetky relevantné moduly potvrdené užívateľským prieskumom - modul pre zostavovanie hamburgerov, komunitný workshop, uložené / obľúbené hamburgery a pokladňa / košík. Zostavovanie hamburgerov funguje na princípe drag-n-drop, ktorý v aplikácií Figma nebolo možné jednoducho simulovať. Rozsah komunitného workshopu sa ďalej bude odvíjať od výstupu pitch meetingu. 
 
 ## Martin
 
@@ -378,7 +378,7 @@ Skladanie hamburgerov je riešené pomocou drag-n-drop, rovnako ako pridávanie 
 
 \newpage
 # Rozdelenie práce
-Verze 2 - tzn. každý člen pracuje na vlastnej časti aplikácie, výsledkom je jedna aplikácia
+Verzia 2 - tzn. každý člen pracuje na vlastnej časti aplikácie, výsledkom je jedna aplikácia
 
 Matúš
 
@@ -473,7 +473,7 @@ Závery:
 Z rozhovoru s užívateľmi vyplynuli aj ďalšie námety ako:
 - pridať zhrnutie / potvrdenie objednávky
 - história objednávok a prípadné alergény (pomerne dôležitá funkcionalita vhodná pre implementáciu pri nedostatočnom rozsahu)
-- zmeniť názov community worshop - užívateľom nebolo na prvý pohlad jasné, čo to má vlastne byť
+- zmeniť názov community workshop - užívateľom nebolo na prvý pohlad jasné, čo to má vlastne byť
 - grafika riešenia drag & drop integrácií, ktorú nebolo možné jednoducho realizovať v aplikácií Figma
 
 ## Martin
@@ -511,7 +511,7 @@ Rozhranie bolo testované na 3 užívateľoch formou scenára s konkrétnymi úl
 
 Aplikácia je rozdelená na backend server a mobilnú aplikáciu, ktoré spolu komunikujú pomocou HTTP Rest API. Vďaka rozdeleniu backendového serveru a poskytnutie verejného API je možné pripojiť viac zariadení na rovnaký zdroj dát, je preto možné medzi užívateľmi interagovať.
 
-Jedným z požiadavkou užívateľov bolo nevytvárať užívateľské účty pre správu jedál a objednania. Pri inštalovaní aplikácie (prípadne prvom požiadavku na BE server) sa užívateľovi vygeneruje unikátny identifikátor, ktorý bude uložený lokálne na užívateľovom telefóne. Podla neho budú priradené vytvorené jedlá a objednávky. Toto riešenie je pre reálny svet pravdepodobne nedostatočné. Pri získaní identifikátoru útočníkom, získa prístup k datom.
+Jedným z požiadavkou užívateľov bolo nevytvárať užívateľské účty pre správu jedál a objednania. Pri inštalovaní aplikácie (prípadne prvom požiadavku na BE server) sa užívateľovi vygeneruje unikátny identifikátor, ktorý bude uložený lokálne na užívateľovom telefóne. Podla neho budú priradené vytvorené jedlá a objednávky. Toto riešenie je pre reálny svet pravdepodobne nedostatočné. Pri získaní identifikátoru útočníkom, získa prístup k dátam.
 
 ## Platforma
 
