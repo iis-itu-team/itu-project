@@ -375,13 +375,13 @@ Najvýraznejšou funkciou na home page bude vytvorenie novej objednávky. Ďalš
 ## Matúš
 
 ### Metriky
-- počet pokusov na splnenie úlohy
-- počet otázok
+- počet pokusov na splnenie úlohy (počet zlých kliknutý)
+- počet otázok na ujasnenie úlohy alebo vlastností aplikácie
 - využitie nápovedy
 
 #### Úlohy:
 1. Vytvorenie novej objednávky 
-2. Voľba suroviny 
+2. Voľba lubovolnej suroviny 
 3. Zaplatenie objednávky
 4. Stornovanie objednávky
 5. Prehlad objednávok
@@ -391,7 +391,9 @@ Najvýraznejšou funkciou na home page bude vytvorenie novej objednávky. Ďalš
 9. Návrat na hlavnú stránku
 
 ### Priebeh
-užívatelia nemali problémy pri plnení úloh. Nepotrebovali žiadne nápovedy a zvládli splniť všetky úlohy. Jedinú komplikáciu spôsobil zlý piktogram pre návrat na hlavnú stránku a absencia tlačítka pri dokončení objednávky, ktoré by tiež umožňovalo návrat na hlavnú stránku.
+Testovanie prebiehalo naživo s užívateľmi. Užívateľom boli zadávané jednotlivé úlohy a oni sa ich snažili postupne splniť. Užívatelia boli oboznámený s možnosťou nápovedy, ak sa nebudú vedieť pokračovať v riešení zadanej úlohy. Po splnení testovanie bol s užívateľmi vedený krátky rozhovor v ktorom vyjadrovali svoje problémy pri práci s aplikáciou a návrhy na ich riešenia.
+
+Užívatelia nemali výrazné problémy pri plnení úloh. Nepotrebovali žiadne nápovedy a zvládli splniť všetky úlohy so skoro minimálnym počtom zlých kliknutý. Jedinú komplikáciu spôsobil zlý piktogram pre návrat na hlavnú stránku a absencia tlačítka pri dokončení objednávky, ktoré by tiež umožňovalo návrat na hlavnú stránku.
 
 ### Výsledky
 - Úspešnosť oboch užívateľov bola 89%. Splnili 8 z 9 úloh na prvý pokus a 1 úlohu na druhý pokus
@@ -400,55 +402,55 @@ užívatelia nemali problémy pri plnení úloh. Nepotrebovali žiadne nápovedy
 
 ## Marek
 ### Metriky
-- Uspěšnost dokončení úlohy bez pomoci
-- Počet otázek nutných k dokončení úlohy
-- Počet kliků mimo optimální řešení úlohy (uživatel "zaběhne" do částí programu, která s řešením nesouvisí, a pak se musí vracet)
+- úspešnosť dokončenia úlohy bez pomoci
+- počet otázok nutných k dokončeniu úlohy
+- počet kliknutý mimo optimálne riešenie úlohy (užívateľ sa dostane to časti programu, ktorá s riešením nesúvisí a potom sa musí vracať)
 
 #### Úlohy
-1. Najděte ingredience "rajče" a "sýr"
-2. Sestavte burger s 1 ingrediencí - "tofu"
-3. Otevřete košík
-4. Přidejte burger z úlohy 2. do košíku
-5. V košíku zmenšete počet burgerů se sýrem
-6. Z košíku odstraňte burger z úlohy 2.
-7. V košíku dokončete objednávku
-8. Zobrazte si své uložené burgery
-9. V uložených burgerech přesuňte pořadí burgeru "Můj burger 2" na pozici 1
-10. Z uložených burgerů odstraňte "Sýr burger"
-11. V uložených burgerech upravte název burgeru "Můj burger"
-12. V uložených burgerech upravte složení burgeru "Můj burger"
-13. Vyhledejte v komuntním workshopu burger "Můj cheeseburger"
-14. V komunitním workshopu upravte rating burgeru "Tasty Onion"
-15. Přidejte komentář k burgeru od uživatele "Ondřej"
-16. Přidejte do komuntího workshopu některý uložený burger
+1. Nájdite ingrediencie "rajčina" a "syr"
+2. Zostavte hamburger s 1 ingredienciou - "tofu"
+3. Otvorte košík
+4. Pridajte hamburger z 2. úlohy do košíku
+5. V košíku zmenšite počet hamburgerov so syrom
+6. Z košíku odstrante hamburgery z úlohy 2.
+7. V košíku dokončite objednávku
+8. Zobrazte si svoje uložené hamburgery
+9. V uložených hamburgeroch presuňte poradie hamburgeru "Môj hamburger 2" na pozíciu 1
+10. Z uložených hamburgeroch odstráňte "Sýr Hamburger"
+11. V uložených hamburgeroch upravte názov hamburgeru "Môj hamburger"
+12. V uložených hamburgeroch upravte zloženie hamburgeru "Môj hamburger"
+13. Vyhladajte v komunitnom workshope hamburger "Môj Cheeseburger"
+14. V komunitnom workshope upravte hodnotenie hamburgeru "Tasty Onion"
+15. Pridajte komentár k hamburgeru od užívateľa "Ondrej"
+16. Pridajte do komunitného workshopu niektorý uložený hamburger
 
 ### Priebeh
-Testování proběhlo na 2 uživatelích formou video meetingu se sdílením obrazovky. Uživatelé dostali odkaz na maketu v aplikaci Figma, spustili prototyp a dále plnili úkoly, které jim byly předčítány. Po splnění všech úkolů byl s uživateli veden krátký rozhovor ohledně různých připomínek a dalších námětů k aplikaci. V případě nejasností s řešením mohli uživatelé kdykoliv požádat o nápovědu.
+Testovanie prebehlo na 2 užívateľoch formou video meetingu so zdielanou obrazovkou. Užívatelia dostali odkaz na maketu v aplikácií Figma, spustili prototyp a ďalej prlnili úlohy, ktoré im boli zadávané. Po splnení všetkých úloh bol s užívateľmi vedený krátky rozhovor ohladne rôznych pripomienok a ďalších námetov k aplikácií. V prípade nejasností s riešením mohli užívatelia hocikedy požiadať o nápovedu.
 
 ### Výsledky
-Uživatelé splnili všechny úlohy bez otázek, až na úlohu 11. Zde jeden uživatel nemohl přijít na to, jak daný text změnit. Bylo by tedy dobré komponentu s názvem v této sekci nějak upravit, aby bylo na první pohled zřejmé, že se jedná o upravitelný element - např. ikona pera za textboxem, pomocí níž by se tato komponenta editovala v nějakém modálu.
+Užívatelia splnili všetky úlohy bez otázok, až na úlohu 11. Tu jeden užívateľ nemohol zistiť, ako daný text zmeniť. Je teda nutné upraviť komponentu s názvom v tejto sekcií, aby bolo na prvý pohľad zrejmé, že sa jedná o upraviteľný prvok. Napríklad ikona para za textovým boxom, pomocou ktorej by sa táto komponenta editovala v nejakom **module**.
 
-Úloha 1 měla celkem 1 kliknutí navíc oproti optimálnímu řešení. Uživatel si nejprve nevšiml textu "PULL TO SEE INGREDIENTS" a místo tažení komponenty na ni kliknul, ale vzápětí se opravil. Tato chyba vychází spíše z technických limitací aplikace Figma, kdy ve skutečné aplikaci by bylo možné tuto komponentu naanimovat tak, aby uživatele svým pohybem vyzívala ke správnému gestu místo obyčejného kliknutí.
+Úloha 1 mala celkovo o 1 kliknutie naviac oproti optimálnemu riešeniu. Užívateľ si najskôr nevšimol textu "PULL TO SEE INGREDIENTS" a namiesto ťahanie komponenty na ňu klikol, ale vzápätí sa opravil. Táto chybas vychádza skôr z technických limitácií aplikácie Figma. V skutočnej aplikácií by bolo možné túto komponentu animovať tak, aby užívatelia svojím pohybom prinútila k správnemu gestu namiesto obyčajného kliknutia.
 
-Úloha 5 měla celkem 6 kliknutí navíc oproti optimálnímu řešení od jednoho uživatele. Uživatel se pokoušel zmenšit počet kusů v objednávce klknutím na křížek, jehož sémantikou je odstranit tuto položku úplně z objednávky. Uživatel posléze v rozhovoru uvedl, že si nevšiml textu počet a přidružených komponent pro ovládání tohoto atributu. Možným řešením by bylo dané komponenty zvětšit a/nebo zvýraznit křiklavější barvou.
+Úloha 5 mala celkom o 6 kliknutie naviac oproti optimálnemu riešeniu od jedného užívateľa. Užívateľ sa pokúšal zmenšiť počet kosov v objednávke kliknutím na krížik, ktorého sémantikou je odstrániť túto položku úplne z objednávky. Užívateľ následne v rozhovore uviedol, že si nevšimol textu počet a pridružených komponent pre ovládanie tohoto atribútu. Možným riešením by bolo dané komponenty zväčšiť alebo zvýrazniť krikľavejšou farbou.
 
-Úloha 7 měla celkem 3 kliknutí navíc oproti optimálnímu řešení od jednoho uživatele. Uživatel nejprve v košíku hledal pomocí různých posunovacích gest platební metody, ale posléze zkusil vyplnit adresu, po čemž se uživateli tyto metody objeví. Z rozhovoru vyplynulo, že designové rozhodnutí schovávat platební metody není nutně špatně, ale bylo by potřeba přejmenovat položku "Adresa", neboť se může vztahovat jak k fakturační adrese, tak k doručovací adrese. Dobrou volbou pro nový název by mohlo být "Kam doručit(?)". Uživatel dále v rozhovru uvedl, že si o běžných tláčítkách platebních metod myslel, že jsou radio buttony a také mu chybělo nějaké výsledné potvrzení / shrnutí objednávky. Vzhledem k tomu, že ostatní běžná tlačítka měla stejný design a v dalších úlohách s nimi nebyl problém, zřejmě není potřeba problém domnělých radio buttonů řešit. Zahrnout potvrzení / shrnutí objednávky do projektu by nejspíš bylo vhodné.
+Úloha 7 mala celkom o 3 kliknutia naviac oproti optimálnemu riešeniu od jedného užívateľa. Užívateľ najskôr v košíku hladal pomocou rôznych posunovacích gestikulácií platobné metódy, ale potom skúsil vyplniť adresu, následne čoho sa užívateľovi tieto metódy objavili. Z rozhovoru vyplynulo, že dizajnové rozhodnutie schovávať platobné metódu nie je nutne zlé, ale bolo by potrebné premenovať položku "Adresa", lebo sa môže vzťahovať k fakturačnej aj doručovacej adrese. Dobrou voľbou pre nový názov by mohlo byť "Kam doručiť(?)". Užívateľ ďalej v rozhovore uviedol, že si o bežných tlačítkach platobných metód myslel, že sú radio buttony a tiež mu chýbalo nejaké výsledné potvrdenie / zhrnutie objednávky. Vzhľadom k tomu, že ostatné tlačítka mali rovnaký dizajn a v ďalších úlohách s nimi nebol problém, zrejme nie je potrebné problém rádio buttonov riešiť. Zahrnúť potvrdenie / zhrnutie objednávky do projektu by bolo vhodné.
 
-Úloha 15 měla celkem 4 kliknutí navíc oproti optimálnímu řešení opět od jednoho uživatele. Uživatel se v komunitním workshopu snažil přidat komentář tak, že klik na velké tlačítko plus, jehož sémantika je přidat burger do workshopu. Pro správné řešení by uživatel musel daný burger vyhledat a kliknout na něj (příp. na ikonu komentářů), což po pár kliknutí uživatel udělal a přidal komentář. Možným řešením tohoto problému by bylo zvětšit ikonu komentářů u burgerů v nabídce.
+Úloha 15 mal celkom o 4 kliknutia naviac oproti optimálnemu riešeniu od jedného užívateľa. Užívateľ sa v komunitnom workshope snažil pridať komentár tak, že klikol na veľké tlačítko plus, ktorého sémantika je pridať hamburger do workshopu. Pre správne riešenie by užívateľ musel daný hamburger vyhľadať a kliknúť naň (prípadne na ikonku komentárov), čo pár kliknutiach užívateľ urobil a pridal komentár. Možným riešeným tohoto problému by bolo zväčšiť ikonu komentárov pri hamburgeroch v ponuke.
 
-Zbývající úlohy byly řešeny bez problémů.
+Ostatné úlohy bolo riešené bez problémov.
 
-Závěry:
-- upravit editovatelné pole "Název burgeru" tak, aby bylo na první pohled zřejmé, že je možné jej editovat (např. přidáním ikony propisky)
-- u položek v košíku zvětšit / zvýraznit komponenty související s počtem kusů
-- změnit název "Adresa" na "Kam doručit?" u objednávky v košíku
-- možná zvětšit ikonu komentářů v komunitním workshopu
+Závery:
+- upraviť editovateľné pole "Názov hamburgeru" tak, aby bolo na prvý pohlad zrejmé, že je možné ho editovať (napr. pridaním ikony pera).
+- pri položkách v košíku zväčšiť / zvýrazniť komponenty súvisiace s počtom kusov
+- zmeniť názov "Adresa" na "Kam doručiť" pri objednávkach v košíku
+- možno zväčšiť ikonu komentárov v komunitnom workshope
 
-Z rozhovoru s uživateli vyplynuly ještě další náměty jako:
-- přidat shrnutí / potvrzení objednávky
-- historie objednávek a popř. alergeny (poměrně důležitá funkcionalita vhodná pro implementaci při nedostatečném rozsahu)
-- změnit název community workshopu - uživatelům nebylo na první pohled jasné, co to vlastně má být
-- grafická řešení drag & drop ingrediencí, která nebylo možné jednoduše realizovat v aplikaci Figma
+Z rozhovoru s užívateľmi vyplynuli aj ďalšie námety ako:
+- pridať zhrnutie / potvrdenie objednávky
+- história objednávok a prípadné alergény (pomerne dôležitá funkcionalita vhodná pre implemntáciu pri nedostatočnom rozsahu)
+- zmeniť názov community worshop - užívatelom nebolo na prvý pohlad jasné, čo to má vlastne byť
+- grafika riešenia drag & drop integrácií, ktorú nebolo možné jednoducho realizovať v aplikácií Figma
 
 ## Martin
 ### Metriky
@@ -479,7 +481,7 @@ Rozhranie bolo testované na 3 užívateľoch formou scenára s konkrétnymi úl
 12/15 úloh bolo splnených bez žiadosti o nápovedu. Väčšina pripomienok a žiadostí o nápovedu bolo spôsobená malými veľkosťami tlačítiek, textových a polí na vkladanie. Inak pôsobí aplikácia prehľadne a prívetivo.
 
 # Maketa / Diagram / Screenshot
-# Riešenie preblémov užívateľov
+# Riešenie problémov užívateľov
 
 # Architektura
 
