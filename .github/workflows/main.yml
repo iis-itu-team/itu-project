@@ -1,0 +1,19 @@
+name: 'Build ZN'
+
+on:
+  push:
+    branches:
+      - main
+
+# The `jobs` key groups together all the jobs that run in the workflow file.
+jobs:
+  build-pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publish Markdown As PDF
+        # You may pin to the exact commit or the version.
+        # uses: shrink/actions-document-publish@8cff7c0e74cfb9e3c2fc3fb8dda2ce4aef966d95
+        uses: shrink/actions-document-publish@v1
+        with:
+          # List of glob patterns to Markdown files in order of their inclusion in the PDF
+          sources: zn.md
