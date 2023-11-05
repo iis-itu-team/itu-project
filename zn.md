@@ -504,11 +504,11 @@ Jedným z požiadavkou užívateľov bolo nevytvárať užívateľské účty pr
 
 ## Platforma
 
-Jedinou podporovanou platformou je Android. Cielom bolo vyvinutie mobilnej aplikácie, bohužiaľ pre vývoj pre iOS vyžaduje zostavanie aplikácie na stroji od spoločnosti Apple, ktorý nikdy z týmu nevlastní. Nebolo by teda možné aplikáciu zostaviť, ani ladiť pri vývoji.
+Jedinou podporovanou platformou je Android. Cielom bolo vyvinutie mobilnej aplikácie, bohužiaľ pre vývoj pre iOS vyžaduje zostavanie aplikácie na stroji od spoločnosti Apple, ktorý nikdo z týmu nevlastní. Nebolo by teda možné aplikáciu zostaviť, ani ladiť pri vývoji.
 
 ## Mobilní aplikace
 
-Pre vývoj mobilnej aplikácie sme zvolili framework Flutter. Prevážne z dôvodu stability, ekosystému a skvelých vývojárskych nástrojov. Programovací jazyk Dark, ktorý Flutter využíva jke flexibilný a umožňuje rýchly vývoj, zároveň je veľmi podobný jazykom, ktoré sme predtým používali. Flutter podporuje zostavovanie aplikácií na viac platforiem. Túto funkcionalitu v projekte nevyužijeme, ale aj tak sme sa rozhodli Flutter použiť namiesto napríklad React Native alebo čistému Android SDK s Javou alebo Kotlinom.
+Pre vývoj mobilnej aplikácie sme zvolili framework Flutter. Prevážne z dôvodu stability, ekosystému a skvelých vývojárskych nástrojov. Programovací jazyk Dart, ktorý Flutter využíva je flexibilný a umožňuje rýchly vývoj, zároveň je veľmi podobný jazykom, ktoré sme predtým používali. Flutter podporuje zostavovanie aplikácií na viac platforiem. Túto funkcionalitu v projekte nevyužijeme, ale aj tak sme sa rozhodli Flutter použiť namiesto napríklad React Native alebo čistému Android SDK s Javou alebo Kotlinom.
 
 Kód je rozdelený presne podľa paradigma MVC nasledovne"
 
