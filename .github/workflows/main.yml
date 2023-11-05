@@ -2,6 +2,7 @@ name: 'Build ZN'
 
 on:
   push:
+    paths: 'zn.md'
     branches:
       - main
 
