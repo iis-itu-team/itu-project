@@ -1,5 +1,7 @@
-class FoodEditArguments {
-  final String id;
+import 'package:food_blueprint/src/models/food.dart';
 
-  FoodEditArguments(this.id);
+class FoodEditArguments {
+  final Food food;
+
+  FoodEditArguments(this.food);
 }

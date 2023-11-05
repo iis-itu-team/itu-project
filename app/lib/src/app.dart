@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:food_blueprint/src/env/env.dart';
+import 'package:food_blueprint/src/pages/food_edit/food_edit_controller.dart';
 import 'package:food_blueprint/src/pages/food_edit/food_edit_page.dart';
 import 'package:food_blueprint/src/pages/home/home_controller.dart';
 import 'package:food_blueprint/src/pages/home/home_page.dart';
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final FoodService foodService = FoodService();
     final HomeController homeController = HomeController(foodService);
+    final FoodEditController foodEditController = FoodEditController(foodService);
 
     // Glue the SettingsController to the MaterialApp.
     //
@@ -67,7 +69,7 @@ class MyApp extends StatelessWidget {
               case HomePage.routeName:
                 return HomePage(controller: homeController);
               case FoodEditPage.routeName:
-                return const FoodEditPage();
+                return FoodEditPage(controller: foodEditController);
               default:
                 return HomePage(controller: homeController);
             }
