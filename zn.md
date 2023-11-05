@@ -536,7 +536,7 @@ utils/
 
 Definuje jednotlivé modely dát `Food`, `Ingredient`, `Order`, ktoré zodpovedajú dátam vráteným z backend serveru.
 
-Backend mobilní aplikácia (services) definujú následujúce základní funkcie:
+Backend mobilnej aplikácie (services) definujú následujúce základné funkcie
 
 - `listFoods() => Food[]` - vráti zoznam jedál vlastnených užívateľom
 - `addIngredient(id)` -  pridá ingredienciu do aktuálne upravovaného jedla
@@ -551,7 +551,7 @@ Backendový server je postavený na frameworku adonis.js, ktorý je napísaný v
 
 Pre uloženie dát sme zvolili databázový server PostgreSQL, prevažne kvôli veľkému využitiu pri vývoji v dnešným moderných aplikáciách. Skúsenosti s jeho použitím sa nám budú v budúcnosti hodiť. Pre rozsah našej aplikácie by ale bohato stačilo napríklad SQLite, ktoré všetko ukladá do jediného súboru a má rýchlejší a jednoduchší prístup.
 
-Prístupové body definované aplikáciou
+Prístupové body, ktoré aplikácia definuje
 
 - `/ingredients` - - pre správu ingrediencií zo strany reštaurácie, v aplikácií pravdepodobne nebude využité, dovoľuje všetky CRUP operácie, operuje nad modelom `Ingredient`
 - `/foods` - vytvorené jedlá užívateľmi a jedlá zdielané s ostatnými, dovoluje všetky CRUD operácie nad modelom `Food`
