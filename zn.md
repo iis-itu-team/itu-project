@@ -446,13 +446,37 @@ Jedinou podporovanou platformou je Android. Cílem bylo vyvinout mobilní aplika
 
 ## Mobilní aplikace
 
-Definuje jednotlivé modely dat `Food { name: str, published: bool, ingredients: [{ ...Ingredient, amount }] }`, `Ingredient { name: str, price: num }`, `Order { foods: [{ ...Food, amount }], ...delivery details }`, které odpovídají datům vráceným z backendového serveru.
-
-// TODO: doplnit definované funkce a datový struktury dle toho, co reálně kostra obsahuje
-
 Pro vývoj mobilní aplikace jsme zvolili framework Flutter. Převážně z důvodu stability, ekosystému a skvělých vývojářských nástrojů. Programovací jazyk dart, který flutter využívá je flexibiní a umožňuje rychlý vývoj, zároveň je velice podobný jazykům, které jsme dříve využívali. Flutter podporuje sestavování aplikací na více platforem. Tuto funkcionalitu v projektu nevyužijeme, i přes to jsme se rozhodli flutter využít oproti např. React Native nebo čistému Android SDK s Javou/Kotlinem.
 
+Kód je rozdělen podle paradigma MVC následovně:
+```
+pages/ - jednotlivé stránky - "views"
+    home/
+    my_foods/
+    [...]
+services/ - byznys logika pro views - "controllers"
+models/ - datové struktury - "models"
+components/
+utils/
+```
+
+Definuje jednotlivé modely dat `Food { name: str, published: bool, ingredients: [{ ...Ingredient, amount }] }`, `Ingredient { name: str, price: num }`, `Order { foods: [{ ...Food, amount }], ...delivery details }`, které odpovídají datům vráceným z backendového serveru.
+
+Backend mobilní aplikace (dart service - "controller") definuje následující základní rozhraní:
+`listMyFoods() => Food[]` - vrátí seznam jídel vlastněné uživatelem
+`listCommunityFoods() => Food[]` - vrátí seznam jídel, které jsou veřejné
+
+`addIngredient(id)` - přidá ingredienci do akt. upravovaného jídla
+`createFood() => Food` - vytvoří nové jídlo se základními vlastnostmi
+`saveFood()` - uloží jídlo (perzistentně přes Rest API; odpovídá tlačítku "uložit")
+`deleteFood() => void` - smaže akt. upravované jídlo
+`publishFood() => void` - zveřejní akt. upravované jídlo
+
 ## Backendový server s Rest API
+
+Backendový server je postavený na frameworku adonis.js, který je napsaný v typescriptu a běží v nodejs prostředí. Je relativně nový a silně inspirovaný php frameworkem Laravel. Zvolili jsme jej převážně kvůli flexibilně jazyka a jednoduchosti frameworku vzhledem k tomu, že hlavní prioritou projektu je mobilní aplikace. Framework už v základu obsahuje spoustu věcí a přidávání další funkcionality je relativně snadné. Máme s ním také předchozí zkušenosti.
+
+Pro uložení dat na jsme zvolili databázový server PostgreSQL, převážně kvůli velkému využití při vývoji v dnešních moderních aplikacích. Zkušenosti s jeho použitím se nám tedy v budoucnu můžou hodit. Pro rozsah naší aplikace by ale bohatě stačilo např. SQLite, které vše ukládá do jediného souboru a má rychlejší a jednodušší přístup k datům.
 
 Backendový server definuje následující datové struktury:
 `Ingredient` - ingredience, jsou předvytvořené v databázi (uvažujme, že je přidává a spravuje strana restaurace), definují název a cenu
@@ -465,6 +489,16 @@ a skupiny přístupových bodů:
 `/foods` - vytvořená jídla užívateli a jídla sdílená s ostatními, dovoluje všechny CRUD operace, operuje nad modelem `Food`
 `/orders` - objednávky vytvořené užívatelem, dovoluje všechny CRUD operace, operuje nad modelem `Order`
 
-Server je zabezpečený přístupovým klíčem, který je nutno specifikovat v hlavičce HTTP požadavků `API-Key`, jde převážně o zamezení přístupu nechtěným stranám. V případě veřejné distribuce aplikace ale není nutné a ani by správně nefungovalo (klíč by musel být distribuovaný v aplikaci - získatelný).
+Struktura backendového serveru:
+```
+app/
+    Controllers/ - zpracování požadavků přístupových bodů
+    Services/ - komunikace s databází, samotná byznys logika
+    Models/ - datové modely
+    [...]
+start/
+    routes.ts - definice API přístupových bodů
+[...]
+```
 
-Backendový server je postavený na frameworku adonis.js, který je napsaný v typescriptu a běží v nodejs prostředí. Je relativně nový a silně inspirovaný php frameworkem Laravel. Zvolili jsme jej převážně kvůli flexibilně jazyka a jednoduchosti frameworku vzhledem k tomu, že hlavní prioritou projektu je mobilní aplikace. Framework už v základu obsahuje spoustu věcí a přidávání další funkcionality je relativně snadné. Máme s ním také předchozí zkušenosti.
+Server je zabezpečený přístupovým klíčem, který je nutno specifikovat v hlavičce HTTP požadavků `API-Key`, jde převážně o zamezení přístupu nechtěným stranám. V případě veřejné distribuce aplikace ale není nutné a ani by správně nefungovalo (klíč by musel být distribuovaný v aplikaci - získatelný).
