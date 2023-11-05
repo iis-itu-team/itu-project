@@ -21,4 +21,4 @@ jobs:
         id: upload-document
         with:
           name: 'zn.pdf'
-          path: ${{ steps.publish-document.outputs.pdf }}
+          path: 'zn.pdf'
