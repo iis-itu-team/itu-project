@@ -12,8 +12,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.1
-      - name: Setup pandoc
-        uses: nikeee/setup-pandoc@master
+      - name: Install pandoc & texlive
+        run: "apt install pandoc texlive"
       - name: Build PDF
         run: "./create-pdf"
       - name: Upload
