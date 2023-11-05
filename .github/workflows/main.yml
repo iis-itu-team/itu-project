@@ -19,7 +19,7 @@ jobs:
       - name: Upload xotrad00
         uses: actions/upload-artifact@v2
         with:
-          name: 'xotrad00.zip'
+          name: 'xotrad00'
           path: |
             xotrad00_zn.pdf
             backend/*
@@ -27,7 +27,7 @@ jobs:
       - name: Upload xvandi01
         uses: actions/upload-artifact@v2
         with:
-          name: 'xvandi01.zip'
+          name: 'xvandi01'
           path: |
             xvandi01_zn.pdf
             backend/*
@@ -35,7 +35,7 @@ jobs:
       - name: Upload xhubin04
         uses: actions/upload-artifact@v2
         with:
-          name: 'xhubin04.zip'
+          name: 'xhubin04'
           path: |
             xhubin04_zn.pdf
             backend/*
