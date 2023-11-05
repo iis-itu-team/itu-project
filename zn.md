@@ -362,19 +362,19 @@ Najvýraznejšou funkciou na home page bude vytvorenie novej objednávky. Ďalš
 
 ![Matúšov návrh](./assets/maketa-matus.png)
 
-V tejto makete som použil jednoduchú paletu troch farieb. Nevyžadoval som od užívateľov registráciu a pri dokončení každej objednávky je teda nutné vyplnil údaje užívateľa znovu. Na základe preskumu som zistil že hlavná funkcionalita, ktorú užívatelia potrebujú, je možnosť upravovania svôjho jedla pri objednávaní. Uživatelia si môžu v makete navoliť každú surovinu, z ktorej sa hamnburger skladá.
+V tejto makete je použitá jednoduchá paletu troch farieb. Od užívateľov nevyžaduje registráciu a pri dokončení každej objednávky je teda nutné vyplnil údaje užívateľa znovu. Na základe prieskumu bolo zistené že hlavná funkcionalita, ktorú užívatelia potrebujú, je možnosť upravovania svojho jedla pri objednávaní. Užívatelia si môžu v makete vybrať každú surovinu, z ktorej sa hamburger skladá.
 
 ## Marek
 
 ![Marekov návrh](./assets/maketa-marek.png)
 
-Po grafickej stránke som maketu robil podľa mobilnej aplikácie McDonald's. Pri zostavovaní hamburgeru som uvidol ceny ingrediciencí, pretože sú pre užívateľov veľmi dôležité. Taktiež je pri zostavovaní hamburgeru viditeľná aj jeho celková cena. Pridal som aj komunitný workshop, pretože 6/7 užívateľov v sprieskume zmienila nutnosť komunitného worshopu. Možnosti upravovania hamburgerov som venoval veľku pozornosť.
+Maketa obsahuje všetky relevantné moduly potvrdené užívateľským prieskumom - modul pre zostavovanie hamburgerov, komunitný workshop, uložené / obľúbuné burgery a pokladňa / košík. Zostavovanie hamburgerov funguje na princípe drag-n-drop, ktorý v aplikácií Figma nebolo možné jednoducho simulovať. Rozsah komunitného workshopu sa ďalej bude odvíjať od výstupu pitch meetingu. 
 
 ## Martin
 
 ![Martinov návrh](./assets/maketa-martin.png)
 
-Skládání burgerů je řešené pomocí drag-n-drop, stejně jako přidávání burgerů do objednávky. Checkout je sloučen pouze na jedno view místo více kroků, je tak jednoduchý a uživatel může upravovat hodnoty zpětně. Údaje o doručení obsahují detailní informace a poznámku o tom, že kurýr uživateli před doručením zavolá.
+Skladanie hamburgerov je riešené pomocou drag-n-drop, rovnako ako pridávanie hamburgerov do objednávky. Checkout je zlúčený iba na jeden pohlad, namiesto viacerých krokov, je tak jednoduché a užívateľ môže upravovať hodnoty spätne. Údaje o doručení obsahujú detailné informácie a poznámku o tom, že kuriek má užívateľovi pred doručením zavolať.  
 
 \newpage
 # Rozdelenie práce
