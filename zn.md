@@ -481,6 +481,7 @@ Rozhranie bolo testované na 3 užívateľoch formou scenára s konkrétnymi úl
 12/15 úloh bolo splnených bez žiadosti o nápovedu. Väčšina pripomienok a žiadostí o nápovedu bolo spôsobená malými veľkosťami tlačítiek, textových a polí na vkladanie. Inak pôsobí aplikácia prehľadne a prívetivo.
 
 # Maketa / Diagram / Screenshot
+
 # Riešenie problémov užívateľov
 
 # Architektura
