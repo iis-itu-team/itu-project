@@ -20,14 +20,23 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: 'xotrad00.zip'
-          path: 'xotrad00_zn.pdf backend/* app/*'
+          path: |
+            xotrad00_zn.pdf
+            backend/*
+            app/*
       - name: Upload xvandi01
         uses: actions/upload-artifact@v2
         with:
           name: 'xvandi01.zip'
-          path: 'xvandi01_zn.pdf backend/* app/*'
+          path: |
+            xvandi01_zn.pdf
+            backend/*
+            app/*
       - name: Upload xhubin04
         uses: actions/upload-artifact@v2
         with:
           name: 'xhubin04.zip'
-          path: 'xhubin04_zn.pdf backend/* app/*'
+          path: |
+            xhubin04_zn.pdf
+            backend/*
+            app/*
