@@ -1,16 +1,3 @@
----
-title: Správa návrhu
-author:
-    - Matúš Hubínsky
-    - Marek Vandík
-    - Martin Otradovec
-geometry: margin=25mm
-fontsize: 12pt
-header-includes:
-    \usepackage{setspace}
-    \doublespacing
----
-
 # Téma
 
 ## Návrhy
@@ -37,11 +24,13 @@ Aplikácia Food Blueprint má za cieľ umožniť svojim užívateľom nielen obj
 
 Po hlasovaní a dohode sme vybrali aplikáciu pre objednávanie a zostavanie hamburgerov - Food Blueprint. Aplikácia je relatívne jednoduchá na realizáciu a zber dár pre prieskum užívateľských potrieb.
 
-# Průzkum
+# Priekum
 
 ## Matúš
 
 ### Dotazník
+
+Dotazník bol robený formou online a offline stretnutia. Na začatku boli respondentom prečítané otázky. Respondeti na ne následne odpovedali. Pri každej otázke vznikla krátka diskucia nad danou problematikou.
 
 1. Používali ste niekedy aplikáciu na objednávanie jedla?
     * Možnosti: Áno/Nie
@@ -239,6 +228,7 @@ Siedmim užívateľom bol zaslaný nasledujúci dotazník a ďalej následne bol
 ## Martin
 
 ### Dotazník
+
 Dotazník bol vedený formou rozhovoru s tromi subjektami.
 
 1. Využívate aplikácie pre dovoz jedál, poprípade ktoré?
@@ -337,7 +327,7 @@ Dotazník bol vedený formou rozhovoru s tromi subjektami.
 ### Kľúčové potreby užívateľov
 - nedostatočné úpravy jedla
 
-### užívateľské potreby
+### Užívateľské potreby
 Ostatné aplikácie sú málo prehľadné. 
 Najvýraznejšou funkciou na home page bude vytvorenie novej objednávky. Ďalšou funkciou na home page bude ponuka jedál. Ako posledná možnosť bude vytvorenie nového hamburgeru. História a nastavenie budú najmenej nápadné. 
 
@@ -356,17 +346,17 @@ Najvýraznejšou funkciou na home page bude vytvorenie novej objednávky. Ďalš
 
 ## Makety
 ### Matúš
-- TODO: obrázok
-- TODO: popis
+![Matúšov Návrh](./assets/maketa-matus.png)
+V tejto makete som použil jednoduchú paletu troch farieb. Nevyžadoval som od užívateľov registráciu a pri dokončení každej objednávky je teda nutné vyplnil údaje užívateľa znovu. Na základe preskumu som zistil že hlavná funkcionalita, ktorú užívatelia potrebujú, je možnosť upravovania svôjho jedla pri objednávaní. Uživatelia si môžu v makete navoliť každú surovinu, z ktorej sa hamnburger skladá.
 
 ### Marek
-![Markovo Maketa](./assets/maketa-martin.png)
-- TODO: popis
+![Marekov Návrh](./assets/maketa-marek.png)
+Po grafickej stránke som maketu robil podľa mobilnej aplikácie McDonald's. Pri zostavovaní hamburgeru som uvidol ceny ingrediciencí, pretože sú pre užívateľov veľmi dôležité. Taktiež je pri zostavovaní hamburgeru viditeľná aj jeho celková cena. Pridal som aj komunitný workshop, pretože 6/7 užívateľov v sprieskume zmienila nutnosť komunitného worshopu. Možnosti upravovania hamburgerov som venoval veľku pozornosť.
 
 ### Martin
-![Martinovo maketa](./assets/maketa-martin.png)
+![Martinov Návrh](./assets/maketa-martin.png)
 
-Skládání burgerů je řešené pomocí drag-n-drop, stejně jako přidávání burgerů do objednávky. Checkout je sloučen pouze na jedno view místo více kroků, je tak jednoduchý a uživatel může upravovat hodnoty zpětně. Údaje o doručení obsahují detailní informace a poznámku o tom, že kurýr uživateli před doručením zavolá.
+- TODO: popis
 
 ## Rozdelenie práce
 - 2. Každý člen pracuje na časti aplikácie, výsledkom je jedna aplikácia
@@ -504,11 +494,11 @@ Jedným z požiadavkou užívateľov bolo nevytvárať užívateľské účty pr
 
 ## Platforma
 
-Jedinou podporovanou platformou je Android. Cielom bolo vyvinutie mobilnej aplikácie, bohužiaľ pre vývoj pre iOS vyžaduje zostavanie aplikácie na stroji od spoločnosti Apple, ktorý nikdo z týmu nevlastní. Nebolo by teda možné aplikáciu zostaviť, ani ladiť pri vývoji.
+Jedinou podporovanou platformou je Android. Cielom bolo vyvinutie mobilnej aplikácie, bohužiaľ pre vývoj pre iOS vyžaduje zostavanie aplikácie na stroji od spoločnosti Apple, ktorý nikdy z týmu nevlastní. Nebolo by teda možné aplikáciu zostaviť, ani ladiť pri vývoji.
 
 ## Mobilní aplikace
 
-Pre vývoj mobilnej aplikácie sme zvolili framework Flutter. Prevážne z dôvodu stability, ekosystému a skvelých vývojárskych nástrojov. Programovací jazyk Dart, ktorý Flutter využíva je flexibilný a umožňuje rýchly vývoj, zároveň je veľmi podobný jazykom, ktoré sme predtým používali. Flutter podporuje zostavovanie aplikácií na viac platforiem. Túto funkcionalitu v projekte nevyužijeme, ale aj tak sme sa rozhodli Flutter použiť namiesto napríklad React Native alebo čistému Android SDK s Javou alebo Kotlinom.
+Pre vývoj mobilnej aplikácie sme zvolili framework Flutter. Prevážne z dôvodu stability, ekosystému a skvelých vývojárskych nástrojov. Programovací jazyk Dark, ktorý Flutter využíva jke flexibilný a umožňuje rýchly vývoj, zároveň je veľmi podobný jazykom, ktoré sme predtým používali. Flutter podporuje zostavovanie aplikácií na viac platforiem. Túto funkcionalitu v projekte nevyužijeme, ale aj tak sme sa rozhodli Flutter použiť namiesto napríklad React Native alebo čistému Android SDK s Javou alebo Kotlinom.
 
 Kód je rozdelený presne podľa paradigma MVC nasledovne"
 
@@ -551,6 +541,8 @@ a skupiny prístupových bodov:
 `/ingredients` - - pre správu ingrediencií zo strany reštaurácie, v aplikácií pravdepodobne nebude využité, dovoľuje všetky CRUP operácie, operuje nad modelom `Ingredient`
 `/foods` - vytvorené jedlá užívateľmi a jedlá zdielané s ostatnými, dovoluje všetky CRUD operácie nad modelom `Food`
 `/orders` - objednávky vytvorené užívateľom, dovoluje všetky CRUD operácie, operuje nad modulom  `Order`
+
+
  
 Struktura backendového serveru:
 ```
