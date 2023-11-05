@@ -1,20 +1,31 @@
-# Téma
+---
+title: Správa návrhu
+author:
+    - Matúš Hubínsky
+    - Marek Vandík
+    - Martin Otradovec
+geometry: margin=25mm
+fontsize: 12pt
+header-includes:
+    \usepackage[T1]{fontenc}
+    \usepackage{tgbonum}
+---
 
-## Návrhy
+# Návrhy témat
 
-### Webová aplikácia pre EDR (Endpoint Detection and Response)
+## Webová aplikácia pre EDR (Endpoint Detection and Response)
 
 Navrhol: Matúš Hubinský
 
 EDR systémy analyzujú chovania viacerých zariadení a vyhodnocujú bezpečnostné hrozby na základe udalostí zaznamenaných v databáze. Ak vyhodnotia chovanie ako nebezpečné vygenerujú alert. Tento alert je následne spracovaný bezpečnostným analytikom, ktorý sa venuje monitoringu. Bezpečnostný analytici môžu naraz monitorovať viaceré systémov a preto potrebujú také grafické rozhranie, z ktorého vedia na prvý pohľad určiť počet nových bezpečnostných upozornení a zároveň ich závažnosť. Existuje viacero riešení, ale každé má svoje problémy a dalo by sa vylepšiť.
 
-### Mobilná aplikácia pre BAM (Brnenský Architektonický Manuál)
+## Mobilná aplikácia pre BAM (Brnenský Architektonický Manuál)
 
 Navrhol: Martin Otradovec
 
 BAM je projekt poskytujúci databázu architektonicky významných objektov v Brne. Cielom realizácie bolo vytvoriť k už existujúcemu webu mobilnú aplikáciu poskytujúcu prístup k objektom, trasám a audios sprievodcom prívetivo a offline. Ďalším možným prvkom je skenovanie kódov, ktoré sú po Brne rozmiestnené pri budovách alebo detekcia budov v okolí podľa GPS. Aplikáciu by bolo možné v prípade kvalitnej realizácie ponúknuť BAMu pre reálne využitie, pripadne rozvinúť do bakalárskej práce. Záujem medzi užívateľmi existujúceho webu je nezanedbateľný. Podobná aplikácia existuje vo forme postaršej bakalárskej práce, ale nie je verejne prístupná.
 
-### Mobilná aplikácia pre objednávanie a zostavanie hamburgerov - Food Blueprint
+## Mobilná aplikácia pre objednávanie a zostavanie hamburgerov - Food Blueprint
 
 Navrhol: Marek Vandík
 
@@ -206,21 +217,20 @@ Siedmim užívateľom bol zaslaný nasledujúci dotazník a ďalej následne bol
 	* Zistenie: 3:4 - Väčšina užívateľov by zvolila možnosť vykreslovania jednotlivo. V diskusií po vyplnení dotazníku bolo zistené, že obidve varianty sú vyhovujúce pre všetkých respondentov.
 
 ### Porovnávanie s existujúcimi aplikáciami
+McDonald's mobilná aplikácia pre iOS
 
-- McDonald's mobilnej aplikácie pre iOS
-
-#### Prednosti
+Prednosti
 
 - pekne riešené kalorické hodnoty jedál
 - dobre rozdelené hamburgery do kategórií
 
-#### Nedostatky
+Nedostatky
 
 - 2 rôzne pohlady na jedlá, jeden sa používa pri objednávaní na pobočke a zároveň pri prezentáciu jedál, a druhý pre objednávanie z Foodory atď, čo je pre užívateľov nepraktické.
 - neumožňuje zdielanie hamburgerov
 - neumožňuje ukladať obľúbené hamburgery
 
-#### Inšpirácia a Riešenie nedostatkov
+Inšpirácia a Riešenie nedostatkov
 
 - inšpirovať sa budeme grafikou a kategóriami rozdelenie hamburgerov
 - nedostatky vyriešime implementáciou danej funkcionality a iba jedným pohľadom pre objednávanie aj prezentovanie jedál
@@ -309,16 +319,18 @@ Dotazník bol vedený formou rozhovoru s tromi subjektami.
 
 - Dáme Jídlo
 
-#### Prednosti
+Prednosti
 
 - prehľadné zadávanie objednávok
 - nevyžaduje užívateľský účet pre objednanie
 
-#### Nedostatky
+Nedostatky
+
 - možnosť meniť prísady jedla je neprehľadná, je možné iba na klikať dopredu zadané prísady v zozname (pokiaľ ho reštaurácia takto pred vytvorí nie je to funkcia podporovaná aplikáciou)
 - chýba konkrétna informácia o spôsobe, akým spôsobom prebehne doručenie jedla. Užívateľ, ktorý vidí aplikáciu prvý krát, vedel čo sa bude diať a čo má čakať
 
-#### Inšpirácia a riešenie nedostatkov
+Inšpirácia a riešenie nedostatkov
+
 - Hlavný zoznam reštaurácií, prehlad košíku a checkout sú prehľadné a pre užívateľa prívetivé. Použiť podobné rozloženie.
 - Doplniť do posledného kroku objednávky informácie o doručení a možnosť výberu z viacerých variant
 
@@ -344,31 +356,41 @@ Najvýraznejšou funkciou na home page bude vytvorenie novej objednávky. Ďalš
 - nevyžadovať registráciu
 - zľavy (mimo rozsah)
 
-## Makety
-### Matúš
-![Matúšov Návrh](./assets/maketa-matus.png)
+# Makety
+
+## Matúš
+
+![Matúšov návrh](./assets/maketa-matus.png)
+
 V tejto makete som použil jednoduchú paletu troch farieb. Nevyžadoval som od užívateľov registráciu a pri dokončení každej objednávky je teda nutné vyplnil údaje užívateľa znovu. Na základe preskumu som zistil že hlavná funkcionalita, ktorú užívatelia potrebujú, je možnosť upravovania svôjho jedla pri objednávaní. Uživatelia si môžu v makete navoliť každú surovinu, z ktorej sa hamnburger skladá.
 
-### Marek
-![Marekov Návrh](./assets/maketa-marek.png)
+## Marek
+
+![Marekov návrh](./assets/maketa-marek.png)
+
 Po grafickej stránke som maketu robil podľa mobilnej aplikácie McDonald's. Pri zostavovaní hamburgeru som uvidol ceny ingrediciencí, pretože sú pre užívateľov veľmi dôležité. Taktiež je pri zostavovaní hamburgeru viditeľná aj jeho celková cena. Pridal som aj komunitný workshop, pretože 6/7 užívateľov v sprieskume zmienila nutnosť komunitného worshopu. Možnosti upravovania hamburgerov som venoval veľku pozornosť.
 
-### Martin
-![Martinov Návrh](./assets/maketa-martin.png)
+## Martin
 
-- TODO: popis
+![Martinov návrh](./assets/maketa-martin.png)
 
-## Rozdelenie práce
-- 2. Každý člen pracuje na časti aplikácie, výsledkom je jedna aplikácia
+Skládání burgerů je řešené pomocí drag-n-drop, stejně jako přidávání burgerů do objednávky. Checkout je sloučen pouze na jedno view místo více kroků, je tak jednoduchý a uživatel může upravovat hodnoty zpětně. Údaje o doručení obsahují detailní informace a poznámku o tom, že kurýr uživateli před doručením zavolá.
 
-### Matúš
-- dokončenie objednávky (checkout) 
+\newpage
+# Rozdelenie práce
+Verze 2 - tzn. každý člen pracuje na vlastnej časti aplikácie, výsledkom je jedna aplikácia
+
+Matúš
+
 - hlavná stránka (home page)
+- dokončenie objednávky (checkout)
 
-### Marek
+Marek
+
 - zdielanie hamburgerov (community workshop)
 
-### Martin
+Martin
+
 - skladanie hamburgerov
 - ukladanie vytvorených hamburgerov
 
@@ -381,7 +403,7 @@ Po grafickej stránke som maketu robil podľa mobilnej aplikácie McDonald's. Pr
 - počet otázok na ujasnenie úlohy alebo vlastností aplikácie
 - využitie nápovedy
 
-#### Úlohy:
+### Úlohy
 1. Vytvorenie novej objednávky 
 2. Voľba lubovolnej suroviny 
 3. Zaplatenie objednávky
@@ -408,7 +430,7 @@ Užívatelia nemali výrazné problémy pri plnení úloh. Nepotrebovali žiadne
 - počet otázok nutných k dokončeniu úlohy
 - počet kliknutý mimo optimálne riešenie úlohy (užívateľ sa dostane to časti programu, ktorá s riešením nesúvisí a potom sa musí vracať)
 
-#### Úlohy
+### Úlohy
 1. Nájdite ingrediencie "rajčina" a "syr"
 2. Zostavte hamburger s 1 ingredienciou - "tofu"
 3. Otvorte košík
@@ -462,7 +484,7 @@ Z rozhovoru s užívateľmi vyplynuli aj ďalšie námety ako:
 ### Priebeh
 Rozhranie bolo testované na 3 užívateľoch formou scenára s konkrétnymi úlohami. Každý užívateľ dostal základný kontext o aplikácií. Kvôli limitáciám neplatenej figmy niektorá funkcionalita nebola v prototype simulovaná. Napríklad drag and drop (pridávanie ingrediencií alebo pridávanie hamburgerov do objednávky).
 
-Úlohy:
+### Úlohy
 - Vytvoriť nový hamburger, pomenovať ho, pridať surovinu, uložiť
     - 1/3 užívateľov nenašla premenovanie hamburgeru, symbol je moc nevýrazný
     - 0/3 užívateľov malo pripomienky
@@ -482,25 +504,24 @@ Rozhranie bolo testované na 3 užívateľoch formou scenára s konkrétnymi úl
 ### Výsledky
 12/15 úloh bolo splnených bez žiadosti o nápovedu. Väčšina pripomienok a žiadostí o nápovedu bolo spôsobená malými veľkosťami tlačítiek, textových a polí na vkladanie. Inak pôsobí aplikácia prehľadne a prívetivo.
 
-# Maketa / Diagram / Screenshot
-
-# Riešenie problémov užívateľov
+# Výsledný návrh
+![Výsledný návrh](./assets/result.png)
 
 # Architektura
 
-Aplikácia je rozdelená na backend server a mobilnú aplikáciu, ktoré spolu komunikujú pomocou HTTP Rest API. Mobilná aplikácia posiela požiadavky na backendový server, ktorú urobí nejakú operáciu (prípadne nad dátami z databáze) a odpovedá. Zvolená architektúra sa dá s prižmúrením oka nazvať MVC prístupom - databázový model, biznis logika a zobrazenie pre užívateľa sú jasne oddelené. Jediným rozdielom je rozdelenie vo viacerých úrovniach. Backendový server bude obsahovať model (databázový, štruktúry mapujúca záznamy), controler (biznis logika jednotlivých prístupových bodov rozhrania). Frontend potom znovu model (namapované odpovede z API štruktúry v pamäti), controler (biznis logika pracujúca nad dátami v pamäti) a výsledné view, teda zobrazenie užívateľovi. Architektura je týmto vcelku komplikovaná a obsahuje nadbytočné vrstvy (dala by sa zjednodušiť použitím lokálneho ukladania dát - "čisté" MVC), ide ale o realizáciu, ktorá sa bežne používa v praxi a je nutná pre našu funkcionalitu. Vďaka rozdeleniu backendového serveru a poskytnutie verejného API je možné pripojiť viac zariadení na rovnaký zdroj dát, je preto možné medzi užívateľmi interagovať.
+Aplikácia je rozdelená na backend server a mobilnú aplikáciu, ktoré spolu komunikujú pomocou HTTP Rest API. Vďaka rozdeleniu backendového serveru a poskytnutie verejného API je možné pripojiť viac zariadení na rovnaký zdroj dát, je preto možné medzi užívateľmi interagovať.
 
-Jedným z požiadavkou užívateľov bolo nevytvárať užívateľské účty pre správu jedál a objednania. Pri inštalovaní aplikácie (prípadne prvom požiadavku na BE server) sa užívateľovi vygeneruje unikátny identifikátor, ktorý bude uložený lokálne na užívateľovom telefóne. Podla neho budú priradené vytvorené jedlá a objednávky. Toto riešenie je pre reálny svet pravdepodobne nedostatočné. Pri získaní identifikátoru útočníkom, získa prístup k adrese.
+Jedným z požiadavkou užívateľov bolo nevytvárať užívateľské účty pre správu jedál a objednania. Pri inštalovaní aplikácie (prípadne prvom požiadavku na BE server) sa užívateľovi vygeneruje unikátny identifikátor, ktorý bude uložený lokálne na užívateľovom telefóne. Podla neho budú priradené vytvorené jedlá a objednávky. Toto riešenie je pre reálny svet pravdepodobne nedostatočné. Pri získaní identifikátoru útočníkom, získa prístup k datom.
 
 ## Platforma
 
-Jedinou podporovanou platformou je Android. Cielom bolo vyvinutie mobilnej aplikácie, bohužiaľ pre vývoj pre iOS vyžaduje zostavanie aplikácie na stroji od spoločnosti Apple, ktorý nikdy z týmu nevlastní. Nebolo by teda možné aplikáciu zostaviť, ani ladiť pri vývoji.
+Jedinou podporovanou platformou je Android.
 
 ## Mobilní aplikace
 
-Pre vývoj mobilnej aplikácie sme zvolili framework Flutter. Prevážne z dôvodu stability, ekosystému a skvelých vývojárskych nástrojov. Programovací jazyk Dark, ktorý Flutter využíva jke flexibilný a umožňuje rýchly vývoj, zároveň je veľmi podobný jazykom, ktoré sme predtým používali. Flutter podporuje zostavovanie aplikácií na viac platforiem. Túto funkcionalitu v projekte nevyužijeme, ale aj tak sme sa rozhodli Flutter použiť namiesto napríklad React Native alebo čistému Android SDK s Javou alebo Kotlinom.
+Pre vývoj mobilnej aplikácie sme zvolili framework Flutter. Prevážne z dôvodu stability, ekosystému a skvelých vývojárskych nástrojov. Programovací jazyk Dart, ktorý Flutter využíva je flexibilný a umožňuje rýchly vývoj. Flutter podporuje zostavovanie aplikácií na viac platforiem. Túto funkcionalitu v projekte nevyužijeme, ale aj tak sme sa rozhodli Flutter použiť.
 
-Kód je rozdelený presne podľa paradigma MVC nasledovne"
+Kód je rozdelený presne podľa paradigma MVC nasledovne:
 
 ```
 pages/ - jednotlivé stránky - "views"
@@ -513,7 +534,7 @@ components/
 utils/
 ```
 
-Definuje jednotlivé modely dát `Food { name: str, published: bool, ingredients: [{ ...Ingredient, amount }] }`, `Ingredient { name: str, price: num }`, `Order { foods: [{ ...Food, amount }], ...delivery details }`, ktoré zodpovedajú dátam vráteným z backend serveru.
+Definuje jednotlivé modely dát `Food`, `Ingredient`, `Order`, ktoré zodpovedajú dátam vráteným z backend serveru.
 
 Backend mobilní aplikácia (dart service - "controller") definuje následujúce základní rozhraní:
 `listMyFoods() => Food[]` - vráti zoznam jedál vlastnených užívateľom
@@ -555,6 +576,3 @@ start/
     routes.ts - definícia API prístupových bodov
 [...]
 ```
-
-Server je zabezpečený prístupovým kľúčom, ktorý je nutné špecifikovať v hlavičke HTTP požiadavkou`API-Key`, ide prevažne o zabránenie prístupu útočníkom. V prípade verejnej distribúcie aplikácie, nie je nutné a ani by správne nefungovalo (kľúč by musel byť distribuovaný v aplikácií kde je ľahko získateľný) 
-
