@@ -318,16 +318,16 @@ Dotazník bol vedený formou rozhovoru s tromi subjektami.
 ### Kľúčové potreby užívateľov
 - nedostatočné úpravy jedla
 
-### Uživateľské precesy
+### Uživateľské potreby
 Ostatné aplikácie sú málo prehladné. 
-Najvýraznejšou funkciou na home page bude vytvorenie novej objednávky. Ďalšou funkciou na home page bude ponuka jedál. Ako posledná možnosť bude vytvorenie nového burgeru. História a nastavenie budú schované. 
+Najvýraznejšou funkciou na home page bude vytvorenie novej objednávky. Ďalšou funkciou na home page bude ponuka jedál. Ako posledná možnosť bude vytvorenie nového burgeru. História a nastavenie budú najmenej nápadné. 
 
 ### Kľúčové vlastnosti budúcej aplikácie
 - prehladnosť
 - filtrovanie položiek
 - vidieť fotky jedla
-- pred vytvorené jedlá 
-- uprava pred vytvorených jedál
+- predvytvorené jedlá 
+- uprava predvytvorených jedál
 - cena jednotlivých položiek
 - upravovanie jedla podľa vlastných potrieb (diety, jedálníčku, chuti)
 - prehladná homepage
