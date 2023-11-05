@@ -1,7 +1,7 @@
 ---
 title: Správa návrhu
 author:
-    - Matúš Hubínsky
+    - Matúš Hubínsky (kapitán)
     - Marek Vandík
     - Martin Otradovec
 geometry: margin=25mm
@@ -506,7 +506,7 @@ Rozhranie bolo testované na 3 užívateľoch formou scenára s konkrétnymi úl
 
 # Výsledný návrh
 
-V tomto návrhu sú spojené všetky predchádzajúce návrhy, vylepšené o výsledky užívateľského testovania. Užívateľské rozhranie bolo mierne zväčšené, kvôli prehladnosti jednotlivých prvkov.
+V tomto návrhu sú spojené všetky predchádzajúce návrhy, vylepšené o výsledky užívateľského testovania. Užívateľské rozhranie bolo mierne zväčšené, kvôli prehladnosti jednotlivých prvkov. Maketa má iba jeden pohľad na checkout, aby mali užívatelia pred sebou celú objednávku, pri zadávaní adresy doručenia. 
 
 ![Výsledný návrh](./assets/result.png)
 
