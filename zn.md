@@ -1,9 +1,9 @@
 ---
 title: Správa návrhu
 author:
-    - Matúš Hubínsky (kapitán)
-    - Marek Vandík
-    - Martin Otradovec
+    - Matúš Hubinsky - xhubin04 (kapitán)
+    - Marek Vandík - xvandi01
+    - Martin Otradovec - xotrad00
 geometry: margin=25mm
 fontsize: 12pt
 header-includes:
