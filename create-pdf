@@ -9,7 +9,7 @@ LOGIN=$1
 
 # Ensure pandoc for md-latex
 if [ $(dpkg -l | grep pandoc | wc -l) -eq 0 ]; then
-    echo "`pandoc` package not installed."
+    echo "pandoc package not installed."
     echo "Install using the command apt install pandoc"
     exit 0
 fi
@@ -17,7 +17,7 @@ echo "pandoc found"
 
 # Ensure texlive for latex-pdf
 if [ $(dpkg -l | grep texlive | wc -l) -eq 0 ]; then
-    echo "`texlive` package not installed."
+    echo "texlive package not installed."
     echo "Install using the command apt install texlive"
     exit 0
 fi
