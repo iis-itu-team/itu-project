@@ -360,12 +360,13 @@ Najvýraznejšou funkciou na home page bude vytvorenie novej objednávky. Ďalš
 - TODO: popis
 
 ### Marek
-- TODO: obrázok
+![Markovo Maketa](./assets/maketa-martin.png)
 - TODO: popis
 
 ### Martin
-- TODO: obrázok
-- TODO: popis
+![Martinovo maketa](./assets/maketa-martin.png)
+
+Skládání burgerů je řešené pomocí drag-n-drop, stejně jako přidávání burgerů do objednávky. Checkout je sloučen pouze na jedno view místo více kroků, je tak jednoduchý a uživatel může upravovat hodnoty zpětně. Údaje o doručení obsahují detailní informace a poznámku o tom, že kurýr uživateli před doručením zavolá.
 
 ## Rozdelenie práce
 - 2. Každý člen pracuje na časti aplikácie, výsledkom je jedna aplikácia
@@ -550,8 +551,6 @@ a skupiny prístupových bodov:
 `/ingredients` - - pre správu ingrediencií zo strany reštaurácie, v aplikácií pravdepodobne nebude využité, dovoľuje všetky CRUP operácie, operuje nad modelom `Ingredient`
 `/foods` - vytvorené jedlá užívateľmi a jedlá zdielané s ostatnými, dovoluje všetky CRUD operácie nad modelom `Food`
 `/orders` - objednávky vytvorené užívateľom, dovoluje všetky CRUD operácie, operuje nad modulom  `Order`
-
-
  
 Struktura backendového serveru:
 ```
