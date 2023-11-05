@@ -400,8 +400,55 @@ užívatelia nemali problémy pri plnení úloh. Nepotrebovali žiadne nápovedy
 
 ## Marek
 ### Metriky
+- Uspěšnost dokončení úlohy bez pomoci
+- Počet otázek nutných k dokončení úlohy
+- Počet kliků mimo optimální řešení úlohy (uživatel "zaběhne" do částí programu, která s řešením nesouvisí, a pak se musí vracet)
+
+#### Úlohy
+1. Najděte ingredience "rajče" a "sýr"
+2. Sestavte burger s 1 ingrediencí - "tofu"
+3. Otevřete košík
+4. Přidejte burger z úlohy 2. do košíku
+5. V košíku zmenšete počet burgerů se sýrem
+6. Z košíku odstraňte burger z úlohy 2.
+7. V košíku dokončete objednávku
+8. Zobrazte si své uložené burgery
+9. V uložených burgerech přesuňte pořadí burgeru "Můj burger 2" na pozici 1
+10. Z uložených burgerů odstraňte "Sýr burger"
+11. V uložených burgerech upravte název burgeru "Můj burger"
+12. V uložených burgerech upravte složení burgeru "Můj burger"
+13. Vyhledejte v komuntním workshopu burger "Můj cheeseburger"
+14. V komunitním workshopu upravte rating burgeru "Tasty Onion"
+15. Přidejte komentář k burgeru od uživatele "Ondřej"
+16. Přidejte do komuntího workshopu některý uložený burger
+
 ### Priebeh
+Testování proběhlo na 2 uživatelích formou video meetingu se sdílením obrazovky. Uživatelé dostali odkaz na maketu v aplikaci Figma, spustili prototyp a dále plnili úkoly, které jim byly předčítány. Po splnění všech úkolů byl s uživateli veden krátký rozhovor ohledně různých připomínek a dalších námětů k aplikaci. V případě nejasností s řešením mohli uživatelé kdykoliv požádat o nápovědu.
+
 ### Výsledky
+Uživatelé splnili všechny úlohy bez otázek, až na úlohu 11. Zde jeden uživatel nemohl přijít na to, jak daný text změnit. Bylo by tedy dobré komponentu s názvem v této sekci nějak upravit, aby bylo na první pohled zřejmé, že se jedná o upravitelný element - např. ikona pera za textboxem, pomocí níž by se tato komponenta editovala v nějakém modálu.
+
+Úloha 1 měla celkem 1 kliknutí navíc oproti optimálnímu řešení. Uživatel si nejprve nevšiml textu "PULL TO SEE INGREDIENTS" a místo tažení komponenty na ni kliknul, ale vzápětí se opravil. Tato chyba vychází spíše z technických limitací aplikace Figma, kdy ve skutečné aplikaci by bylo možné tuto komponentu naanimovat tak, aby uživatele svým pohybem vyzívala ke správnému gestu místo obyčejného kliknutí.
+
+Úloha 5 měla celkem 6 kliknutí navíc oproti optimálnímu řešení od jednoho uživatele. Uživatel se pokoušel zmenšit počet kusů v objednávce klknutím na křížek, jehož sémantikou je odstranit tuto položku úplně z objednávky. Uživatel posléze v rozhovoru uvedl, že si nevšiml textu počet a přidružených komponent pro ovládání tohoto atributu. Možným řešením by bylo dané komponenty zvětšit a/nebo zvýraznit křiklavější barvou.
+
+Úloha 7 měla celkem 3 kliknutí navíc oproti optimálnímu řešení od jednoho uživatele. Uživatel nejprve v košíku hledal pomocí různých posunovacích gest platební metody, ale posléze zkusil vyplnit adresu, po čemž se uživateli tyto metody objeví. Z rozhovoru vyplynulo, že designové rozhodnutí schovávat platební metody není nutně špatně, ale bylo by potřeba přejmenovat položku "Adresa", neboť se může vztahovat jak k fakturační adrese, tak k doručovací adrese. Dobrou volbou pro nový název by mohlo být "Kam doručit(?)". Uživatel dále v rozhovru uvedl, že si o běžných tláčítkách platebních metod myslel, že jsou radio buttony a také mu chybělo nějaké výsledné potvrzení / shrnutí objednávky. Vzhledem k tomu, že ostatní běžná tlačítka měla stejný design a v dalších úlohách s nimi nebyl problém, zřejmě není potřeba problém domnělých radio buttonů řešit. Zahrnout potvrzení / shrnutí objednávky do projektu by nejspíš bylo vhodné.
+
+Úloha 15 měla celkem 4 kliknutí navíc oproti optimálnímu řešení opět od jednoho uživatele. Uživatel se v komunitním workshopu snažil přidat komentář tak, že klik na velké tlačítko plus, jehož sémantika je přidat burger do workshopu. Pro správné řešení by uživatel musel daný burger vyhledat a kliknout na něj (příp. na ikonu komentářů), což po pár kliknutí uživatel udělal a přidal komentář. Možným řešením tohoto problému by bylo zvětšit ikonu komentářů u burgerů v nabídce.
+
+Zbývající úlohy byly řešeny bez problémů.
+
+Závěry:
+- upravit editovatelné pole "Název burgeru" tak, aby bylo na první pohled zřejmé, že je možné jej editovat (např. přidáním ikony propisky)
+- u položek v košíku zvětšit / zvýraznit komponenty související s počtem kusů
+- změnit název "Adresa" na "Kam doručit?" u objednávky v košíku
+- možná zvětšit ikonu komentářů v komunitním workshopu
+
+Z rozhovoru s uživateli vyplynuly ještě další náměty jako:
+- přidat shrnutí / potvrzení objednávky
+- historie objednávek a popř. alergeny (poměrně důležitá funkcionalita vhodná pro implementaci při nedostatečném rozsahu)
+- změnit název community workshopu - uživatelům nebylo na první pohled jasné, co to vlastně má být
+- grafická řešení drag & drop ingrediencí, která nebylo možné jednoduše realizovat v aplikaci Figma
 
 ## Martin
 ### Metriky
