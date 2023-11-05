@@ -17,13 +17,13 @@ header-includes:
 
 Navrhol: Matúš Hubinský
 
-EDR systémy analyzujú chovania viacerých zariadení a vyhodnocujú bezpečnostné hrozby na základe udalostí zaznamenaných v databáze. Ak vyhodnotia chovanie ako nebezpečné vygenerujú alert. Tento alert je následne spracovaný bezpečnostným analytikom, ktorý sa venuje monitoringu. Bezpečnostný analytici môžu naraz monitorovať viaceré systémov a preto potrebujú také grafické rozhranie, z ktorého vedia na prvý pohľad určiť počet nových bezpečnostných upozornení a zároveň ich závažnosť. Existuje viacero riešení, ale každé má svoje problémy a dalo by sa vylepšiť.
+EDR systémy analyzujú chovania viacerých zariadení a vyhodnocujú bezpečnostné hrozby na základe udalostí zaznamenaných v databáze. Ak vyhodnotia chovanie ako nebezpečné vygenerujú bezpečnostné upozornenie. Toto bezpečnostné upozornenie je následne spracovaný bezpečnostným analytikom, ktorý sa venuje monitoringu. Bezpečnostný analytici môžu naraz monitorovať viaceré systémov a preto potrebujú také grafické rozhranie, z ktorého vedia na prvý pohľad určiť počet nových bezpečnostných upozornení a zároveň ich závažnosť. Existuje viacero riešení, ale každé má svoje problémy a dalo by sa vylepšiť.
 
 ## Mobilná aplikácia pre BAM (Brnenský Architektonický Manuál)
 
 Navrhol: Martin Otradovec
 
-BAM je projekt poskytujúci databázu architektonicky významných objektov v Brne. Cielom realizácie bolo vytvoriť k už existujúcemu webu mobilnú aplikáciu poskytujúcu prístup k objektom, trasám a audios sprievodcom prívetivo a offline. Ďalším možným prvkom je skenovanie kódov, ktoré sú po Brne rozmiestnené pri budovách alebo detekcia budov v okolí podľa GPS. Aplikáciu by bolo možné v prípade kvalitnej realizácie ponúknuť BAMu pre reálne využitie, pripadne rozvinúť do bakalárskej práce. Záujem medzi užívateľmi existujúceho webu je nezanedbateľný. Podobná aplikácia existuje vo forme postaršej bakalárskej práce, ale nie je verejne prístupná.
+BAM je projekt poskytujúci databázu architektonicky významných objektov v Brne. Cielom realizácie bolo vytvoriť k už existujúcemu webu mobilnú aplikáciu poskytujúcu prístup k objektom, trasám a audio sprievodcom prívetivo a offline. Ďalším možným prvkom je skenovanie QR kódov, ktoré sú po Brne rozmiestnené pri budovách alebo detekcia budov v okolí podľa GPS. Aplikáciu by bolo možné v prípade kvalitnej realizácie ponúknuť BAMu pre reálne využitie, pripadne rozvinúť do bakalárskej práce. Záujem medzi užívateľmi existujúceho webu je nezanedbateľný. Podobná aplikácia existuje vo forme postaršej bakalárskej práce, ale nie je verejne prístupná.
 
 ## Mobilná aplikácia pre objednávanie a zostavanie hamburgerov - Food Blueprint
 
@@ -35,13 +35,13 @@ Aplikácia Food Blueprint má za cieľ umožniť svojim užívateľom nielen obj
 
 Po hlasovaní a dohode sme vybrali aplikáciu pre objednávanie a zostavanie hamburgerov - Food Blueprint. Aplikácia je relatívne jednoduchá na realizáciu a zber dár pre prieskum užívateľských potrieb.
 
-# Priekum
+# Prieskum
 
 ## Matúš
 
 ### Dotazník
 
-Dotazník bol robený formou online a offline stretnutia. Na začatku boli respondentom prečítané otázky. Respondeti na ne následne odpovedali. Pri každej otázke vznikla krátka diskucia nad danou problematikou.
+Dotazník bol robený formou online a offline stretnutia. Na začiatku boli respondentom prečítané otázky. Respondenti na ne následne odpovedali. Pri každej otázke vznikla krátka diskusia nad danou problematikou.
 
 1. Používali ste niekedy aplikáciu na objednávanie jedla?
     * Možnosti: Áno/Nie
@@ -113,7 +113,7 @@ Všetci respondenti mali skúsenosti s používaním aplikácií na objednávani
 - potreba upraviť si jedlo podla seba
 
 ### Porovnávanie s existujúcimi aplikáciami
-- foodora
+- foodora, webová aplikácie pre mobil
 
 #### Prednosti
 
@@ -219,12 +219,12 @@ Siedmim užívateľom bol zaslaný nasledujúci dotazník a ďalej následne bol
 ### Porovnávanie s existujúcimi aplikáciami
 McDonald's mobilná aplikácia pre iOS
 
-Prednosti
+#### Prednosti
 
 - pekne riešené kalorické hodnoty jedál
 - dobre rozdelené hamburgery do kategórií
 
-Nedostatky
+#### Nedostatky
 
 - 2 rôzne pohlady na jedlá, jeden sa používa pri objednávaní na pobočke a zároveň pri prezentáciu jedál, a druhý pre objednávanie z Foodory atď, čo je pre užívateľov nepraktické.
 - neumožňuje zdielanie hamburgerov
@@ -319,12 +319,12 @@ Dotazník bol vedený formou rozhovoru s tromi subjektami.
 
 - Dáme Jídlo
 
-Prednosti
+#### Prednosti
 
 - prehľadné zadávanie objednávok
 - nevyžaduje užívateľský účet pre objednanie
 
-Nedostatky
+#### Nedostatky
 
 - možnosť meniť prísady jedla je neprehľadná, je možné iba na klikať dopredu zadané prísady v zozname (pokiaľ ho reštaurácia takto pred vytvorí nie je to funkcia podporovaná aplikáciou)
 - chýba konkrétna informácia o spôsobe, akým spôsobom prebehne doručenie jedla. Užívateľ, ktorý vidí aplikáciu prvý krát, vedel čo sa bude diať a čo má čakať
@@ -505,6 +505,9 @@ Rozhranie bolo testované na 3 užívateľoch formou scenára s konkrétnymi úl
 12/15 úloh bolo splnených bez žiadosti o nápovedu. Väčšina pripomienok a žiadostí o nápovedu bolo spôsobená malými veľkosťami tlačítiek, textových a polí na vkladanie. Inak pôsobí aplikácia prehľadne a prívetivo.
 
 # Výsledný návrh
+
+V tomto návrhu sú spojené všetky predchádzajúce návrhy, vylepšené o výsledky užívateľského testovania. Užívateľské rozhranie bolo mierne zväčšené, kvôli prehladnosti jednotlivých prvkov.
+
 ![Výsledný návrh](./assets/result.png)
 
 # Architektura
