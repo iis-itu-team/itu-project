@@ -1,10 +1,10 @@
-import 'package:food_blueprint/src/models/food.dart';
+import 'package:food_blueprint/src/models/burger.dart';
 
 class User {
   final String id;
   final String name;
   String? password;
-  List<EditedFood> editedfood = [];
+  List<Editedburger> editedburger = [];
 
   User(this.id, this.name, this.password);
 
@@ -15,6 +15,6 @@ class User {
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
-        'editedfood': editedfood.map((e) => e.toJson()).toList()
+        'editedburger': editedburger.map((e) => e.toJson()).toList()
       };
 }
