@@ -2,13 +2,13 @@ import 'dart:convert';
 
 import 'package:food_blueprint/src/models/ingredient.dart';
 
-class burger {
+class Burger {
   final String id;
   String name;
 
-  burger(this.id, this.name);
+  Burger(this.id, this.name);
 
-  burger.fromJson(Map<String, dynamic> json)
+  Burger.fromJson(Map<String, dynamic> json)
       : id = json["id"] as String,
         name = json['name'] as String;
 
@@ -24,7 +24,7 @@ class Editedburger {
 
   Editedburger();
 
-  Editedburger.fromburger(burger burger)
+  Editedburger.fromburger(Burger burger)
       : id = burger.id,
         name = burger.name;
 
