@@ -1,13 +1,13 @@
-import 'package:food_blueprint/src/models/food.dart';
-import 'package:food_blueprint/src/services/food_service/food_service.dart';
+import 'package:food_blueprint/src/models/burger.dart';
+import 'package:food_blueprint/src/services/burger_service/burger_service.dart';
 
 class HomeController {
-  final FoodService foodService;
+  final BurgerService foodService;
 
   const HomeController(this.foodService);
 
-  Future<List<Food>> listFoods() async {
-    final result = await foodService.listFoods();
+  Future<List<Burger>> listBurgers() async {
+    final result = await foodService.listBurgers();
 
     if (result.status != "success") {
       // todo: error? popup?

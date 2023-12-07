@@ -15,16 +15,16 @@ class Burger {
   Map<String, dynamic> toJson() => {'name': name};
 }
 
-class Editedburger {
+class EditedBurger {
   String? id;
   String? name;
   bool publish = false;
   List<Ingredient> ingredients = [];
   String? keeperId;
 
-  Editedburger();
+  EditedBurger();
 
-  Editedburger.fromburger(Burger burger)
+  EditedBurger.fromburger(Burger burger)
       : id = burger.id,
         name = burger.name;
 

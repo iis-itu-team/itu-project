@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:food_blueprint/src/env/env.dart';
-import 'package:food_blueprint/src/pages/food_edit/food_edit_controller.dart';
-import 'package:food_blueprint/src/pages/food_edit/food_edit_page.dart';
+import 'package:food_blueprint/src/pages/burger_edit/burger_edit_controller.dart';
+import 'package:food_blueprint/src/pages/burger_edit/burger_edit_page.dart';
 import 'package:food_blueprint/src/pages/home/home_controller.dart';
 import 'package:food_blueprint/src/pages/home/home_page.dart';
-import 'package:food_blueprint/src/services/food_service/food_service.dart';
+import 'package:food_blueprint/src/services/burger_service/burger_service.dart';
 
 /// The Widget that configures your application.
 class MyApp extends StatelessWidget {
@@ -16,9 +16,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final FoodService foodService = FoodService();
-    final HomeController homeController = HomeController(foodService);
-    final FoodEditController foodEditController = FoodEditController(foodService);
+    final BurgerService burgerService = BurgerService();
+    final HomeController homeController = HomeController(burgerService);
+    final BurgerEditController foodEditController =
+        BurgerEditController(burgerService);
 
     // Glue the SettingsController to the MaterialApp.
     //
@@ -68,8 +69,8 @@ class MyApp extends StatelessWidget {
             switch (routeSettings.name) {
               case HomePage.routeName:
                 return HomePage(controller: homeController);
-              case FoodEditPage.routeName:
-                return FoodEditPage(controller: foodEditController);
+              case BurgerEditPage.routeName:
+                return BurgerEditPage(controller: foodEditController);
               default:
                 return HomePage(controller: homeController);
             }

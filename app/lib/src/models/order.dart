@@ -12,7 +12,7 @@ class Order {
   int? phone;
   String? notes;
   int? price;
-  List<Editedburger> editedburger = [];
+  List<EditedBurger> editedburger = [];
 
   Order(this.id, this.time, this.user);
 

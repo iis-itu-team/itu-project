@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_blueprint/src/pages/food_edit/food_edit_arguments.dart';
-import 'package:food_blueprint/src/pages/food_edit/food_edit_page.dart';
+import 'package:food_blueprint/src/pages/burger_edit/burger_edit_arguments.dart';
+import 'package:food_blueprint/src/pages/burger_edit/burger_edit_page.dart';
 import 'package:food_blueprint/src/pages/home/home_controller.dart';
 
 class HomePage extends StatelessWidget {
@@ -35,19 +35,18 @@ class HomePage extends StatelessWidget {
                                     title: Text(food.name),
                                     onTap: () {
                                       Navigator.pushNamed(
-                                          context, FoodEditPage.routeName,
-                                          arguments:
-                                              FoodEditArguments(food));
+                                          context, BurgerEditPage.routeName,
+                                          arguments: BurgerEditArguments(food));
                                     });
                               },
                             );
                           },
-                          future: controller.listFoods())))),
+                          future: controller.listBurgers())))),
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, FoodEditPage.routeName);
+                  Navigator.pushNamed(context, BurgerEditPage.routeName);
                 },
                 child: const Text("Create new burger! (click...)",
                     style: TextStyle(fontWeight: FontWeight.bold))),

@@ -4,7 +4,7 @@ class User {
   final String id;
   final String name;
   String? password;
-  List<Editedburger> editedburger = [];
+  List<EditedBurger> editedburger = [];
 
   User(this.id, this.name, this.password);
 

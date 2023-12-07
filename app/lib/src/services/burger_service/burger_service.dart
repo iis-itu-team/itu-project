@@ -4,10 +4,10 @@ import 'dart:developer' as developer;
 
 import 'package:food_blueprint/src/http/client.dart';
 import 'package:food_blueprint/src/http/result.dart';
-import 'package:food_blueprint/src/models/food.dart';
+import 'package:food_blueprint/src/models/burger.dart';
 import 'package:food_blueprint/src/models/ingredient.dart';
 
-class FoodService {
+class BurgerService {
   Future<HttpResult<List<Ingredient>>> listIngredients() async {
     final HttpClient client = HttpClient.fromEnv();
 
@@ -27,41 +27,44 @@ class FoodService {
     return HttpResult(response.statusCode, json["status"], ingredient);
   }
 
-  Future<HttpResult<List<Food>>> listFoods() async {
+  Future<HttpResult<List<Burger>>> listBurgers() async {
     final HttpClient client = HttpClient.fromEnv();
 
     final response = await client.get(client.route("/foods"));
 
     final json = jsonDecode(response.body) as Map<String, dynamic>;
 
-    List<Food> foods = [];
+    List<Burger> foods = [];
 
     if (json["status"] == "success") {
       // deserialize
       for (final Map<String, dynamic> foodJson in json["data"]) {
-        foods.add(Food.fromJson(foodJson));
+        foods.add(Burger.fromJson(foodJson));
       }
     }
 
     return HttpResult(response.statusCode, json["status"], foods);
   }
 
-  Future<HttpResult<void>> updateFood(String id, EditedFood food) async {
+  Future<HttpResult<void>> updateBurger(String id, EditedBurger food) async {
     final HttpClient client = HttpClient.fromEnv();
 
-    final response = await client.put(client.route('/foods/${food.id}'), body: food.toJson());
+    final response = await client.put(client.route('/foods/${food.id}'),
+        body: food.toJson());
 
     final json = jsonDecode(response.body) as Map<String, dynamic>;
 
     return HttpResult(response.statusCode, json["status"], null);
   }
 
-  Future<HttpResult<void>> createFood(EditedFood food) async {
+  Future<HttpResult<void>> createBurger(EditedBurger food) async {
     final HttpClient client = HttpClient.fromEnv();
 
     developer.log(jsonEncode(food.toJson()));
 
-    final response = await client.post(client.route('/foods'), headers: { 'Content-Type': "application/json" }, body: jsonEncode(food.toJson()).toString());
+    final response = await client.post(client.route('/foods'),
+        headers: {'Content-Type': "application/json"},
+        body: jsonEncode(food.toJson()).toString());
 
     final json = jsonDecode(response.body) as Map<String, dynamic>;
 
