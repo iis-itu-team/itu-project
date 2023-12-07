@@ -3,10 +3,12 @@ import 'package:food_blueprint/src/services/burger_service/burger_service.dart';
 import 'package:food_blueprint/src/services/order_service/order_service.dart';
 
 class OrderController {
-  final BurgerService foodService;
+  // final BurgerService foodService;
+  final OrderService orderService;
 
-  const OrderController(this.foodService);
+  const OrderController(this.orderService);
 
+  /*
   Future<List<Burger>> listBurgers() async {
     final result = await foodService.listBurgers();
 
@@ -17,4 +19,5 @@ class OrderController {
 
     return result.data!;
   }
+  */
 }

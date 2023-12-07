@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_arguments.dart';
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_controller.dart';
+import 'package:food_blueprint/src/pages/order/order_page.dart';
 
 class BurgerEditPage extends StatelessWidget {
   final BurgerEditController controller;
@@ -25,10 +26,13 @@ class BurgerEditPage extends StatelessWidget {
             TextField(
               onChanged: controller.handleNameUpdate,
             ),
-            GestureDetector(
-              onTap: controller.handleSave,
+            ElevatedButton(
+              onPressed: () {
+                // Navigate to a different page here
+                Navigator.pushNamed(context, OrderPage.routeName);
+              },
               child: const Text("Save"),
-            )
+            ),
           ],
         ),
       ),

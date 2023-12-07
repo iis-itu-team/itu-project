@@ -6,13 +6,20 @@ class OrderPage extends StatelessWidget {
 
   const OrderPage({required this.controller, super.key});
 
-  static const routeName = '/order-edit';
+  static const routeName = '/order';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Order')),
-      // body:
+      appBar: AppBar(title: const Text('Home')),
+      body: Center(
+        child: Column(
+          children: [
+            const Text("Burgers:"),
+            const Text("Fill the shipping:"),
+          ],
+        ),
+      ),
     );
   }
 }
