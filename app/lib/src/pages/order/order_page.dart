@@ -73,6 +73,21 @@ class OrderPage extends StatelessWidget {
                           ],
                         ),
                       ),
+                      CheckboxListTile(
+                          value: false,
+                          onChanged: (val) {},
+                          activeColor: COLOR_SECONDARY,
+                          title: Text("pred dom")),
+                      CheckboxListTile(
+                          value: false,
+                          onChanged: (val) {},
+                          activeColor: COLOR_SECONDARY,
+                          title: Text("ku dverám")),
+                      CheckboxListTile(
+                          value: false,
+                          onChanged: (val) {},
+                          activeColor: COLOR_SECONDARY,
+                          title: Text("ku dverám bytu")),
                       Container(
                         padding: EdgeInsets.all(16.0),
                         child: Column(
@@ -87,6 +102,21 @@ class OrderPage extends StatelessWidget {
                         ),
                       ),
                       const Text("platba"),
+                      CheckboxListTile(
+                          value: false,
+                          onChanged: (val) {},
+                          activeColor: COLOR_SECONDARY,
+                          title: Text("pri doručení (karta/hotovosť)")),
+                      CheckboxListTile(
+                          value: false,
+                          onChanged: (val) {},
+                          activeColor: COLOR_SECONDARY,
+                          title: Text("online kartou")),
+                      CheckboxListTile(
+                          value: false,
+                          onChanged: (val) {},
+                          activeColor: COLOR_SECONDARY,
+                          title: Text("paypal / google pay / apple pay"))
                     ],
                   ),
                 ),
