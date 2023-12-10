@@ -12,9 +12,9 @@ class OrderPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Home')),
+      appBar: AppBar(title: const Text('Home'), backgroundColor: COLOR_PRIMARY),
       body: Container(
-          color: COLOR_PRIMARY,
+          color: COLOR_SECONDARY,
           padding: const EdgeInsets.only(left: 16.0),
           child: SingleChildScrollView(
             child: Column(
@@ -127,7 +127,7 @@ class OrderPage extends StatelessWidget {
       floatingActionButton: FloatingActionButton.large(
         onPressed: () {},
         child: const Text('Objednat!'),
-        backgroundColor: COLOR_SECONDARY,
+        backgroundColor: COLOR_PRIMARY,
       ),
     );
   }
