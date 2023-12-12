@@ -6,8 +6,8 @@ import 'package:food_blueprint/src/pages/burger_edit/burger_edit_controller.dart
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_page.dart';
 import 'package:food_blueprint/src/pages/home/home_controller.dart';
 import 'package:food_blueprint/src/pages/home/home_page.dart';
-import 'package:food_blueprint/src/pages/order/order_page.dart';
-import 'package:food_blueprint/src/pages/order/order_controller.dart';
+import 'package:food_blueprint/src/pages/order_new/order_new_page.dart';
+import 'package:food_blueprint/src/pages/order_new/order_new_controller.dart';
 import 'package:food_blueprint/src/services/burger_service/burger_service.dart';
 import 'package:food_blueprint/src/services/order_service/order_service.dart';
 

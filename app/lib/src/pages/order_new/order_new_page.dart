@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
-import 'package:food_blueprint/src/pages/order/order_controller.dart';
+import 'package:food_blueprint/src/pages/order_new/order_new_controller.dart';
 
 class BorderedTextFormField extends StatelessWidget {
   final Widget child;
@@ -28,7 +28,7 @@ class OrderPage extends StatelessWidget {
 
   const OrderPage({required this.controller, super.key});
 
-  static const routeName = '/order';
+  static const routeName = '/order_new';
 
   @override
   Widget build(BuildContext context) {
