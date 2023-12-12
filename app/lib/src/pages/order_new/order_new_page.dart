@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/pages/order_new/order_new_controller.dart';
+import 'package:food_blueprint/src/pages/order_new/order_confirm_page.dart';
 
 class BorderedTextFormField extends StatelessWidget {
   final Widget child;
@@ -23,10 +24,10 @@ class BorderedTextFormField extends StatelessWidget {
   }
 }
 
-class OrderPage extends StatelessWidget {
-  final OrderController controller;
+class OrderNewPage extends StatelessWidget {
+  final OrderNewController controller;
 
-  const OrderPage({required this.controller, super.key});
+  const OrderNewPage({required this.controller, super.key});
 
   static const routeName = '/order_new';
 
@@ -265,7 +266,9 @@ class OrderPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
             FloatingActionButton.large(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, OrderConfirmPage.routeName);
+              },
               backgroundColor: COLOR_SECONDARY,
               child:
                   const Text('Objednat!', style: TextStyle(color: COLOR_TEXT)),

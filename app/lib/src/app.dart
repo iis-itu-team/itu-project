@@ -7,7 +7,10 @@ import 'package:food_blueprint/src/pages/burger_edit/burger_edit_page.dart';
 import 'package:food_blueprint/src/pages/home/home_controller.dart';
 import 'package:food_blueprint/src/pages/home/home_page.dart';
 import 'package:food_blueprint/src/pages/order_new/order_new_page.dart';
+import 'package:food_blueprint/src/pages/order_new/order_confirm_page.dart';
 import 'package:food_blueprint/src/pages/order_new/order_new_controller.dart';
+import 'package:food_blueprint/src/pages/order_show/order_show_page.dart';
+import 'package:food_blueprint/src/pages/order_show/order_show_controller.dart';
 import 'package:food_blueprint/src/services/burger_service/burger_service.dart';
 import 'package:food_blueprint/src/services/order_service/order_service.dart';
 
@@ -23,8 +26,12 @@ class MyApp extends StatelessWidget {
     final HomeController homeController = HomeController(burgerService);
     final BurgerEditController foodEditController =
         BurgerEditController(burgerService);
+
     final OrderService orderService = OrderService();
-    final OrderController orderController = OrderController(orderService);
+    final OrderNewController orderNewController =
+        OrderNewController(orderService);
+    final OrderShowController orderShowController =
+        OrderShowController(orderService);
 
     // Glue the SettingsController to the MaterialApp.
     //
@@ -76,8 +83,12 @@ class MyApp extends StatelessWidget {
                 return HomePage(controller: homeController);
               case BurgerEditPage.routeName:
                 return BurgerEditPage(controller: foodEditController);
-              case OrderPage.routeName:
-                return OrderPage(controller: orderController);
+              case OrderNewPage.routeName:
+                return OrderNewPage(controller: orderNewController);
+              case OrderConfirmPage.routeName:
+                return OrderConfirmPage(controller: orderShowController);
+              case OrderShowPage.routeName:
+                return OrderShowPage(controller: orderShowController);
               default:
                 return HomePage(controller: homeController);
             }

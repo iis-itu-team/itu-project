@@ -29,7 +29,7 @@ class BurgerEditPage extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 // Navigate to a different page here
-                Navigator.pushNamed(context, OrderPage.routeName);
+                Navigator.pushNamed(context, OrderNewPage.routeName);
               },
               child: const Text("Save"),
             ),

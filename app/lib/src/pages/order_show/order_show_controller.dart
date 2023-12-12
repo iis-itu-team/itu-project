@@ -2,11 +2,11 @@ import 'package:food_blueprint/src/models/burger.dart';
 import 'package:food_blueprint/src/services/burger_service/burger_service.dart';
 import 'package:food_blueprint/src/services/order_service/order_service.dart';
 
-class OrderNewController {
+class OrderShowController {
   // final BurgerService foodService;
   final OrderService orderService;
 
-  const OrderNewController(this.orderService);
+  const OrderShowController(this.orderService);
 
   // TODO: save order
   // TODO: show orders
