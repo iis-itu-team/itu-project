@@ -139,29 +139,32 @@ class OrderPage extends StatelessWidget {
                       ),
                     ),
                     CheckboxListTile(
-                        value: false,
-                        onChanged: (val) {},
-                        activeColor: COLOR_SECONDARY,
-                        title: Text(
-                          "pred dom",
-                          style: TextStyle(color: COLOR_TEXT, fontSize: 18),
-                        )),
+                      value: false,
+                      onChanged: (val) {},
+                      activeColor: COLOR_SECONDARY,
+                      title: Text(
+                        "pred dom",
+                        style: TextStyle(color: COLOR_TEXT, fontSize: 18),
+                      ),
+                    ),
                     CheckboxListTile(
-                        value: false,
-                        onChanged: (val) {},
-                        activeColor: COLOR_SECONDARY,
-                        title: Text(
-                          "ku dverám",
-                          style: TextStyle(color: COLOR_TEXT, fontSize: 18),
-                        )),
+                      value: false,
+                      onChanged: (val) {},
+                      activeColor: COLOR_SECONDARY,
+                      title: Text(
+                        "ku dverám",
+                        style: TextStyle(color: COLOR_TEXT, fontSize: 18),
+                      ),
+                    ),
                     CheckboxListTile(
-                        value: false,
-                        onChanged: (val) {},
-                        activeColor: COLOR_SECONDARY,
-                        title: Text(
-                          "ku dverám bytu",
-                          style: TextStyle(color: COLOR_TEXT, fontSize: 18),
-                        )),
+                      value: false,
+                      onChanged: (val) {},
+                      activeColor: COLOR_SECONDARY,
+                      title: Text(
+                        "ku dverám bytu",
+                        style: TextStyle(color: COLOR_TEXT, fontSize: 18),
+                      ),
+                    ),
                     Container(
                       padding: EdgeInsets.all(10),
                       child: Column(
@@ -218,29 +221,32 @@ class OrderPage extends StatelessWidget {
                       padding: EdgeInsets.all(10),
                       child: Column(children: [
                         CheckboxListTile(
-                            value: false,
-                            onChanged: (val) {},
-                            activeColor: COLOR_SECONDARY,
-                            title: Text(
-                              "pri doručení (karta/hotovosť)",
-                              style: TextStyle(color: COLOR_TEXT, fontSize: 18),
-                            )),
+                          value: false,
+                          onChanged: (val) {},
+                          activeColor: COLOR_SECONDARY,
+                          title: Text(
+                            "pri doručení (karta/hotovosť)",
+                            style: TextStyle(color: COLOR_TEXT, fontSize: 18),
+                          ),
+                        ),
                         CheckboxListTile(
-                            value: false,
-                            onChanged: (val) {},
-                            activeColor: COLOR_SECONDARY,
-                            title: Text(
-                              "online kartou",
-                              style: TextStyle(color: COLOR_TEXT, fontSize: 18),
-                            )),
+                          value: false,
+                          onChanged: (val) {},
+                          activeColor: COLOR_SECONDARY,
+                          title: Text(
+                            "online kartou",
+                            style: TextStyle(color: COLOR_TEXT, fontSize: 18),
+                          ),
+                        ),
                         CheckboxListTile(
-                            value: false,
-                            onChanged: (val) {},
-                            activeColor: COLOR_SECONDARY,
-                            title: Text(
-                              "paypal / google pay / apple pay",
-                              style: TextStyle(color: COLOR_TEXT, fontSize: 18),
-                            ))
+                          value: false,
+                          onChanged: (val) {},
+                          activeColor: COLOR_SECONDARY,
+                          title: Text(
+                            "paypal / google pay / apple pay",
+                            style: TextStyle(color: COLOR_TEXT, fontSize: 18),
+                          ),
+                        ),
                       ]),
                     )
                   ],
@@ -252,6 +258,7 @@ class OrderPage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: Container(
+        padding: EdgeInsets.all(10),
         height: 100,
         color: COLOR_PRIMARY,
         child: Row(
