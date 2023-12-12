@@ -90,8 +90,6 @@ class MyApp extends StatelessWidget {
                 return BurgerEditPage(controller: foodEditController);
               case OrderNewPage.routeName:
                 return OrderNewPage(controller: orderNewController);
-              case OrderConfirmPage.routeName:
-                return OrderConfirmPage(controller: orderShowController);
               case OrderShowPage.routeName:
                 return OrderShowPage(controller: orderShowController);
               case SettingsPage.routeName:
