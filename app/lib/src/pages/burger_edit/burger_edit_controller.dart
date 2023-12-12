@@ -18,7 +18,7 @@ class BurgerEditController {
     if (args == null) {
       editedBurger = EditedBurger();
     } else {
-      editedBurger = EditedBurger.fromburger(args.food);
+      editedBurger = EditedBurger.fromBurger(args.food);
     }
   }
 

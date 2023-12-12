@@ -1,5 +1,6 @@
 import 'package:food_blueprint/src/models/ingredient.dart';
 
+// Burger fetched from the API
 class Burger {
   final String id;
   String name;
@@ -13,6 +14,8 @@ class Burger {
   Map<String, dynamic> toJson() => {'name': name};
 }
 
+// Burger currently being edited
+// - extra properties, editable props
 class EditedBurger {
   String? id;
   String? name;
@@ -22,7 +25,7 @@ class EditedBurger {
 
   EditedBurger();
 
-  EditedBurger.fromburger(Burger burger)
+  EditedBurger.fromBurger(Burger burger)
       : id = burger.id,
         name = burger.name;
 
@@ -30,6 +33,6 @@ class EditedBurger {
         'name': name,
         'publish': publish.toString(),
         'ingredients': ingredients.map((e) => e.toJson()).toList(),
-        'keeperId': "keeper_01HEBWQH773TXCBZCK1HQDX79G"
+        'keeperId': keeperId
       };
 }

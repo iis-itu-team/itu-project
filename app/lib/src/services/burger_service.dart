@@ -46,30 +46,27 @@ class BurgerService {
     return HttpResult(response.statusCode, json["status"], foods);
   }
 
-  Future<HttpResult<void>> updateBurger(String id, EditedBurger food) async {
+  Future<HttpResult<void>> updateBurger(String id, EditedBurger editedBurger) async {
     final HttpClient client = HttpClient.fromEnv();
 
-    final response = await client.put(client.route('/foods/${food.id}'),
-        body: food.toJson());
+    final response = await client.put(client.route('/foods/${editedBurger.id}'),
+        body: editedBurger.toJson());
 
     final json = jsonDecode(response.body) as Map<String, dynamic>;
 
     return HttpResult(response.statusCode, json["status"], null);
   }
 
-  Future<HttpResult<void>> createBurger(EditedBurger food) async {
+  Future<HttpResult<void>> createBurger(EditedBurger editedBurger) async {
     final HttpClient client = HttpClient.fromEnv();
-
-    developer.log(jsonEncode(food.toJson()));
 
     final response = await client.post(client.route('/foods'),
         headers: {'Content-Type': "application/json"},
-        body: jsonEncode(food.toJson()).toString());
+        body: jsonEncode(editedBurger.toJson()).toString());
 
     final json = jsonDecode(response.body) as Map<String, dynamic>;
 
     if (!json.keys.contains("status")) {
-      developer.log(json.toString());
       return HttpResult(response.statusCode, "validation_error", null);
     }
 
