@@ -4,9 +4,7 @@ import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/pages/order_show/order_show_controller.dart';
 
 class OrderConfirmPage extends StatelessWidget {
-  final OrderShowController controller;
-
-  const OrderConfirmPage({required this.controller, super.key});
+  const OrderConfirmPage({super.key});
 
   static const routeName = '/order_show';
 

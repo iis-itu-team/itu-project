@@ -8,6 +8,7 @@ import 'package:food_blueprint/src/pages/burger_edit/burger_edit_page.dart';
 import 'package:food_blueprint/src/pages/home/home_controller.dart';
 import 'package:food_blueprint/src/pages/home/home_page.dart';
 import 'package:food_blueprint/src/pages/order_new/order_new_page.dart';
+import 'package:food_blueprint/src/pages/order_new/order_confirm_page.dart';
 import 'package:food_blueprint/src/pages/order_new/order_new_controller.dart';
 import 'package:food_blueprint/src/pages/order_show/order_show_page.dart';
 import 'package:food_blueprint/src/pages/order_show/order_show_controller.dart';
@@ -89,6 +90,8 @@ class MyApp extends StatelessWidget {
                 return BurgerEditPage(controller: foodEditController);
               case OrderNewPage.routeName:
                 return OrderNewPage(controller: orderNewController);
+              case OrderConfirmPage.routeName:
+                return const OrderConfirmPage();
               case OrderShowPage.routeName:
                 return OrderShowPage(controller: orderShowController);
               case SettingsPage.routeName:

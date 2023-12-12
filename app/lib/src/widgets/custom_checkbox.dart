@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-// TODO: add check box title
+import 'package:food_blueprint/src/theme/theme.dart';
 
 class Checkbox extends StatefulWidget {
   const Checkbox(
@@ -8,7 +7,9 @@ class Checkbox extends StatefulWidget {
       required Color checkColor,
       required MaterialStateProperty<Color> fillColor,
       required bool value,
-      required Null Function(bool? value) onChanged});
+      required Null Function(bool? value) onChanged,
+      required activeColor,
+      required Text title});
 
   @override
   State<Checkbox> createState() => _Checkbox();
@@ -40,6 +41,11 @@ class _Checkbox extends State<Checkbox> {
           isChecked = value!;
         });
       },
+      activeColor: COLOR_SECONDARY,
+      title: const Text(
+        "pred dom",
+        style: TextStyle(color: COLOR_TEXT, fontSize: 18),
+      ),
     );
   }
 }

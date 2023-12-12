@@ -7,7 +7,7 @@ import 'package:food_blueprint/src/pages/order_new/order_confirm_page.dart';
 class BorderedTextFormField extends StatelessWidget {
   final Widget child;
 
-  const BorderedTextFormField({super.key, required this.child});
+  const BorderedTextFormField({required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +116,7 @@ class OrderNewPage extends StatelessWidget {
                                   ],
                                 ),
                               ),
-                              const SizedBox(width: 16),
+                              SizedBox(width: 16),
                               Expanded(
                                 child: Column(
                                   children: [
