@@ -1,28 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/pages/order_show/order_show_controller.dart';
-import 'package:food_blueprint/src/theme/theme.dart';
-
-class BorderedTextFormField extends StatelessWidget {
-  final Widget child;
-
-  const BorderedTextFormField({required this.child});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.black, // Set the border color
-          width: 1.0, // Set the border width
-        ),
-        borderRadius:
-            BorderRadius.all(Radius.circular(8.0)), // Set the border radius
-      ),
-      child: child,
-    );
-  }
-}
 
 class OrderConfirmPage extends StatelessWidget {
   final OrderShowController controller;
