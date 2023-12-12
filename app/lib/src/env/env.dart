@@ -1,4 +1,5 @@
 import 'dart:developer' as developer;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class Environment {
   final String baseUrl;
@@ -7,8 +8,10 @@ class Environment {
   static Environment? _instance;
 
   Environment._()
-      : baseUrl = const String.fromEnvironment("BASE_URL"),
-        apiKey = const String.fromEnvironment("API_KEY") {
+      : baseUrl =
+            dotenv.env['BASE_URL'] ?? const String.fromEnvironment("BASE_URL"),
+        apiKey =
+            dotenv.env['API_KEY'] ?? const String.fromEnvironment("API_KEY") {
     _instance = this;
 
     developer.log('Base url: $baseUrl\nAPI Key: $apiKey');

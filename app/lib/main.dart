@@ -2,10 +2,13 @@ import "dart:developer" as developer;
 
 import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/services/keeper_service.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'src/app.dart';
 
-void main() async {
+Future main() async {
+  await dotenv.load(fileName: '.env');
+
   WidgetsFlutterBinding.ensureInitialized();
 
   // ensure keeper id
