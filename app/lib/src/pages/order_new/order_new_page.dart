@@ -3,7 +3,6 @@ import 'package:food_blueprint/src/pages/settings/settings_page.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/pages/order_new/order_new_controller.dart';
 import 'package:food_blueprint/src/pages/order_new/order_confirm_page.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BorderedTextFormField extends StatelessWidget {
   final Widget child;
