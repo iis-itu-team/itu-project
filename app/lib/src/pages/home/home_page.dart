@@ -3,6 +3,8 @@ import 'package:food_blueprint/src/pages/burger_edit/burger_edit_arguments.dart'
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_page.dart';
 import 'package:food_blueprint/src/pages/home/home_controller.dart';
 
+import 'package:food_blueprint/src/theme/theme.dart';
+
 class HomePage extends StatelessWidget {
   static const routeName = '/';
 
@@ -13,7 +15,21 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Home')),
+        appBar: AppBar(
+          title: const Text('Home'),
+          backgroundColor: COLOR_PRIMARY,
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(
+                Icons.settings,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                // do something
+              },
+            ),
+          ],
+        ),
         body: Column(children: <Widget>[
           Expanded(
               child: SingleChildScrollView(

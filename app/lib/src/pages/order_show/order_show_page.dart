@@ -33,7 +33,21 @@ class OrderShowPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Home'), backgroundColor: COLOR_PRIMARY),
+      appBar: AppBar(
+        title: const Text('Home'),
+        backgroundColor: COLOR_PRIMARY,
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(
+              Icons.settings,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              // do something
+            },
+          ),
+        ],
+      ),
       body: Container(
         color: COLOR_SECONDARY,
         padding: const EdgeInsets.only(left: 10),

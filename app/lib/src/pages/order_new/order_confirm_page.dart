@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/pages/order_show/order_show_controller.dart';
+import 'package:food_blueprint/src/theme/theme.dart';
 
 class BorderedTextFormField extends StatelessWidget {
   final Widget child;
@@ -33,7 +34,21 @@ class OrderConfirmPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Home'), backgroundColor: COLOR_PRIMARY),
+      appBar: AppBar(
+        title: const Text('Home'),
+        backgroundColor: COLOR_PRIMARY,
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(
+              Icons.settings,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              // do something
+            },
+          ),
+        ],
+      ),
       body: Container(
         color: COLOR_SECONDARY,
         child: Center(

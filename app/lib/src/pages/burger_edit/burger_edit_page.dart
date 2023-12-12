@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_arguments.dart';
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_controller.dart';
 import 'package:food_blueprint/src/pages/order_new/order_new_page.dart';
+import 'package:food_blueprint/src/theme/theme.dart';
 
 class BurgerEditPage extends StatelessWidget {
   final BurgerEditController controller;
@@ -18,7 +19,21 @@ class BurgerEditPage extends StatelessWidget {
     controller.enter(args);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Home')),
+      appBar: AppBar(
+        title: const Text('Home'),
+        backgroundColor: COLOR_PRIMARY,
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(
+              Icons.settings,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              // do something
+            },
+          ),
+        ],
+      ),
       body: Center(
         child: Column(
           children: [
