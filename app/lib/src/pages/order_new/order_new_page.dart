@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_blueprint/src/pages/order_show/order_show_page.dart';
 import 'package:food_blueprint/src/pages/settings/settings_page.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/pages/order_new/order_new_controller.dart';
@@ -7,7 +8,7 @@ import 'package:food_blueprint/src/pages/order_new/order_confirm_page.dart';
 class BorderedTextFormField extends StatelessWidget {
   final Widget child;
 
-  const BorderedTextFormField({required this.child});
+  const BorderedTextFormField({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -38,15 +39,29 @@ class OrderNewPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Home'),
         backgroundColor: COLOR_PRIMARY,
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(
-              Icons.settings,
-              color: Colors.white,
-            ),
-            onPressed: () {
-              Navigator.pushNamed(context, SettingsPage.routeName);
+        actions: [
+          PopupMenuButton<String>(
+            onSelected: (value) {
+              // Handle menu item selection
+              if (value == 'moje objednávky') {
+                Navigator.pushNamed(context, OrderShowPage.routeName);
+              } else if (value == 'nastavenia') {
+                Navigator.pushNamed(context, SettingsPage.routeName);
+              }
             },
+            itemBuilder: (BuildContext context) {
+              return <PopupMenuEntry<String>>[
+                const PopupMenuItem<String>(
+                  value: 'moje objednávky',
+                  child: Text('moje objednávky'),
+                ),
+                const PopupMenuItem<String>(
+                  value: 'nastavenia',
+                  child: Text('nastavenia'),
+                ),
+              ];
+            },
+            color: COLOR_SECONDARY,
           ),
         ],
       ),
@@ -116,7 +131,7 @@ class OrderNewPage extends StatelessWidget {
                                   ],
                                 ),
                               ),
-                              SizedBox(width: 16),
+                              const SizedBox(width: 16),
                               Expanded(
                                 child: Column(
                                   children: [

@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:food_blueprint/src/pages/order_show/order_show_page.dart';
 import 'package:food_blueprint/src/pages/settings/settings_page.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
-import 'package:food_blueprint/src/pages/order_show/order_show_controller.dart';
+
+enum SampleItem { itemOne, itemTwo, itemThree }
 
 class OrderConfirmPage extends StatelessWidget {
   const OrderConfirmPage({super.key});
 
-  static const routeName = '/order_show';
+  static const routeName = '/order_confirm';
+
+  get selectedMenu => null;
 
   @override
   Widget build(BuildContext context) {
@@ -14,15 +18,29 @@ class OrderConfirmPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Home'),
         backgroundColor: COLOR_PRIMARY,
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(
-              Icons.settings,
-              color: Colors.white,
-            ),
-            onPressed: () {
-              Navigator.pushNamed(context, SettingsPage.routeName);
+        actions: [
+          PopupMenuButton<String>(
+            onSelected: (value) {
+              // Handle menu item selection
+              if (value == 'moje objednávky') {
+                Navigator.pushNamed(context, OrderShowPage.routeName);
+              } else if (value == 'nastavenia') {
+                Navigator.pushNamed(context, SettingsPage.routeName);
+              }
             },
+            itemBuilder: (BuildContext context) {
+              return <PopupMenuEntry<String>>[
+                const PopupMenuItem<String>(
+                  value: 'moje objednávky',
+                  child: Text('moje objednávky'),
+                ),
+                const PopupMenuItem<String>(
+                  value: 'nastavenia',
+                  child: Text('nastavenia'),
+                ),
+              ];
+            },
+            color: COLOR_SECONDARY,
           ),
         ],
       ),

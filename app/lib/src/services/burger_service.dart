@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'dart:developer' as developer;
 
 import 'package:food_blueprint/src/http/client.dart';
 import 'package:food_blueprint/src/http/result.dart';
@@ -46,7 +45,8 @@ class BurgerService {
     return HttpResult(response.statusCode, json["status"], foods);
   }
 
-  Future<HttpResult<void>> updateBurger(String id, EditedBurger editedBurger) async {
+  Future<HttpResult<void>> updateBurger(
+      String id, EditedBurger editedBurger) async {
     final HttpClient client = HttpClient.fromEnv();
 
     final response = await client.put(client.route('/foods/${editedBurger.id}'),
