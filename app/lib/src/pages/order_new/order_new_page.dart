@@ -17,8 +17,8 @@ class BorderedTextFormField extends StatelessWidget {
           color: Colors.black, // Set the border color
           width: 1.0, // Set the border width
         ),
-        borderRadius:
-            BorderRadius.all(Radius.circular(8.0)), // Set the border radius
+        borderRadius: const BorderRadius.all(
+            Radius.circular(8.0)), // Set the border radius
       ),
       child: child,
     );
@@ -57,36 +57,36 @@ class OrderNewPage extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.all(10),
-                child: Text("Shrnutí",
+                padding: const EdgeInsets.all(10),
+                child: const Text("Shrnutí",
                     style: TextStyle(
                         color: COLOR_TEXT,
                         fontSize: 25,
                         fontWeight: FontWeight.bold)),
               ),
               Container(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: Column(
                   children: [
                     Container(
-                      padding: EdgeInsets.all(10),
-                      child: Text("Doručení",
+                      padding: const EdgeInsets.all(10),
+                      child: const Text("Doručení",
                           style: TextStyle(
                               color: COLOR_TEXT,
                               fontSize: 25,
                               fontWeight: FontWeight.bold)),
                     ),
                     Container(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment
                             .start, // Adjust this based on your layout requirements
                         children: [
-                          Text(
+                          const Text(
                             "Mesto",
                             style: TextStyle(color: COLOR_TEXT, fontSize: 18),
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           BorderedTextFormField(
                             child: TextFormField(),
                           ),
@@ -94,7 +94,7 @@ class OrderNewPage extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment
                             .start, // Adjust this based on your layout requirements
@@ -104,12 +104,12 @@ class OrderNewPage extends StatelessWidget {
                               Expanded(
                                 child: Column(
                                   children: [
-                                    Text(
+                                    const Text(
                                       "Ulica",
                                       style: TextStyle(
                                           color: COLOR_TEXT, fontSize: 18),
                                     ),
-                                    SizedBox(height: 10),
+                                    const SizedBox(height: 10),
                                     BorderedTextFormField(
                                       child: TextFormField(),
                                     ),
@@ -120,12 +120,12 @@ class OrderNewPage extends StatelessWidget {
                               Expanded(
                                 child: Column(
                                   children: [
-                                    Text(
+                                    const Text(
                                       "č. p.",
                                       style: TextStyle(
                                           color: COLOR_TEXT, fontSize: 18),
                                     ),
-                                    SizedBox(height: 10),
+                                    const SizedBox(height: 10),
                                     BorderedTextFormField(
                                       child: TextFormField(),
                                     ),
@@ -138,16 +138,16 @@ class OrderNewPage extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(10.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment
                             .start, // Adjust this based on your layout requirements
                         children: [
-                          Text(
+                          const Text(
                             "poznámka pro řidiče",
                             style: TextStyle(color: COLOR_TEXT, fontSize: 18),
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           BorderedTextFormField(
                             child: TextFormField(),
                           ),
@@ -158,7 +158,7 @@ class OrderNewPage extends StatelessWidget {
                       value: false,
                       onChanged: (val) {},
                       activeColor: COLOR_SECONDARY,
-                      title: Text(
+                      title: const Text(
                         "pred dom",
                         style: TextStyle(color: COLOR_TEXT, fontSize: 18),
                       ),
@@ -167,7 +167,7 @@ class OrderNewPage extends StatelessWidget {
                       value: false,
                       onChanged: (val) {},
                       activeColor: COLOR_SECONDARY,
-                      title: Text(
+                      title: const Text(
                         "ku dverám",
                         style: TextStyle(color: COLOR_TEXT, fontSize: 18),
                       ),
@@ -176,13 +176,13 @@ class OrderNewPage extends StatelessWidget {
                       value: false,
                       onChanged: (val) {},
                       activeColor: COLOR_SECONDARY,
-                      title: Text(
+                      title: const Text(
                         "ku dverám bytu",
                         style: TextStyle(color: COLOR_TEXT, fontSize: 18),
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment
                             .start, // Adjust this based on your layout requirements
@@ -192,28 +192,28 @@ class OrderNewPage extends StatelessWidget {
                               Expanded(
                                 child: Column(
                                   children: [
-                                    Text(
+                                    const Text(
                                       "poschodie",
                                       style: TextStyle(
                                           color: COLOR_TEXT, fontSize: 18),
                                     ),
-                                    SizedBox(height: 10),
+                                    const SizedBox(height: 10),
                                     BorderedTextFormField(
                                       child: TextFormField(),
                                     ),
                                   ],
                                 ),
                               ),
-                              SizedBox(width: 16),
+                              const SizedBox(width: 16),
                               Expanded(
                                 child: Column(
                                   children: [
-                                    Text(
+                                    const Text(
                                       "číslo bytu",
                                       style: TextStyle(
                                           color: COLOR_TEXT, fontSize: 18),
                                     ),
-                                    SizedBox(height: 10),
+                                    const SizedBox(height: 10),
                                     BorderedTextFormField(
                                       child: TextFormField(),
                                     ),
@@ -226,21 +226,21 @@ class OrderNewPage extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.all(20),
-                      child: Text("Platba",
+                      padding: const EdgeInsets.all(20),
+                      child: const Text("Platba",
                           style: TextStyle(
                               color: COLOR_TEXT,
                               fontSize: 25,
                               fontWeight: FontWeight.bold)),
                     ),
                     Container(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       child: Column(children: [
                         CheckboxListTile(
                           value: false,
                           onChanged: (val) {},
                           activeColor: COLOR_SECONDARY,
-                          title: Text(
+                          title: const Text(
                             "pri doručení (karta/hotovosť)",
                             style: TextStyle(color: COLOR_TEXT, fontSize: 18),
                           ),
@@ -249,7 +249,7 @@ class OrderNewPage extends StatelessWidget {
                           value: false,
                           onChanged: (val) {},
                           activeColor: COLOR_SECONDARY,
-                          title: Text(
+                          title: const Text(
                             "online kartou",
                             style: TextStyle(color: COLOR_TEXT, fontSize: 18),
                           ),
@@ -258,7 +258,7 @@ class OrderNewPage extends StatelessWidget {
                           value: false,
                           onChanged: (val) {},
                           activeColor: COLOR_SECONDARY,
-                          title: Text(
+                          title: const Text(
                             "paypal / google pay / apple pay",
                             style: TextStyle(color: COLOR_TEXT, fontSize: 18),
                           ),
@@ -274,7 +274,7 @@ class OrderNewPage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: Container(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         height: 100,
         color: COLOR_PRIMARY,
         child: Row(

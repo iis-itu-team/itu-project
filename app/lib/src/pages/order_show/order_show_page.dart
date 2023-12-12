@@ -35,7 +35,7 @@ class OrderShowPage extends StatelessWidget {
             children: [
               Container(
                 padding: EdgeInsets.all(10),
-                child: Text(
+                child: const Text(
                   "Shrnutí",
                   style: TextStyle(
                       color: COLOR_TEXT,
