@@ -1,5 +1,5 @@
 import 'package:food_blueprint/src/models/burger.dart';
-import 'package:food_blueprint/src/services/burger_service/burger_service.dart';
+import 'package:food_blueprint/src/services/burger_service.dart';
 
 class HomeController {
   final BurgerService foodService;

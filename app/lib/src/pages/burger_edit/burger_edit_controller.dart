@@ -4,7 +4,7 @@ import 'package:food_blueprint/src/http/result.dart';
 import 'package:food_blueprint/src/models/burger.dart';
 import 'package:food_blueprint/src/models/ingredient.dart';
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_arguments.dart';
-import 'package:food_blueprint/src/services/burger_service/burger_service.dart';
+import 'package:food_blueprint/src/services/burger_service.dart';
 
 class BurgerEditController {
   final BurgerService foodService;

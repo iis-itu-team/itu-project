@@ -9,10 +9,10 @@ class ThemeClass {
     brightness: Brightness.light,
     primaryColor: COLOR_PRIMARY,
     floatingActionButtonTheme:
-        FloatingActionButtonThemeData(backgroundColor: COLOR_PRIMARY),
+        const FloatingActionButtonThemeData(backgroundColor: COLOR_PRIMARY),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8.0),
         ),

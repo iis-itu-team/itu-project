@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:food_blueprint/src/models/ingredient.dart';
 
 class Burger {

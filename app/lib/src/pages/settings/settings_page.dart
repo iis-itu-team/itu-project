@@ -60,7 +60,7 @@ class SettingsPage extends StatelessWidget {
         )),
       ),
       bottomNavigationBar: Container(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         height: 100,
         color: COLOR_PRIMARY,
       ),

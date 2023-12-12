@@ -34,7 +34,7 @@ class OrderShowPage extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: const Text(
                   "Shrnutí",
                   style: TextStyle(
@@ -48,7 +48,7 @@ class OrderShowPage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: Container(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         height: 100,
         color: COLOR_PRIMARY,
         child: Row(

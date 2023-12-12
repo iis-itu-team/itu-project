@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:food_blueprint/src/env/env.dart';
+
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_controller.dart';
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_page.dart';
 import 'package:food_blueprint/src/pages/home/home_controller.dart';
@@ -13,8 +14,8 @@ import 'package:food_blueprint/src/pages/order_show/order_show_page.dart';
 import 'package:food_blueprint/src/pages/order_show/order_show_controller.dart';
 import 'package:food_blueprint/src/pages/settings/settings_page.dart';
 import 'package:food_blueprint/src/pages/settings/settings_controller.dart';
-import 'package:food_blueprint/src/services/burger_service/burger_service.dart';
-import 'package:food_blueprint/src/services/order_service/order_service.dart';
+import 'package:food_blueprint/src/services/burger_service.dart';
+import 'package:food_blueprint/src/services/order_service.dart';
 
 /// The Widget that configures your application.
 class MyApp extends StatelessWidget {
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
     final OrderShowController orderShowController =
         OrderShowController(orderService);
 
-    final SettingsController settingsController = SettingsController();
+    const SettingsController settingsController = SettingsController();
 
     // Glue the SettingsController to the MaterialApp.
     //
@@ -94,7 +95,7 @@ class MyApp extends StatelessWidget {
               case OrderShowPage.routeName:
                 return OrderShowPage(controller: orderShowController);
               case SettingsPage.routeName:
-                return SettingsPage(controller: settingsController);
+                return const SettingsPage(controller: settingsController);
               default:
                 return HomePage(controller: homeController);
             }

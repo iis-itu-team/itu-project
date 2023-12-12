@@ -30,7 +30,7 @@ class OrderConfirmPage extends StatelessWidget {
       ),
       body: Container(
         color: COLOR_SECONDARY,
-        child: Center(
+        child: const Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
