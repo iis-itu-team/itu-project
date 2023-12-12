@@ -11,6 +11,8 @@ import 'package:food_blueprint/src/pages/order_new/order_confirm_page.dart';
 import 'package:food_blueprint/src/pages/order_new/order_new_controller.dart';
 import 'package:food_blueprint/src/pages/order_show/order_show_page.dart';
 import 'package:food_blueprint/src/pages/order_show/order_show_controller.dart';
+import 'package:food_blueprint/src/pages/settings/settings_page.dart';
+import 'package:food_blueprint/src/pages/settings/settings_controller.dart';
 import 'package:food_blueprint/src/services/burger_service/burger_service.dart';
 import 'package:food_blueprint/src/services/order_service/order_service.dart';
 
@@ -32,6 +34,8 @@ class MyApp extends StatelessWidget {
         OrderNewController(orderService);
     final OrderShowController orderShowController =
         OrderShowController(orderService);
+
+    final SettingsController settingsController = SettingsController();
 
     // Glue the SettingsController to the MaterialApp.
     //
@@ -89,6 +93,8 @@ class MyApp extends StatelessWidget {
                 return OrderConfirmPage(controller: orderShowController);
               case OrderShowPage.routeName:
                 return OrderShowPage(controller: orderShowController);
+              case SettingsPage.routeName:
+                return SettingsPage(controller: settingsController);
               default:
                 return HomePage(controller: homeController);
             }

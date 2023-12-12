@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_arguments.dart';
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_page.dart';
 import 'package:food_blueprint/src/pages/home/home_controller.dart';
+import 'package:food_blueprint/src/pages/settings/settings_page.dart';
 
 import 'package:food_blueprint/src/theme/theme.dart';
 
@@ -25,7 +26,7 @@ class HomePage extends StatelessWidget {
                 color: Colors.white,
               ),
               onPressed: () {
-                // do something
+                Navigator.pushNamed(context, SettingsPage.routeName);
               },
             ),
           ],

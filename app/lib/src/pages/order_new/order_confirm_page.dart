@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_blueprint/src/pages/settings/settings_page.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/pages/order_show/order_show_controller.dart';
 
@@ -22,7 +23,7 @@ class OrderConfirmPage extends StatelessWidget {
               color: Colors.white,
             ),
             onPressed: () {
-              // do something
+              Navigator.pushNamed(context, SettingsPage.routeName);
             },
           ),
         ],
