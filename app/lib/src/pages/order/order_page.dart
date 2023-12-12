@@ -2,6 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/pages/order/order_controller.dart';
 
+class BorderedTextFormField extends StatelessWidget {
+  final Widget child;
+
+  const BorderedTextFormField({required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: Colors.black, // Set the border color
+          width: 1.0, // Set the border width
+        ),
+        borderRadius:
+            BorderRadius.all(Radius.circular(8.0)), // Set the border radius
+      ),
+      child: child,
+    );
+  }
+}
+
 class OrderPage extends StatelessWidget {
   final OrderController controller;
 
@@ -15,12 +36,12 @@ class OrderPage extends StatelessWidget {
       appBar: AppBar(title: const Text('Home'), backgroundColor: COLOR_PRIMARY),
       body: Container(
         color: COLOR_SECONDARY,
-        padding: const EdgeInsets.only(left: 16.0),
+        padding: const EdgeInsets.only(left: 10),
         child: SingleChildScrollView(
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.all(16.0),
+                padding: EdgeInsets.all(10),
                 child: Text("Shrnutí",
                     style: TextStyle(
                         color: COLOR_TEXT,
@@ -28,11 +49,11 @@ class OrderPage extends StatelessWidget {
                         fontWeight: FontWeight.bold)),
               ),
               Container(
-                padding: EdgeInsets.all(16.0),
+                padding: EdgeInsets.all(10),
                 child: Column(
                   children: [
                     Container(
-                      padding: EdgeInsets.all(16.0),
+                      padding: EdgeInsets.all(10),
                       child: Text("Doručení",
                           style: TextStyle(
                               color: COLOR_TEXT,
@@ -40,7 +61,7 @@ class OrderPage extends StatelessWidget {
                               fontWeight: FontWeight.bold)),
                     ),
                     Container(
-                      padding: EdgeInsets.all(16.0),
+                      padding: EdgeInsets.all(10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment
                             .start, // Adjust this based on your layout requirements
@@ -49,25 +70,50 @@ class OrderPage extends StatelessWidget {
                             "Mesto",
                             style: TextStyle(color: COLOR_TEXT),
                           ),
-                          TextFormField(),
+                          BorderedTextFormField(
+                            child: TextFormField(),
+                          ),
                         ],
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.all(16.0),
+                      padding: EdgeInsets.all(10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment
                             .start, // Adjust this based on your layout requirements
                         children: [
-                          Text("Ulice"),
-                          TextFormField(),
-                          Text("č.p."),
-                          TextFormField(),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Column(
+                                  children: [
+                                    Text("Ulica"),
+                                    SizedBox(height: 10),
+                                    BorderedTextFormField(
+                                      child: TextFormField(),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(width: 16),
+                              Expanded(
+                                child: Column(
+                                  children: [
+                                    Text("č. p."),
+                                    SizedBox(height: 10),
+                                    BorderedTextFormField(
+                                      child: TextFormField(),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ],
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.all(16.0),
+                      padding: EdgeInsets.all(10.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment
                             .start, // Adjust this based on your layout requirements
@@ -76,7 +122,10 @@ class OrderPage extends StatelessWidget {
                             "poznámka pro řidiče",
                             style: TextStyle(color: COLOR_TEXT),
                           ),
-                          TextFormField(),
+                          SizedBox(height: 10),
+                          BorderedTextFormField(
+                            child: TextFormField(),
+                          ),
                         ],
                       ),
                     ),
@@ -96,15 +145,38 @@ class OrderPage extends StatelessWidget {
                         activeColor: COLOR_SECONDARY,
                         title: Text("ku dverám bytu")),
                     Container(
-                      padding: EdgeInsets.all(16.0),
+                      padding: EdgeInsets.all(10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment
                             .start, // Adjust this based on your layout requirements
                         children: [
-                          Text("patro"),
-                          TextFormField(),
-                          Text("číslo bytu"),
-                          TextFormField(),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Column(
+                                  children: [
+                                    Text("poschodie"),
+                                    SizedBox(height: 10),
+                                    BorderedTextFormField(
+                                      child: TextFormField(),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(width: 16),
+                              Expanded(
+                                child: Column(
+                                  children: [
+                                    Text("číslo bytu"),
+                                    SizedBox(height: 10),
+                                    BorderedTextFormField(
+                                      child: TextFormField(),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ],
                       ),
                     ),
