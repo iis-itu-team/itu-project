@@ -68,8 +68,9 @@ class OrderPage extends StatelessWidget {
                         children: [
                           Text(
                             "Mesto",
-                            style: TextStyle(color: COLOR_TEXT),
+                            style: TextStyle(color: COLOR_TEXT, fontSize: 18),
                           ),
+                          SizedBox(height: 10),
                           BorderedTextFormField(
                             child: TextFormField(),
                           ),
@@ -87,7 +88,11 @@ class OrderPage extends StatelessWidget {
                               Expanded(
                                 child: Column(
                                   children: [
-                                    Text("Ulica"),
+                                    Text(
+                                      "Ulica",
+                                      style: TextStyle(
+                                          color: COLOR_TEXT, fontSize: 18),
+                                    ),
                                     SizedBox(height: 10),
                                     BorderedTextFormField(
                                       child: TextFormField(),
@@ -99,7 +104,11 @@ class OrderPage extends StatelessWidget {
                               Expanded(
                                 child: Column(
                                   children: [
-                                    Text("č. p."),
+                                    Text(
+                                      "č. p.",
+                                      style: TextStyle(
+                                          color: COLOR_TEXT, fontSize: 18),
+                                    ),
                                     SizedBox(height: 10),
                                     BorderedTextFormField(
                                       child: TextFormField(),
@@ -120,7 +129,7 @@ class OrderPage extends StatelessWidget {
                         children: [
                           Text(
                             "poznámka pro řidiče",
-                            style: TextStyle(color: COLOR_TEXT),
+                            style: TextStyle(color: COLOR_TEXT, fontSize: 18),
                           ),
                           SizedBox(height: 10),
                           BorderedTextFormField(
@@ -133,17 +142,26 @@ class OrderPage extends StatelessWidget {
                         value: false,
                         onChanged: (val) {},
                         activeColor: COLOR_SECONDARY,
-                        title: Text("pred dom")),
+                        title: Text(
+                          "pred dom",
+                          style: TextStyle(color: COLOR_TEXT, fontSize: 18),
+                        )),
                     CheckboxListTile(
                         value: false,
                         onChanged: (val) {},
                         activeColor: COLOR_SECONDARY,
-                        title: Text("ku dverám")),
+                        title: Text(
+                          "ku dverám",
+                          style: TextStyle(color: COLOR_TEXT, fontSize: 18),
+                        )),
                     CheckboxListTile(
                         value: false,
                         onChanged: (val) {},
                         activeColor: COLOR_SECONDARY,
-                        title: Text("ku dverám bytu")),
+                        title: Text(
+                          "ku dverám bytu",
+                          style: TextStyle(color: COLOR_TEXT, fontSize: 18),
+                        )),
                     Container(
                       padding: EdgeInsets.all(10),
                       child: Column(
@@ -155,7 +173,11 @@ class OrderPage extends StatelessWidget {
                               Expanded(
                                 child: Column(
                                   children: [
-                                    Text("poschodie"),
+                                    Text(
+                                      "poschodie",
+                                      style: TextStyle(
+                                          color: COLOR_TEXT, fontSize: 18),
+                                    ),
                                     SizedBox(height: 10),
                                     BorderedTextFormField(
                                       child: TextFormField(),
@@ -167,7 +189,11 @@ class OrderPage extends StatelessWidget {
                               Expanded(
                                 child: Column(
                                   children: [
-                                    Text("číslo bytu"),
+                                    Text(
+                                      "číslo bytu",
+                                      style: TextStyle(
+                                          color: COLOR_TEXT, fontSize: 18),
+                                    ),
                                     SizedBox(height: 10),
                                     BorderedTextFormField(
                                       child: TextFormField(),
@@ -180,26 +206,43 @@ class OrderPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const Text("platba",
-                        style: TextStyle(
-                            color: COLOR_TEXT,
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold)),
-                    CheckboxListTile(
-                        value: false,
-                        onChanged: (val) {},
-                        activeColor: COLOR_SECONDARY,
-                        title: Text("pri doručení (karta/hotovosť)")),
-                    CheckboxListTile(
-                        value: false,
-                        onChanged: (val) {},
-                        activeColor: COLOR_SECONDARY,
-                        title: Text("online kartou")),
-                    CheckboxListTile(
-                        value: false,
-                        onChanged: (val) {},
-                        activeColor: COLOR_SECONDARY,
-                        title: Text("paypal / google pay / apple pay"))
+                    Container(
+                      padding: EdgeInsets.all(20),
+                      child: Text("Platba",
+                          style: TextStyle(
+                              color: COLOR_TEXT,
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold)),
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(10),
+                      child: Column(children: [
+                        CheckboxListTile(
+                            value: false,
+                            onChanged: (val) {},
+                            activeColor: COLOR_SECONDARY,
+                            title: Text(
+                              "pri doručení (karta/hotovosť)",
+                              style: TextStyle(color: COLOR_TEXT, fontSize: 18),
+                            )),
+                        CheckboxListTile(
+                            value: false,
+                            onChanged: (val) {},
+                            activeColor: COLOR_SECONDARY,
+                            title: Text(
+                              "online kartou",
+                              style: TextStyle(color: COLOR_TEXT, fontSize: 18),
+                            )),
+                        CheckboxListTile(
+                            value: false,
+                            onChanged: (val) {},
+                            activeColor: COLOR_SECONDARY,
+                            title: Text(
+                              "paypal / google pay / apple pay",
+                              style: TextStyle(color: COLOR_TEXT, fontSize: 18),
+                            ))
+                      ]),
+                    )
                   ],
                 ),
               ),
