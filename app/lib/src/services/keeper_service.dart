@@ -6,7 +6,6 @@ import 'package:food_blueprint/src/http/result.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class KeeperService {
-
   Future<String> getKeeperId() async {
     // fetch keeper id from shared preferences or create a new one through the API
 
@@ -14,12 +13,16 @@ class KeeperService {
 
     String? id = prefs.getString("keeper_id");
 
-    id ??= (await createKeeper()).data;
-
     if (id == null) {
-      // todo: handle differently?
-      developer.log("Couldn't create Keeper identification.", level: 5);
-      throw Exception("Couldn't create Keeper identification.");
+      id = (await createKeeper()).data;
+
+      if (id == null) {
+        // todo: handle differently?
+        developer.log("Couldn't create Keeper identification.", level: 5);
+        throw Exception("Couldn't create Keeper identification.");
+      }
+
+      prefs.setString("keeper_id", id);
     }
 
     return id;
