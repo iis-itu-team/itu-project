@@ -38,6 +38,9 @@ Route.group(() => {
   Route.resource("burgers", "BurgerController")
     .only(["index", "show", "store", "destroy"])
 
+  Route.post("/burgers/:burger_id/ratings", "BurgerController.rate")
+    .middleware("keeper-auth")
+
   Route.resource("orders", "OrderController")
     .only(["index", "show", "store"])
-}).prefix('api').middleware("requireApiKey")
+}).prefix('api')

@@ -1,5 +1,5 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import { schema } from '@ioc:Adonis/Core/Validator'
+import { schema, rules } from '@ioc:Adonis/Core/Validator'
 import FailureException from 'App/Exceptions/FailureException';
 import BurgerService from 'App/Services/BurgerService';
 import KeeperService from 'App/Services/KeeperService';
@@ -17,6 +17,12 @@ const createBurgerSchema = schema.create({
         amount: schema.number(),
     })),
     keeperId: schema.string()
+})
+
+const addBurgerRatinSchema = schema.create({
+    rating: schema.number([
+        rules.range(-1, 1)
+    ]),
 })
 
 export default class BurgerController {
@@ -63,6 +69,24 @@ export default class BurgerController {
         const burger = await this.burgerService.createBurger(keeper, validated)
 
         response.status(201).json({
+            status: "success",
+            data: burger
+        })
+    }
+
+    public async rate({ request, response, keeper }: HttpContextContract) {
+        const validated = await request.validate({
+            schema: addBurgerRatinSchema
+        })
+
+        const burgerId = request.param('burger_id')
+
+        // keeper required middleware
+        const keeperId = keeper!.id;
+
+        const burger = await this.burgerService.rateBurger(burgerId, keeperId, validated.rating)
+
+        response.status(200).json({
             status: "success",
             data: burger
         })

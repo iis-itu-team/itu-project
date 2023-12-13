@@ -33,6 +33,18 @@ export default class Burger extends BaseModel {
     @belongsTo(() => Keeper)
     public keeper: BelongsTo<typeof Keeper>
 
+    @manyToMany(() => Keeper, {
+        pivotTable: "burger_ratings",
+        localKey: "id",
+        relatedKey: "id",
+        pivotForeignKey: "burger_id",
+        pivotRelatedForeignKey: "keeper_id",
+        pivotColumns: [
+            "rating"
+        ]
+    })
+    public ratings: ManyToMany<typeof Keeper>
+
     @computed()
     public get amount() {
         if ("pivot_amount" in this.$extras)
@@ -43,6 +55,14 @@ export default class Burger extends BaseModel {
     public get price() {
         if ("price" in this.$extras)
             return Number(this.$extras.price)
+    }
+
+    @computed()
+    public get rating() {
+        if ("rating" in this.$extras)
+            return Number(this.$extras.rating)
+        else
+            return 0
     }
 
     @beforeCreate()
