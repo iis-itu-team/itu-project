@@ -1,4 +1,4 @@
-import { column, BaseModel, beforeCreate, manyToMany, ManyToMany, BelongsTo, belongsTo } from "@ioc:Adonis/Lucid/Orm";
+import { column, BaseModel, beforeCreate, manyToMany, ManyToMany, BelongsTo, belongsTo, computed } from "@ioc:Adonis/Lucid/Orm";
 import generateId from "utils/generate-id";
 import Burger from "./Burger";
 import Keeper from "./Keeper";
@@ -62,6 +62,12 @@ export default class Order extends BaseModel {
 
     @belongsTo(() => Keeper)
     public keeper: BelongsTo<typeof Keeper>
+
+    @computed()
+    public get price() {
+        if ("order_price" in this.$extras)
+            return Number(this.$extras.order_price)
+    }
 
     @beforeCreate()
     public static async beforeCreate(order: Order) {
