@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/pages/order_show/order_show_controller.dart';
+import 'package:food_blueprint/src/widgets/custom_app_bar.dart';
 
 class OrderShowPage extends StatelessWidget {
   final OrderShowController controller;
@@ -12,21 +13,7 @@ class OrderShowPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
-        backgroundColor: COLOR_PRIMARY,
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(
-              Icons.settings,
-              color: Colors.white,
-            ),
-            onPressed: () {
-              // do something
-            },
-          ),
-        ],
-      ),
+      appBar: const CustomAppBar(title: 'Home'),
       body: Container(
         color: COLOR_SECONDARY,
         padding: const EdgeInsets.only(left: 10),

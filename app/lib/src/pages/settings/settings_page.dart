@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:food_blueprint/src/pages/order_show/order_show_page.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/pages/settings/settings_controller.dart';
+import 'package:food_blueprint/src/widgets/custom_app_bar.dart';
 
 class SettingsPage extends StatelessWidget {
   final SettingsController controller;
@@ -13,35 +13,7 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
-        backgroundColor: COLOR_PRIMARY,
-        actions: [
-          PopupMenuButton<String>(
-            onSelected: (value) {
-              // Handle menu item selection
-              if (value == 'moje objednávky') {
-                Navigator.pushNamed(context, OrderShowPage.routeName);
-              } else if (value == 'nastavenia') {
-                Navigator.pushNamed(context, SettingsPage.routeName);
-              }
-            },
-            itemBuilder: (BuildContext context) {
-              return <PopupMenuEntry<String>>[
-                const PopupMenuItem<String>(
-                  value: 'moje objednávky',
-                  child: Text('moje objednávky'),
-                ),
-                const PopupMenuItem<String>(
-                  value: 'nastavenia',
-                  child: Text('nastavenia'),
-                ),
-              ];
-            },
-            color: COLOR_SECONDARY,
-          ),
-        ],
-      ),
+      appBar: const CustomAppBar(title: 'Home'),
       body: Container(
         color: COLOR_SECONDARY,
         child: Center(

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:food_blueprint/src/pages/order_show/order_show_page.dart';
-import 'package:food_blueprint/src/pages/settings/settings_page.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/pages/order_new/order_new_controller.dart';
 import 'package:food_blueprint/src/pages/order_new/order_confirm_page.dart';
+import 'package:food_blueprint/src/widgets/custom_app_bar.dart';
 
 class BorderedTextFormField extends StatelessWidget {
   final Widget child;
@@ -36,35 +35,7 @@ class OrderNewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
-        backgroundColor: COLOR_PRIMARY,
-        actions: [
-          PopupMenuButton<String>(
-            onSelected: (value) {
-              // Handle menu item selection
-              if (value == 'moje objednávky') {
-                Navigator.pushNamed(context, OrderShowPage.routeName);
-              } else if (value == 'nastavenia') {
-                Navigator.pushNamed(context, SettingsPage.routeName);
-              }
-            },
-            itemBuilder: (BuildContext context) {
-              return <PopupMenuEntry<String>>[
-                const PopupMenuItem<String>(
-                  value: 'moje objednávky',
-                  child: Text('moje objednávky'),
-                ),
-                const PopupMenuItem<String>(
-                  value: 'nastavenia',
-                  child: Text('nastavenia'),
-                ),
-              ];
-            },
-            color: COLOR_SECONDARY,
-          ),
-        ],
-      ),
+      appBar: const CustomAppBar(title: 'Home'),
       body: Container(
         color: COLOR_SECONDARY,
         padding: const EdgeInsets.only(left: 10),
