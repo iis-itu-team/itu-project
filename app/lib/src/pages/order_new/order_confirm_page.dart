@@ -8,7 +8,7 @@ enum SampleItem { itemOne, itemTwo, itemThree }
 class OrderConfirmPage extends StatelessWidget {
   const OrderConfirmPage({super.key});
 
-  static const routeName = '/order_confirm';
+  static const routeName = '/order-confirm';
 
   get selectedMenu => null;
 

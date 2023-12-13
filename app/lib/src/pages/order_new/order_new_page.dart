@@ -30,7 +30,7 @@ class OrderNewPage extends StatelessWidget {
 
   const OrderNewPage({required this.controller, super.key});
 
-  static const routeName = '/order_new';
+  static const routeName = '/order-new';
 
   @override
   Widget build(BuildContext context) {
