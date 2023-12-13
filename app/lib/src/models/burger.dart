@@ -14,7 +14,7 @@ class Burger {
   List<Ingredient> ingredients = [];
   String? keeperId;
   int? price;
-  Image? image;
+  String? image;
   int? rating;
   BurgerRating? currentRating;
 
@@ -39,10 +39,11 @@ class Burger {
     publish = json['published'];
     keeperId = json['keeper_id'];
     price = json['price'];
+    image = json['image'];
     // rating = json['rating'] as int;
 
     ingredients = [];
-    
+
     for (var ingredientJson in json['ingredients']) {
       ingredients.add(Ingredient.fromJson(ingredientJson));
     }
