@@ -37,6 +37,5 @@ class _CustomCheckboxListTileState extends State<CustomCheckboxListTile> {
     );
   }
 
-  @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'dart:developer' as developer;
 
 import 'package:food_blueprint/src/http/client.dart';
 import 'package:food_blueprint/src/http/result.dart';

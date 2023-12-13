@@ -44,7 +44,7 @@ late final OrderService orderService;
 class OrderNewPage extends StatelessWidget {
   final OrderNewController controller;
 
-  OrderNewPage({required this.controller, super.key});
+  const OrderNewPage({required this.controller, super.key});
 
   static const routeName = '/order-new';
 
