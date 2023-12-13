@@ -13,7 +13,7 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Home'),
+      appBar: const CustomAppBar(text: 'Nastavenia'),
       body: Container(
         color: COLOR_SECONDARY,
         child: Center(

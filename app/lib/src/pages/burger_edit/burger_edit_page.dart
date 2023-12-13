@@ -5,6 +5,7 @@ import 'package:food_blueprint/src/pages/order_new/order_new_page.dart';
 import 'package:food_blueprint/src/pages/order_show/order_show_page.dart';
 import 'package:food_blueprint/src/pages/settings/settings_page.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
+import 'package:food_blueprint/src/widgets/custom_app_bar.dart';
 
 class BurgerEditPage extends StatelessWidget {
   final BurgerEditController controller;
@@ -21,35 +22,7 @@ class BurgerEditPage extends StatelessWidget {
     controller.enter(args);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
-        backgroundColor: COLOR_PRIMARY,
-        actions: [
-          PopupMenuButton<String>(
-            onSelected: (value) {
-              // Handle menu item selection
-              if (value == 'moje objednávky') {
-                Navigator.pushNamed(context, OrderShowPage.routeName);
-              } else if (value == 'nastavenia') {
-                Navigator.pushNamed(context, SettingsPage.routeName);
-              }
-            },
-            itemBuilder: (BuildContext context) {
-              return <PopupMenuEntry<String>>[
-                const PopupMenuItem<String>(
-                  value: 'moje objednávky',
-                  child: Text('moje objednávky'),
-                ),
-                const PopupMenuItem<String>(
-                  value: 'nastavenia',
-                  child: Text('nastavenia'),
-                ),
-              ];
-            },
-            color: COLOR_SECONDARY,
-          ),
-        ],
-      ),
+      appBar: const CustomAppBar(text: 'Burger'),
       body: Center(
         child: Column(
           children: [

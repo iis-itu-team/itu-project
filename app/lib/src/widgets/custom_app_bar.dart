@@ -4,17 +4,20 @@ import 'package:food_blueprint/src/pages/settings/settings_page.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final String title;
+  final String text;
 
   const CustomAppBar({
     super.key,
-    required this.title,
+    required this.text,
   });
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: const Text('Home'),
+      title: Text(
+        text,
+        style: const TextStyle(color: COLOR_TEXT, fontSize: 24),
+      ),
       backgroundColor: COLOR_PRIMARY,
       actions: [
         PopupMenuButton<String>(
