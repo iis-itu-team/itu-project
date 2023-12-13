@@ -3,7 +3,6 @@ import 'package:food_blueprint/src/models/user.dart';
 
 class Order {
   final String id;
-  final Type time;
   final User user;
   String? street;
   String? housenumber;
@@ -12,18 +11,20 @@ class Order {
   int? phone;
   String? notes;
   int? price;
+  bool? to_house;
+  bool? to_doors;
+  bool? to_flat_doors;
+
+  DateTime date = DateTime.now();
+
   List<EditedBurger> editedburger = [];
 
-  Order(this.id, this.time, this.user);
+  Order(this.id, this.user);
 
   Order.fromJson(Map<String, dynamic> json)
       : id = json["id"],
-        time = json["time"],
         user = json["user"];
 
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'name': time,
-        'editedburger': editedburger.map((e) => e.toJson()).toList()
-      };
+  Map<String, dynamic> toJson() =>
+      {'id': id, 'editedburger': editedburger.map((e) => e.toJson()).toList()};
 }
