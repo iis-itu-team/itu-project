@@ -6,6 +6,7 @@ class Order {
   String? houseNumber;
   String? zipCode;
   String? city;
+  String? floor;
   int? phone;
   String? notes;
   int? price;

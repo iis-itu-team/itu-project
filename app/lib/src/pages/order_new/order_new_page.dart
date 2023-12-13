@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:food_blueprint/src/http/result.dart';
+import 'package:food_blueprint/src/models/order.dart';
+import 'package:food_blueprint/src/services/order_service.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/pages/order_new/order_new_controller.dart';
 import 'package:food_blueprint/src/pages/order_new/order_confirm_page.dart';
@@ -26,22 +29,24 @@ class BorderedTextFormField extends StatelessWidget {
   }
 }
 
+String? street;
+String? houseNumber;
+String? zipCode;
+String? city;
+String? floor;
+String? notes;
+bool? toHouse = false;
+bool? toDoors = false;
+bool? toFlatDoors = false;
+
+late final OrderService orderService;
+
 class OrderNewPage extends StatelessWidget {
   final OrderNewController controller;
 
   OrderNewPage({required this.controller, super.key});
 
   static const routeName = '/order-new';
-
-  String? street;
-  String? houseNumber;
-  String? zipCode;
-  String? city;
-  String? floor;
-  String? notes;
-  bool? toHouse = false;
-  bool? toDoors = false;
-  bool? toFlatDoors = false;
 
   @override
   Widget build(BuildContext context) {
@@ -266,7 +271,8 @@ class OrderNewPage extends StatelessWidget {
           children: <Widget>[
             FloatingActionButton.large(
               onPressed: () {
-                controller.handleSave();
+                handleSave(houseNumber!, zipCode!, city!, floor!, notes!,
+                    toHouse!, toDoors!, toFlatDoors!);
                 Navigator.pushNamed(context, OrderConfirmPage.routeName);
               },
               backgroundColor: COLOR_SECONDARY,
@@ -278,4 +284,36 @@ class OrderNewPage extends StatelessWidget {
       ),
     );
   }
+}
+
+String idGenerator() {
+  final now = DateTime.now();
+  return now.microsecondsSinceEpoch.toString();
+}
+
+Future<void> handleSave(
+    String houseNumber,
+    String zipCode,
+    String city,
+    String floor,
+    String notes,
+    bool toHouse,
+    bool toDoors,
+    bool toFlatDoors) async {
+  Order? order = Order(idGenerator());
+
+  order.houseNumber = houseNumber;
+  order.zipCode = zipCode;
+  order.city = city;
+  order.floor = floor;
+  order.notes = notes;
+  order.toHouse = toHouse;
+  order.toDoors = toDoors;
+  order.toFlatDoors = toFlatDoors;
+
+  HttpResult<void> result;
+
+  result = await orderService.createOrder(order);
+
+  if (result.status == "success") {}
 }

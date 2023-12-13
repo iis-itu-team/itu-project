@@ -5,10 +5,4 @@ class OrderNewController {
   final OrderService orderService;
 
   OrderNewController(this.orderService);
-
-  String? city = "";
-
-  void handleSave() {
-    // TODO: process data from order
-  }
 }
