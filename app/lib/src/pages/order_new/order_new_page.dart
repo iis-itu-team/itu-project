@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/http/result.dart';
 import 'package:food_blueprint/src/models/order.dart';
+import 'package:food_blueprint/src/widgets/custom_text_form.dart';
 import 'package:food_blueprint/src/services/order_service.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/pages/order_new/order_new_controller.dart';
@@ -97,13 +98,7 @@ class OrderNewPage extends StatelessWidget {
                                           color: COLOR_TEXT, fontSize: 18),
                                     ),
                                     const SizedBox(height: 10),
-                                    BorderedTextFormField(
-                                      child: TextFormField(
-                                        onSaved: (String? value) {
-                                          city = value;
-                                        },
-                                      ),
-                                    ),
+                                    CustomTextForm(variable: city),
                                   ],
                                 ),
                               ),
@@ -117,13 +112,7 @@ class OrderNewPage extends StatelessWidget {
                                           color: COLOR_TEXT, fontSize: 18),
                                     ),
                                     const SizedBox(height: 10),
-                                    BorderedTextFormField(
-                                      child: TextFormField(
-                                        onSaved: (String? value) {
-                                          zipCode = value;
-                                        },
-                                      ),
-                                    ),
+                                    CustomTextForm(variable: zipCode),
                                   ],
                                 ),
                               ),
@@ -149,13 +138,7 @@ class OrderNewPage extends StatelessWidget {
                                           color: COLOR_TEXT, fontSize: 18),
                                     ),
                                     const SizedBox(height: 10),
-                                    BorderedTextFormField(
-                                      child: TextFormField(
-                                        onSaved: (String? value) {
-                                          street = value;
-                                        },
-                                      ),
-                                    ),
+                                    CustomTextForm(variable: street),
                                   ],
                                 ),
                               ),
@@ -169,13 +152,7 @@ class OrderNewPage extends StatelessWidget {
                                           color: COLOR_TEXT, fontSize: 18),
                                     ),
                                     const SizedBox(height: 10),
-                                    BorderedTextFormField(
-                                      child: TextFormField(
-                                        onSaved: (String? value) {
-                                          houseNumber = value;
-                                        },
-                                      ),
-                                    ),
+                                    CustomTextForm(variable: houseNumber),
                                   ],
                                 ),
                               ),
@@ -195,13 +172,7 @@ class OrderNewPage extends StatelessWidget {
                             style: TextStyle(color: COLOR_TEXT, fontSize: 18),
                           ),
                           const SizedBox(height: 10),
-                          BorderedTextFormField(
-                            child: TextFormField(
-                              onSaved: (String? value) {
-                                notes = value;
-                              },
-                            ),
-                          ),
+                          CustomTextForm(variable: notes),
                         ],
                       ),
                     ),
@@ -228,13 +199,7 @@ class OrderNewPage extends StatelessWidget {
                                           color: COLOR_TEXT, fontSize: 18),
                                     ),
                                     const SizedBox(height: 10),
-                                    BorderedTextFormField(
-                                      child: TextFormField(
-                                        onSaved: (String? value) {
-                                          floor = value;
-                                        },
-                                      ),
-                                    ),
+                                    CustomTextForm(variable: floor),
                                   ],
                                 ),
                               ),
@@ -248,13 +213,7 @@ class OrderNewPage extends StatelessWidget {
                                           color: COLOR_TEXT, fontSize: 18),
                                     ),
                                     const SizedBox(height: 10),
-                                    BorderedTextFormField(
-                                      child: TextFormField(
-                                        onSaved: (String? value) {
-                                          houseNumber = value;
-                                        },
-                                      ),
-                                    ),
+                                    CustomTextForm(variable: houseNumber),
                                   ],
                                 ),
                               ),
