@@ -5,13 +5,15 @@ import 'package:food_blueprint/src/models/burger.dart';
 import 'package:food_blueprint/src/models/ingredient.dart';
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_arguments.dart';
 import 'package:food_blueprint/src/services/burger_service.dart';
+import 'package:food_blueprint/src/services/ingredient_service.dart';
 
 class BurgerEditController {
   final BurgerService foodService;
+  final IngredientService ingredientService;
 
   Burger? editedBurger;
 
-  BurgerEditController(this.foodService);
+  BurgerEditController(this.foodService, this.ingredientService);
 
   void enter(BurgerEditArguments? args) {
     // we're creating a new food
@@ -33,7 +35,7 @@ class BurgerEditController {
     } else {
       // append random ingredients to allow us to save
       final List<Ingredient> ingredients =
-          (await foodService.listIngredients()).data!;
+          (await ingredientService.listIngredients()).data!;
       editedBurger!.ingredients = [ingredients.first];
 
       developer.log(editedBurger!.toJson().toString());
@@ -42,5 +44,16 @@ class BurgerEditController {
     }
 
     if (result.status == "success") {}
+  }
+
+  Future<List<Ingredient>> listIngredients() async {
+    final result = await ingredientService.listIngredients();
+
+    if (result.status != "success") {
+      // todo: error? popup?
+      return [];
+    }
+
+    return result.data!;
   }
 }

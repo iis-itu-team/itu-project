@@ -15,6 +15,7 @@ import 'package:food_blueprint/src/pages/order_show/order_show_controller.dart';
 import 'package:food_blueprint/src/pages/settings/settings_page.dart';
 import 'package:food_blueprint/src/pages/settings/settings_controller.dart';
 import 'package:food_blueprint/src/services/burger_service.dart';
+import 'package:food_blueprint/src/services/ingredient_service.dart';
 import 'package:food_blueprint/src/services/order_service.dart';
 
 /// The Widget that configures your application.
@@ -26,9 +27,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final BurgerService burgerService = BurgerService();
+    final IngredientService ingredientService = IngredientService();
     final HomeController homeController = HomeController(burgerService);
     final BurgerEditController foodEditController =
-        BurgerEditController(burgerService);
+        BurgerEditController(burgerService, ingredientService);
 
     final OrderService orderService = OrderService();
     final OrderNewController orderNewController =
