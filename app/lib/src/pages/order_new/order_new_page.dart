@@ -3,6 +3,7 @@ import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/pages/order_new/order_new_controller.dart';
 import 'package:food_blueprint/src/pages/order_new/order_confirm_page.dart';
 import 'package:food_blueprint/src/widgets/custom_app_bar.dart';
+import 'package:food_blueprint/src/widgets/custom_checkbox.dart';
 
 class BorderedTextFormField extends StatelessWidget {
   final Widget child;
@@ -140,33 +141,9 @@ class OrderNewPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    CheckboxListTile(
-                      value: false,
-                      onChanged: (val) {},
-                      activeColor: COLOR_SECONDARY,
-                      title: const Text(
-                        "pred dom",
-                        style: TextStyle(color: COLOR_TEXT, fontSize: 18),
-                      ),
-                    ),
-                    CheckboxListTile(
-                      value: false,
-                      onChanged: (val) {},
-                      activeColor: COLOR_SECONDARY,
-                      title: const Text(
-                        "ku dverám",
-                        style: TextStyle(color: COLOR_TEXT, fontSize: 18),
-                      ),
-                    ),
-                    CheckboxListTile(
-                      value: false,
-                      onChanged: (val) {},
-                      activeColor: COLOR_SECONDARY,
-                      title: const Text(
-                        "ku dverám bytu",
-                        style: TextStyle(color: COLOR_TEXT, fontSize: 18),
-                      ),
-                    ),
+                    const CustomCheckboxListTile(text: "pred dom"),
+                    const CustomCheckboxListTile(text: "ku dverám"),
+                    const CustomCheckboxListTile(text: "ku dverám bytu"),
                     Container(
                       padding: const EdgeInsets.all(10),
                       child: Column(
@@ -221,35 +198,15 @@ class OrderNewPage extends StatelessWidget {
                     ),
                     Container(
                       padding: const EdgeInsets.all(10),
-                      child: Column(children: [
-                        CheckboxListTile(
-                          value: false,
-                          onChanged: (val) {},
-                          activeColor: COLOR_SECONDARY,
-                          title: const Text(
-                            "pri doručení (karta/hotovosť)",
-                            style: TextStyle(color: COLOR_TEXT, fontSize: 18),
-                          ),
-                        ),
-                        CheckboxListTile(
-                          value: false,
-                          onChanged: (val) {},
-                          activeColor: COLOR_SECONDARY,
-                          title: const Text(
-                            "online kartou",
-                            style: TextStyle(color: COLOR_TEXT, fontSize: 18),
-                          ),
-                        ),
-                        CheckboxListTile(
-                          value: false,
-                          onChanged: (val) {},
-                          activeColor: COLOR_SECONDARY,
-                          title: const Text(
-                            "paypal / google pay / apple pay",
-                            style: TextStyle(color: COLOR_TEXT, fontSize: 18),
-                          ),
-                        ),
-                      ]),
+                      child: const Column(
+                        children: [
+                          CustomCheckboxListTile(
+                              text: "pri doručení (karta/hotovosť)"),
+                          CustomCheckboxListTile(text: "kartou online"),
+                          CustomCheckboxListTile(
+                              text: "paypal / google pay / apple pay"),
+                        ],
+                      ),
                     )
                   ],
                 ),
