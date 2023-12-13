@@ -39,6 +39,12 @@ export default class Burger extends BaseModel {
             return this.$extras.pivot_amount
     }
 
+    @computed()
+    public get price() {
+        if ("price" in this.$extras)
+            return Number(this.$extras.price)
+    }
+
     @beforeCreate()
     public static async beforeCreate(burger: Burger) {
         burger.id = generateId(burger.id, "burger")

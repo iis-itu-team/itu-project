@@ -1,3 +1,4 @@
+import Database from "@ioc:Adonis/Lucid/Database";
 import FailureException from "App/Exceptions/FailureException";
 import Burger from "App/Models/Burger"
 import Ingredient from "App/Models/Ingredient";
@@ -20,6 +21,16 @@ export type CreateBurgerInput = {
 }
 
 export default class BurgerService {
+    private calculatePrice(q) {
+        q.select('*', Database.from('burger_ingredients')
+            .whereRaw('burger_ingredients.burger_id = burgers.id')
+            .join('ingredients', 'burger_ingredients.ingredient_id', 'ingredients.id')
+            .groupBy('burger_id')
+            .select(Database.raw('sum(ingredients.price * burger_ingredients.amount) as total_price'))
+            .as('price')
+        )
+    }
+
     public listBurgers = async (input: ListBurgersInput): Promise<Burger[]> => {
         const q = Burger.query()
             .preload("ingredients", (query) => {
@@ -34,16 +45,23 @@ export default class BurgerService {
             q.andWhere("published", input.published)
         }
 
+        // calculate price from ingredients
+        this.calculatePrice(q)
+
         return await q
     }
 
     public getBurger = async (id: string): Promise<Burger> => {
-        const burger = await Burger.query()
+        const q = Burger.query()
             .where("id", id)
             .preload("ingredients", (query) => {
                 query.pivotColumns(["amount"])
             })
-            .first();
+
+        // calculate price from ingredients
+        this.calculatePrice(q)
+
+        const burger = await q.first()
 
         if (!burger) {
             throw FailureException.notFound("burger", id)
