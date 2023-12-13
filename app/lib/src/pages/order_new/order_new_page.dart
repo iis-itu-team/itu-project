@@ -86,17 +86,48 @@ class OrderNewPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment
                             .start, // Adjust this based on your layout requirements
                         children: [
-                          const Text(
-                            "Mesto",
-                            style: TextStyle(color: COLOR_TEXT, fontSize: 18),
-                          ),
-                          const SizedBox(height: 10),
-                          BorderedTextFormField(
-                            child: TextFormField(
-                              onSaved: (String? value) {
-                                city = value;
-                              },
-                            ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Column(
+                                  children: [
+                                    const Text(
+                                      "Mesto",
+                                      style: TextStyle(
+                                          color: COLOR_TEXT, fontSize: 18),
+                                    ),
+                                    const SizedBox(height: 10),
+                                    BorderedTextFormField(
+                                      child: TextFormField(
+                                        onSaved: (String? value) {
+                                          city = value;
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              const SizedBox(width: 16),
+                              Expanded(
+                                child: Column(
+                                  children: [
+                                    const Text(
+                                      "PSČ",
+                                      style: TextStyle(
+                                          color: COLOR_TEXT, fontSize: 18),
+                                    ),
+                                    const SizedBox(height: 10),
+                                    BorderedTextFormField(
+                                      child: TextFormField(
+                                        onSaved: (String? value) {
+                                          zipCode = value;
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
