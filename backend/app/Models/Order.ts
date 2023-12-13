@@ -1,6 +1,6 @@
 import { column, BaseModel, beforeCreate, manyToMany, ManyToMany, BelongsTo, belongsTo } from "@ioc:Adonis/Lucid/Orm";
 import generateId from "utils/generate-id";
-import Food from "./Food";
+import Burger from "./Burger";
 import Keeper from "./Keeper";
 
 export enum DeliveryType {
@@ -21,17 +21,17 @@ export default class Order extends BaseModel {
     @column({ isPrimary: true })
     public id: string
 
-    @manyToMany(() => Food, {
-        pivotTable: "order_foods",
+    @manyToMany(() => Burger, {
+        pivotTable: "order_burgers",
         localKey: "id",
         relatedKey: "id",
         pivotForeignKey: "order_id",
-        pivotRelatedForeignKey: "food_id",
+        pivotRelatedForeignKey: "burger_id",
         pivotColumns: [
             "amount"
         ]
     })
-    public foods: ManyToMany<typeof Food>
+    public burgers: ManyToMany<typeof Burger>
 
     // delivery details
 

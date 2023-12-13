@@ -10,7 +10,7 @@ const listOrdersSchema = schema.create({
 })
 
 const createOrderSchema = schema.create({
-    foods: schema.array().members(schema.object().members({
+    burgers: schema.array().members(schema.object().members({
         id: schema.string(),
         amount: schema.number([
             rules.unsigned()

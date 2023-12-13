@@ -1,10 +1,10 @@
 import FailureException from "App/Exceptions/FailureException";
-import Food from "App/Models/Food"
+import Burger from "App/Models/Burger"
 import Ingredient from "App/Models/Ingredient";
 import Keeper from "App/Models/Keeper";
 
-export type ListFoodsInput = {
-    published: boolean|null
+export type ListBurgersInput = {
+    published: boolean | null
     keeperId?: string
 }
 
@@ -13,15 +13,15 @@ export type IngredientInput = {
     amount: number
 }
 
-export type CreateFoodInput = {
+export type CreateBurgerInput = {
     publish: boolean
     name: string
     ingredients: IngredientInput[]
 }
 
-export default class FoodService {
-    public listFoods = async (input: ListFoodsInput): Promise<Food[]> => {
-        const q = Food.query()
+export default class BurgerService {
+    public listBurgers = async (input: ListBurgersInput): Promise<Burger[]> => {
+        const q = Burger.query()
             .preload("ingredients", (query) => {
                 query.pivotColumns(["amount"])
             });
@@ -37,22 +37,22 @@ export default class FoodService {
         return await q
     }
 
-    public getFood = async (id: string): Promise<Food> => {
-        const food = await Food.query()
+    public getBurger = async (id: string): Promise<Burger> => {
+        const burger = await Burger.query()
             .where("id", id)
             .preload("ingredients", (query) => {
                 query.pivotColumns(["amount"])
             })
             .first();
 
-        if (!food) {
-            throw FailureException.notFound("food", id)
+        if (!burger) {
+            throw FailureException.notFound("burger", id)
         }
 
-        return food
+        return burger
     }
 
-    public createFood = async (keeper: Keeper, input: CreateFoodInput): Promise<Food> => {
+    public createBurger = async (keeper: Keeper, input: CreateBurgerInput): Promise<Burger> => {
         await Promise.all(input.ingredients.map(async (ingredient: IngredientInput) => {
             const ingredientModel = await Ingredient.find(ingredient.id)
 
@@ -63,36 +63,36 @@ export default class FoodService {
             return ingredientModel
         }))
 
-        let food = await Food.create({
+        let burger = await Burger.create({
             name: input.name,
             published: input.publish
         })
 
-        await food.related("keeper").associate(keeper)
+        await burger.related("keeper").associate(keeper)
 
         await Promise.all(input.ingredients.map(async (ingredient: IngredientInput) => {
-            await food.related("ingredients").attach({
+            await burger.related("ingredients").attach({
                 [ingredient.id]: {
                     amount: ingredient.amount
                 }
             })
         }))
 
-        food = await food.refresh()
-        await food.load("ingredients", (query) => {
+        burger = await burger.refresh()
+        await burger.load("ingredients", (query) => {
             query.pivotColumns(["amount"])
         })
 
-        return food
+        return burger
     }
 
-    public deleteFood = async (id: string) => {
-        const food = await Food.find(id)
+    public deleteBurger = async (id: string) => {
+        const burger = await Burger.find(id)
 
-        if (!food) {
-            throw FailureException.notFound("food", id)
+        if (!burger) {
+            throw FailureException.notFound("burger", id)
         }
 
-        await food.delete()
+        await burger.delete()
     }
 }

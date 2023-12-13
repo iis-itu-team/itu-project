@@ -1,5 +1,5 @@
 import FailureException from "App/Exceptions/FailureException"
-import Food from "App/Models/Food"
+import Burger from "App/Models/Burger"
 import Keeper from "App/Models/Keeper"
 import Order, { DeliveryType, PaymentType } from "App/Models/Order"
 
@@ -7,13 +7,13 @@ export type ListOrdersInput = {
     keeperId?: string
 }
 
-export type FoodInput = {
+export type BurgerInput = {
     id: string
     amount: number
 }
 
 export type CreateOrderInput = {
-    foods: FoodInput[],
+    burgers: BurgerInput[],
 
     city: string
     street: string
@@ -35,11 +35,16 @@ export default class OrderService {
             q.andWhere("keeper_id", input.keeperId)
         }
 
+        q.preload('burgers')
+
         return await q
     }
 
     public getOrder = async (id: string) => {
-        const order = await Order.find(id)
+        const order = await Order.query()
+            .where('id', id)
+            .preload('burgers')
+            .first()
 
         if (!order) {
             throw FailureException.notFound("order", id)
@@ -53,11 +58,11 @@ export default class OrderService {
         // todo: don't associate existing foods, create new ones with same ingredients
         // we want to avoid users changing already ordered foods - aka changing the past
 
-        await Promise.all(input.foods.map(async (food: FoodInput) => {
-            const foodModel = await Food.find(food.id)
+        await Promise.all(input.burgers.map(async (burger: BurgerInput) => {
+            const burgerModel = await Burger.find(burger.id)
 
-            if (!foodModel) {
-                throw FailureException.notFound("food", food.id)
+            if (!burgerModel) {
+                throw FailureException.notFound("burger", burger.id)
             }
         }))
 
@@ -66,6 +71,13 @@ export default class OrderService {
         })
 
         await order.related("keeper").associate(keeper)
+
+        const relations = {};
+        input.burgers.forEach((b) => {
+            relations[b.id] = { amount: b.amount };
+        })
+
+        await order.related('burgers').attach(relations)
 
         return order
     }

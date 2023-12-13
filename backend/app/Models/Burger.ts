@@ -3,7 +3,7 @@ import Ingredient from "./Ingredient";
 import generateId from "utils/generate-id";
 import Keeper from "./Keeper";
 
-export default class Food extends BaseModel {
+export default class Burger extends BaseModel {
     public static selfAssignPrimaryKey = true;
 
     @column({ isPrimary: true })
@@ -16,10 +16,10 @@ export default class Food extends BaseModel {
     public name: string
 
     @manyToMany(() => Ingredient, {
-        pivotTable: "food_ingredients",
+        pivotTable: "burger_ingredients",
         localKey: "id",
         relatedKey: "id",
-        pivotForeignKey: "food_id",
+        pivotForeignKey: "burger_id",
         pivotRelatedForeignKey: "ingredient_id",
         pivotColumns: [
             "amount"
@@ -40,7 +40,7 @@ export default class Food extends BaseModel {
     }
 
     @beforeCreate()
-    public static async beforeCreate(food: Food) {
-        food.id = generateId(food.id, "food")
+    public static async beforeCreate(burger: Burger) {
+        burger.id = generateId(burger.id, "burger")
     }
 }

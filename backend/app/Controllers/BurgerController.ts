@@ -1,16 +1,15 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { schema } from '@ioc:Adonis/Core/Validator'
 import FailureException from 'App/Exceptions/FailureException';
-
-import FoodService from "App/Services/FoodService";
+import BurgerService from 'App/Services/BurgerService';
 import KeeperService from 'App/Services/KeeperService';
 
-const indexFoodSchema = schema.create({
+const indexBurgerSchema = schema.create({
     published: schema.enum.optional(["true", "false"]),
     keeperId: schema.string.optional()
 })
 
-const createFoodSchema = schema.create({
+const createBurgerSchema = schema.create({
     publish: schema.boolean(),
     name: schema.string(),
     ingredients: schema.array().members(schema.object().members({
@@ -20,39 +19,39 @@ const createFoodSchema = schema.create({
     keeperId: schema.string()
 })
 
-export default class FoodController {
-    private readonly foodService = new FoodService()
+export default class BurgerController {
+    private readonly burgerService = new BurgerService()
     private readonly keeperService = new KeeperService()
 
     public async index({ request, response }: HttpContextContract) {
-        const validated = await request.validate({ schema: indexFoodSchema })
+        const validated = await request.validate({ schema: indexBurgerSchema })
 
-        const foods = await this.foodService.listFoods({
+        const burgers = await this.burgerService.listBurgers({
             ...validated,
             published: validated.published == null ? null : validated.published === "true"
         })
 
         response.status(200).json({
             status: "success",
-            data: foods,
-            count: foods.length
+            data: burgers,
+            count: burgers.length
         })
     }
 
     public async show({ request, response }: HttpContextContract) {
         const id = request.param("id")
 
-        const food = await this.foodService.getFood(id)
+        const burger = await this.burgerService.getBurger(id)
 
         response.status(200).json({
             status: "success",
-            data: food
+            data: burger
         })
     }
 
     public async store({ request, response }: HttpContextContract) {
         const validated = await request.validate({
-            schema: createFoodSchema
+            schema: createBurgerSchema
         })
 
         const keeper = await this.keeperService.getKeeper(validated.keeperId)
@@ -61,18 +60,18 @@ export default class FoodController {
             throw FailureException.notFound("keeper", validated.keeperId)
         }
 
-        const food = await this.foodService.createFood(keeper, validated)
+        const burger = await this.burgerService.createBurger(keeper, validated)
 
         response.status(201).json({
             status: "success",
-            data: food
+            data: burger
         })
     }
 
     public async destroy({ request, response }: HttpContextContract) {
         const id = request.param("id")
 
-        await this.foodService.deleteFood(id)
+        await this.burgerService.deleteBurger(id)
 
         response.status(200).json({
             status: "success"

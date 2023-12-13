@@ -35,7 +35,7 @@ Route.group(() => {
   Route.resource("ingredients", "IngredientController")
     .only(["index", "show", "store", "update", "destroy"])
 
-  Route.resource("foods", "FoodController")
+  Route.resource("burgers", "BurgerController")
     .only(["index", "show", "store", "destroy"])
 
   Route.resource("orders", "OrderController")
