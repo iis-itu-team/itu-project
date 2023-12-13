@@ -114,7 +114,9 @@ class OrderNewPage extends StatelessWidget {
                                     ),
                                     const SizedBox(height: 10),
                                     BorderedTextFormField(
-                                      child: TextFormField(),
+                                      child: TextField(
+                                        onChanged: controller.handleTextUpdate,
+                                      ),
                                     ),
                                   ],
                                 ),

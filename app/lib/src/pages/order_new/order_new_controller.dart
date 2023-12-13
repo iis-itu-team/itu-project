@@ -4,21 +4,11 @@ class OrderNewController {
   // final BurgerService foodService;
   final OrderService orderService;
 
-  const OrderNewController(this.orderService);
+  OrderNewController(this.orderService);
 
-  // TODO: save order
-  // TODO: show orders
+  String? city = "";
 
-  /*
-  Future<List<Burger>> listBurgers() async {
-    final result = await foodService.listBurgers();
-
-    if (result.status != "success") {
-      // todo: error? popup?
-      return [];
-    }
-
-    return result.data!;
+  void handleTextUpdate(String value) {
+    city = value;
   }
-  */
 }

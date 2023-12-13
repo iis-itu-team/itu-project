@@ -4,7 +4,7 @@ class User {
   final String id;
   final String name;
   String? password;
-  List<EditedBurger> editedburger = [];
+  List<Burger> burgers = [];
 
   User(this.id, this.name, this.password);
 
@@ -15,6 +15,6 @@ class User {
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
-        'editedburger': editedburger.map((e) => e.toJson()).toList()
+        'burgers': burgers.map((e) => e.toJson()).toList()
       };
 }

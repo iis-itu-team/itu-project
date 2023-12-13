@@ -1,30 +1,45 @@
-import 'package:food_blueprint/src/models/burger.dart';
 import 'package:food_blueprint/src/models/user.dart';
+import 'package:food_blueprint/src/models/burger.dart';
 
 class Order {
   final String id;
   final User user;
   String? street;
-  String? housenumber;
-  String? zipcode;
+  String? houseNumber;
+  String? zipCode;
   String? city;
   int? phone;
   String? notes;
   int? price;
-  bool? to_house;
-  bool? to_doors;
-  bool? to_flat_doors;
-
+  bool? toHouse;
+  bool? toDoors;
+  bool? toFlatDoors;
+  int? price;
   DateTime date = DateTime.now();
 
-  List<EditedBurger> editedburger = [];
+  List<Burger> burgers = [];
 
   Order(this.id, this.user);
 
   Order.fromJson(Map<String, dynamic> json)
       : id = json["id"],
-        user = json["user"];
+        user = json["user"],
+        price = json["price"],
+        date = json["date"];
 
-  Map<String, dynamic> toJson() =>
-      {'id': id, 'editedburger': editedburger.map((e) => e.toJson()).toList()};
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'user': user,
+        'street': street,
+        'houseNumber': houseNumber,
+        'phone': phone,
+        'notes': notes,
+        'price': price,
+        'toHouse': toHouse,
+        'toDoors': toDoors,
+        'toFlatDoors': toFlatDoors,
+        'date': date,
+        'price': price,
+        'burgers': burgers.map((e) => e.toJson()).toList()
+      };
 }
