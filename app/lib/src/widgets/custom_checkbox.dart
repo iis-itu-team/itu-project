@@ -4,17 +4,18 @@ import 'package:food_blueprint/src/theme/theme.dart';
 class CustomCheckboxListTile extends StatelessWidget
     implements PreferredSizeWidget {
   final String text;
+  final bool value;
 
-  const CustomCheckboxListTile({
-    super.key,
-    required this.text,
-  });
+  const CustomCheckboxListTile(
+      {super.key, required this.text, required this.value});
 
   @override
   Widget build(BuildContext context) {
     return CheckboxListTile(
       value: false,
-      onChanged: (val) {},
+      onChanged: (bool? value) {
+        value != value;
+      },
       title: Text(
         text,
         style: const TextStyle(color: COLOR_TEXT, fontSize: 18),

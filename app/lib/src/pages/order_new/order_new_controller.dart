@@ -8,7 +8,7 @@ class OrderNewController {
 
   String? city = "";
 
-  void handleTextUpdate(String value) {
-    city = value;
+  void handleSave() {
+    // TODO: process data from order
   }
 }

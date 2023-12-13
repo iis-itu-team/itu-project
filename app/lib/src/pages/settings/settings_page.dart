@@ -22,10 +22,12 @@ class SettingsPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CustomCheckboxListTile(
-                text: "Uchovávanie údajov pre sledovanie vašich detí"),
+                text: "Uchovávanie údajov pre sledovanie vašich detí",
+                value: false),
             CustomCheckboxListTile(
                 text:
-                    "Uchovávanie údajov ktoré môže jednoduche deanonymizovať užívatela"),
+                    "Uchovávanie údajov ktoré môže jednoduche deanonymizovať užívatela",
+                value: false),
           ],
         )),
       ),

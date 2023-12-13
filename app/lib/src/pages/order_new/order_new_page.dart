@@ -29,9 +29,19 @@ class BorderedTextFormField extends StatelessWidget {
 class OrderNewPage extends StatelessWidget {
   final OrderNewController controller;
 
-  const OrderNewPage({required this.controller, super.key});
+  OrderNewPage({required this.controller, super.key});
 
   static const routeName = '/order-new';
+
+  String? street;
+  String? houseNumber;
+  String? zipCode;
+  String? city;
+  String? floor;
+  String? notes;
+  bool? toHouse = false;
+  bool? toDoors = false;
+  bool? toFlatDoors = false;
 
   @override
   Widget build(BuildContext context) {
@@ -45,11 +55,13 @@ class OrderNewPage extends StatelessWidget {
             children: [
               Container(
                 padding: const EdgeInsets.all(10),
-                child: const Text("Shrnutí",
-                    style: TextStyle(
-                        color: COLOR_TEXT,
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold)),
+                child: const Text(
+                  "Shrnutí",
+                  style: TextStyle(
+                      color: COLOR_TEXT,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
               Container(
                 padding: const EdgeInsets.all(10),
@@ -75,7 +87,11 @@ class OrderNewPage extends StatelessWidget {
                           ),
                           const SizedBox(height: 10),
                           BorderedTextFormField(
-                            child: TextFormField(),
+                            child: TextFormField(
+                              onSaved: (String? value) {
+                                city = value;
+                              },
+                            ),
                           ),
                         ],
                       ),
@@ -98,7 +114,11 @@ class OrderNewPage extends StatelessWidget {
                                     ),
                                     const SizedBox(height: 10),
                                     BorderedTextFormField(
-                                      child: TextFormField(),
+                                      child: TextFormField(
+                                        onSaved: (String? value) {
+                                          street = value;
+                                        },
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -114,8 +134,10 @@ class OrderNewPage extends StatelessWidget {
                                     ),
                                     const SizedBox(height: 10),
                                     BorderedTextFormField(
-                                      child: TextField(
-                                        onChanged: controller.handleTextUpdate,
+                                      child: TextFormField(
+                                        onSaved: (String? value) {
+                                          houseNumber = value;
+                                        },
                                       ),
                                     ),
                                   ],
@@ -138,14 +160,21 @@ class OrderNewPage extends StatelessWidget {
                           ),
                           const SizedBox(height: 10),
                           BorderedTextFormField(
-                            child: TextFormField(),
+                            child: TextFormField(
+                              onSaved: (String? value) {
+                                notes = value;
+                              },
+                            ),
                           ),
                         ],
                       ),
                     ),
-                    const CustomCheckboxListTile(text: "pred dom"),
-                    const CustomCheckboxListTile(text: "ku dverám"),
-                    const CustomCheckboxListTile(text: "ku dverám bytu"),
+                    const CustomCheckboxListTile(
+                        text: "pred dom", value: false),
+                    const CustomCheckboxListTile(
+                        text: "ku dverám", value: false),
+                    const CustomCheckboxListTile(
+                        text: "ku dverám bytu", value: false),
                     Container(
                       padding: const EdgeInsets.all(10),
                       child: Column(
@@ -164,7 +193,11 @@ class OrderNewPage extends StatelessWidget {
                                     ),
                                     const SizedBox(height: 10),
                                     BorderedTextFormField(
-                                      child: TextFormField(),
+                                      child: TextFormField(
+                                        onSaved: (String? value) {
+                                          floor = value;
+                                        },
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -180,7 +213,11 @@ class OrderNewPage extends StatelessWidget {
                                     ),
                                     const SizedBox(height: 10),
                                     BorderedTextFormField(
-                                      child: TextFormField(),
+                                      child: TextFormField(
+                                        onSaved: (String? value) {
+                                          houseNumber = value;
+                                        },
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -203,10 +240,13 @@ class OrderNewPage extends StatelessWidget {
                       child: const Column(
                         children: [
                           CustomCheckboxListTile(
-                              text: "pri doručení (karta/hotovosť)"),
-                          CustomCheckboxListTile(text: "kartou online"),
+                              text: "pri doručení (karta/hotovosť)",
+                              value: false),
                           CustomCheckboxListTile(
-                              text: "paypal / google pay / apple pay"),
+                              text: "kartou online", value: false),
+                          CustomCheckboxListTile(
+                              text: "paypal / google pay / apple pay",
+                              value: false),
                         ],
                       ),
                     )
@@ -226,6 +266,7 @@ class OrderNewPage extends StatelessWidget {
           children: <Widget>[
             FloatingActionButton.large(
               onPressed: () {
+                controller.handleSave();
                 Navigator.pushNamed(context, OrderConfirmPage.routeName);
               },
               backgroundColor: COLOR_SECONDARY,

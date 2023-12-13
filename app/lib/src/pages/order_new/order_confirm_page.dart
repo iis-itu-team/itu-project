@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:food_blueprint/src/pages/order_show/order_show_page.dart';
-import 'package:food_blueprint/src/pages/settings/settings_page.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/widgets/custom_app_bar.dart';
 
