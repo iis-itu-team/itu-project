@@ -14,7 +14,6 @@ class Order {
   bool? toHouse;
   bool? toDoors;
   bool? toFlatDoors;
-  int? price;
   DateTime date = DateTime.now();
 
   List<Burger> burgers = [];
@@ -39,7 +38,6 @@ class Order {
         'toDoors': toDoors,
         'toFlatDoors': toFlatDoors,
         'date': date,
-        'price': price,
         'burgers': burgers.map((e) => e.toJson()).toList()
       };
 }
