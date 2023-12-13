@@ -228,7 +228,7 @@ class OrderNewPage extends StatelessWidget {
               },
               backgroundColor: COLOR_SECONDARY,
               child:
-                  const Text('Objednat!', style: TextStyle(color: COLOR_TEXT)),
+                  const Text('Zaplatiť!', style: TextStyle(color: COLOR_TEXT)),
             ),
           ],
         ),
