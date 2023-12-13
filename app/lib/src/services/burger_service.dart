@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'dart:developer' as developer;
+
 import 'package:food_blueprint/src/http/client.dart';
 import 'package:food_blueprint/src/http/result.dart';
 import 'package:food_blueprint/src/models/burger.dart';
@@ -40,6 +42,8 @@ class BurgerService {
         burgers.add(Burger.fromJson(burgerJson));
       }
     }
+
+    developer.log("Fetched ${burgers.length} burger(s)...");
 
     return HttpResult(response.statusCode, json["status"], burgers);
   }
