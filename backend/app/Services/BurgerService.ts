@@ -101,7 +101,19 @@ export default class BurgerService {
             query.pivotColumns(["amount"])
         })
 
-        return burger
+        const q = Burger.query()
+            .where('id', burger.id)
+            .preload('ingredients')
+
+        this.calculatePrice(q);
+
+        const res = await q.first()
+
+        if (!res) {
+            throw new FailureException(500, "failed_to_create", "Failed to create burger, not found in psot query.");
+        }
+
+        return res
     }
 
     public deleteBurger = async (id: string) => {
