@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/pages/settings/settings_controller.dart';
 import 'package:food_blueprint/src/widgets/custom_app_bar.dart';
+import 'package:food_blueprint/src/widgets/custom_checkbox.dart';
 
 class SettingsPage extends StatelessWidget {
   final SettingsController controller;
@@ -16,33 +17,15 @@ class SettingsPage extends StatelessWidget {
       appBar: const CustomAppBar(text: 'Nastavenia'),
       body: Container(
         color: COLOR_SECONDARY,
-        child: Center(
+        child: const Center(
             child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text("Nastavenia",
-                style: TextStyle(
-                    color: COLOR_TEXT,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold)),
-            CheckboxListTile(
-              value: false,
-              onChanged: (val) {},
-              activeColor: COLOR_SECONDARY,
-              title: const Text(
-                "Uchovávanie údajov pre sledovanie vašich detí",
-                style: TextStyle(color: COLOR_TEXT, fontSize: 18),
-              ),
-            ),
-            CheckboxListTile(
-              value: false,
-              onChanged: (val) {},
-              activeColor: COLOR_SECONDARY,
-              title: const Text(
-                "Uchovávanie údajov ktoré môže jednoduche deanonymizovať užívatela",
-                style: TextStyle(color: COLOR_TEXT, fontSize: 18),
-              ),
-            ),
+            CustomCheckboxListTile(
+                text: "Uchovávanie údajov pre sledovanie vašich detí"),
+            CustomCheckboxListTile(
+                text:
+                    "Uchovávanie údajov ktoré môže jednoduche deanonymizovať užívatela"),
           ],
         )),
       ),
