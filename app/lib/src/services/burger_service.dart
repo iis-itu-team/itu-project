@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'dart:developer' as developer;
-
 import 'package:food_blueprint/src/http/client.dart';
 import 'package:food_blueprint/src/http/result.dart';
 import 'package:food_blueprint/src/models/burger.dart';
@@ -30,28 +28,26 @@ class BurgerService {
   Future<HttpResult<List<Burger>>> listBurgers() async {
     final HttpClient client = HttpClient.fromEnv();
 
-    final response = await client.get(client.route("/foods"));
+    final response = await client.get(client.route("/burgers"));
 
     final json = jsonDecode(response.body) as Map<String, dynamic>;
 
-    List<Burger> foods = [];
+    List<Burger> burgers = [];
 
     if (json["status"] == "success") {
       // deserialize
-      for (final Map<String, dynamic> foodJson in json["data"]) {
-        foods.add(Burger.fromJson(foodJson));
+      for (final Map<String, dynamic> burgerJson in json["data"]) {
+        burgers.add(Burger.fromJson(burgerJson));
       }
     }
 
-    developer.log(response.body);
-
-    return HttpResult(response.statusCode, json["status"], foods);
+    return HttpResult(response.statusCode, json["status"], burgers);
   }
 
   Future<HttpResult<void>> updateBurger(String id, Burger burger) async {
     final HttpClient client = HttpClient.fromEnv();
 
-    final response = await client.put(client.route('/foods/${burger.id}'),
+    final response = await client.put(client.route('/burgers/${burger.id}'),
         body: burger.toJson());
 
     final json = jsonDecode(response.body) as Map<String, dynamic>;
@@ -62,7 +58,7 @@ class BurgerService {
   Future<HttpResult<void>> createBurger(Burger burger) async {
     final HttpClient client = HttpClient.fromEnv();
 
-    final response = await client.post(client.route('/foods'),
+    final response = await client.post(client.route('/burgers'),
         headers: {'Content-Type': "application/json"},
         body: jsonEncode(burger.toJson()).toString());
 

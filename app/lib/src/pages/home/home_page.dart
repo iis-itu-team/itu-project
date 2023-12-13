@@ -26,22 +26,22 @@ class HomePage extends StatelessWidget {
                       constraints: BoxConstraints(
                           maxHeight: MediaQuery.of(context).size.height - 120),
                       child: FutureBuilder(
-                          builder: (context, foods) {
+                          builder: (context, burgers) {
                             return ListView.builder(
-                              itemCount: foods.data?.length ?? 0,
+                              itemCount: burgers.data?.length ?? 0,
                               itemBuilder: (context, index) {
-                                final food = foods.data?[index];
+                                final burger = burgers.data?[index];
 
-                                if (food == null) {
+                                if (burger == null) {
                                   return const ListTile();
                                 }
 
                                 return ListTile(
-                                    title: Text(food.name ?? ''),
+                                    title: Text(burger.name ?? ''),
                                     onTap: () {
                                       Navigator.pushNamed(
                                           context, BurgerEditPage.routeName,
-                                          arguments: BurgerEditArguments(food));
+                                          arguments: BurgerEditArguments(burger));
                                     });
                               },
                             );

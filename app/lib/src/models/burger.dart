@@ -2,6 +2,8 @@ import 'package:food_blueprint/src/models/ingredient.dart';
 import 'package:flutter/widgets.dart';
 import 'dart:convert';
 
+import 'dart:developer' as developer;
+
 enum BurgerRating { up, down, none }
 
 // Burger fetched from the API
@@ -29,18 +31,23 @@ class Burger {
         rating = burger.rating,
         currentRating = burger.currentRating;
 
-  Burger.fromJson(Map<String, dynamic> json)
-      : id = json['id'] as String,
-        name = json['name'] as String,
-        publish = json['publish'] as bool,
-        keeperId = json['keeperId'] as String,
-        price = json['price'] as int,
-        rating = json['rating'] as int {
+  Burger.fromJson(Map<String, dynamic> json) {
+    // todo: uncomment rating when done on backend
+
+    id = json['id'];
+    name = json['name'];
+    publish = json['published'];
+    keeperId = json['keeper_id'];
+    price = json['price'];
+    // rating = json['rating'] as int;
+
     ingredients = [];
-    for (var ingredient in json['ingredients']) {
-      ingredients.add(jsonDecode(ingredient) as Ingredient);
+    
+    for (var ingredientJson in json['ingredients']) {
+      ingredients.add(Ingredient.fromJson(ingredientJson));
     }
-    switch (json['currentRating'] as String) {
+
+    /*switch (json['currentRating'] as String) {
       case 'up':
         currentRating = BurgerRating.up;
         break;
@@ -50,7 +57,7 @@ class Burger {
       default:
         currentRating = BurgerRating.none;
         break;
-    }
+    }*/
   }
 
   Map<String, dynamic> toJson() => {
