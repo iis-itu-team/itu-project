@@ -48,24 +48,23 @@ class BurgerService {
     return HttpResult(response.statusCode, json["status"], foods);
   }
 
-  Future<HttpResult<void>> updateBurger(
-      String id, EditedBurger editedBurger) async {
+  Future<HttpResult<void>> updateBurger(String id, Burger burger) async {
     final HttpClient client = HttpClient.fromEnv();
 
-    final response = await client.put(client.route('/foods/${editedBurger.id}'),
-        body: editedBurger.toJson());
+    final response = await client.put(client.route('/foods/${burger.id}'),
+        body: burger.toJson());
 
     final json = jsonDecode(response.body) as Map<String, dynamic>;
 
     return HttpResult(response.statusCode, json["status"], null);
   }
 
-  Future<HttpResult<void>> createBurger(EditedBurger editedBurger) async {
+  Future<HttpResult<void>> createBurger(Burger burger) async {
     final HttpClient client = HttpClient.fromEnv();
 
     final response = await client.post(client.route('/foods'),
         headers: {'Content-Type': "application/json"},
-        body: jsonEncode(editedBurger.toJson()).toString());
+        body: jsonEncode(burger.toJson()).toString());
 
     final json = jsonDecode(response.body) as Map<String, dynamic>;
 

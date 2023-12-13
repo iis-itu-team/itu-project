@@ -7,7 +7,7 @@ import 'package:food_blueprint/src/http/result.dart';
 import 'package:food_blueprint/src/models/burger.dart';
 
 class OrderService {
-  Future<HttpResult<void>> createOrder(EditedBurger food) async {
+  Future<HttpResult<void>> createOrder(Burger food) async {
     final HttpClient client = HttpClient.fromEnv();
 
     developer.log(jsonEncode(food.toJson()));

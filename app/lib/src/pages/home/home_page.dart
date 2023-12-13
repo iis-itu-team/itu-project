@@ -37,7 +37,7 @@ class HomePage extends StatelessWidget {
                                 }
 
                                 return ListTile(
-                                    title: Text(food.name),
+                                    title: Text(food.name ?? ''),
                                     onTap: () {
                                       Navigator.pushNamed(
                                           context, BurgerEditPage.routeName,

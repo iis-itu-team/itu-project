@@ -9,16 +9,16 @@ import 'package:food_blueprint/src/services/burger_service.dart';
 class BurgerEditController {
   final BurgerService foodService;
 
-  EditedBurger? editedBurger;
+  Burger? editedBurger;
 
   BurgerEditController(this.foodService);
 
   void enter(BurgerEditArguments? args) {
     // we're creating a new food
     if (args == null) {
-      editedBurger = EditedBurger();
+      editedBurger = Burger();
     } else {
-      editedBurger = EditedBurger.fromBurger(args.food);
+      editedBurger = Burger.fromBurger(args.food);
     }
   }
 
