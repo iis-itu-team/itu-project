@@ -3,7 +3,7 @@ import 'package:food_blueprint/src/pages/basic/basic_page.dart';
 import 'package:food_blueprint/src/pages/community/community_page.dart';
 import 'package:food_blueprint/src/pages/home/home_page.dart';
 import 'package:food_blueprint/src/pages/mine/mine_page.dart';
-import 'package:food_blueprint/src/widgets/custuom_button.dart';
+import 'package:food_blueprint/src/widgets/custom_button.dart';
 
 class CustomRowMenu extends StatelessWidget implements PreferredSizeWidget {
   const CustomRowMenu({
