@@ -2,19 +2,18 @@ import 'package:food_blueprint/src/models/burger.dart';
 
 class Order {
   String? id;
+  String? city;
   String? street;
   String? houseNumber;
-  String? zipCode;
-  String? city;
+  int? flatNumber;
+  String? postalCode;
+  String? deliveryType;
   String? floor;
-  int? phone;
-  String? notes;
+  String? note;
   int? price;
   bool? ring;
-  bool? toHouse;
-  bool? toDoors;
-  bool? toFlatDoors;
-  DateTime date = DateTime.now();
+  String? paymentType;
+  DateTime? date;
 
   List<Burger> burgers = [];
 
@@ -26,16 +25,17 @@ class Order {
         date = json["date"];
 
   Map<String, dynamic> toJson() => {
-        'id': id,
+        'burgers': burgers.map((e) => e.toJson()).toList(),
+        "city": city,
         'street': street,
+        'postalCode': postalCode,
         'houseNumber': houseNumber,
-        'phone': phone,
-        'notes': notes,
-        'price': price,
-        'toHouse': toHouse,
-        'toDoors': toDoors,
-        'toFlatDoors': toFlatDoors,
+        'flatNumber': flatNumber,
+        'deliveryType': deliveryType,
+        'floor': floor,
+        'note': note,
+        'ring': ring,
         'date': date,
-        'burgers': burgers.map((e) => e.toJson()).toList()
+        'paymentType': paymentType,
       };
 }

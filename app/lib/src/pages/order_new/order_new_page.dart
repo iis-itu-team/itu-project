@@ -34,6 +34,7 @@ String? city = '';
 String? street = '';
 String? houseNumber = '';
 String? zipCode = '';
+int? flatNumber = 0;
 String? floor = '';
 String? notes = '';
 bool? ring = false;
@@ -275,8 +276,18 @@ class OrderNewPage extends StatelessWidget {
                 developer.log(houseNumber!);
                 developer.log(zipCode!);
                 developer.log("end");
-                controller.handleSave(houseNumber!, zipCode!, city!, floor!,
-                    notes!, ring!, toHouse!, toDoors!, toFlatDoors!);
+                controller.handleSave(
+                    houseNumber!,
+                    street!,
+                    zipCode!,
+                    city!,
+                    floor!,
+                    flatNumber!,
+                    notes!,
+                    ring!,
+                    toHouse!,
+                    toDoors!,
+                    toFlatDoors!);
                 Navigator.pushNamed(context, OrderConfirmPage.routeName);
               },
               backgroundColor: COLOR_SECONDARY,

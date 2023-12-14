@@ -9,9 +9,11 @@ class OrderNewController {
 
   Future<void> handleSave(
       String houseNumber,
+      String street,
       String zipCode,
       String city,
       String floor,
+      int flatNumber,
       String notes,
       bool ring,
       bool toHouse,
@@ -19,15 +21,16 @@ class OrderNewController {
       bool toFlatDoors) async {
     Order? order = Order();
 
-    order.houseNumber = houseNumber;
-    order.zipCode = zipCode;
     order.city = city;
+    order.street = street;
+    order.houseNumber = houseNumber;
+    order.flatNumber = flatNumber;
+    order.postalCode = zipCode;
+    order.deliveryType = "house";
     order.floor = floor;
-    order.notes = notes;
+    order.note = notes;
     order.ring = ring;
-    order.toHouse = toHouse;
-    order.toDoors = toDoors;
-    order.toFlatDoors = toFlatDoors;
+    order.paymentType = "card";
 
     HttpResult<void> result;
 
