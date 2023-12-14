@@ -1,7 +1,7 @@
 import 'package:food_blueprint/src/models/burger.dart';
 
 class BurgerEditArguments {
-  final Burger food;
+  final Burger burger;
 
-  BurgerEditArguments(this.food);
+  BurgerEditArguments(this.burger);
 }

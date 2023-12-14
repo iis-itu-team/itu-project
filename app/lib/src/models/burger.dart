@@ -1,5 +1,6 @@
-import 'package:food_blueprint/src/models/ingredient.dart';
+import 'dart:developer' as developer;
 
+import 'package:food_blueprint/src/models/ingredient_in_food.dart';
 
 enum BurgerRating { up, down, none }
 
@@ -8,7 +9,7 @@ class Burger {
   String? id;
   String? name;
   bool publish = false;
-  List<Ingredient> ingredients = [];
+  List<IngredientInFood> ingredients = [];
   String? keeperId;
   int? price;
   String? image;
@@ -42,8 +43,13 @@ class Burger {
     ingredients = [];
 
     for (var ingredientJson in json['ingredients']) {
-      ingredients.add(Ingredient.fromJson(ingredientJson));
+      ingredients.add(IngredientInFood.fromJson(ingredientJson));
     }
+
+    // sort ingredients
+    ingredients.sort((a, b) {
+      return a.index > b.index ? -1 : 1;
+    });
 
     /*switch (json['currentRating'] as String) {
       case 'up':

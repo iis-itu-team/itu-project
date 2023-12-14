@@ -1,25 +1,34 @@
-import 'package:food_blueprint/src/models/burger.dart';
 import 'package:food_blueprint/src/models/ingredient.dart';
 
 class IngredientInFood {
-  final Burger burger;
-  final Ingredient ingredient;
+  final String id;
+
+  final String name;
+  final String category;
 
   final int amount;
-  final int order;
+  final int index;
 
-  IngredientInFood(this.burger, this.ingredient, this.amount, this.order);
+  final int price;
+
+  IngredientInFood(
+      this.id, this.name, this.category, this.amount, this.index, this.price);
+
+  IngredientInFood.fromIngredient(Ingredient ingredient, this.index)
+      : id = ingredient.id,
+        name = ingredient.name,
+        category = ingredient.category,
+        amount = 1,
+        price = ingredient.price;
 
   IngredientInFood.fromJson(Map<String, dynamic> json)
-      : burger = json["burger"],
-        ingredient = json["ingredient"],
+      : id = json["id"],
+        name = json["name"],
+        category = json["category"],
         amount = json["amount"],
-        order = json["order"];
+        index = json["index"],
+        price = json["price"];
 
-  Map<String, dynamic> toJson() => {
-        'burger': burger,
-        'ingredient': ingredient,
-        'amount': amount,
-        'order': order
-      };
+  // serialize for Input on backend
+  Map<String, dynamic> toJson() => {'id': id, 'amount': amount, 'index': index};
 }

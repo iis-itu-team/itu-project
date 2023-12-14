@@ -20,7 +20,7 @@ class BurgerEditController {
     if (args == null) {
       editedBurger = Burger();
     } else {
-      editedBurger = Burger.fromBurger(args.food);
+      editedBurger = Burger.fromBurger(args.burger);
     }
   }
 
@@ -29,25 +29,41 @@ class BurgerEditController {
   }
 
   Future<void> handleSave() async {
+    // todo: make this work
+
     HttpResult<void> result;
     if (editedBurger!.id != null) {
       result = await foodService.updateBurger(editedBurger!.id!, editedBurger!);
     } else {
       // append random ingredients to allow us to save
-      final List<Ingredient> ingredients =
+      /*final List<Ingredient> ingredients =
           (await ingredientService.listIngredients()).data!;
       editedBurger!.ingredients = [ingredients.first];
 
       developer.log(editedBurger!.toJson().toString());
 
-      result = await foodService.createBurger(editedBurger!);
+      result = await foodService.createBurger(editedBurger!);*/
     }
 
-    if (result.status == "success") {}
+    // if (result.status == "success") {}
   }
 
   Future<List<Ingredient>> listIngredients() async {
     final result = await ingredientService.listIngredients();
+
+    if (result.status != "success") {
+      // todo: error? popup?
+      return [];
+    }
+
+    return result.data!;
+  }
+
+  Future<List<String>> listCategories() async {
+    final result = await ingredientService.listCategories().catchError((error) {
+      developer.log(error.toString());
+      throw error;
+    });
 
     if (result.status != "success") {
       // todo: error? popup?

@@ -3,11 +3,11 @@ import 'package:food_blueprint/src/models/ingredient.dart';
 import 'package:food_blueprint/src/types/ingredient_category.dart';
 
 class IngredientTray extends StatefulWidget {
-  final List<Ingredient> ingredients;
+  final List<Ingredient> availableIngredients;
   final List<IngredientCategory> categories;
 
   const IngredientTray(
-      {super.key, required this.ingredients, required this.categories});
+      {super.key, required this.availableIngredients, required this.categories});
 
   @override
   State<StatefulWidget> createState() => _IngredientTrayState();
@@ -18,23 +18,23 @@ class _IngredientTrayState extends State<IngredientTray> {
   List<Ingredient> _displayedIngredients = [];
 
   List<Ingredient> getCurrentIngredients() {
-    return widget.ingredients.where((e) {
-      // todo: actually filter when we add categories to ingredients
-      return true;
+    return widget.availableIngredients.where((e) {
+      return e.category == _selectedCategoryKey;
     }).toList();
   }
 
   void handleSelect(String categoryKey) {
     setState(() {
       _selectedCategoryKey = categoryKey;
-      // todo: display different ingredients based on category
+      _displayedIngredients = getCurrentIngredients();
     });
   }
 
   @override
   void initState() {
     super.initState();
-    _displayedIngredients = widget.ingredients;
+    _selectedCategoryKey = widget.categories[0].key;
+    _displayedIngredients = getCurrentIngredients();
   }
 
   @override
@@ -90,8 +90,8 @@ class IngredientItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Draggable(
-      data: ingredient,
-      dragAnchorStrategy: pointerDragAnchorStrategy,
+        data: ingredient,
+        dragAnchorStrategy: pointerDragAnchorStrategy,
         feedback: Container(
           width: 40,
           height: 40,
