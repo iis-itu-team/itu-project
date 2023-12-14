@@ -51,6 +51,8 @@ class MyApp extends StatelessWidget {
       // background.
       restorationScopeId: 'app',
 
+      debugShowCheckedModeBanner: false,
+
       // Provide the generated AppLocalizations to the MaterialApp. This
       // allows descendant Widgets to display the correct translations
       // depending on the user's locale.
