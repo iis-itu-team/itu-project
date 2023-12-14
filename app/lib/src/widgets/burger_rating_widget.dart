@@ -13,9 +13,9 @@ const double _borderRadius = 4;
 final Image _defaultImage = Image.file(File('assets/images/flutter_logo.png'));
 
 class BurgerRatingWidget extends StatefulWidget {
-  const BurgerRatingWidget({super.key, this.burger});
+  const BurgerRatingWidget({super.key, required this.burger});
 
-  final Burger? burger;
+  final Burger burger;
 
   @override
   BurgerRatingWidgetState createState() => BurgerRatingWidgetState();
@@ -29,7 +29,7 @@ class BurgerRatingWidgetState extends State<BurgerRatingWidget> {
   void initState() {
     super.initState();
     burger = widget.burger;
-    pressed = widget.burger?.currentRating ?? BurgerRating.none;
+    pressed = widget.burger.currentRating ?? BurgerRating.none;
   }
 
   rate(BurgerRating motion) async {
