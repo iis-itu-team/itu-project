@@ -47,7 +47,7 @@ class BurgerEditPage extends StatelessWidget {
                         builder: (context, ingredients) {
                           if (ingredients.hasData) {
                             return IngredientBuilder(
-                                burgerIngredients: ingredients.data!);
+                                burgerIngredients: args?.food.ingredients ?? []);
                           } else {
                             return const Center(
                                 child: Text("Loading assembler..."));
