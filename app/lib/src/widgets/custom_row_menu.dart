@@ -13,8 +13,8 @@ class CustomRowMenu extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: <Widget>[
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
         CustomButton(text: 'Domov', route: HomePage.routeName),
         CustomButton(text: 'Moje', route: MinePage.routeName),
         CustomButton(text: 'Komunitné', route: CommunityPage.routeName),

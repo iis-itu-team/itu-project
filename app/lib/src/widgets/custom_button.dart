@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
+import 'dart:ui';
 
 class CustomButton extends StatelessWidget implements PreferredSizeWidget {
   String? text;
 
+  //Size in physical pixels
   var route;
 
   CustomButton({
@@ -26,7 +28,7 @@ class CustomButton extends StatelessWidget implements PreferredSizeWidget {
       child: Text(
         text!,
         style: const TextStyle(
-            color: COLOR_TEXT, fontSize: 14, fontWeight: FontWeight.bold),
+            color: COLOR_TEXT, fontSize: 12, fontWeight: FontWeight.bold),
       ),
     );
   }
