@@ -17,6 +17,7 @@ export type CreateOrderInput = {
     burgers: BurgerInput[],
 
     city: string
+    postalCode: string
     street: string
     houseNumber: string
     deliveryType: DeliveryType

@@ -39,6 +39,8 @@ export default class Order extends BaseModel {
     @column()
     public city: string
     @column()
+    public postalCode: string;
+    @column()
     public street: string
     @column()
     public houseNumber: string

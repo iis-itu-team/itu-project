@@ -20,6 +20,7 @@ const createOrderSchema = schema.create({
     })),
 
     city: schema.string(),
+    postalCode: schema.string(),
     street: schema.string(),
     houseNumber: schema.string(),
 
