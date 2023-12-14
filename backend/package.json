@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "node ace serve --watch",
-    "build": "node ace build --production && npm install",
-    "start": "cd build/ && cp ../.env .env && npm ci --product && node server.js",
+    "build": "node ace build --production && cp bun.lockb build/ && cp package.json build/ && cd build && bun install --production",
+    "start": "cp .env build/ && cd build/ && bun server.js",
     "test": "node ace test",
     "lint": "eslint . --ext=.ts",
     "format": "prettier --write ."

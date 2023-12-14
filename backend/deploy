@@ -1,0 +1,7 @@
+#!/bin/bash
+
+git pull && \
+    bun install && \
+    node ace migration:run && \
+    bun run build && \
+    bun start
