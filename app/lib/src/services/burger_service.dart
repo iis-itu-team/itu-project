@@ -27,6 +27,23 @@ class BurgerService {
     return HttpResult(response.statusCode, json["status"], burgers);
   }
 
+  Future<HttpResult<List<Burger>>> listCommunityBurgers() async {
+    final allBurgers = await listBurgers();
+
+    List<Burger> sortedBurgers = allBurgers.data ?? [];
+
+    if (allBurgers.statusCode == 200) {
+      sortedBurgers = sortedBurgers.where((Burger burger) {
+        return burger.publish;
+      }).toList();
+    }
+
+    HttpResult<List<Burger>> communityBurgers =
+        HttpResult(allBurgers.statusCode, allBurgers.status, sortedBurgers);
+
+    return communityBurgers;
+  }
+
   Future<HttpResult<void>> updateBurger(String id, Burger burger) async {
     final HttpClient client = HttpClient.fromEnv();
 
