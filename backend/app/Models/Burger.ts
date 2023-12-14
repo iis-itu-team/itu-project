@@ -1,7 +1,7 @@
-import { BaseModel, BelongsTo, ManyToMany, beforeCreate, belongsTo, column, computed, manyToMany } from "@ioc:Adonis/Lucid/Orm";
-import Ingredient from "./Ingredient";
+import { BaseModel, BelongsTo, HasMany, ManyToMany, beforeCreate, belongsTo, column, computed, hasMany, manyToMany } from "@ioc:Adonis/Lucid/Orm";
 import generateId from "utils/generate-id";
 import Keeper from "./Keeper";
+import BurgerIngredient from "./BurgerIngredients";
 
 export default class Burger extends BaseModel {
     public static selfAssignPrimaryKey = true;
@@ -15,23 +15,14 @@ export default class Burger extends BaseModel {
     @column()
     public name: string
 
-    @manyToMany(() => Ingredient, {
-        pivotTable: "burger_ingredients",
-        localKey: "id",
-        relatedKey: "id",
-        pivotForeignKey: "burger_id",
-        pivotRelatedForeignKey: "ingredient_id",
-        pivotColumns: [
-            "amount"
-        ]
-    })
-    public ingredients: ManyToMany<typeof Ingredient>
-
     @column({ columnName: "keeper_id" })
     public keeperId: string
 
     @belongsTo(() => Keeper)
     public keeper: BelongsTo<typeof Keeper>
+
+    @hasMany(() => BurgerIngredient)
+    public ingredients: HasMany<typeof BurgerIngredient>
 
     @manyToMany(() => Keeper, {
         pivotTable: "burger_ratings",

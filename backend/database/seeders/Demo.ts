@@ -1,3 +1,4 @@
+import Database from '@ioc:Adonis/Lucid/Database'
 import BaseSeeder from '@ioc:Adonis/Lucid/Seeder'
 import Burger from 'App/Models/Burger'
 import Ingredient from 'App/Models/Ingredient'
@@ -37,13 +38,44 @@ export default class extends BaseSeeder {
       keeperId: keeper.id
     })
 
-    const relations = {};
-    ingredients.forEach((i) => {
-      relations[i.id] = {
-        amount: 1
-      }
-    })
+    const bun = ingredients.find((i) => i.category == 'bun');
+    const meat = ingredients.find((i) => i.category == 'meat');
+    const salad = ingredients.find((i) => i.category == 'salad');
+    const sauce = ingredients.find((i) => i.category == 'sauce');
 
-    await burger.related('ingredients').attach(relations)
+    const relations = [
+      {
+        ingredient_id: bun!.id,
+        amount: 1,
+        index: 0
+      },
+      {
+        ingredient_id: sauce!.id,
+        amount: 1,
+        index: 1
+      },
+      {
+        ingredient_id: meat!.id,
+        amount: 1,
+        index: 2
+      },
+      {
+        ingredient_id: salad!.id,
+        amount: 1,
+        index: 3
+      },
+      {
+        ingredient_id: bun!.id,
+        amount: 1,
+        index: 4
+      }
+    ];
+
+    await Database.table('burger_ingredients').multiInsert(relations.map((r) => {
+      return {
+        ...r,
+        burger_id: burger.id
+      };
+    }))
   }
 }

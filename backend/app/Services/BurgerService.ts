@@ -12,12 +12,19 @@ export type ListBurgersInput = {
 export type IngredientInput = {
     id: string
     amount: number
+    index: number
 }
 
 export type CreateBurgerInput = {
-    publish: boolean
     name: string
+    published: boolean
     ingredients: IngredientInput[]
+}
+
+export type UpdateBurgerInput = {
+    name?: string
+    published?: boolean
+    ingredients?: IngredientInput[]
 }
 
 export default class BurgerService {
@@ -42,9 +49,9 @@ export default class BurgerService {
 
     public listBurgers = async (input: ListBurgersInput): Promise<Burger[]> => {
         const q = Burger.query()
-            .preload("ingredients", (query) => {
-                query.pivotColumns(["amount"])
-            });
+            .preload('ingredients', (q) => {
+                q.leftJoin('ingredients', 'ingredients.id', 'burger_ingredients.ingredient_id')
+            })
 
         if (input.keeperId) {
             q.andWhere("keeper_id", input.keeperId)
@@ -65,8 +72,8 @@ export default class BurgerService {
     public getBurger = async (id: string): Promise<Burger> => {
         const q = Burger.query()
             .where("id", id)
-            .preload("ingredients", (query) => {
-                query.pivotColumns(["amount"])
+            .preload('ingredients', (q) => {
+                q.leftJoin('ingredients', 'ingredients.id', 'burger_ingredients.ingredient_id')
             })
 
         // calculate price from ingredients
@@ -96,27 +103,33 @@ export default class BurgerService {
 
         let burger = await Burger.create({
             name: input.name,
-            published: input.publish
+            published: input.published
         })
 
         await burger.related("keeper").associate(keeper)
 
-        await Promise.all(input.ingredients.map(async (ingredient: IngredientInput) => {
-            await burger.related("ingredients").attach({
-                [ingredient.id]: {
-                    amount: ingredient.amount
+        // -- manually insert all the ingredient relations
+
+        await Database.table('burger_ingredients')
+            .multiInsert(input.ingredients.map((ingredient) => {
+                return {
+                    burger_id: burger.id,
+                    ingredient_id: ingredient.id,
+                    amount: ingredient.amount,
+                    index: ingredient.index
                 }
-            })
-        }))
+            }))
 
         burger = await burger.refresh()
-        await burger.load("ingredients", (query) => {
-            query.pivotColumns(["amount"])
+        await burger.load("ingredients", (q) => {
+            q.leftJoin('ingredients', 'ingredients.id', 'burger_ingredients.ingredient_id')
         })
 
         const q = Burger.query()
             .where('id', burger.id)
-            .preload('ingredients')
+            .preload('ingredients', (q) => {
+                q.leftJoin('ingredients', 'ingredients.id', 'burger_ingredients.ingredient_id')
+            })
 
         this.calculatePrice(q);
 

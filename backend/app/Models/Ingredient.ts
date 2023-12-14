@@ -30,6 +30,12 @@ export default class Ingredient extends BaseModel {
             return this.$extras.pivot_amount;
     }
 
+    @computed()
+    public get index() {
+        if ("pivot_index" in this.$extras)
+            return this.$extras.pivot_index;
+    }
+
     @beforeCreate()
     public static async assignId(ingredient: Ingredient) {
         ingredient.id = generateId(ingredient.id, "ingr");
