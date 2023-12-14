@@ -14,12 +14,26 @@ export type UpdateIngredientInput = {
 }
 
 export default class IngredientService {
+    public listCategories = async (): Promise<string[]> => {
+        const ingredients = await Ingredient.query()
+            .select('category')
+            .distinct('category')
+
+        return ingredients.map((i) => i.category)
+    }
+
     public listIngredients = async (): Promise<Ingredient[]> => {
         return Ingredient.all();
     }
 
     public getIngredient = async (id: string): Promise<Ingredient | null> => {
-        return Ingredient.find(id);
+        const ingredient = Ingredient.find(id);
+
+        if (!ingredient) {
+            throw FailureException.notFound("ingredient", id)
+        }
+
+        return ingredient
     }
 
     public createIngredient = async (input: CreateIngredientInput): Promise<Ingredient> => {

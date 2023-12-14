@@ -21,6 +21,16 @@ const updateIngredientSchema = schema.create({
 export default class IngredientController {
     private readonly ingredientService = new IngredientService();
 
+    public async listCategories({ response }: HttpContextContract) {
+        const categories = await this.ingredientService.listCategories()
+
+        response.status(200).json({
+            data: categories,
+            count: categories.length,
+            status: "success"
+        })
+    }
+
     public async index({ response }: HttpContextContract) {
         const ingredients = await this.ingredientService.listIngredients()
 
@@ -53,7 +63,7 @@ export default class IngredientController {
         })
     }
 
-    public async update({request, response}: HttpContextContract) {
+    public async update({ request, response }: HttpContextContract) {
         const validated = await request.validate({
             schema: updateIngredientSchema
         })
