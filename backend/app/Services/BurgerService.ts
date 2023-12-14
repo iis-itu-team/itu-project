@@ -120,10 +120,54 @@ export default class BurgerService {
                 }
             }))
 
-        burger = await burger.refresh()
-        await burger.load("ingredients", (q) => {
-            q.leftJoin('ingredients', 'ingredients.id', 'burger_ingredients.ingredient_id')
-        })
+        const q = Burger.query()
+            .where('id', burger.id)
+            .preload('ingredients', (q) => {
+                q.leftJoin('ingredients', 'ingredients.id', 'burger_ingredients.ingredient_id')
+            })
+
+        this.calculatePrice(q);
+
+        const res = await q.first()
+
+        if (!res) {
+            throw new FailureException(500, "failed_to_create", "Failed to create burger, not found in psot query.");
+        }
+
+        return res
+    }
+
+    public updateBurger = async (id: string, input: UpdateBurgerInput) => {
+        let burger = await Burger.query()
+            .where('id', id)
+            .preload('ingredients')
+            .first()
+
+        if (!burger) {
+            throw FailureException.notFound("burger", id)
+        }
+
+        // -- update basic properties (name, published)
+
+        burger.merge(input)
+        burger = await burger.save()
+
+        if (input.ingredients) {
+            // -- update ingredients
+            // - delete all relations and them set them again, nothing extra
+
+            await Database.from('burger_ingredients').where('burger_id', id).delete()
+
+            await Database.table('burger_ingredients')
+                .multiInsert(input.ingredients?.map((ingredient) => {
+                    return {
+                        burger_id: burger!.id,
+                        ingredient_id: ingredient.id,
+                        amount: ingredient.amount,
+                        index: ingredient.index
+                    }
+                }))
+        }
 
         const q = Burger.query()
             .where('id', burger.id)

@@ -22,6 +22,18 @@ const createBurgerSchema = schema.create({
     keeperId: schema.string()
 })
 
+const updateBurgerSchema = schema.create({
+    name: schema.string.optional(),
+    published: schema.boolean.optional(),
+    ingredients: schema.array.optional().members(schema.object().members({
+        id: schema.string(),
+        amount: schema.number(),
+        index: schema.number([
+            rules.unsigned()
+        ])
+    })),
+})
+
 const addBurgerRatingSchema = schema.create({
     rating: schema.number([
         rules.range(-1, 1)
@@ -74,6 +86,21 @@ export default class BurgerController {
         response.status(201).json({
             status: "success",
             data: burger
+        })
+    }
+
+    public async update({ request, response }: HttpContextContract) {
+        const validated = await request.validate({
+            schema: updateBurgerSchema
+        })
+
+        const burgerId = request.param("id")
+
+        const burger = await this.burgerService.updateBurger(burgerId, validated)
+
+        response.status(200).json({
+            data: burger,
+            status: "success"
         })
     }
 
