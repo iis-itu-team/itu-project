@@ -1,4 +1,5 @@
 import { BaseModel, column, computed } from "@ioc:Adonis/Lucid/Orm";
+import { DateTime } from "luxon";
 
 export default class BurgerIngredient extends BaseModel {
     public static selfAssignPrimaryKey = true;
@@ -14,6 +15,12 @@ export default class BurgerIngredient extends BaseModel {
 
     @column()
     public index: number
+
+    @column.dateTime({ autoCreate: true })
+    public createdAt: DateTime
+
+    @column.dateTime({ autoCreate: true, autoUpdate: true })
+    public updatedAt: DateTime
 
     // -- merge in Ingredient props from extras
 

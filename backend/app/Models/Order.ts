@@ -2,6 +2,7 @@ import { column, BaseModel, beforeCreate, manyToMany, ManyToMany, BelongsTo, bel
 import generateId from "utils/generate-id";
 import Burger from "./Burger";
 import Keeper from "./Keeper";
+import { DateTime } from "luxon";
 
 export enum DeliveryType {
     HOUSE = "house",
@@ -62,6 +63,12 @@ export default class Order extends BaseModel {
 
     @belongsTo(() => Keeper)
     public keeper: BelongsTo<typeof Keeper>
+
+    @column.dateTime({ autoCreate: true })
+    public createdAt: DateTime
+
+    @column.dateTime({ autoCreate: true, autoUpdate: true })
+    public updatedAt: DateTime
 
     @computed()
     public get price() {

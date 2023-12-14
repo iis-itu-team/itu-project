@@ -2,6 +2,7 @@ import { BaseModel, BelongsTo, HasMany, ManyToMany, beforeCreate, belongsTo, col
 import generateId from "utils/generate-id";
 import Keeper from "./Keeper";
 import BurgerIngredient from "./BurgerIngredients";
+import { DateTime } from "luxon";
 
 export default class Burger extends BaseModel {
     public static selfAssignPrimaryKey = true;
@@ -35,6 +36,12 @@ export default class Burger extends BaseModel {
         ]
     })
     public ratings: ManyToMany<typeof Keeper>
+
+    @column.dateTime({ autoCreate: true })
+    public createdAt: DateTime
+
+    @column.dateTime({ autoCreate: true, autoUpdate: true })
+    public updatedAt: DateTime
 
     @computed()
     public get amount() {

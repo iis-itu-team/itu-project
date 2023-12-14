@@ -100,6 +100,7 @@ export default class OrderService {
 
         await order.related('burgers').attach(relations)
 
+        await order.refresh()
         return order
     }
 }
