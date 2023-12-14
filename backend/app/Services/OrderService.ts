@@ -101,7 +101,12 @@ export default class OrderService {
 
         await order.related('burgers').attach(relations)
 
-        await order.refresh()
-        return order
+        const q = Order.query()
+            .where('id', order.id)
+            .preload('burgers')
+
+        this.calculatePrice(q)
+
+        return await q.first()
     }
 }
