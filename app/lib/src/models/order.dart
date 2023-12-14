@@ -1,7 +1,7 @@
 import 'package:food_blueprint/src/models/burger.dart';
 
 class Order {
-  final String id;
+  String? id;
   String? street;
   String? houseNumber;
   String? zipCode;
@@ -10,6 +10,7 @@ class Order {
   int? phone;
   String? notes;
   int? price;
+  bool? ring;
   bool? toHouse;
   bool? toDoors;
   bool? toFlatDoors;
@@ -17,7 +18,7 @@ class Order {
 
   List<Burger> burgers = [];
 
-  Order(this.id);
+  Order();
 
   Order.fromJson(Map<String, dynamic> json)
       : id = json["id"],
