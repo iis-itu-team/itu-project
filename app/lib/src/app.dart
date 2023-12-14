@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:food_blueprint/src/env/env.dart';
+import 'package:food_blueprint/src/pages/basic/basic_page.dart';
 
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_controller.dart';
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_page.dart';
+import 'package:food_blueprint/src/pages/community/community_page.dart';
 import 'package:food_blueprint/src/pages/home/home_controller.dart';
 import 'package:food_blueprint/src/pages/home/home_page.dart';
+import 'package:food_blueprint/src/pages/mine/mine_page.dart';
 import 'package:food_blueprint/src/pages/order_new/order_new_page.dart';
 import 'package:food_blueprint/src/pages/order_new/order_confirm_page.dart';
 import 'package:food_blueprint/src/pages/order_new/order_new_controller.dart';
@@ -100,6 +103,12 @@ class MyApp extends StatelessWidget {
                 return OrderShowPage(controller: orderShowController);
               case SettingsPage.routeName:
                 return const SettingsPage(controller: settingsController);
+              case MinePage.routeName:
+                return MinePage(controller: homeController);
+              case CommunityPage.routeName:
+                return CommunityPage(controller: homeController);
+              case BasicPage.routeName:
+                return BasicPage(controller: homeController);
               default:
                 return HomePage(controller: homeController);
             }
