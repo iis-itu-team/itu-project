@@ -34,7 +34,7 @@ class BurgerService {
 
     if (allBurgers.statusCode == 200) {
       sortedBurgers = sortedBurgers.where((Burger burger) {
-        return burger.publish;
+        return burger.published;
       }).toList();
     }
 

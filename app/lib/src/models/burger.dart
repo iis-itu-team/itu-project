@@ -1,5 +1,3 @@
-import 'dart:developer' as developer;
-
 import 'package:food_blueprint/src/models/ingredient_in_food.dart';
 
 enum BurgerRating { up, down, none }
@@ -8,7 +6,7 @@ enum BurgerRating { up, down, none }
 class Burger {
   String? id;
   String? name;
-  bool publish = false;
+  bool published = false;
   List<IngredientInFood> ingredients = [];
   String? keeperId;
   int? price;
@@ -21,7 +19,7 @@ class Burger {
   Burger.fromBurger(Burger burger)
       : id = burger.id,
         name = burger.name,
-        publish = burger.publish,
+        published = burger.published,
         ingredients = List.from(burger.ingredients),
         keeperId = burger.keeperId,
         image = burger.image,
@@ -34,7 +32,7 @@ class Burger {
 
     id = json['id'];
     name = json['name'];
-    publish = json['published'];
+    published = json['published'];
     keeperId = json['keeper_id'];
     price = json['price'];
     image = json['image'];
@@ -66,7 +64,7 @@ class Burger {
 
   Map<String, dynamic> toJson() => {
         'name': name,
-        'publish': publish.toString(),
+        'published': published.toString(),
         'ingredients': ingredients.map((e) => e.toJson()).toList(),
         'keeperId': keeperId,
       };
