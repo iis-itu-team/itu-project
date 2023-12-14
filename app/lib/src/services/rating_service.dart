@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-
 import 'package:food_blueprint/src/http/client.dart';
 import 'package:food_blueprint/src/http/result.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -28,7 +27,7 @@ class RatingService {
         .post(client.route('/burgers/${burgerId ?? ""}/rating'), body: {
       'keeperId':
           (await SharedPreferences.getInstance()).getString('keeper_id') ?? '',
-      'rating': ratingNumber
+      'rating': '$ratingNumber'
     });
 
     final json = jsonDecode(response.body) as Map<String, dynamic>;

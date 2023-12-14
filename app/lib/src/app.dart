@@ -106,7 +106,7 @@ class MyApp extends StatelessWidget {
               case MinePage.routeName:
                 return MinePage(controller: homeController);
               case CommunityPage.routeName:
-                return CommunityPage(controller: homeController);
+                return const CommunityPage();
               case BasicPage.routeName:
                 return BasicPage(controller: homeController);
               default:

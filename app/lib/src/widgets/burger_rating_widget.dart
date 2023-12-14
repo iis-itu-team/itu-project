@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/models/burger.dart';
@@ -6,11 +6,37 @@ import 'package:food_blueprint/src/theme/theme.dart';
 
 import 'package:food_blueprint/src/services/rating_service.dart';
 
-const double _burgerHeight = 50;
-const double _burgerWidth = 50;
-const double _borderWidth = 4;
-const double _borderRadius = 4;
-final Image _defaultImage = Image.file(File('assets/images/flutter_logo.png'));
+const double _burgerHeight = 100;
+const double _burgerWidth = 90;
+const double _borderWidth = 2;
+const double _borderRadius = 3;
+
+const Image _defaultImage =
+    Image(image: AssetImage('assets/images/flutter_logo.png'));
+
+const double _voteButtonHeight = 10;
+const double _voteButtonWidth = 10;
+
+final Widget _buttonUp = SvgPicture.asset(
+  'assets/images/UpVote.svg',
+  height: _voteButtonHeight,
+  width: _voteButtonWidth,
+);
+final Widget _buttonUpSelected = SvgPicture.asset(
+  'assets/images/UpVoteSelected.svg',
+  height: _voteButtonHeight,
+  width: _voteButtonWidth,
+);
+final Widget _buttonDown = SvgPicture.asset(
+  'assets/images/DownVote.svg',
+  height: _voteButtonHeight,
+  width: _voteButtonWidth,
+);
+final Widget _buttonDownSelected = SvgPicture.asset(
+  'assets/images/DownVoteSelected.svg',
+  height: _voteButtonHeight,
+  width: _voteButtonWidth,
+);
 
 class BurgerRatingWidget extends StatefulWidget {
   const BurgerRatingWidget({super.key, required this.burger});
@@ -52,36 +78,56 @@ class BurgerRatingWidgetState extends State<BurgerRatingWidget> {
         height: _burgerHeight,
         width: _burgerWidth,
         decoration: BoxDecoration(
-            color: ThemeColors.colorMeat,
-            border: Border.all(width: _borderWidth),
+            color: ThemeColors.colorOnion,
+            border:
+                Border.all(width: _borderWidth, color: ThemeColors.colorMeat),
             borderRadius: BorderRadius.circular(_borderRadius)),
-        child: Column(children: <Widget>[
-          Text(burger?.name ?? 'Name'),
-          Row(
+        child: Expanded(
+            child: Column(children: <Widget>[
+          FittedBox(child: Text(burger?.name ?? 'Name')),
+          Expanded(
+              child: Row(
             children: <Widget>[
-              Column(
+              Expanded(
+                  child: Column(
                 children: <Widget>[
-                  Expanded(
-                      child: TextButton(
+                  FittedBox(
+                      child: IconButton(
+                          icon: pressed == BurgerRating.up
+                              ? _buttonUpSelected
+                              : _buttonUp,
                           onPressed: () async {
                             await rate(BurgerRating.up);
-                          },
-                          child: const Text('up'))),
-                  Expanded(child: Text('${burger?.rating ?? 0}')),
-                  Expanded(
-                      child: TextButton(
+                          })),
+                  FittedBox(child: Text('${burger?.rating ?? 0}')),
+                  FittedBox(
+                      child: IconButton(
+                          icon: pressed == BurgerRating.down
+                              ? _buttonDownSelected
+                              : _buttonDown,
                           onPressed: () async {
                             await rate(BurgerRating.down);
-                          },
-                          child: const Text('down')))
+                          })),
                 ],
-              ),
-              burger?.image != null
-                  ? Image.network('${burger?.image}')
-                  : _defaultImage
+              )),
+              FittedBox(
+                  child: burger?.image != null
+                      ? Image.network(
+                          '${burger?.image}',
+                          loadingBuilder: (BuildContext context, Widget child,
+                              ImageChunkEvent? loadingProgress) {
+                            return CircularProgressIndicator(
+                                value:
+                                    (loadingProgress?.cumulativeBytesLoaded ??
+                                            0) /
+                                        (loadingProgress?.expectedTotalBytes ??
+                                            10000000));
+                          },
+                        )
+                      : _defaultImage)
             ],
-          ),
-          Text('${burger?.price ?? 0} Kč')
-        ]));
+          )),
+          FittedBox(child: Text('${burger?.price ?? 0} Kč'))
+        ])));
   }
 }
