@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class CustomTextForm extends StatelessWidget implements PreferredSizeWidget {
   String? variable;
 
-  CustomTextForm({super.key, 
+  CustomTextForm({
+    super.key,
     required this.variable,
   });
 

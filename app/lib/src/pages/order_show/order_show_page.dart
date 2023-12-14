@@ -17,38 +17,12 @@ class OrderShowPage extends StatelessWidget {
       body: Container(
         color: COLOR_SECONDARY,
         padding: const EdgeInsets.only(left: 10),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(10),
-                child: const Text(
-                  "Shrnutí",
-                  style: TextStyle(
-                      color: COLOR_TEXT,
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-            ],
-          ),
-        ),
+        child: const SingleChildScrollView(),
       ),
       bottomNavigationBar: Container(
         padding: const EdgeInsets.all(10),
         height: 100,
         color: COLOR_PRIMARY,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: <Widget>[
-            FloatingActionButton.large(
-              onPressed: () {},
-              backgroundColor: COLOR_SECONDARY,
-              child:
-                  const Text('Objednat!', style: TextStyle(color: COLOR_TEXT)),
-            ),
-          ],
-        ),
       ),
     );
   }
