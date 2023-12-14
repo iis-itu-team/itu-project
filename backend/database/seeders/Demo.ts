@@ -12,19 +12,23 @@ export default class extends BaseSeeder {
     const ingredients = await Ingredient.createMany([
       {
         name: "Maso",
-        price: 100
+        price: 100,
+        category: "meat"
       },
       {
         name: "Houska",
-        price: 10
+        price: 10,
+        category: "bun"
       },
       {
         name: "Salát",
-        price: 20
+        price: 20,
+        category: "salad"
       },
       {
         name: "Hořčice",
-        price: 5
+        price: 5,
+        category: "sauce"
       }
     ])
 

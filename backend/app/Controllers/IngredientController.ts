@@ -6,14 +6,16 @@ const createIngredientSchema = schema.create({
     name: schema.string(),
     price: schema.number([
         rules.unsigned()
-    ])
+    ]),
+    category: schema.string()
 })
 
 const updateIngredientSchema = schema.create({
     name: schema.string.optional(),
     price: schema.number.optional([
         rules.unsigned()
-    ])
+    ]),
+    category: schema.string()
 })
 
 export default class IngredientController {

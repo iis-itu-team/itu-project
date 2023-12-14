@@ -14,6 +14,9 @@ export default class Ingredient extends BaseModel {
     @column()
     public price: number;
 
+    @column()
+    public category: string;
+
     @column.dateTime({ autoCreate: true })
     public createdAt: DateTime
 

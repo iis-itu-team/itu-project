@@ -4,11 +4,13 @@ import Ingredient from "App/Models/Ingredient"
 export type CreateIngredientInput = {
     name: string
     price: number
+    category: string
 }
 
 export type UpdateIngredientInput = {
     name?: string
     price?: number
+    category?: string
 }
 
 export default class IngredientService {
