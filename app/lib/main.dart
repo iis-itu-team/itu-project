@@ -13,7 +13,7 @@ Future main() async {
 
   // ensure keeper id
   final KeeperService service = KeeperService();
-  String id = await service.getKeeperId();
+  String id = await service.ensureKeeperId();
 
   developer.log("KeeperID: $id");
 

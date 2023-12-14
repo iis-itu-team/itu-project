@@ -1,3 +1,5 @@
+import 'dart:developer' as developer;
+
 import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/models/ingredient.dart';
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_arguments.dart';
@@ -34,7 +36,12 @@ class BurgerEditPage extends StatelessWidget {
                 flex: 1,
                 child: Padding(
                     padding: const EdgeInsets.all(8),
-                    child: NameWidget(initialName: args?.burger.name))),
+                    child: NameWidget(
+                      initialName: args?.burger.name,
+                      onSubmit: (String value) {
+                        controller.editedBurger.name = value;
+                      },
+                    ))),
             Expanded(
                 flex: 10,
                 child: Center(
@@ -54,16 +61,32 @@ class BurgerEditPage extends StatelessWidget {
                 flex: 1,
                 child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Align(
-                        alignment: Alignment.centerRight,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            controller.handleSave();
-                            Navigator.pushNamed(context, HomePage.routeName);
-                            // Navigate to a different page here
-                          },
-                          child: const Text("Save"),
-                        )))),
+                    child: Row(children: [
+                      Expanded(
+                          child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  controller.handleSave();
+                                  Navigator.pushNamed(
+                                      context, HomePage.routeName);
+                                  // Navigate to a different page here
+                                },
+                                child: const Text("Smazat"),
+                              ))),
+                      Expanded(
+                          child: Align(
+                              alignment: Alignment.centerRight,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  controller.handleSave();
+                                  Navigator.pushNamed(
+                                      context, HomePage.routeName);
+                                  // Navigate to a different page here
+                                },
+                                child: const Text("Uložit"),
+                              )))
+                    ]))),
             Expanded(
                 flex: 5,
                 child: FutureBuilder(
@@ -77,8 +100,9 @@ class BurgerEditPage extends StatelessWidget {
                             future.data!.toList()[0] as List<Ingredient>;
                         List<String> categories =
                             future.data!.toList()[1] as List<String>;
+                        developer.log(categories.toString());
                         return IngredientTray(
-                            categories:
+                            availableCategories:
                                 CategoryNames.categoryObjects(categories),
                             availableIngredients: ingredients);
                       } else {

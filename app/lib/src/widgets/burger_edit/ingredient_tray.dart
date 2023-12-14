@@ -4,10 +4,10 @@ import 'package:food_blueprint/src/types/ingredient_category.dart';
 
 class IngredientTray extends StatefulWidget {
   final List<Ingredient> availableIngredients;
-  final List<IngredientCategory> categories;
+  final List<IngredientCategory> availableCategories;
 
   const IngredientTray(
-      {super.key, required this.availableIngredients, required this.categories});
+      {super.key, required this.availableIngredients, required this.availableCategories});
 
   @override
   State<StatefulWidget> createState() => _IngredientTrayState();
@@ -33,7 +33,7 @@ class _IngredientTrayState extends State<IngredientTray> {
   @override
   void initState() {
     super.initState();
-    _selectedCategoryKey = widget.categories[0].key;
+    _selectedCategoryKey = widget.availableCategories[0].key;
     _displayedIngredients = getCurrentIngredients();
   }
 
@@ -48,7 +48,7 @@ class _IngredientTrayState extends State<IngredientTray> {
               return const SizedBox(width: 8);
             },
             itemBuilder: (context, int index) {
-              IngredientCategory category = widget.categories[index];
+              IngredientCategory category = widget.availableCategories[index];
 
               return GestureDetector(
                   onTap: () {
@@ -61,7 +61,7 @@ class _IngredientTrayState extends State<IngredientTray> {
                               ? TextDecoration.underline
                               : TextDecoration.none)));
             },
-            itemCount: widget.categories.length,
+            itemCount: widget.availableCategories.length,
           )),
       Expanded(
           flex: 5,

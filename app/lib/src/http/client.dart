@@ -1,6 +1,7 @@
 import 'dart:developer' as developer;
 
 import 'package:food_blueprint/src/env/env.dart';
+import 'package:food_blueprint/src/utils/keeper_store.dart';
 import 'package:http/http.dart';
 
 class HttpClient extends BaseClient {
@@ -22,8 +23,19 @@ class HttpClient extends BaseClient {
   }
 
   @override
-  Future<StreamedResponse> send(BaseRequest request) {
+  Future<StreamedResponse> send(BaseRequest request) async {
     request.headers["API-Key"] = _apiKey;
+
+    // append keeper id header
+    String? keeperId = await KeeperStore.getKeeperId();
+    if (keeperId != null) {
+      // should be null only when requesting a new keeper id
+      request.headers['Keeper-ID'] = keeperId;
+    }
+
+    // assume everything we're sending is json
+    request.headers['Content-Type'] = 'application/json';
+
     return _inner.send(request);
   }
 }

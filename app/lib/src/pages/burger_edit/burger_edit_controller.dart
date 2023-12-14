@@ -11,41 +11,31 @@ class BurgerEditController {
   final BurgerService foodService;
   final IngredientService ingredientService;
 
-  Burger? editedBurger;
+  Burger editedBurger = Burger();
 
   BurgerEditController(this.foodService, this.ingredientService);
 
   void enter(BurgerEditArguments? args) {
-    // we're creating a new food
-    if (args == null) {
-      editedBurger = Burger();
-    } else {
+    if (args != null) {
       editedBurger = Burger.fromBurger(args.burger);
     }
   }
 
-  void handleNameUpdate(String value) {
-    editedBurger!.name = value;
-  }
-
   Future<void> handleSave() async {
-    // todo: make this work
+    developer.log(editedBurger.name.toString());
 
     HttpResult<void> result;
-    if (editedBurger!.id != null) {
-      result = await foodService.updateBurger(editedBurger!.id!, editedBurger!);
+    if (editedBurger.id != null) {
+      result = await foodService.updateBurger(editedBurger.id!, editedBurger);
     } else {
-      // append random ingredients to allow us to save
-      /*final List<Ingredient> ingredients =
-          (await ingredientService.listIngredients()).data!;
-      editedBurger!.ingredients = [ingredients.first];
-
-      developer.log(editedBurger!.toJson().toString());
-
-      result = await foodService.createBurger(editedBurger!);*/
+      result = await foodService.createBurger(editedBurger);
     }
 
-    // if (result.status == "success") {}
+    if (result.status == "success") {
+      //
+    } else {
+      throw "Couldn't save burger.";
+    }
   }
 
   Future<List<Ingredient>> listIngredients() async {

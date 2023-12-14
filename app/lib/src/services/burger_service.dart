@@ -48,7 +48,7 @@ class BurgerService {
     final HttpClient client = HttpClient.fromEnv();
 
     final response = await client.put(client.route('/burgers/${burger.id}'),
-        body: burger.toJson());
+        body: jsonEncode(burger.toUpdateInputJson()));
 
     final json = jsonDecode(response.body) as Map<String, dynamic>;
 
@@ -59,8 +59,7 @@ class BurgerService {
     final HttpClient client = HttpClient.fromEnv();
 
     final response = await client.post(client.route('/burgers'),
-        headers: {'Content-Type': "application/json"},
-        body: jsonEncode(burger.toJson()).toString());
+        body: jsonEncode(burger.toUpdateInputJson()));
 
     final json = jsonDecode(response.body) as Map<String, dynamic>;
 

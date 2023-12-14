@@ -62,6 +62,12 @@ class Burger {
     }*/
   }
 
+  Map<String, dynamic> toUpdateInputJson() => {
+        'name': name,
+        'published': published,
+        'ingredients': ingredients.map((i) => i.toJson()).toList()
+      };
+
   Map<String, dynamic> toJson() => {
         'name': name,
         'published': published.toString(),
