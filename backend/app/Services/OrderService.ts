@@ -48,6 +48,7 @@ export default class OrderService {
 
     public listOrders = async (input: ListOrdersInput) => {
         const q = Order.query()
+            .preload('burgers')
 
         if (input.keeperId) {
             q.andWhere("keeper_id", input.keeperId)
