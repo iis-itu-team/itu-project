@@ -7,6 +7,9 @@ import 'package:food_blueprint/src/widgets/custom_order_text.dart';
 
 import 'dart:developer' as developer;
 
+const Image _defaultImage =
+    Image(image: AssetImage('assets/images/flutter_logo.png'));
+
 class OrderShowPage extends StatelessWidget {
   final OrderShowController controller;
 
@@ -63,13 +66,34 @@ class OrderShowPage extends StatelessWidget {
                         ],
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           CustomOrderText(
                               input: "${order.privateBurgers[0].name}"),
-                          CustomOrderText(
-                              input: "${order.privateBurgers[0].price}"),
+                          Flexible(
+                              flex: 3,
+                              child: order.privateBurgers[0].image != null
+                                  ? Image.network(
+                                      '${order.privateBurgers[0].image}',
+                                      loadingBuilder: (BuildContext context,
+                                          Widget child,
+                                          ImageChunkEvent? loadingProgress) {
+                                      return CircularProgressIndicator(
+                                          value: (loadingProgress
+                                                      ?.cumulativeBytesLoaded ??
+                                                  0) /
+                                              (loadingProgress
+                                                      ?.expectedTotalBytes ??
+                                                  100000000));
+                                    })
+                                  : _defaultImage),
+
                           // CustomOrderText(input: "${order.privateBurgers[0].image}"),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          CustomOrderText(
+                              input: "${order.privateBurgers[0].price} Kč"),
                         ],
                       ),
                       const SizedBox(height: 25),
