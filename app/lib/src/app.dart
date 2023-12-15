@@ -18,6 +18,7 @@ import 'package:food_blueprint/src/pages/order_show/order_show_controller.dart';
 import 'package:food_blueprint/src/pages/settings/settings_page.dart';
 import 'package:food_blueprint/src/pages/settings/settings_controller.dart';
 import 'package:food_blueprint/src/services/burger_service.dart';
+import 'package:food_blueprint/src/services/rating_service.dart';
 import 'package:food_blueprint/src/services/ingredient_service.dart';
 import 'package:food_blueprint/src/services/order_service.dart';
 
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final BurgerService burgerService = BurgerService();
+    final RatingService ratingService = RatingService();
     final IngredientService ingredientService = IngredientService();
     final HomeController homeController = HomeController(burgerService);
     final BurgerEditController foodEditController =
@@ -106,7 +108,8 @@ class MyApp extends StatelessWidget {
               case MinePage.routeName:
                 return MinePage(controller: homeController);
               case CommunityPage.routeName:
-                return const CommunityPage();
+                return CommunityPage(
+                    burgerService: burgerService, ratingService: ratingService);
               case BasicPage.routeName:
                 return BasicPage(controller: homeController);
               default:

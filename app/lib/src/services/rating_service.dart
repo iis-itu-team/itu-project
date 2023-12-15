@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:food_blueprint/src/models/burger.dart';
 
 class RatingService {
-  static Future<HttpResult<Burger>> rateBurger(
+  Future<HttpResult<Burger>> rateBurger(
       String? burgerId, BurgerRating rating) async {
     final HttpClient client = HttpClient.fromEnv();
 

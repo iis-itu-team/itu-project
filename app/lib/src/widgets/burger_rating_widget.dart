@@ -39,9 +39,11 @@ final Widget _buttonDownSelected = SvgPicture.asset(
 );
 
 class BurgerRatingWidget extends StatefulWidget {
-  const BurgerRatingWidget({super.key, required this.burger});
+  const BurgerRatingWidget(
+      {super.key, required this.burger, required this.ratingService});
 
   final Burger burger;
+  final RatingService ratingService;
 
   @override
   BurgerRatingWidgetState createState() => BurgerRatingWidgetState();
@@ -65,7 +67,7 @@ class BurgerRatingWidgetState extends State<BurgerRatingWidget> {
       pressed = motion;
     }
 
-    final response = await RatingService.rateBurger(burger?.id, pressed);
+    final response = await widget.ratingService.rateBurger(burger?.id, pressed);
     // TODO check status for error
     setState(() {
       burger = response.data;
@@ -76,8 +78,8 @@ class BurgerRatingWidgetState extends State<BurgerRatingWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: _burgerHeight,
-        width: _burgerWidth,
+        constraints:
+            BoxConstraints.tight(const Size(_burgerWidth, _burgerHeight)),
         decoration: BoxDecoration(
             color: ThemeColors.colorOnion,
             border:
