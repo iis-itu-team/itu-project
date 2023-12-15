@@ -21,7 +21,7 @@ class Order {
 
   Order.fromJson(Map<String, dynamic> json)
       : id = json["id"],
-        date = json["date"],
+        date = json["created_at"],
         street = json["street"],
         price = json["price"];
 

@@ -1,8 +1,9 @@
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
-
 import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/pages/order_show/order_show_controller.dart';
 import 'package:food_blueprint/src/widgets/custom_app_bar.dart';
+import 'package:food_blueprint/src/widgets/custom_order_text.dart';
 
 class OrderShowPage extends StatelessWidget {
   final OrderShowController controller;
@@ -30,33 +31,18 @@ class OrderShowPage extends StatelessWidget {
                     return const Text("Loading assembler...");
                   }
 
+                  var date = DateFormat('dd.MM')
+                      .format(DateTime.parse(order.date.toString()))
+                      .toString();
+
                   return Column(
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: SizedBox(
-                              width: 100,
-                              child: Text("${order.street}",
-                                  style: const TextStyle(
-                                      color: COLOR_TEXT,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold)),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: SizedBox(
-                              width: 100,
-                              child: Text("${order.price! / 24}€",
-                                  style: const TextStyle(
-                                      color: COLOR_TEXT,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold)),
-                            ),
-                          ),
+                          CustomOrderText(input: date),
+                          CustomOrderText(input: "${order.street}"),
+                          CustomOrderText(input: "${order.price! / 24}€"),
                         ],
                       ),
                       const SizedBox(height: 10),
