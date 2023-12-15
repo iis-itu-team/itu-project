@@ -30,7 +30,7 @@ class CommunityPageState extends State<CommunityPage> {
   @override
   void initState() {
     super.initState();
-    _communityBurgersFuture = widget.burgerService.listBurgers();
+    _communityBurgersFuture = widget.burgerService.listCommunityBurgers();
   }
 
   @override
@@ -52,16 +52,16 @@ class CommunityPageState extends State<CommunityPage> {
                       List<Burger> communityBurgers = [];
 
                       if (snapshot.hasData) {
-                        // TODO handle status error
                         if (snapshot.data?.statusCode == 200) {
                           communityBurgers = snapshot.data?.data ?? [];
                           return BurgerRatingWidget(
                               burger: communityBurgers[0],
                               ratingService: widget.ratingService);
                         } else {
-                          return const Text('Vyerrorovalo sa to',
-                              style:
-                                  TextStyle(color: ThemeColors.colorKetchup));
+                          return Text(
+                              'Niečo sa nepovedlo - ${snapshot.data?.status}',
+                              style: const TextStyle(
+                                  color: ThemeColors.colorKetchup));
                         }
                       } else {
                         return const Text('Čakám na dáta',
