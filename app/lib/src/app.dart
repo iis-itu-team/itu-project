@@ -21,6 +21,7 @@ import 'package:food_blueprint/src/services/burger_service.dart';
 import 'package:food_blueprint/src/services/rating_service.dart';
 import 'package:food_blueprint/src/services/ingredient_service.dart';
 import 'package:food_blueprint/src/services/order_service.dart';
+import 'package:food_blueprint/src/theme/theme.dart';
 
 /// The Widget that configures your application.
 class MyApp extends StatelessWidget {
@@ -82,7 +83,7 @@ class MyApp extends StatelessWidget {
       // Define a light and dark color theme. Then, read the user's
       // preferred ThemeMode (light, dark, or system default) from the
       // SettingsController to display the correct theme.
-      theme: ThemeData(),
+      theme: ThemeData(scaffoldBackgroundColor: ThemeColors.colorOnion),
       darkTheme: ThemeData.dark(),
       // themeMode: settingsController.themeMode,
 
