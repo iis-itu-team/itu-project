@@ -29,7 +29,7 @@ export type UpdateBurgerInput = {
 
 export default class BurgerService {
     private calculatePrice(q) {
-        q.select('*', Database.from('burger_ingredients')
+        q.select(Database.from('burger_ingredients')
             .whereRaw('burger_ingredients.burger_id = burgers.id')
             .join('ingredients', 'burger_ingredients.ingredient_id', 'ingredients.id')
             .groupBy('burger_id')
@@ -38,22 +38,26 @@ export default class BurgerService {
         )
     }
 
-    private fetchRating(q, keeperId: string) {
-        q.select('*', Database.from('burger_ratings')
+    private fetchRating(q, keeperId?: string) {
+        q.select(Database.from('burger_ratings')
             .whereRaw('burgers.id = burger_ratings.burger_id')
             .groupBy('burger_ratings.burger_id')
-            /* .select(Database.raw('(CASE WHEN rating IS NULL THEN 0 ELSE rating END) as r_rating')) */
             .sum('rating')
-            .as('rating'))
+            .as('rating'),
+        )
 
-        q.select('*', Database.from('burger_ratings')
-            .whereRaw('burgers.id = burger_ratings.burger_id')
-            .andWhereRaw(keeperId + ' = burger_ratings.keeper_id')
-            .as('currentRating'))
+        if (keeperId) {
+            q.select(Database.from('burger_ratings')
+                .whereRaw('burgers.id = burger_ratings.burger_id')
+                .andWhereRaw(`'${keeperId}' = burger_ratings.keeper_id`)
+                .select(Database.raw('CASE WHEN rating IS NULL THEN 0 ELSE rating END as c_rating'))
+                .as('currentRating'))
+        }
     }
 
-    public listBurgers = async (input: ListBurgersInput): Promise<Burger[]> => {
+    public listBurgers = async (input: ListBurgersInput, currentKeeperId?: string): Promise<Burger[]> => {
         const q = Burger.query()
+            .select('*')
             .preload('ingredients', (q) => {
                 q.leftJoin('ingredients', 'ingredients.id', 'burger_ingredients.ingredient_id')
             })
@@ -69,13 +73,14 @@ export default class BurgerService {
         // calculate price from ingredients
         this.calculatePrice(q)
 
-        this.fetchRating(q, input.keeperId ?? '')
+        this.fetchRating(q, currentKeeperId)
 
         return await q
     }
 
     public getBurger = async (id: string, keeperId: string): Promise<Burger> => {
         const q = Burger.query()
+            .select('*')
             .where("id", id)
             .preload('ingredients', (q) => {
                 q.leftJoin('ingredients', 'ingredients.id', 'burger_ingredients.ingredient_id')
@@ -126,12 +131,15 @@ export default class BurgerService {
             }))
 
         const q = Burger.query()
+            .select('*')
             .where('id', burger.id)
             .preload('ingredients', (q) => {
                 q.leftJoin('ingredients', 'ingredients.id', 'burger_ingredients.ingredient_id')
             })
 
-        this.calculatePrice(q);
+        this.calculatePrice(q)
+
+        this.fetchRating(q, keeper.id)
 
         const res = await q.first()
 
@@ -142,7 +150,7 @@ export default class BurgerService {
         return res
     }
 
-    public updateBurger = async (id: string, input: UpdateBurgerInput) => {
+    public updateBurger = async (id: string, input: UpdateBurgerInput, currentKeeperId?: string) => {
         let burger = await Burger.query()
             .where('id', id)
             .preload('ingredients')
@@ -175,12 +183,15 @@ export default class BurgerService {
         }
 
         const q = Burger.query()
+            .select('*')
             .where('id', burger.id)
             .preload('ingredients', (q) => {
                 q.leftJoin('ingredients', 'ingredients.id', 'burger_ingredients.ingredient_id')
             })
 
-        this.calculatePrice(q);
+        this.calculatePrice(q)
+
+        this.fetchRating(q, currentKeeperId)
 
         const res = await q.first()
 
@@ -209,6 +220,13 @@ export default class BurgerService {
         })
 
         const q = Burger.query()
+            .select('*')
+            .where('id', burger.id)
+            .preload('ingredients', (q) => {
+                q.leftJoin('ingredients', 'ingredients.id', 'burger_ingredients.ingredient_id')
+            })
+
+        this.calculatePrice(q)
 
         this.fetchRating(q, keeperId)
 

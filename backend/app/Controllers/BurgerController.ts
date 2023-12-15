@@ -44,13 +44,15 @@ export default class BurgerController {
     private readonly burgerService = new BurgerService()
     private readonly keeperService = new KeeperService()
 
-    public async index({ request, response }: HttpContextContract) {
+    public async index({ request, response, keeper }: HttpContextContract) {
         const validated = await request.validate({ schema: indexBurgerSchema })
+
+        const currentKeeperId = keeper?.id
 
         const burgers = await this.burgerService.listBurgers({
             ...validated,
             published: validated.published == null ? null : validated.published === "true"
-        })
+        }, currentKeeperId)
 
         response.status(200).json({
             status: "success",
@@ -90,14 +92,16 @@ export default class BurgerController {
         })
     }
 
-    public async update({ request, response }: HttpContextContract) {
+    public async update({ request, response, keeper }: HttpContextContract) {
         const validated = await request.validate({
             schema: updateBurgerSchema
         })
 
         const burgerId = request.param("id")
 
-        const burger = await this.burgerService.updateBurger(burgerId, validated)
+        const currentKeeperId = keeper?.id
+
+        const burger = await this.burgerService.updateBurger(burgerId, validated, currentKeeperId)
 
         response.status(200).json({
             data: burger,
