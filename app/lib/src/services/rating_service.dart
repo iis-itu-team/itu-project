@@ -24,15 +24,15 @@ class RatingService {
     }
 
     final response = await client
-        .post(client.route('/burgers/${burgerId ?? ""}/rating'), body: {
+        .post(client.route('/burgers/${burgerId ?? ""}/ratings'), body: {
       'keeperId':
           (await SharedPreferences.getInstance()).getString('keeper_id') ?? '',
-      'rating': '$ratingNumber'
+      'rating': ratingNumber
     });
 
-    final json = jsonDecode(response.body) as Map<String, dynamic>;
-    final burger = Burger.fromJson(json['data']);
+    final json = jsonDecode(response.body) as Map<String, dynamic>?;
+    final burger = Burger.fromJson(json?['data']);
 
-    return HttpResult(response.statusCode, json['status'], burger);
+    return HttpResult(response.statusCode, json?['status'], burger);
   }
 }
