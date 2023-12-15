@@ -57,9 +57,12 @@ class CommunityPageState extends State<CommunityPage> {
                                 scrollDirection: Axis.horizontal,
                                 itemCount: communityBurgers.length,
                                 itemBuilder: (BuildContext context, int index) {
-                                  return BurgerRatingWidget(
-                                      burger: communityBurgers[index],
-                                      ratingService: widget.ratingService);
+                                  return Padding(
+                                      padding:
+                                          const EdgeInsets.fromLTRB(5, 0, 0, 0),
+                                      child: BurgerRatingWidget(
+                                          burger: communityBurgers[index],
+                                          ratingService: widget.ratingService));
                                 }))
                         : const Text('Ve workshope nejsou žiadné burgre',
                             style: TextStyle(color: ThemeColors.colorMeat));
