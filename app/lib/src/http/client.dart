@@ -14,7 +14,7 @@ class HttpClient extends BaseClient {
   HttpClient.withDefaultClient(this._baseUrl, this._apiKey) : _inner = Client();
 
   HttpClient.fromEnv()
-      : this.withDefaultClient(Environment().baseUrl, Environment().apiKey);
+      : this.withDefaultClient(Environment().apiUrl, Environment().apiKey);
 
   Uri route(String path, {Map<String, String?>? query}) {
     Uri route = Uri.parse('$_baseUrl$path').replace(queryParameters: query);

@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:food_blueprint/src/env/env.dart';
 import 'package:food_blueprint/src/models/ingredient.dart';
 import 'package:food_blueprint/src/types/ingredient_category.dart';
+import 'package:food_blueprint/src/utils/image_loader.dart';
 
 class IngredientTray extends StatefulWidget {
   final List<Ingredient> availableIngredients;
   final List<IngredientCategory> availableCategories;
 
   const IngredientTray(
-      {super.key, required this.availableIngredients, required this.availableCategories});
+      {super.key,
+      required this.availableIngredients,
+      required this.availableCategories});
 
   @override
   State<StatefulWidget> createState() => _IngredientTrayState();
@@ -85,7 +89,9 @@ class _IngredientTrayState extends State<IngredientTray> {
 class IngredientItem extends StatelessWidget {
   final Ingredient ingredient;
 
-  const IngredientItem({super.key, required this.ingredient});
+  final String baseUrl = Environment().apiUrl;
+
+  IngredientItem({super.key, required this.ingredient});
 
   @override
   Widget build(BuildContext context) {
@@ -93,16 +99,24 @@ class IngredientItem extends StatelessWidget {
         data: ingredient,
         dragAnchorStrategy: pointerDragAnchorStrategy,
         feedback: Container(
-          width: 40,
-          height: 40,
-          decoration:
-              const BoxDecoration(shape: BoxShape.circle, color: Colors.cyan),
+          width: 160,
+          height: 160,
+          decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              image: DecorationImage(
+                  fit: BoxFit.contain,
+                  image: NetworkImage(ImageUrlLoader.getServedImageUrl(
+                      ingredient.icon, "https://i.imgur.com/aZjDYBS.jpeg")))),
         ),
         child: Container(
             width: 40,
             height: 40,
-            decoration:
-                const BoxDecoration(shape: BoxShape.circle, color: Colors.cyan),
-            child: Center(child: Text(ingredient.name))));
+            decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                    fit: BoxFit.contain,
+                    image: NetworkImage(ImageUrlLoader.getServedImageUrl(
+                        ingredient.icon,
+                        "https://i.imgur.com/aZjDYBS.jpeg"))))));
   }
 }

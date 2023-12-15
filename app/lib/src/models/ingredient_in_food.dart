@@ -11,15 +11,18 @@ class IngredientInFood {
 
   final int price;
 
-  IngredientInFood(
-      this.id, this.name, this.category, this.amount, this.index, this.price);
+  final String? icon;
+
+  IngredientInFood(this.id, this.name, this.category, this.amount, this.index,
+      this.price, this.icon);
 
   IngredientInFood.fromIngredient(Ingredient ingredient, this.index)
       : id = ingredient.id,
         name = ingredient.name,
         category = ingredient.category,
         amount = 1,
-        price = ingredient.price;
+        price = ingredient.price,
+        icon = ingredient.icon;
 
   IngredientInFood.fromJson(Map<String, dynamic> json)
       : id = json["id"],
@@ -27,7 +30,8 @@ class IngredientInFood {
         category = json["category"],
         amount = json["amount"],
         index = json["index"],
-        price = json["price"];
+        price = json["price"],
+        icon = json["icon"];
 
   // serialize for Input on backend
   Map<String, dynamic> toJson() => {'id': id, 'amount': amount, 'index': index};

@@ -1,18 +1,16 @@
 import 'package:food_blueprint/src/types/ingredient_category.dart';
 
 class CategoryNames {
-  static const List<String> categories = ["meat", "salad", "sauce", "bun"];
-
   static final Map<String, String> pretty = Map.fromEntries(<String, String>{
     "meat": "maso",
     "salad": "salát",
+    "cheese": "sýr",
     "sauce": "omáčka",
-    "bun": "houska"
+    "bun": "bulka"
   }.entries);
 
   static String prettyCategoryName(String categoryKey) {
-    if (!categories.contains(categoryKey) ||
-        !pretty.keys.contains(categoryKey)) {
+    if (!pretty.keys.contains(categoryKey)) {
       throw ArgumentError.value(categoryKey, "Not configured.");
     }
     return pretty[categoryKey]!;

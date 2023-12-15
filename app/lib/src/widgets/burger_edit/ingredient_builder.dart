@@ -3,6 +3,7 @@ import 'dart:developer' as developer;
 import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/models/ingredient.dart';
 import 'package:food_blueprint/src/models/ingredient_in_food.dart';
+import 'package:food_blueprint/src/utils/image_loader.dart';
 
 class IngredientBuilder extends StatefulWidget {
   final List<IngredientInFood> burgerIngredients;
@@ -30,7 +31,8 @@ class _IngredientBuilderState extends State<IngredientBuilder> {
 
   void _addBurgerIngredient(Ingredient ingredient, int index) {
     setState(() {
-      widget.burgerIngredients.insert(index, IngredientInFood.fromIngredient(ingredient, index));
+      widget.burgerIngredients
+          .insert(index, IngredientInFood.fromIngredient(ingredient, index));
       _totalPrice += ingredient.price;
       developer.log("Added ingredient ${ingredient.name} at index $index");
     });
@@ -42,6 +44,26 @@ class _IngredientBuilderState extends State<IngredientBuilder> {
       _totalPrice -= ingredient.price;
       developer.log("Removed ingredient ${ingredient.name}");
     });
+  }
+
+  Widget _buildIngredientLayerIcon(
+      BuildContext context, IngredientInFood ingredient, int index, int len) {
+    String? icon = ingredient.icon;
+
+    // force top bun
+    if (index == 0 && ingredient.category == "bun") {
+      icon = "/icons/ingredients/top_bun.png";
+    }
+
+    // force bottom bun
+    if (index == len - 1 && ingredient.category == "bun") {
+      icon = "/icons/ingredients/bottom_bun.png";
+    }
+
+    return SizedBox(
+        width: 200,
+        child: Image.network(ImageUrlLoader.getServedImageUrl(
+            icon, "https://i.imgur.com/aZjDYBS.jpeg")));
   }
 
   Widget _buildIngredientList(BuildContext context) {
@@ -96,12 +118,8 @@ class _IngredientBuilderState extends State<IngredientBuilder> {
                                                       FontWeight.bold))))))),
                       Expanded(
                           flex: 5,
-                          child: Container(
-                              color: Colors.amber,
-                              width: 200,
-                              height: 50,
-                              child: Center(
-                                  child: Text("${ingredient.name} ($index)")))),
+                          child: _buildIngredientLayerIcon(context, ingredient,
+                              index, widget.burgerIngredients.length)),
                       Expanded(
                           flex: 1,
                           child: Padding(
