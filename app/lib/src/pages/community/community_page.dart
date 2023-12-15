@@ -55,6 +55,7 @@ class CommunityPageState extends State<CommunityPage> {
                         color: ThemeColors.colorMeat,
                         indent: 5.0))
               ])),
+          const SizedBox(height: 5),
           FutureBuilder(
               future: _communityBurgersFuture,
               builder: (BuildContext context,
