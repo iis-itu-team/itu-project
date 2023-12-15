@@ -20,7 +20,8 @@ export default class extends BaseSeeder {
       {
         name: "Bulka",
         price: 10,
-        category: "bun"
+        category: "bun",
+        icon: "/icons/ingredients/bun.png"
       },
       {
         name: "Salát",
