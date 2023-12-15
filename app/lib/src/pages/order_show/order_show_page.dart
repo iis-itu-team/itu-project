@@ -70,7 +70,6 @@ class OrderShowPage extends StatelessWidget {
                           ),
                     ),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,

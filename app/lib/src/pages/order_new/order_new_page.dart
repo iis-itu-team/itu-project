@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:food_blueprint/src/widgets/custom_text_form.dart';
 import 'package:food_blueprint/src/services/order_service.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
@@ -275,9 +276,9 @@ class OrderNewPage extends StatelessWidget {
         color: ThemeColors.colorBun,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
-          children: <Widget>[
-            FloatingActionButton.large(
-              onPressed: () {
+          children: [
+            GestureDetector(
+              onTap: () {
                 developer.log("here");
                 developer.log(houseNumber!);
                 developer.log(zipCode!);
@@ -296,9 +297,8 @@ class OrderNewPage extends StatelessWidget {
                     toFlatDoors!);
                 Navigator.pushNamed(context, OrderConfirmPage.routeName);
               },
-              backgroundColor: ThemeColors.colorOnion,
-              child: const Text('Zaplatiť!',
-                  style: TextStyle(color: ThemeColors.colorText)),
+              child: SvgPicture.asset("assets/images/BurgerOrder.svg",
+                  height: 80, width: 80),
             ),
           ],
         ),

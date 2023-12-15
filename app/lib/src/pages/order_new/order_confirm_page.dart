@@ -16,7 +16,6 @@ class OrderConfirmPage extends StatelessWidget {
     return Scaffold(
       appBar: const CustomAppBar(text: 'Potvrdenie objednávky'),
       body: Container(
-        color: ThemeColors.colorBun,
         child: const Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
