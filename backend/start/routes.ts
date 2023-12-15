@@ -39,6 +39,9 @@ Route.group(() => {
 
   Route.resource("burgers", "BurgerController")
     .only(["index", "show", "store", "update", "destroy"])
+    .middleware({
+      "store": "keeper-auth"
+    })
 
   Route.post("/burgers/:burger_id/ratings", "BurgerController.rate")
     .middleware("keeper-auth")

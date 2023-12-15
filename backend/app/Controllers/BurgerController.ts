@@ -1,8 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { schema, rules } from '@ioc:Adonis/Core/Validator'
-import FailureException from 'App/Exceptions/FailureException';
 import BurgerService from 'App/Services/BurgerService';
-import KeeperService from 'App/Services/KeeperService';
 
 const indexBurgerSchema = schema.create({
     published: schema.enum.optional(["true", "false"]),
@@ -19,7 +17,6 @@ const createBurgerSchema = schema.create({
             rules.unsigned()
         ])
     })),
-    keeperId: schema.string()
 })
 
 const updateBurgerSchema = schema.create({
@@ -42,7 +39,6 @@ const addBurgerRatingSchema = schema.create({
 
 export default class BurgerController {
     private readonly burgerService = new BurgerService()
-    private readonly keeperService = new KeeperService()
 
     public async index({ request, response, keeper }: HttpContextContract) {
         const validated = await request.validate({ schema: indexBurgerSchema })
@@ -73,18 +69,12 @@ export default class BurgerController {
         })
     }
 
-    public async store({ request, response }: HttpContextContract) {
+    public async store({ request, response, keeper }: HttpContextContract) {
         const validated = await request.validate({
             schema: createBurgerSchema
         })
 
-        const keeper = await this.keeperService.getKeeper(validated.keeperId)
-
-        if (!keeper) {
-            throw FailureException.notFound("keeper", validated.keeperId)
-        }
-
-        const burger = await this.burgerService.createBurger(keeper, validated)
+        const burger = await this.burgerService.createBurger(keeper!, validated)
 
         response.status(201).json({
             status: "success",
