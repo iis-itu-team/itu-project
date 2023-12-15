@@ -13,7 +13,7 @@ class Order {
   int? price;
   bool? ring;
   String? paymentType;
-  DateTime? date;
+  String? date;
 
   List<Burger> burgers = [];
 
@@ -21,8 +21,9 @@ class Order {
 
   Order.fromJson(Map<String, dynamic> json)
       : id = json["id"],
-        price = json["price"],
-        date = json["date"];
+        date = json["date"],
+        street = json["street"],
+        price = json["price"];
 
   Map<String, dynamic> toJson() => {
         'burgers': burgers.map((e) => e.toJson()).toList(),

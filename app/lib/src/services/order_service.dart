@@ -26,7 +26,7 @@ class OrderService {
     return HttpResult(response.statusCode, json["status"], null);
   }
 
-  Future<HttpResult<List<Order>>> getOrders() async {
+  Future<HttpResult<List<Order>>> listOrders() async {
     final HttpClient client = HttpClient.fromEnv();
 
     final response = await client.get(client.route("/orders"));
@@ -36,13 +36,12 @@ class OrderService {
     List<Order> orders = [];
 
     if (json["status"] == "success") {
-      // deserialize
-      for (final Map<String, dynamic> burgerJson in json["data"]) {
-        orders.add(Order.fromJson(burgerJson));
+      for (final Map<String, dynamic> orderJson in json["data"]) {
+        orders.add(Order.fromJson(orderJson));
       }
     }
 
-    developer.log("Fetched ${orders.length} burger(s)...");
+    developer.log("Fetched ${orders.length} orders(s)...");
 
     return HttpResult(response.statusCode, json["status"], orders);
   }

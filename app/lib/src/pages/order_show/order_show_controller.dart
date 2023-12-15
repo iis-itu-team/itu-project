@@ -1,4 +1,7 @@
+import 'package:food_blueprint/src/models/order.dart';
 import 'package:food_blueprint/src/services/order_service.dart';
+
+import 'dart:developer' as developer;
 
 class OrderShowController {
   // final BurgerService foodService;
@@ -6,19 +9,15 @@ class OrderShowController {
 
   const OrderShowController(this.orderService);
 
-  // TODO: save order
-  // TODO: show orders
-
-  /*
-  Future<List<Burger>> listBurgers() async {
-    final result = await foodService.listBurgers();
+  Future<List<Order>> listOrders() async {
+    final result = await orderService.listOrders().catchError((error) {
+      developer.log(error.toString());
+    });
 
     if (result.status != "success") {
-      // todo: error? popup?
       return [];
     }
 
     return result.data!;
   }
-  */
 }

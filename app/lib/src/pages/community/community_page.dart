@@ -20,7 +20,7 @@ class CommunityPage extends StatefulWidget {
 }
 
 class CommunityPageState extends State<CommunityPage> {
-  Future<HttpResult<List<Burger>>> _communityBurgersFuture =
+  final Future<HttpResult<List<Burger>>> _communityBurgersFuture =
       BurgerService().listBurgers();
 
   @override
