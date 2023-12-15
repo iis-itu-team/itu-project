@@ -135,19 +135,18 @@ class BurgerRatingWidgetState extends State<BurgerRatingWidget> {
                     ])),
                 Flexible(
                     flex: 3,
-                    child: FittedBox(
-                        child: burger?.image != null
-                            ? Image.network('${burger?.image}', loadingBuilder:
-                                (BuildContext context, Widget child,
-                                    ImageChunkEvent? loadingProgress) {
-                                return CircularProgressIndicator(
-                                    value: (loadingProgress
-                                                ?.cumulativeBytesLoaded ??
+                    child: burger?.image != null
+                        ? Image.network('${burger?.image}', loadingBuilder:
+                            (BuildContext context, Widget child,
+                                ImageChunkEvent? loadingProgress) {
+                            return CircularProgressIndicator(
+                                value:
+                                    (loadingProgress?.cumulativeBytesLoaded ??
                                             0) /
                                         (loadingProgress?.expectedTotalBytes ??
                                             100000000));
-                              })
-                            : _defaultImage))
+                          })
+                        : _defaultImage)
               ])),
           Flexible(
               flex: 1,
