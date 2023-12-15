@@ -129,7 +129,7 @@ class _IngredientBuilderState extends State<IngredientBuilder> {
       if (widget.burgerIngredients.length == 2) {
         // only two buns, add a giant drop zone in the middle
         if (index == 0) {
-          children.add(_buildDropZone(context, 128, index));
+          children.add(_buildDropZone(context, 128, index, true));
         }
       } else {
         if (index != widget.burgerIngredients.length - 1) {
@@ -149,18 +149,26 @@ class _IngredientBuilderState extends State<IngredientBuilder> {
             child: Column(children: _buildIngredients(context))));
   }
 
-  Widget _buildDropZone(BuildContext context, double height, int index) {
+  Widget _buildDropZone(
+      BuildContext context, double height, int index, bool showPlus) {
     return DragTarget<Ingredient>(
         builder: (context, candidateItems, rejectedItems) {
-      if (candidateItems.isNotEmpty) {
-        return Container(
-            height: height,
-            decoration: const BoxDecoration(
-                border: Border.symmetric(
-                    horizontal: BorderSide(color: Colors.red))));
-      } else {
-        return Container(height: height);
-      }
+      return Container(
+          height: height,
+          padding: const EdgeInsets.symmetric(vertical: 16),
+          child: Container(
+              width: 300,
+              decoration: BoxDecoration(
+                  color: Colors.green
+                      .withOpacity(candidateItems.isEmpty ? 0.1 : 0.5),
+                  border: Border.all(color: Colors.greenAccent),
+                  borderRadius: const BorderRadius.all(Radius.circular(8))),
+              child: const Center(
+                  child: Text("+",
+                      style: TextStyle(
+                          color: Colors.green,
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold)))));
     }, onAccept: (ingredient) {
       _addBurgerIngredient(ingredient, index + 1);
     });
