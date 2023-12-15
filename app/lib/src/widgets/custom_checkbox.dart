@@ -31,9 +31,9 @@ class _CustomCheckboxListTileState extends State<CustomCheckboxListTile> {
       },
       title: Text(
         widget.text,
-        style: const TextStyle(color: COLOR_TEXT, fontSize: 18),
+        style: const TextStyle(color: ThemeColors.colorText, fontSize: 18),
       ),
-      activeColor: COLOR_PRIMARY,
+      activeColor: ThemeColors.colorBun,
     );
   }
 

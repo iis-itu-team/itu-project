@@ -17,7 +17,6 @@ class OrderShowPage extends StatelessWidget {
     return Scaffold(
       appBar: const CustomAppBar(text: 'Moje objednávky'),
       body: Container(
-        color: COLOR_SECONDARY,
         padding: const EdgeInsets.only(left: 10),
         child: FutureBuilder(
           builder: (context, orders) {
@@ -60,7 +59,7 @@ class OrderShowPage extends StatelessWidget {
       bottomNavigationBar: Container(
         padding: const EdgeInsets.all(10),
         height: 100,
-        color: COLOR_PRIMARY,
+        color: ThemeColors.colorBun,
       ),
     );
   }

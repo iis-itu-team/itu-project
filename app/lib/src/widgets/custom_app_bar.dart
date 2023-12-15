@@ -16,9 +16,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       title: Text(
         text,
-        style: const TextStyle(color: COLOR_TEXT, fontSize: 24),
+        style: const TextStyle(color: ThemeColors.colorText, fontSize: 24),
       ),
-      backgroundColor: COLOR_PRIMARY,
+      backgroundColor: ThemeColors.colorBun,
       actions: [
         PopupMenuButton<String>(
           onSelected: (value) {
@@ -41,7 +41,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             ];
           },
-          color: COLOR_SECONDARY,
+          color: ThemeColors.colorOnion,
         ),
       ],
     );

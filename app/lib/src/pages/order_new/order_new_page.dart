@@ -56,7 +56,6 @@ class OrderNewPage extends StatelessWidget {
     return Scaffold(
       appBar: const CustomAppBar(text: 'Nová objednávka'),
       body: Container(
-        color: COLOR_SECONDARY,
         padding: const EdgeInsets.only(left: 10),
         child: SingleChildScrollView(
           child: Column(
@@ -66,7 +65,7 @@ class OrderNewPage extends StatelessWidget {
                 child: const Text(
                   "Shrnutí",
                   style: TextStyle(
-                      color: COLOR_TEXT,
+                      color: ThemeColors.colorText,
                       fontSize: 25,
                       fontWeight: FontWeight.bold),
                 ),
@@ -79,7 +78,7 @@ class OrderNewPage extends StatelessWidget {
                       padding: const EdgeInsets.all(10),
                       child: const Text("Doručení",
                           style: TextStyle(
-                              color: COLOR_TEXT,
+                              color: ThemeColors.colorText,
                               fontSize: 25,
                               fontWeight: FontWeight.bold)),
                     ),
@@ -97,7 +96,8 @@ class OrderNewPage extends StatelessWidget {
                                     const Text(
                                       "Mesto",
                                       style: TextStyle(
-                                          color: COLOR_TEXT, fontSize: 18),
+                                          color: ThemeColors.colorText,
+                                          fontSize: 18),
                                     ),
                                     const SizedBox(height: 10),
                                     CustomTextForm(variable: city),
@@ -111,7 +111,8 @@ class OrderNewPage extends StatelessWidget {
                                     const Text(
                                       "PSČ",
                                       style: TextStyle(
-                                          color: COLOR_TEXT, fontSize: 18),
+                                          color: ThemeColors.colorText,
+                                          fontSize: 18),
                                     ),
                                     const SizedBox(height: 10),
                                     CustomTextForm(variable: zipCode),
@@ -137,7 +138,8 @@ class OrderNewPage extends StatelessWidget {
                                     const Text(
                                       "Ulica",
                                       style: TextStyle(
-                                          color: COLOR_TEXT, fontSize: 18),
+                                          color: ThemeColors.colorText,
+                                          fontSize: 18),
                                     ),
                                     const SizedBox(height: 10),
                                     CustomTextForm(variable: street),
@@ -151,7 +153,8 @@ class OrderNewPage extends StatelessWidget {
                                     const Text(
                                       "č. p.",
                                       style: TextStyle(
-                                          color: COLOR_TEXT, fontSize: 18),
+                                          color: ThemeColors.colorText,
+                                          fontSize: 18),
                                     ),
                                     const SizedBox(height: 10),
                                     CustomTextForm(variable: houseNumber),
@@ -171,7 +174,8 @@ class OrderNewPage extends StatelessWidget {
                         children: [
                           const Text(
                             "poznámka pro řidiče",
-                            style: TextStyle(color: COLOR_TEXT, fontSize: 18),
+                            style: TextStyle(
+                                color: ThemeColors.colorText, fontSize: 18),
                           ),
                           const SizedBox(height: 10),
                           CustomTextForm(variable: notes),
@@ -198,7 +202,8 @@ class OrderNewPage extends StatelessWidget {
                                     const Text(
                                       "poschodie",
                                       style: TextStyle(
-                                          color: COLOR_TEXT, fontSize: 18),
+                                          color: ThemeColors.colorText,
+                                          fontSize: 18),
                                     ),
                                     const SizedBox(height: 10),
                                     CustomTextForm(variable: floor),
@@ -212,7 +217,8 @@ class OrderNewPage extends StatelessWidget {
                                     const Text(
                                       "číslo bytu",
                                       style: TextStyle(
-                                          color: COLOR_TEXT, fontSize: 18),
+                                          color: ThemeColors.colorText,
+                                          fontSize: 18),
                                     ),
                                     const SizedBox(height: 10),
                                     CustomTextForm(variable: houseNumber),
@@ -237,7 +243,7 @@ class OrderNewPage extends StatelessWidget {
                       padding: const EdgeInsets.all(20),
                       child: const Text("Platba",
                           style: TextStyle(
-                              color: COLOR_TEXT,
+                              color: ThemeColors.colorText,
                               fontSize: 25,
                               fontWeight: FontWeight.bold)),
                     ),
@@ -266,7 +272,7 @@ class OrderNewPage extends StatelessWidget {
       bottomNavigationBar: Container(
         padding: const EdgeInsets.all(10),
         height: 100,
-        color: COLOR_PRIMARY,
+        color: ThemeColors.colorBun,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
@@ -290,9 +296,9 @@ class OrderNewPage extends StatelessWidget {
                     toFlatDoors!);
                 Navigator.pushNamed(context, OrderConfirmPage.routeName);
               },
-              backgroundColor: COLOR_SECONDARY,
-              child:
-                  const Text('Zaplatiť!', style: TextStyle(color: COLOR_TEXT)),
+              backgroundColor: ThemeColors.colorOnion,
+              child: const Text('Zaplatiť!',
+                  style: TextStyle(color: ThemeColors.colorText)),
             ),
           ],
         ),

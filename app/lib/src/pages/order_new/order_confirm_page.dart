@@ -16,7 +16,7 @@ class OrderConfirmPage extends StatelessWidget {
     return Scaffold(
       appBar: const CustomAppBar(text: 'Potvrdenie objednávky'),
       body: Container(
-        color: COLOR_SECONDARY,
+        color: ThemeColors.colorBun,
         child: const Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -24,7 +24,7 @@ class OrderConfirmPage extends StatelessWidget {
               Text(
                 "Ďakujeme",
                 style: TextStyle(
-                    color: COLOR_TEXT,
+                    color: ThemeColors.colorText,
                     fontSize: 25,
                     fontWeight: FontWeight.bold),
               ),
@@ -32,7 +32,7 @@ class OrderConfirmPage extends StatelessWidget {
               Text(
                 "Vaša objednávka je na ceste!",
                 style: TextStyle(
-                    color: COLOR_TEXT,
+                    color: ThemeColors.colorText,
                     fontSize: 16,
                     fontWeight: FontWeight.bold),
               ),

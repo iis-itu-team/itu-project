@@ -16,7 +16,7 @@ class SettingsPage extends StatelessWidget {
     return Scaffold(
       appBar: const CustomAppBar(text: 'Nastavenia'),
       body: Container(
-        color: COLOR_SECONDARY,
+        color: ThemeColors.colorOnion,
         child: const Center(
             child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -34,7 +34,7 @@ class SettingsPage extends StatelessWidget {
       bottomNavigationBar: Container(
         padding: const EdgeInsets.all(10),
         height: 100,
-        color: COLOR_PRIMARY,
+        color: ThemeColors.colorBun,
       ),
     );
   }

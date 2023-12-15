@@ -28,7 +28,9 @@ class CustomButton extends StatelessWidget implements PreferredSizeWidget {
       child: Text(
         text!,
         style: const TextStyle(
-            color: COLOR_TEXT, fontSize: 12, fontWeight: FontWeight.bold),
+            color: ThemeColors.colorText,
+            fontSize: 12,
+            fontWeight: FontWeight.bold),
       ),
     );
   }
