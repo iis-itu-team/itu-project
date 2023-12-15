@@ -57,11 +57,12 @@ export default class extends BaseSeeder {
         amount: 1,
         index: 0
       },
-      {
+      // no sauce pls
+      /* {
         ingredient_id: sauce!.id,
         amount: 1,
         index: 1
-      },
+      }, */
       {
         ingredient_id: cheese!.id,
         amount: 1,
