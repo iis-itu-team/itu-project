@@ -72,6 +72,7 @@ class BurgerRatingWidgetState extends State<BurgerRatingWidget> {
     });
   }
 
+  // If you want to change layout aspect, change flex value in Flexible
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -82,52 +83,77 @@ class BurgerRatingWidgetState extends State<BurgerRatingWidget> {
             border:
                 Border.all(width: _borderWidth, color: ThemeColors.colorMeat),
             borderRadius: BorderRadius.circular(_borderRadius)),
-        child: Expanded(
+        child: FractionallySizedBox(
+            heightFactor: 1.0,
+            widthFactor: 1.0,
             child: Column(children: <Widget>[
-          FittedBox(child: Text(burger?.name ?? 'Name')),
-          Expanded(
-              child: Row(
-            children: <Widget>[
-              Expanded(
-                  child: Column(
-                children: <Widget>[
-                  FittedBox(
-                      child: IconButton(
-                          icon: pressed == BurgerRating.up
-                              ? _buttonUpSelected
-                              : _buttonUp,
-                          onPressed: () async {
-                            await rate(BurgerRating.up);
-                          })),
-                  FittedBox(child: Text('${burger?.rating ?? 0}')),
-                  FittedBox(
-                      child: IconButton(
-                          icon: pressed == BurgerRating.down
-                              ? _buttonDownSelected
-                              : _buttonDown,
-                          onPressed: () async {
-                            await rate(BurgerRating.down);
-                          })),
-                ],
-              )),
-              FittedBox(
-                  child: burger?.image != null
-                      ? Image.network(
-                          '${burger?.image}',
-                          loadingBuilder: (BuildContext context, Widget child,
-                              ImageChunkEvent? loadingProgress) {
-                            return CircularProgressIndicator(
-                                value:
-                                    (loadingProgress?.cumulativeBytesLoaded ??
-                                            0) /
-                                        (loadingProgress?.expectedTotalBytes ??
-                                            10000000));
-                          },
-                        )
-                      : _defaultImage)
-            ],
-          )),
-          FittedBox(child: Text('${burger?.price ?? 0} Kč'))
-        ])));
+              Flexible(
+                  flex: 1,
+                  child: FittedBox(
+                      child: Text(burger?.name ?? '',
+                          style:
+                              const TextStyle(color: ThemeColors.colorMeat)))),
+              Flexible(
+                  flex: 6,
+                  child: Row(children: <Widget>[
+                    Flexible(
+                        flex: 1,
+                        child: Column(children: <Widget>[
+                          const Spacer(flex: 1),
+                          Flexible(
+                              flex: 3,
+                              child: FittedBox(
+                                  fit: BoxFit.none,
+                                  child: IconButton(
+                                      icon: pressed != BurgerRating.up
+                                          ? _buttonUp
+                                          : _buttonUpSelected,
+                                      onPressed: () async {
+                                        await rate(BurgerRating.up);
+                                      }))),
+                          Flexible(
+                              flex: 2,
+                              child: FittedBox(
+                                  child: Text('${burger?.rating ?? 0}',
+                                      style: const TextStyle(
+                                          color: ThemeColors.colorMeat)))),
+                          Flexible(
+                              flex: 3,
+                              child: FittedBox(
+                                  fit: BoxFit.none,
+                                  child: IconButton(
+                                      icon: pressed != BurgerRating.down
+                                          ? _buttonDown
+                                          : _buttonDownSelected,
+                                      onPressed: () async {
+                                        await rate(BurgerRating.down);
+                                      }))),
+                          const Spacer(flex: 1)
+                        ])),
+                    Flexible(
+                        flex: 3,
+                        child: FittedBox(
+                            child: burger?.image != null
+                                ? Image.network('${burger?.image}',
+                                    loadingBuilder: (BuildContext context,
+                                        Widget child,
+                                        ImageChunkEvent? loadingProgress) {
+                                    return CircularProgressIndicator(
+                                        value: (loadingProgress
+                                                    ?.cumulativeBytesLoaded ??
+                                                0) /
+                                            (loadingProgress
+                                                    ?.expectedTotalBytes ??
+                                                100000000));
+                                  })
+                                : _defaultImage))
+                  ])),
+              Flexible(
+                  flex: 1,
+                  child: FittedBox(
+                      child: Text('${burger?.price ?? 0} Kč',
+                          style:
+                              const TextStyle(color: ThemeColors.colorMeat))))
+            ])));
   }
 }
