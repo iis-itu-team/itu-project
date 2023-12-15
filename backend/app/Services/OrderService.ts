@@ -46,15 +46,27 @@ export default class OrderService {
             .as('order_price'))
     }
 
+    private calculateBurgerPrice(q) {
+        q.select('*', Database.from('burger_ingredients')
+            .whereRaw('burger_ingredients.burger_id = burgers.id')
+            .join('ingredients', 'burger_ingredients.ingredient_id', 'ingredients.id')
+            .groupBy('burger_id')
+            .select(Database.raw('sum(ingredients.price * burger_ingredients.amount) as total_price'))
+            .as('price')
+        )
+    }
+
     public listOrders = async (input: ListOrdersInput) => {
         const q = Order.query()
-            .preload('burgers')
+            .preload('burgers', (q) => {
+                this.calculateBurgerPrice(q)
+            })
 
         if (input.keeperId) {
             q.andWhere("keeper_id", input.keeperId)
         }
 
-        this.calculatePrice(q);
+        this.calculatePrice(q)
 
         return await q
     }
