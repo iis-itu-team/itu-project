@@ -4,4 +4,5 @@ git pull && \
     bun install && \
     node ace migration:run && \
     bun run build && \
+    cp -r ./public ./build/ && \
     bun start
