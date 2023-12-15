@@ -3,6 +3,10 @@ import FailureException from "App/Exceptions/FailureException";
 import Burger from "App/Models/Burger"
 import Ingredient from "App/Models/Ingredient";
 import Keeper from "App/Models/Keeper";
+import Application from '@ioc:Adonis/Core/Application'
+import mergeImages from 'merge-images'
+import { Canvas, Image } from 'canvas'
+import fs from "fs/promises"
 
 export type ListBurgersInput = {
     published: boolean | null
@@ -147,6 +151,13 @@ export default class BurgerService {
             throw new FailureException(500, "failed_to_create", "Failed to create burger, not found in psot query.");
         }
 
+        const icon = await this.createBurgerIcon(res)
+
+        if (icon) {
+            res.icon = icon;
+            await res.save()
+        }
+
         return res
     }
 
@@ -199,6 +210,9 @@ export default class BurgerService {
             throw new FailureException(500, "failed_to_create", "Failed to create burger, not found in psot query.");
         }
 
+        // same path, no need to update
+        await this.createBurgerIcon(res)
+
         return res
     }
 
@@ -241,5 +255,72 @@ export default class BurgerService {
         }
 
         await burger.delete()
+
+        if (burger.icon) {
+            await fs.unlink(Application.makePath('public', burger.icon))
+        }
+    }
+
+    // create burger icon from ingredients
+    // icon path: /icons/burgers/<id>.png
+    private async createBurgerIcon(burger: Burger) {
+        const relPath = `/icons/burgers/${burger.id}.png`
+
+        // find existing icon, if any, saved by id
+        const icon: string = Application.makePath('public', relPath)
+
+        // get icons for ingredients
+
+        const offset = 40;
+
+        const n = burger.ingredients.length;
+        const finalHeight = (n - 1) * offset + 100;
+
+        let y = finalHeight - 100;
+
+        const images: any[] = [];
+        burger.ingredients.sort((a, b) => {
+            return a.index > b.index ? -1 : 1;
+        }).forEach((ingredient, idx) => {
+
+            let iconPath: string | null = null;
+            if (idx == 0) {
+                iconPath = Application.makePath('public/icons/ingredients/bottom_bun.png')
+            } else if (idx == burger.ingredients.length - 1) {
+                iconPath = Application.makePath('public/icons/ingredients/top_bun.png')
+            } else {
+                if (ingredient.icon == null) {
+                    return;
+                } else {
+                    iconPath = Application.makePath('public', ingredient.icon)
+                }
+            }
+
+            images.push({
+                src: iconPath,
+                y,
+                x: 0
+            })
+            y -= offset
+        })
+
+        const b64 = await mergeImages(images, {
+            Canvas,
+            Image,
+            height: finalHeight,
+            width: 400
+        })
+
+        let m = b64.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+
+        const res = await fs.writeFile(icon, Buffer.from(m[2], 'base64'))
+
+        if (res === undefined) {
+            Application.logger.info('Image generated for burger ' + burger.name + ' into ' + icon)
+            return relPath
+        } else {
+            Application.logger.error('Failed to generate imaged for ' + burger.id)
+            return null
+        }
     }
 }

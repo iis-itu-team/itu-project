@@ -37,6 +37,9 @@ export default class Burger extends BaseModel {
     })
     public ratings: ManyToMany<typeof Keeper>
 
+    @column()
+    public icon: string
+
     @column.dateTime({ autoCreate: true })
     public createdAt: DateTime
 

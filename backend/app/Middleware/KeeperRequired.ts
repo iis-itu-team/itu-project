@@ -6,6 +6,7 @@ export default class KeeperSilentAuth {
             ctx.response.status(401).json({
                 status: "unauthorized",
             })
+            return
         }
         await next()
     }
