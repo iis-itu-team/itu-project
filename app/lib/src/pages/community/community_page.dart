@@ -37,39 +37,45 @@ class CommunityPageState extends State<CommunityPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: const CustomAppBar(text: 'Komunitný Workshop'),
-        body: LayoutBuilder(builder:
-            (BuildContext context, BoxConstraints viewportConstraints) {
-          return Container(
-              constraints: viewportConstraints,
-              child: Column(children: <Widget>[
-                const CustomRowMenu(),
-                const Text('top týždňa',
-                    style: TextStyle(color: ThemeColors.colorMeat)),
-                FutureBuilder(
-                    future: _communityBurgersFuture,
-                    builder: (BuildContext context,
-                        AsyncSnapshot<HttpResult<List<Burger>>> snapshot) {
-                      List<Burger> communityBurgers = [];
+        body: Column(children: <Widget>[
+          const CustomRowMenu(),
+          const Text('top týždňa',
+              style: TextStyle(color: ThemeColors.colorMeat)),
+          FutureBuilder(
+              future: _communityBurgersFuture,
+              builder: (BuildContext context,
+                  AsyncSnapshot<HttpResult<List<Burger>>> snapshot) {
+                List<Burger> communityBurgers = [];
 
-                      if (snapshot.hasData) {
-                        if (snapshot.data?.statusCode == 200) {
-                          communityBurgers = snapshot.data?.data ?? [];
-                          return BurgerRatingWidget(
-                              burger: communityBurgers[0],
-                              ratingService: widget.ratingService);
-                        } else {
-                          return Text(
-                              'Niečo sa nepovedlo - ${snapshot.data?.status}',
-                              style: const TextStyle(
-                                  color: ThemeColors.colorKetchup));
-                        }
-                      } else {
-                        return const Text('Čakám na dáta',
+                if (snapshot.hasData) {
+                  if (snapshot.data?.statusCode == 200) {
+                    communityBurgers = snapshot.data?.data ?? [];
+                    return communityBurgers.isNotEmpty
+                        ? SizedBox(
+                            height: BurgerRatingWidget.height,
+                            child: ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                itemCount: communityBurgers.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return BurgerRatingWidget(
+                                      burger: communityBurgers[index],
+                                      ratingService: widget.ratingService);
+                                }))
+                        : const Text('Ve workshope nejsou žiadné burgre',
                             style: TextStyle(color: ThemeColors.colorMeat));
-                      }
-                    })
-              ]));
-        }),
+                  } else {
+                    return Text('Niečo sa nepovedlo - ${snapshot.data?.status}',
+                        style:
+                            const TextStyle(color: ThemeColors.colorKetchup));
+                  }
+                } else {
+                  return const Text('Čakám na dáta',
+                      style: TextStyle(color: ThemeColors.colorMeat));
+                }
+              }),
+          const Text('vyhledávanie',
+              style: TextStyle(color: ThemeColors.colorMeat))
+        ]),
         bottomNavigationBar: const BottomNavigationWidget());
   }
 }
