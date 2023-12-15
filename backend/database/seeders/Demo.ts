@@ -17,14 +17,21 @@ export default class extends BaseSeeder {
         category: "meat"
       },
       {
-        name: "Houska",
+        name: "Bulka",
         price: 10,
         category: "bun"
       },
       {
         name: "Salát",
         price: 20,
-        category: "salad"
+        category: "salad",
+        icon: "/icons/ingredients/salad.png"
+      },
+      {
+        name: "Cheddar",
+        price: 10,
+        category: "cheese",
+        icon: "/icons/ingredients/cheddar.png"
       },
       {
         name: "Hořčice",
@@ -42,6 +49,7 @@ export default class extends BaseSeeder {
     const meat = ingredients.find((i) => i.category == 'meat');
     const salad = ingredients.find((i) => i.category == 'salad');
     const sauce = ingredients.find((i) => i.category == 'sauce');
+    const cheese = ingredients.find((i) => i.category == 'cheese');
 
     const relations = [
       {
@@ -55,19 +63,24 @@ export default class extends BaseSeeder {
         index: 1
       },
       {
-        ingredient_id: meat!.id,
+        ingredient_id: cheese!.id,
         amount: 1,
         index: 2
       },
       {
-        ingredient_id: salad!.id,
+        ingredient_id: meat!.id,
         amount: 1,
         index: 3
       },
       {
-        ingredient_id: bun!.id,
+        ingredient_id: salad!.id,
         amount: 1,
         index: 4
+      },
+      {
+        ingredient_id: bun!.id,
+        amount: 1,
+        index: 5
       }
     ];
 

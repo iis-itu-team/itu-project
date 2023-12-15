@@ -17,6 +17,10 @@ export default class Ingredient extends BaseModel {
     @column()
     public category: string;
 
+    // path relative to /public/
+    @column()
+    public icon: string;
+
     @column.dateTime({ autoCreate: true })
     public createdAt: DateTime
 

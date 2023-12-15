@@ -44,4 +44,11 @@ export default class BurgerIngredient extends BaseModel {
             return this.$extras.category
         }
     }
+
+    @computed()
+    public get icon() {
+        if ("icon" in this.$extras) {
+            return this.$extras.icon
+        }
+    }
 }
