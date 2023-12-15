@@ -21,6 +21,7 @@ import 'package:food_blueprint/src/services/ingredient_service.dart';
 import 'package:food_blueprint/src/services/order_service.dart';
 import 'package:food_blueprint/src/services/rating_service.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 /// The Widget that configures your application.
 class MyApp extends StatelessWidget {
@@ -44,6 +45,27 @@ class MyApp extends StatelessWidget {
         OrderShowController(orderService);
 
     const SettingsController settingsController = SettingsController();
+
+    ThemeData themeData = ThemeData(
+        useMaterial3: true,
+        scaffoldBackgroundColor: ThemeColors.colorOnion,
+        fontFamily: GoogleFonts.outfit().fontFamily,
+        textTheme: const TextTheme(
+            bodyLarge: TextStyle(color: ThemeColors.colorMeat),
+            bodyMedium: TextStyle(color: ThemeColors.colorMeat),
+            bodySmall: TextStyle(color: ThemeColors.colorMeat),
+            displaySmall: TextStyle(color: ThemeColors.colorMeat),
+            displayMedium: TextStyle(color: ThemeColors.colorMeat),
+            displayLarge: TextStyle(color: ThemeColors.colorMeat),
+            labelSmall: TextStyle(color: ThemeColors.colorMeat),
+            labelMedium: TextStyle(color: ThemeColors.colorMeat),
+            labelLarge: TextStyle(color: ThemeColors.colorMeat),
+            titleSmall: TextStyle(color: ThemeColors.colorMeat),
+            titleMedium: TextStyle(color: ThemeColors.colorMeat),
+            titleLarge: TextStyle(color: ThemeColors.colorMeat),
+            headlineSmall: TextStyle(color: ThemeColors.colorMeat),
+            headlineMedium: TextStyle(color: ThemeColors.colorMeat),
+            headlineLarge: TextStyle(color: ThemeColors.colorMeat)));
 
     // Glue the SettingsController to the MaterialApp.
     //
@@ -82,13 +104,12 @@ class MyApp extends StatelessWidget {
       // Define a light and dark color theme. Then, read the user's
       // preferred ThemeMode (light, dark, or system default) from the
       // SettingsController to display the correct theme.
-      theme: ThemeData(
-          scaffoldBackgroundColor: ThemeColors.colorOnion,
-          textTheme: Theme.of(context).textTheme.apply(
-              displayColor: ThemeColors.colorMeat,
-              bodyColor: ThemeColors.colorMeat)),
-      darkTheme: ThemeData.dark(),
-      // themeMode: settingsController.themeMode,
+      theme: themeData,
+      darkTheme: themeData.copyWith(
+          scaffoldBackgroundColor: Colors.black,
+          textTheme: themeData.textTheme.copyWith(
+              bodyMedium: const TextStyle(color: ThemeColors.colorOnion),
+              bodySmall: const TextStyle(color: ThemeColors.colorOnion))),
 
       // Define a function to handle named routes in order to support
       // Flutter web url navigation and deep linking.

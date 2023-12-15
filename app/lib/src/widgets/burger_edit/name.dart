@@ -35,8 +35,7 @@ class _TitleState extends State<NameWidget> {
               onTapOutside: (value) {
                 widget.onSubmit(_name);
               },
-              decoration: const InputDecoration(
-                  border: OutlineInputBorder(), labelText: 'Název'))),
+              decoration: const InputDecoration(labelText: 'Název'))),
     ]);
   }
 }
