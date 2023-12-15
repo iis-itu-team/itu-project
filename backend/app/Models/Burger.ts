@@ -63,6 +63,14 @@ export default class Burger extends BaseModel {
             return 0
     }
 
+    // rating by the current user
+    // values: 1, -1, 0
+    @computed()
+    public get currentRating() {
+        if ("currentRating" in this.$extras)
+            return Number(this.$extras.currentRating);
+    }
+
     @beforeCreate()
     public static async beforeCreate(burger: Burger) {
         burger.id = generateId(burger.id, "burger")

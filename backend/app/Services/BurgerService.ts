@@ -38,13 +38,18 @@ export default class BurgerService {
         )
     }
 
-    private fetchRating(q) {
+    private fetchRating(q, keeperId: string) {
         q.select('*', Database.from('burger_ratings')
             .whereRaw('burgers.id = burger_ratings.burger_id')
             .groupBy('burger_ratings.burger_id')
             /* .select(Database.raw('(CASE WHEN rating IS NULL THEN 0 ELSE rating END) as r_rating')) */
             .sum('rating')
             .as('rating'))
+
+        q.select('*', Database.from('burger_ratings')
+            .whereRaw('burgers.id = burger_ratings.burger_id')
+            .andWhereRaw(keeperId + ' = burger_ratings.keeper_id')
+            .as('currentRating'))
     }
 
     public listBurgers = async (input: ListBurgersInput): Promise<Burger[]> => {
@@ -64,12 +69,12 @@ export default class BurgerService {
         // calculate price from ingredients
         this.calculatePrice(q)
 
-        this.fetchRating(q)
+        this.fetchRating(q, input.keeperId ?? '')
 
         return await q
     }
 
-    public getBurger = async (id: string): Promise<Burger> => {
+    public getBurger = async (id: string, keeperId: string): Promise<Burger> => {
         const q = Burger.query()
             .where("id", id)
             .preload('ingredients', (q) => {
@@ -79,7 +84,7 @@ export default class BurgerService {
         // calculate price from ingredients
         this.calculatePrice(q)
 
-        this.fetchRating(q)
+        this.fetchRating(q, keeperId)
 
         const burger = await q.first()
 
@@ -205,7 +210,7 @@ export default class BurgerService {
 
         const q = Burger.query()
 
-        this.fetchRating(q)
+        this.fetchRating(q, keeperId)
 
         return await q.first()
     }

@@ -61,8 +61,9 @@ export default class BurgerController {
 
     public async show({ request, response }: HttpContextContract) {
         const id = request.param("id")
+        const keeperId = request.param("keeperId") ?? ''
 
-        const burger = await this.burgerService.getBurger(id)
+        const burger = await this.burgerService.getBurger(id, keeperId)
 
         response.status(200).json({
             status: "success",
