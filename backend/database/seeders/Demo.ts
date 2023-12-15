@@ -67,22 +67,22 @@ export default class extends BaseSeeder {
       {
         ingredient_id: cheese!.id,
         amount: 1,
-        index: 2
+        index: 1
       },
       {
         ingredient_id: meat!.id,
         amount: 1,
-        index: 3
+        index: 2
       },
       {
         ingredient_id: salad!.id,
         amount: 1,
-        index: 4
+        index: 3
       },
       {
         ingredient_id: bun!.id,
         amount: 1,
-        index: 5
+        index: 4
       }
     ];
 
