@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_blueprint/src/models/ingredient.dart';
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_arguments.dart';
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_controller.dart';
@@ -20,6 +21,29 @@ class BurgerEditPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final args =
         ModalRoute.of(context)!.settings.arguments as BurgerEditArguments?;
+
+    Widget buildButtons(BuildContext context) {
+      return Row(children: [
+        Expanded(
+            child: Align(
+                alignment: Alignment.centerLeft,
+                child: GestureDetector(
+                    child: SvgPicture.asset("assets/images/BurgerDelete.svg",
+                        height: 70, width: 70),
+                    onTap: () {}))),
+        Expanded(
+            child: Align(
+                alignment: Alignment.centerRight,
+                child: GestureDetector(
+                    onTap: () {
+                      controller.handleSave();
+                      Navigator.pushNamed(context, HomePage.routeName);
+                      // Navigate to a different page here
+                    },
+                    child: SvgPicture.asset("assets/images/BurgerDone.svg",
+                        height: 80, width: 80))))
+      ]);
+    }
 
     return Scaffold(
         resizeToAvoidBottomInset: false,
@@ -58,38 +82,12 @@ class BurgerEditPage extends StatelessWidget {
                           child: IngredientBuilder(
                               burgerIngredients:
                                   controller.editedBurger!.ingredients))),
+                  Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 10),
+                      child: buildButtons(context)),
                   Expanded(
-                      flex: 1,
-                      child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: Row(children: [
-                            Expanded(
-                                child: Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: ElevatedButton(
-                                      onPressed: () {
-                                        controller.handleSave();
-                                        Navigator.pushNamed(
-                                            context, HomePage.routeName);
-                                        // Navigate to a different page here
-                                      },
-                                      child: const Text("Smazat"),
-                                    ))),
-                            Expanded(
-                                child: Align(
-                                    alignment: Alignment.centerRight,
-                                    child: ElevatedButton(
-                                      onPressed: () {
-                                        controller.handleSave();
-                                        Navigator.pushNamed(
-                                            context, HomePage.routeName);
-                                        // Navigate to a different page here
-                                      },
-                                      child: const Text("Uložit"),
-                                    )))
-                          ]))),
-                  Expanded(
-                      flex: 5,
+                      flex: 6,
                       child: IngredientTray(
                           availableCategories: CategoryNames.categoryObjects(
                               availableCategories),

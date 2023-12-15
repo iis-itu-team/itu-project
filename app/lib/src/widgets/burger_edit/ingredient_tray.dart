@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/env/env.dart';
 import 'package:food_blueprint/src/models/ingredient.dart';
+import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/types/ingredient_category.dart';
 import 'package:food_blueprint/src/utils/image_loader.dart';
 
@@ -41,38 +42,53 @@ class _IngredientTrayState extends State<IngredientTray> {
     _displayedIngredients = getCurrentIngredients();
   }
 
+  Widget _buildCategoryList(BuildContext context) {
+    return ListView.separated(
+      scrollDirection: Axis.horizontal,
+      separatorBuilder: (context, index) {
+        return const SizedBox(width: 14);
+      },
+      itemBuilder: (context, int index) {
+        IngredientCategory category = widget.availableCategories[index];
+
+        return GestureDetector(
+          onTap: () {
+            handleSelect(category.key);
+          },
+          child: Text(category.name,
+              style: TextStyle(
+                  shadows: const [
+                    Shadow(color: Colors.black, offset: Offset(0, -2))
+                  ],
+                  fontSize: 20,
+                  color: Colors.transparent,
+                  fontWeight: FontWeight.normal,
+                  decoration: _selectedCategoryKey == category.key
+                      ? TextDecoration.underline
+                      : TextDecoration.none,
+                  decorationThickness: 3)),
+        );
+      },
+      shrinkWrap: true,
+      itemCount: widget.availableCategories.length,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(children: [
+      Expanded(flex: 2, child: _buildCategoryList(context)),
+      const SizedBox(height: 4),
+      Container(
+        height: 4,
+        color: ThemeColors.colorCheese,
+      ),
       Expanded(
-          flex: 1,
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            separatorBuilder: (context, index) {
-              return const SizedBox(width: 8);
-            },
-            itemBuilder: (context, int index) {
-              IngredientCategory category = widget.availableCategories[index];
-
-              return GestureDetector(
-                  onTap: () {
-                    handleSelect(category.key);
-                  },
-                  child: Text(category.name,
-                      style: TextStyle(
-                          fontWeight: FontWeight.normal,
-                          decoration: _selectedCategoryKey == category.key
-                              ? TextDecoration.underline
-                              : TextDecoration.none)));
-            },
-            itemCount: widget.availableCategories.length,
-          )),
-      Expanded(
-          flex: 5,
+          flex: 8,
           child: Align(
-              alignment: Alignment.topLeft,
+              alignment: Alignment.centerLeft,
               child: Padding(
-                  padding: const EdgeInsets.all(6),
+                  padding: const EdgeInsets.symmetric(horizontal: 32),
                   child: Wrap(
                       alignment: WrapAlignment.start,
                       crossAxisAlignment: WrapCrossAlignment.start,
@@ -97,7 +113,8 @@ class IngredientItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Draggable(
         data: ingredient,
-        dragAnchorStrategy: (Draggable<Object> draggable, BuildContext context, Offset position) {
+        dragAnchorStrategy: (Draggable<Object> draggable, BuildContext context,
+            Offset position) {
           return const Offset(80, 80);
         },
         feedback: Container(
@@ -110,15 +127,24 @@ class IngredientItem extends StatelessWidget {
                   image: NetworkImage(ImageUrlLoader.getServedImageUrl(
                       ingredient.icon, "https://i.imgur.com/aZjDYBS.jpeg")))),
         ),
-        child: Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                    fit: BoxFit.contain,
-                    image: NetworkImage(ImageUrlLoader.getServedImageUrl(
-                        ingredient.icon,
-                        "https://i.imgur.com/aZjDYBS.jpeg"))))));
+        child: Column(children: [
+          SizedBox(
+              height: 20,
+              child: Text(ingredient.name,
+                  style: const TextStyle(fontWeight: FontWeight.w600))),
+          Container(
+              width: 80,
+              height: 40,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      fit: BoxFit.contain,
+                      image: NetworkImage(ImageUrlLoader.getServedImageUrl(
+                          ingredient.icon,
+                          "https://i.imgur.com/aZjDYBS.jpeg"))))),
+          SizedBox(
+              height: 20,
+              child: Text('${ingredient.price} Kč',
+                  style: const TextStyle(fontWeight: FontWeight.w600))),
+        ]));
   }
 }
