@@ -10,6 +10,7 @@ import 'package:food_blueprint/src/widgets/bottom_navigation_widget.dart';
 import 'package:food_blueprint/src/widgets/burger_rating_widget.dart';
 import 'package:food_blueprint/src/widgets/custom_app_bar.dart';
 import 'package:food_blueprint/src/widgets/custom_row_menu.dart';
+import 'package:food_blueprint/src/widgets/rating_searchbar.dart';
 
 class CommunityPage extends StatefulWidget {
   static const routeName = '/community';
@@ -25,6 +26,7 @@ class CommunityPage extends StatefulWidget {
 }
 
 class CommunityPageState extends State<CommunityPage> {
+  String _search = '';
   late Future<HttpResult<List<Burger>>> _communityBurgersFuture;
 
   @override
@@ -33,14 +35,27 @@ class CommunityPageState extends State<CommunityPage> {
     _communityBurgersFuture = widget.burgerService.listCommunityBurgers();
   }
 
+  void searchChanged(String newSearch) {
+    _search = newSearch;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: const CustomAppBar(text: 'Komunitný Workshop'),
         body: Column(children: <Widget>[
           const CustomRowMenu(),
-          const Text('top týždňa',
-              style: TextStyle(color: ThemeColors.colorMeat)),
+          const Padding(
+              padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
+              child: Row(children: <Widget>[
+                Text('top týždňa',
+                    style: TextStyle(color: ThemeColors.colorMeat)),
+                Expanded(
+                    child: Divider(
+                        thickness: 4.0,
+                        color: ThemeColors.colorMeat,
+                        indent: 5.0))
+              ])),
           FutureBuilder(
               future: _communityBurgersFuture,
               builder: (BuildContext context,
@@ -76,8 +91,20 @@ class CommunityPageState extends State<CommunityPage> {
                       style: TextStyle(color: ThemeColors.colorMeat));
                 }
               }),
-          const Text('vyhledávanie',
-              style: TextStyle(color: ThemeColors.colorMeat))
+          const SizedBox(height: 20),
+          const Padding(
+              padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
+              child: Row(children: <Widget>[
+                Text('vyhledávanie',
+                    style: TextStyle(color: ThemeColors.colorMeat)),
+                Expanded(
+                    child: Divider(
+                        thickness: 4.0,
+                        color: ThemeColors.colorMeat,
+                        indent: 5.0))
+              ])),
+          const SizedBox(height: 5),
+          RatingSearchBarWidget(onInputChanged: searchChanged)
         ]),
         bottomNavigationBar: const BottomNavigationWidget());
   }
