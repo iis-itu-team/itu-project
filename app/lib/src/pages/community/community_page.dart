@@ -48,8 +48,7 @@ class CommunityPageState extends State<CommunityPage> {
           const Padding(
               padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
               child: Row(children: <Widget>[
-                Text('top týždňa',
-                    style: TextStyle(color: ThemeColors.colorMeat)),
+                Text('top týždňa'),
                 Expanded(
                     child: Divider(
                         thickness: 4.0,
@@ -79,24 +78,21 @@ class CommunityPageState extends State<CommunityPage> {
                                           burger: communityBurgers[index],
                                           ratingService: widget.ratingService));
                                 }))
-                        : const Text('Ve workshope nejsou žiadné burgre',
-                            style: TextStyle(color: ThemeColors.colorMeat));
+                        : const Text('Ve workshope nejsou žiadné burgre');
                   } else {
                     return Text('Niečo sa nepovedlo - ${snapshot.data?.status}',
                         style:
                             const TextStyle(color: ThemeColors.colorKetchup));
                   }
                 } else {
-                  return const Text('Čakám na dáta',
-                      style: TextStyle(color: ThemeColors.colorMeat));
+                  return const Text('Čakám na dáta');
                 }
               }),
           const SizedBox(height: 20),
           const Padding(
               padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
               child: Row(children: <Widget>[
-                Text('vyhledávanie',
-                    style: TextStyle(color: ThemeColors.colorMeat)),
+                Text('vyhledávanie'),
                 Expanded(
                     child: Divider(
                         thickness: 4.0,

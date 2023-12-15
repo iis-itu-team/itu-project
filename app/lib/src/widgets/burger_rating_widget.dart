@@ -91,11 +91,7 @@ class BurgerRatingWidgetState extends State<BurgerRatingWidget> {
                 Border.all(width: _borderWidth, color: ThemeColors.colorMeat),
             borderRadius: BorderRadius.circular(_borderRadius)),
         child: Column(children: <Widget>[
-          Flexible(
-              flex: 1,
-              child: FittedBox(
-                  child: Text(burger?.name ?? '',
-                      style: const TextStyle(color: ThemeColors.colorMeat)))),
+          Flexible(flex: 1, child: FittedBox(child: Text(burger?.name ?? ''))),
           Flexible(
               flex: 6,
               child: Row(children: <Widget>[
@@ -116,10 +112,8 @@ class BurgerRatingWidgetState extends State<BurgerRatingWidget> {
                                   }))),
                       Flexible(
                           flex: 2,
-                          child: FittedBox(
-                              child: Text('${burger?.rating ?? 0}',
-                                  style: const TextStyle(
-                                      color: ThemeColors.colorMeat)))),
+                          child:
+                              FittedBox(child: Text('${burger?.rating ?? 0}'))),
                       Flexible(
                           flex: 3,
                           child: FittedBox(
@@ -150,9 +144,7 @@ class BurgerRatingWidgetState extends State<BurgerRatingWidget> {
               ])),
           Flexible(
               flex: 1,
-              child: FittedBox(
-                  child: Text('${burger?.price ?? 0} Kč',
-                      style: const TextStyle(color: ThemeColors.colorMeat))))
+              child: FittedBox(child: Text('${burger?.price ?? 0} Kč')))
         ]));
   }
 }
