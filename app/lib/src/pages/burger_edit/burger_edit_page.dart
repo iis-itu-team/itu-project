@@ -43,7 +43,7 @@ class BurgerEditPage extends StatelessWidget {
                       },
                     ))),
             Expanded(
-                flex: 10,
+                flex: 20,
                 child: Center(
                     child: FutureBuilder(
                         future: controller.listIngredients(),
