@@ -34,7 +34,6 @@ class RatingService {
               'rating': ratingNumber.toString()
             }));
 
-    developer.log('What the actual fuck is happening');
     developer.log('Status is ${response.statusCode}');
 
     final json = jsonDecode(response.body) as Map<String, dynamic>;
