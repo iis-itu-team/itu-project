@@ -103,22 +103,6 @@ class _IngredientBuilderState extends State<IngredientBuilder> {
         ]));
   }
 
-  Widget _buildIngredientLayerSeparator(BuildContext context, int index) {
-    return DragTarget<Ingredient>(onAccept: (ingredient) {
-      _addBurgerIngredient(ingredient, index + 1);
-    }, builder: (context, candidateItems, rejectedItems) {
-      if (candidateItems.isNotEmpty) {
-        return Container(
-            height: 16,
-            decoration: const BoxDecoration(
-                border: Border.symmetric(
-                    horizontal: BorderSide(color: Colors.red))));
-      } else {
-        return Container(height: 16);
-      }
-    });
-  }
-
   List<Widget> _buildIngredients(BuildContext context) {
     // build ingredients in the list as a column
     List<Widget> children = [];
@@ -133,7 +117,7 @@ class _IngredientBuilderState extends State<IngredientBuilder> {
         }
       } else {
         if (index != widget.burgerIngredients.length - 1) {
-          children.add(_buildIngredientLayerSeparator(context, index));
+          children.add(_buildDropZone(context, 16, index, false));
         }
       }
     }
@@ -142,33 +126,38 @@ class _IngredientBuilderState extends State<IngredientBuilder> {
   }
 
   Widget _buildIngredientList(BuildContext context) {
-    return SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Padding(
-            padding: const EdgeInsets.all(8),
-            child: Column(children: _buildIngredients(context))));
+    return Center(
+        child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Padding(
+                padding: const EdgeInsets.all(8),
+                child: Column(children: _buildIngredients(context)))));
   }
 
   Widget _buildDropZone(
-      BuildContext context, double height, int index, bool showPlus) {
+      BuildContext context, double height, int index, bool visible) {
     return DragTarget<Ingredient>(
         builder: (context, candidateItems, rejectedItems) {
       return Container(
-          height: height,
-          padding: const EdgeInsets.symmetric(vertical: 16),
+          height: candidateItems.isEmpty ? height : height * 2,
+          padding: EdgeInsets.symmetric(vertical: height / 8),
           child: Container(
               width: 300,
-              decoration: BoxDecoration(
-                  color: Colors.green
-                      .withOpacity(candidateItems.isEmpty ? 0.1 : 0.5),
-                  border: Border.all(color: Colors.greenAccent),
-                  borderRadius: const BorderRadius.all(Radius.circular(8))),
-              child: const Center(
-                  child: Text("+",
-                      style: TextStyle(
-                          color: Colors.green,
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold)))));
+              decoration: (() => candidateItems.isNotEmpty || visible
+                  ? BoxDecoration(
+                      color: Colors.green
+                          .withOpacity(candidateItems.isEmpty ? 0.1 : 0.5),
+                      border: Border.all(color: Colors.greenAccent),
+                      borderRadius: const BorderRadius.all(Radius.circular(8)))
+                  : const BoxDecoration())(),
+              child: (() => candidateItems.isNotEmpty || visible
+                  ? Center(
+                      child: Text("+",
+                          style: TextStyle(
+                              color: Colors.green,
+                              fontSize: (height * 1.2) % 32,
+                              fontWeight: FontWeight.bold)))
+                  : Container())()));
     }, onAccept: (ingredient) {
       _addBurgerIngredient(ingredient, index + 1);
     });
