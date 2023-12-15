@@ -18,9 +18,9 @@ class CustomOrderText extends StatelessWidget implements PreferredSizeWidget {
         child: Text(
           "$input",
           style: const TextStyle(
-              color: ThemeColors.colorText,
-              fontSize: 20,
-              fontWeight: FontWeight.bold),
+            color: ThemeColors.colorText,
+            fontSize: 18,
+          ),
         ),
       ),
     );

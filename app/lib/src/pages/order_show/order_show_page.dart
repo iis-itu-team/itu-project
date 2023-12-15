@@ -55,49 +55,68 @@ class OrderShowPage extends StatelessWidget {
 
                   developer.log(order.privateBurgers[0].price.toString());
 
-                  return Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          CustomOrderText(input: date),
-                          CustomOrderText(input: "${order.street}"),
-                          CustomOrderText(input: "${order.price!} Kč"),
-                        ],
+                  return Container(
+                    margin: const EdgeInsets.all(15.0),
+                    padding: const EdgeInsets.all(3.0),
+                    decoration: const BoxDecoration(
+                      border: Border(
+                        top: BorderSide(
+                          color: Colors.black,
+                          width: 5.0,
+                        ),
                       ),
-                      Row(
-                        children: [
-                          CustomOrderText(
-                              input: "${order.privateBurgers[0].name}"),
-                          Flexible(
-                              flex: 3,
-                              child: order.privateBurgers[0].image != null
-                                  ? Image.network(
-                                      '${order.privateBurgers[0].image}',
-                                      loadingBuilder: (BuildContext context,
-                                          Widget child,
-                                          ImageChunkEvent? loadingProgress) {
-                                      return CircularProgressIndicator(
-                                          value: (loadingProgress
-                                                      ?.cumulativeBytesLoaded ??
-                                                  0) /
-                                              (loadingProgress
-                                                      ?.expectedTotalBytes ??
-                                                  100000000));
-                                    })
-                                  : _defaultImage),
-
-                          // CustomOrderText(input: "${order.privateBurgers[0].image}"),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          CustomOrderText(
-                              input: "${order.privateBurgers[0].price} Kč"),
-                        ],
-                      ),
-                      const SizedBox(height: 25),
-                    ],
+                      borderRadius: BorderRadius.all(Radius.circular(
+                              5.0) //                 <--- border radius here
+                          ),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            CustomOrderText(input: date),
+                            CustomOrderText(input: "${order.street}"),
+                            CustomOrderText(input: "${order.price!} Kč"),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            CustomOrderText(
+                                input: "${order.privateBurgers[0].name}"),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Flexible(
+                                flex: 3,
+                                child: order.privateBurgers[0].image != null
+                                    ? Image.network(
+                                        '${order.privateBurgers[0].image}',
+                                        loadingBuilder: (BuildContext context,
+                                            Widget child,
+                                            ImageChunkEvent? loadingProgress) {
+                                          return CircularProgressIndicator(
+                                            value: (loadingProgress
+                                                        ?.cumulativeBytesLoaded ??
+                                                    0) /
+                                                (loadingProgress
+                                                        ?.expectedTotalBytes ??
+                                                    100000000),
+                                          );
+                                        },
+                                      )
+                                    : _defaultImage),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            CustomOrderText(
+                                input: "${order.privateBurgers[0].price} Kč"),
+                          ],
+                        ),
+                      ],
+                    ),
                   );
                 }
               },
