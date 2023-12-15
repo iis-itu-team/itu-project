@@ -47,18 +47,17 @@ class Burger {
       return a.index > b.index ? -1 : 1;
     });
 
-    // todo: uncomment rating when done on backend
-    /*switch (json['currentRating'] as String) {
-      case 'up':
+    switch (json['currentRating'] as int) {
+      case 1:
         currentRating = BurgerRating.up;
         break;
-      case 'down':
+      case -1:
         currentRating = BurgerRating.down;
         break;
       default:
         currentRating = BurgerRating.none;
         break;
-    }*/
+    }
   }
 
   Map<String, dynamic> toUpdateInputJson() => {
