@@ -28,20 +28,25 @@ class BurgerService {
   }
 
   Future<HttpResult<List<Burger>>> listCommunityBurgers() async {
-    final allBurgers = await listBurgers();
+    final HttpClient client = HttpClient.fromEnv();
 
-    List<Burger> sortedBurgers = allBurgers.data ?? [];
+    final response = await client
+        .get(client.route("/burgers"), headers: {'published': 'true'});
 
-    if (allBurgers.statusCode == 200) {
-      sortedBurgers = sortedBurgers.where((Burger burger) {
-        return burger.published;
-      }).toList();
+    final json = jsonDecode(response.body) as Map<String, dynamic>;
+
+    List<Burger> burgers = [];
+
+    if (json["status"] == "success") {
+      // deserialize
+      for (final Map<String, dynamic> burgerJson in json["data"]) {
+        burgers.add(Burger.fromJson(burgerJson));
+      }
     }
 
-    HttpResult<List<Burger>> communityBurgers =
-        HttpResult(allBurgers.statusCode, allBurgers.status, sortedBurgers);
+    developer.log("Fetched ${burgers.length} burger(s)...");
 
-    return communityBurgers;
+    return HttpResult(response.statusCode, json["status"], burgers);
   }
 
   Future<HttpResult<void>> updateBurger(String id, Burger burger) async {
