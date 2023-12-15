@@ -37,6 +37,11 @@ class BurgerEditController {
 
   Future<void> handleSave() async {
     developer.log(editedBurger!.name.toString());
+    
+    // update indexes on ingredients according to their position in the list
+    for (int index = 0; index < editedBurger!.ingredients.length; index++) {
+      editedBurger!.ingredients[index].index = editedBurger!.ingredients.length - index;
+    }
 
     HttpResult<void> result;
     if (editedBurger!.id != null) {

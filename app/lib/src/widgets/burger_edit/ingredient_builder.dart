@@ -123,17 +123,20 @@ class _IngredientBuilderState extends State<IngredientBuilder> {
     // build ingredients in the list as a column
     List<Widget> children = [];
 
-    children.add(_buildDropZone(context, 64, 0));
-
     for (int index = 0; index < widget.burgerIngredients.length; index++) {
       children.add(_buildIngredientLayer(context, index));
 
-      if (index != widget.burgerIngredients.length - 1) {
-        children.add(_buildIngredientLayerSeparator(context, index));
+      if (widget.burgerIngredients.length == 2) {
+        // only two buns, add a giant drop zone in the middle
+        if (index == 0) {
+          children.add(_buildDropZone(context, 128, index));
+        }
+      } else {
+        if (index != widget.burgerIngredients.length - 1) {
+          children.add(_buildIngredientLayerSeparator(context, index));
+        }
       }
     }
-
-    children.add(_buildDropZone(context, 64, widget.burgerIngredients.length));
 
     return children;
   }
@@ -159,7 +162,7 @@ class _IngredientBuilderState extends State<IngredientBuilder> {
         return Container(height: height);
       }
     }, onAccept: (ingredient) {
-      _addBurgerIngredient(ingredient, index);
+      _addBurgerIngredient(ingredient, index + 1);
     });
   }
 

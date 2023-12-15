@@ -6,8 +6,8 @@ class IngredientInFood {
   final String name;
   final String category;
 
-  final int amount;
-  final int index;
+  int amount;
+  int index;
 
   final int price;
 
