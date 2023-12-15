@@ -97,7 +97,9 @@ class IngredientItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Draggable(
         data: ingredient,
-        dragAnchorStrategy: pointerDragAnchorStrategy,
+        dragAnchorStrategy: (Draggable<Object> draggable, BuildContext context, Offset position) {
+          return const Offset(80, 80);
+        },
         feedback: Container(
           width: 160,
           height: 160,
