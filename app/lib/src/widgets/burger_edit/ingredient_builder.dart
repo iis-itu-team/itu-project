@@ -3,6 +3,7 @@ import 'dart:developer' as developer;
 import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/models/ingredient.dart';
 import 'package:food_blueprint/src/models/ingredient_in_food.dart';
+import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/utils/image_loader.dart';
 
 class IngredientBuilder extends StatefulWidget {
@@ -76,7 +77,7 @@ class _IngredientBuilderState extends State<IngredientBuilder> {
         width: MediaQuery.of(context).size.width - 16,
         child: Row(children: [
           Expanded(
-              flex: 1,
+              flex: 2,
               child: Container(
                   padding: const EdgeInsets.all(6),
                   child: GestureDetector(
@@ -90,16 +91,18 @@ class _IngredientBuilderState extends State<IngredientBuilder> {
                                       fontSize: 32, color: Colors.red)))
                           : Container())()))),
           Expanded(
-              flex: 5,
+              flex: 8,
               child: _buildIngredientLayerIcon(
                   context, ingredient, index, widget.burgerIngredients.length)),
           Expanded(
-              flex: 1,
+              flex: 2,
               child: Padding(
                   padding: const EdgeInsets.only(right: 8),
                   child: Align(
                       alignment: Alignment.bottomRight,
-                      child: Text("${ingredient.price}"))))
+                      child: Text("${ingredient.price} Kč",
+                          style: const TextStyle(
+                              fontWeight: FontWeight.w600, fontSize: 14)))))
         ]));
   }
 
@@ -174,11 +177,17 @@ class _IngredientBuilderState extends State<IngredientBuilder> {
       Container(
           alignment: Alignment.centerRight,
           padding: const EdgeInsets.only(right: 16),
-          child: Text(_totalPrice.toString(),
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                decoration: TextDecoration.underline,
-              )))
+          child: Text('$_totalPrice Kč',
+              style: TextStyle(
+                  shadows: [
+                    Shadow(color: Theme.of(context).textTheme.bodyMedium!.color!, offset: const Offset(0, 6))
+                  ],
+                  fontWeight: FontWeight.w600,
+                  decoration: TextDecoration.overline,
+                  decorationColor: ThemeColors.colorCheese,
+                  decorationThickness: 4,
+                  fontSize: 16,
+                  color: Colors.transparent))),
     ]);
   }
 }

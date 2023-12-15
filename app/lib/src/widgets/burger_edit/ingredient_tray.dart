@@ -57,16 +57,20 @@ class _IngredientTrayState extends State<IngredientTray> {
           },
           child: Text(category.name,
               style: TextStyle(
-                  shadows: const [
-                    Shadow(color: Colors.black, offset: Offset(0, -2))
+                  shadows: [
+                    Shadow(
+                        color: Theme.of(context).textTheme.bodyMedium!.color!,
+                        offset: const Offset(0, -2))
                   ],
                   fontSize: 20,
                   color: Colors.transparent,
-                  fontWeight: FontWeight.normal,
+                  fontWeight: FontWeight.w800,
                   decoration: _selectedCategoryKey == category.key
                       ? TextDecoration.underline
                       : TextDecoration.none,
-                  decorationThickness: 3)),
+                  decorationThickness: 3,
+                  decorationColor:
+                      Theme.of(context).textTheme.bodyMedium!.color!)),
         );
       },
       shrinkWrap: true,
@@ -131,7 +135,7 @@ class IngredientItem extends StatelessWidget {
           SizedBox(
               height: 20,
               child: Text(ingredient.name,
-                  style: const TextStyle(fontWeight: FontWeight.w600))),
+                  style: const TextStyle(fontWeight: FontWeight.w800))),
           Container(
               width: 80,
               height: 40,
@@ -144,7 +148,7 @@ class IngredientItem extends StatelessWidget {
           SizedBox(
               height: 20,
               child: Text('${ingredient.price} Kč',
-                  style: const TextStyle(fontWeight: FontWeight.w600))),
+                  style: const TextStyle(fontWeight: FontWeight.w800))),
         ]));
   }
 }

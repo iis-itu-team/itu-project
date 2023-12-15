@@ -36,7 +36,7 @@ class _TitleState extends State<NameWidget> {
                 widget.onSubmit(_name);
               },
               decoration: const InputDecoration(
-                  border: OutlineInputBorder(), labelText: 'Burger name'))),
+                  border: OutlineInputBorder(), labelText: 'Název'))),
     ]);
   }
 }

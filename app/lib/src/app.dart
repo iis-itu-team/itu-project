@@ -3,24 +3,23 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:food_blueprint/src/env/env.dart';
 import 'package:food_blueprint/src/pages/basic/basic_page.dart';
-
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_controller.dart';
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_page.dart';
 import 'package:food_blueprint/src/pages/community/community_page.dart';
 import 'package:food_blueprint/src/pages/home/home_controller.dart';
 import 'package:food_blueprint/src/pages/home/home_page.dart';
 import 'package:food_blueprint/src/pages/mine/mine_page.dart';
-import 'package:food_blueprint/src/pages/order_new/order_new_page.dart';
 import 'package:food_blueprint/src/pages/order_new/order_confirm_page.dart';
 import 'package:food_blueprint/src/pages/order_new/order_new_controller.dart';
-import 'package:food_blueprint/src/pages/order_show/order_show_page.dart';
+import 'package:food_blueprint/src/pages/order_new/order_new_page.dart';
 import 'package:food_blueprint/src/pages/order_show/order_show_controller.dart';
-import 'package:food_blueprint/src/pages/settings/settings_page.dart';
+import 'package:food_blueprint/src/pages/order_show/order_show_page.dart';
 import 'package:food_blueprint/src/pages/settings/settings_controller.dart';
+import 'package:food_blueprint/src/pages/settings/settings_page.dart';
 import 'package:food_blueprint/src/services/burger_service.dart';
-import 'package:food_blueprint/src/services/rating_service.dart';
 import 'package:food_blueprint/src/services/ingredient_service.dart';
 import 'package:food_blueprint/src/services/order_service.dart';
+import 'package:food_blueprint/src/services/rating_service.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 
 /// The Widget that configures your application.
@@ -83,7 +82,11 @@ class MyApp extends StatelessWidget {
       // Define a light and dark color theme. Then, read the user's
       // preferred ThemeMode (light, dark, or system default) from the
       // SettingsController to display the correct theme.
-      theme: ThemeData(scaffoldBackgroundColor: ThemeColors.colorOnion),
+      theme: ThemeData(
+          scaffoldBackgroundColor: ThemeColors.colorOnion,
+          textTheme: Theme.of(context).textTheme.apply(
+              displayColor: ThemeColors.colorMeat,
+              bodyColor: ThemeColors.colorMeat)),
       darkTheme: ThemeData.dark(),
       // themeMode: settingsController.themeMode,
 
