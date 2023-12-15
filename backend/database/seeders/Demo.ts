@@ -14,7 +14,8 @@ export default class extends BaseSeeder {
       {
         name: "Maso",
         price: 100,
-        category: "meat"
+        category: "meat",
+        icon: "/icons/ingredients/meat.png"
       },
       {
         name: "Bulka",
