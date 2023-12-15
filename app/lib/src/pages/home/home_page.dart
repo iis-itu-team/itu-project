@@ -73,24 +73,7 @@ class HomePage extends StatelessWidget {
           )
         ],
       ),
-      bottomNavigationBar: Container(
-        padding: const EdgeInsets.all(10),
-        height: 100,
-        color: ThemeColors.colorBun,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            GestureDetector(
-              onTap: () {
-                Navigator.pushNamed(context, OrderNewPage.routeName);
-                // Navigate to a different page here
-              },
-              child: SvgPicture.asset("assets/images/BurgerOrder.svg",
-                  height: 80, width: 80),
-            ),
-          ],
-        ),
-      ),
+      bottomNavigationBar: BottomNavigationWidget(),
     );
   }
 }
