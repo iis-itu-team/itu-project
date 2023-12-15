@@ -28,19 +28,17 @@ class Burger {
         currentRating = burger.currentRating;
 
   Burger.fromJson(Map<String, dynamic> json) {
-    // todo: uncomment rating when done on backend
-
     id = json['id'];
     name = json['name'];
     published = json['published'];
     keeperId = json['keeper_id'];
     price = json['price'];
     image = json['image'];
-    // rating = json['rating'] as int;
+    rating = json['rating'] as int;
 
     ingredients = [];
 
-    for (var ingredientJson in json['ingredients']) {
+    for (var ingredientJson in json['ingredients'] ?? []) {
       ingredients.add(IngredientInFood.fromJson(ingredientJson));
     }
 
@@ -49,6 +47,7 @@ class Burger {
       return a.index > b.index ? -1 : 1;
     });
 
+    // todo: uncomment rating when done on backend
     /*switch (json['currentRating'] as String) {
       case 'up':
         currentRating = BurgerRating.up;

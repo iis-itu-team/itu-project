@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'dart:developer' as developer;
+
 import 'package:food_blueprint/src/http/client.dart';
 import 'package:food_blueprint/src/http/result.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -23,16 +25,21 @@ class RatingService {
         break;
     }
 
-    final response = await client
-        .post(client.route('/burgers/${burgerId ?? ""}/ratings'), body: {
-      'keeperId':
-          (await SharedPreferences.getInstance()).getString('keeper_id') ?? '',
-      'rating': ratingNumber
-    });
+    final response =
+        await client.post(client.route('/burgers/${burgerId ?? ""}/ratings'),
+            body: jsonEncode({
+              'keeperId': (await SharedPreferences.getInstance())
+                      .getString('keeper_id') ??
+                  '',
+              'rating': ratingNumber.toString()
+            }));
 
-    final json = jsonDecode(response.body) as Map<String, dynamic>?;
-    final burger = Burger.fromJson(json?['data']);
+    developer.log('What the actual fuck is happening');
+    developer.log('Status is ${response.statusCode}');
 
-    return HttpResult(response.statusCode, json?['status'], burger);
+    final json = jsonDecode(response.body) as Map<String, dynamic>;
+    final burger = Burger.fromJson(json['data']);
+
+    return HttpResult(response.statusCode, json['status'], burger);
   }
 }
