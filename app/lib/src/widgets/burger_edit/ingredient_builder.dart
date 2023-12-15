@@ -69,6 +69,9 @@ class _IngredientBuilderState extends State<IngredientBuilder> {
   Widget _buildIngredientLayer(BuildContext context, int index) {
     IngredientInFood ingredient = widget.burgerIngredients[index];
 
+    // non-removable top and bottom bun
+    bool removable = index != widget.burgerIngredients.length - 1 && index != 0;
+
     return SizedBox(
         width: MediaQuery.of(context).size.width - 16,
         child: Row(children: [
@@ -80,17 +83,12 @@ class _IngredientBuilderState extends State<IngredientBuilder> {
                       onTap: () {
                         _removeIngredient(ingredient, index);
                       },
-                      child: Container(
-                          width: 32,
-                          height: 32,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(color: Colors.red)),
-                          child: const Center(
+                      child: (() => removable
+                          ? const Center(
                               child: Text("x",
                                   style: TextStyle(
-                                      color: Colors.red,
-                                      fontWeight: FontWeight.bold))))))),
+                                      fontSize: 32, color: Colors.red)))
+                          : Container())()))),
           Expanded(
               flex: 5,
               child: _buildIngredientLayerIcon(
