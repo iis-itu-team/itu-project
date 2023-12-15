@@ -49,7 +49,7 @@ export default class extends BaseSeeder {
     const bun = ingredients.find((i) => i.category == 'bun');
     const meat = ingredients.find((i) => i.category == 'meat');
     const salad = ingredients.find((i) => i.category == 'salad');
-    const sauce = ingredients.find((i) => i.category == 'sauce');
+    /* const sauce = ingredients.find((i) => i.category == 'sauce'); */
     const cheese = ingredients.find((i) => i.category == 'cheese');
 
     const relations = [
