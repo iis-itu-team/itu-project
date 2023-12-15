@@ -1,5 +1,17 @@
 import 'package:food_blueprint/src/models/burger.dart';
 
+class _PrivateBurger {
+  String? name;
+  int? price;
+  String? image;
+
+  _PrivateBurger.fromJson(Map<String, dynamic> json) {
+    name = json['name'];
+    price = json['price'];
+    image = json['image'];
+  }
+}
+
 class Order {
   String? id;
   String? city;
@@ -17,16 +29,23 @@ class Order {
 
   List<Burger> burgers = [];
 
+  List<_PrivateBurger> privateBurgers = [];
+
   Order();
 
-  Order.fromJson(Map<String, dynamic> json)
-      : id = json["id"],
-        date = json["created_at"],
-        street = json["street"],
-        price = json["price"];
+  Order.fromJson(Map<String, dynamic> json) {
+    id = json["id"];
+    date = json["created_at"];
+    street = json["street"];
+    price = json["price"];
+    burgers = [];
+
+    for (var burgerJson in json['burgers'] ?? []) {
+      privateBurgers.add(_PrivateBurger.fromJson(burgerJson));
+    }
+  }
 
   Map<String, dynamic> toJson() => {
-        'burgers': burgers.map((e) => e.toJson()).toList(),
         "city": city,
         'street': street,
         'postalCode': postalCode,
@@ -38,5 +57,6 @@ class Order {
         'ring': ring,
         'date': date,
         'paymentType': paymentType,
+        'burgers': burgers.map((e) => e.toJson()).toList(),
       };
 }
