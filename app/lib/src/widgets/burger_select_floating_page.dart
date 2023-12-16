@@ -28,15 +28,11 @@ class BurgerSelectFloatingPage extends StatefulWidget {
   static const routeName = '/community';
 
   const BurgerSelectFloatingPage(
-      {super.key,
-      required this.burgerService,
-      required this.onClose,
-      required this.onSubmit});
+      {super.key, required this.burgerService, required this.onClose});
 
   final BurgerService burgerService;
 
   final Function() onClose;
-  final Function(List<Burger>) onSubmit;
 
   @override
   BurgerSelectFloatingPageState createState() =>
@@ -44,9 +40,11 @@ class BurgerSelectFloatingPage extends StatefulWidget {
 }
 
 class BurgerSelectFloatingPageState extends State<BurgerSelectFloatingPage> {
-  String? _keeperId;
   Future<String?> _keeperFuture = KeeperStore.getKeeperId();
   late Future<HttpResult<List<Burger>>> _myBurgersFuture;
+  Future<HttpResult<void>>? _submitFuture;
+
+  String? _keeperId;
   List<Burger> _selectedBurgers = [];
 
   void onSelect(Burger burger, bool insert) {
@@ -63,6 +61,13 @@ class BurgerSelectFloatingPageState extends State<BurgerSelectFloatingPage> {
         });
       }
     }
+  }
+
+  void submit() {
+    setState(() {
+      _submitFuture = widget.burgerService.publishBurgers(_selectedBurgers);
+      _selectedBurgers = [];
+    });
   }
 
   @override
@@ -89,76 +94,107 @@ class BurgerSelectFloatingPageState extends State<BurgerSelectFloatingPage> {
                               indent: 5,
                               endIndent: 5,
                               color: ThemeColors.colorMeat)),
-                      GestureDetector(
-                          onTap: widget.onClose, child: _crossButton)
+                      _submitFuture == null
+                          ? GestureDetector(
+                              onTap: widget.onClose, child: _crossButton)
+                          : FutureBuilder(
+                              future: _submitFuture,
+                              builder: (BuildContext context,
+                                  AsyncSnapshot<HttpResult<void>> snapshot) {
+                                if (snapshot.hasData) {
+                                  return GestureDetector(
+                                      onTap: widget.onClose,
+                                      child: _crossButton);
+                                } else {
+                                  return Container();
+                                }
+                              })
                     ]))),
             Flexible(
                 flex: 15,
-                child: FutureBuilder(
-                    future: _keeperFuture,
-                    builder: (BuildContext context,
-                        AsyncSnapshot<String?> snapshot) {
-                      if (snapshot.hasData) {
-                        _keeperId = snapshot.data;
-                        _myBurgersFuture = widget.burgerService.listBurgers(
-                            GetBurgersInput.from(_keeperId, false));
-                        return FutureBuilder(
-                            future: _myBurgersFuture,
-                            builder: (BuildContext context,
-                                AsyncSnapshot<HttpResult<List<Burger>>>
-                                    snapshot) {
-                              if (snapshot.hasData) {
-                                if (snapshot.data?.statusCode == 200) {
-                                  List<Burger> myBurgers =
-                                      snapshot.data?.data ?? [];
-                                  List<List<Widget>> rowContents = [];
-                                  List<Widget> activeRow = [];
-                                  for (int i = 0; i < myBurgers.length; i++) {
-                                    if (i % 2 == 0) {
-                                      activeRow = [];
-                                      rowContents.add(activeRow);
-                                    }
+                child: _submitFuture != null
+                    ? FutureBuilder(
+                        future: _submitFuture,
+                        builder: (BuildContext context,
+                            AsyncSnapshot<HttpResult<void>> snapshot) {
+                          if (snapshot.hasData) {
+                            if (snapshot.data?.statusCode == 200) {
+                              return const Text('Dáta sa úspešne odoslali');
+                            } else {
+                              return Text(
+                                  'Pri odosielaní sa stala chyba: ${snapshot.data?.status}');
+                            }
+                          } else {
+                            return const Text('Odosielam dáta');
+                          }
+                        })
+                    : FutureBuilder(
+                        future: _keeperFuture,
+                        builder: (BuildContext context,
+                            AsyncSnapshot<String?> snapshot) {
+                          if (snapshot.hasData) {
+                            _keeperId = snapshot.data;
+                            _myBurgersFuture = widget.burgerService.listBurgers(
+                                GetBurgersInput.from(_keeperId, false));
+                            return FutureBuilder(
+                                future: _myBurgersFuture,
+                                builder: (BuildContext context,
+                                    AsyncSnapshot<HttpResult<List<Burger>>>
+                                        snapshot) {
+                                  if (snapshot.hasData) {
+                                    if (snapshot.data?.statusCode == 200) {
+                                      List<Burger> myBurgers =
+                                          snapshot.data?.data ?? [];
+                                      List<List<Widget>> rowContents = [];
+                                      List<Widget> activeRow = [];
+                                      for (int i = 0;
+                                          i < myBurgers.length;
+                                          i++) {
+                                        if (i % 2 == 0) {
+                                          activeRow = [];
+                                          rowContents.add(activeRow);
+                                        }
 
-                                    activeRow.add(Padding(
-                                        padding:
-                                            EdgeInsets.fromLTRB(5, 0, 5, 0),
-                                        child: BurgerSelectWidget(
-                                            burger: myBurgers[i],
-                                            onSelect: onSelect)));
+                                        activeRow.add(Padding(
+                                            padding:
+                                                EdgeInsets.fromLTRB(5, 0, 5, 0),
+                                            child: BurgerSelectWidget(
+                                                burger: myBurgers[i],
+                                                onSelect: onSelect)));
+                                      }
+                                      return rowContents.isNotEmpty
+                                          ? ListView.builder(
+                                              scrollDirection: Axis.vertical,
+                                              itemCount: rowContents.length,
+                                              itemBuilder:
+                                                  (BuildContext context,
+                                                      int index) {
+                                                return Padding(
+                                                    padding: const EdgeInsets
+                                                        .fromLTRB(5, 5, 5, 5),
+                                                    child: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: rowContents[
+                                                            index]));
+                                              })
+                                          : const Text(
+                                              'Zatial nemáte vlastné burgre');
+                                    } else {
+                                      return Text(
+                                          'Niečo sa nepovedlo - ${snapshot.data?.status}',
+                                          style: const TextStyle(
+                                              color: ThemeColors.colorKetchup));
+                                    }
+                                  } else {
+                                    return const Text('Čakám na dáta');
                                   }
-                                  return rowContents.isNotEmpty
-                                      ? ListView.builder(
-                                          scrollDirection: Axis.vertical,
-                                          itemCount: rowContents.length,
-                                          itemBuilder: (BuildContext context,
-                                              int index) {
-                                            return Padding(
-                                                padding:
-                                                    const EdgeInsets.fromLTRB(
-                                                        5, 5, 5, 5),
-                                                child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children:
-                                                        rowContents[index]));
-                                          })
-                                      : const Text(
-                                          'Zatial nemáte vlastné burgre');
-                                } else {
-                                  return Text(
-                                      'Niečo sa nepovedlo - ${snapshot.data?.status}',
-                                      style: const TextStyle(
-                                          color: ThemeColors.colorKetchup));
-                                }
-                              } else {
-                                return const Text('Čakám na dáta');
-                              }
-                            });
-                      } else {
-                        return const Text('Čakám na keeperId');
-                      }
-                    }))
+                                });
+                          } else {
+                            return const Text('Čakám na keeperId');
+                          }
+                        }))
           ]),
           IgnorePointer(
               ignoring: true,
@@ -170,11 +206,7 @@ class BurgerSelectFloatingPageState extends State<BurgerSelectFloatingPage> {
               ? Positioned(
                   bottom: 10,
                   right: 8,
-                  child: GestureDetector(
-                      onTap: () {
-                        widget.onSubmit(_selectedBurgers);
-                      },
-                      child: _uploadButton))
+                  child: GestureDetector(onTap: submit, child: _uploadButton))
               : Container()
         ])));
   }

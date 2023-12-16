@@ -49,9 +49,6 @@ class CommunityPageState extends State<CommunityPage> {
     });
   }
 
-  // TODO implement uploading to workshop as a service call
-  void onSelectSubmit(List<Burger> burgerList) {}
-
   void openSelectPage() {
     setState(() {
       _stack = [
@@ -60,9 +57,7 @@ class CommunityPageState extends State<CommunityPage> {
             filter: ui.ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
             child: Container(color: Colors.transparent)),
         BurgerSelectFloatingPage(
-            burgerService: widget.burgerService,
-            onClose: onSelectClose,
-            onSubmit: onSelectSubmit)
+            burgerService: widget.burgerService, onClose: onSelectClose)
       ];
     });
   }

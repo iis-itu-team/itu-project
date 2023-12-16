@@ -143,6 +143,31 @@ class BurgerService {
     return HttpResult(response.statusCode, json["status"], updatedBurger);
   }
 
+  Future<HttpResult<void>> publishBurgers(List<Burger> burgers) async {
+    final HttpClient client = HttpClient.fromEnv();
+
+    var response;
+    var json;
+    String? status; // acumulate all error messages
+    int? statusCode;
+
+    for (Burger burger in burgers) {
+      burger.published = true;
+      response = await client.put(client.route('/burgers/${burger.id}'),
+          body: jsonEncode(burger.toUpdateInputJson()));
+      json = jsonDecode(response.body) as Map<String, dynamic>;
+
+      if (response.statusCode != 200) {
+        status ??= '';
+        statusCode ??= response.statusCode;
+        status += ' ${burger.name ?? "empty_name"}: ${json["status"]}';
+      }
+    }
+
+    return HttpResult(
+        statusCode ?? response.statusCode, status ?? json['status'], null);
+  }
+
   Future<HttpResult<Burger>> createBurger(Burger burger) async {
     final HttpClient client = HttpClient.fromEnv();
 
