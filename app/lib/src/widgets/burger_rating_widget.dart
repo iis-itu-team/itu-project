@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'dart:developer' as developer;
-
 import 'package:food_blueprint/src/interfaces/irating_changed.dart';
 import 'package:food_blueprint/src/models/burger.dart';
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_page.dart';
