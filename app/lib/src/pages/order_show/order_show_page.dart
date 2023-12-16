@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/pages/order_show/order_show_controller.dart';
 import 'package:food_blueprint/src/widgets/custom_app_bar.dart';
-import 'package:food_blueprint/src/widgets/custom_order_text.dart';
 
 import 'dart:developer' as developer;
 
@@ -47,18 +46,15 @@ class OrderShowPage extends StatelessWidget {
                   if (order == null) {
                     return const Text("Nemáte zatím žádný objednávky");
                   }
-
                   var date = DateFormat('dd.MM')
                       .format(DateTime.parse(order.date.toString()))
                       .toString();
-
-                  developer.log(order.privateBurgers[0].price.toString());
 
                   return Container(
                     margin: const EdgeInsets.all(15.0),
                     padding: const EdgeInsets.all(3.0),
                     child: Column(
-                      children: [
+                      children: <Widget>[
                         Row(
                           children: <Widget>[
                             Text(date),
@@ -84,29 +80,44 @@ class OrderShowPage extends StatelessWidget {
                         ),
                         Row(
                           children: [
-                            Text("${order.privateBurgers[0].name}"),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            ImageWithFallback(
-                                icon: order.privateBurgers[0].icon,
-                                width: 80,
-                                height: 80,
-                                fallback: ImageUrlLoader.prefixUrl(
-                                    '/icons/burger.png')),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            const SizedBox(width: 20),
-                            Text("${order.privateBurgers[0].price} Kč"),
+                            SizedBox(
+                              width: 300.0,
+                              height: 120.0,
+                              child: ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                itemCount: order.privateBurgers.length,
+                                itemBuilder: (context, index) {
+                                  final burger = order.privateBurgers[index];
+
+                                  return Row(
+                                    children: [
+                                      Column(
+                                        children: [
+                                          Text("${burger.name}"),
+                                          ImageWithFallback(
+                                            icon: burger.icon,
+                                            width: 80,
+                                            height: 80,
+                                            fallback: ImageUrlLoader.prefixUrl(
+                                                '/icons/burger.png'),
+                                          ),
+                                          Text(
+                                              "${burger.amount} x ${burger.price} Kč"),
+                                        ],
+                                      ),
+                                      const SizedBox(width: 15),
+                                    ],
+                                  );
+                                },
+                              ),
+                            ),
                           ],
                         ),
                       ],
                     ),
                   );
                 }
+                return null;
               },
             );
           },

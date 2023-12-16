@@ -3,11 +3,13 @@ import 'package:food_blueprint/src/models/burger.dart';
 class _PrivateBurger {
   String? name;
   int? price;
+  int? amount;
   String? icon;
 
   _PrivateBurger.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     price = json['price'];
+    amount = json['amount'];
     icon = json["icon"];
   }
 }
