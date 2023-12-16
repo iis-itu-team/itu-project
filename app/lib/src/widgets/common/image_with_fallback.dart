@@ -21,15 +21,18 @@ class ImageWithFallback extends StatefulWidget {
 class _ImageWithFallback extends State<ImageWithFallback> {
   NetworkImage? _image;
 
+  String appendTimeToUrl(String url) {
+    int nowParam = DateTime.now().millisecond;
+    return '$url#$nowParam';
+  }
+
   @override
   void initState() {
     super.initState();
 
-    int nowParam = DateTime.now().millisecond;
-    String iconUrl =
-        ImageUrlLoader.getServedImageUrl(widget.icon, widget.fallback);
-    String url = '$iconUrl#$nowParam';
-    _image = NetworkImage(url);
+    String iconUrl = appendTimeToUrl(
+        ImageUrlLoader.getServedImageUrl(widget.icon, widget.fallback));
+    _image = NetworkImage(iconUrl);
   }
 
   @override
@@ -41,7 +44,7 @@ class _ImageWithFallback extends State<ImageWithFallback> {
             image: DecorationImage(
                 onError: (error, stack) {
                   setState(() {
-                    _image = NetworkImage(widget.fallback);
+                    _image = NetworkImage(appendTimeToUrl(widget.fallback));
                   });
                 },
                 image: _image!)));
