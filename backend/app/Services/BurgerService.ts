@@ -319,6 +319,7 @@ export default class BurgerService {
         images.forEach((image) => {
             image.y = y - image.y
         })
+        images.reverse()
 
         const b64 = await mergeImages(images, {
             Canvas,
