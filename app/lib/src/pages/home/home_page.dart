@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:food_blueprint/src/events/burger_created_event.dart';
-import 'package:food_blueprint/src/events/burger_deleted_event.dart';
-import 'package:food_blueprint/src/events/burger_updated_event.dart';
-import 'package:food_blueprint/src/models/burger.dart';
-import 'package:food_blueprint/src/pages/burger_edit/burger_edit_page.dart';
 import 'package:food_blueprint/src/pages/home/home_controller.dart';
-import 'package:food_blueprint/src/utils/event_handler.dart';
 import 'package:food_blueprint/src/widgets/bottom_navigation_widget.dart';
 import 'package:food_blueprint/src/widgets/common/burger_listing.dart';
-import 'package:food_blueprint/src/widgets/common/loading.dart';
+import 'package:food_blueprint/src/widgets/common/create_burger.dart';
 import 'package:food_blueprint/src/widgets/custom_app_bar.dart';
 import 'package:food_blueprint/src/widgets/custom_row_menu.dart';
 
@@ -30,117 +24,14 @@ class HomePage extends StatelessWidget {
           const CustomRowMenu(),
           Expanded(
             child: BurgerList(
-              controller: controller,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: GestureDetector(
-              onTap: () {
-                Navigator.pushNamed(context, BurgerEditPage.routeName);
-              },
-              child: const Text(
-                "Create new burger! (click...)",
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ),
+                limit: 10,
+                controller: controller,
+                title: "moje burgříky",
+                extraChildren: const [CreateBurgerButton()]),
           )
         ],
       ),
-      bottomNavigationBar: BottomNavigationWidget(),
+      bottomNavigationBar: const BottomNavigationWidget(),
     );
-  }
-}
-
-class BurgerList extends StatefulWidget {
-  final HomeController controller;
-
-  const BurgerList({super.key, required this.controller});
-
-  @override
-  State<StatefulWidget> createState() => _BurgerListState();
-}
-
-class _BurgerListState extends State<BurgerList> {
-  List<Burger> _burgers = [];
-  bool _loaded = false;
-
-  Widget _buildBurgerList(BuildContext context) {
-    return SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: BurgerListing(burgers: _burgers));
-  }
-
-  void _burgersLoaded(List<Burger> burgers) {
-    setState(() {
-      _loaded = true;
-      _burgers = burgers;
-    });
-  }
-
-  void _burgersLoading() {
-    setState(() {
-      _loaded = false;
-      _burgers = [];
-    });
-  }
-
-  void _fetchList() {
-    _burgersLoading();
-    Future.wait([
-      widget.controller.listBurgers(),
-      Future.delayed(const Duration(milliseconds: 2000))
-    ]).then((data) {
-      _burgersLoaded(data[0]);
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    if (_loaded) {
-      return _buildBurgerList(context);
-    }
-
-    return const Center(child: Loading(text: 'Loading burgers...'));
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _fetchList();
-
-    // Listen to burger updates and creations, update the list
-    EventHandler.listen<BurgerCreatedEvent>((event) {
-      Burger burger = event.burger;
-
-      setState(() {
-        _burgers.add(burger);
-      });
-    });
-
-    EventHandler.listen<BurgerUpdatedEvent>((event) {
-      // find index of the burger that got updated
-      Burger burger = event.burger;
-
-      int idx = _burgers.indexWhere((element) => element.id == burger.id);
-
-      if (idx == -1) {
-        // fail to find it, re-fetch all burgers
-        _fetchList();
-        return;
-      }
-
-      setState(() {
-        _burgers[idx] = burger;
-      });
-    });
-
-    EventHandler.listen<BurgerDeletedEvent>((event) {
-      Burger burger = event.burger;
-
-      setState(() {
-        _burgers.removeWhere((element) => element.id == burger.id);
-      });
-    });
   }
 }
