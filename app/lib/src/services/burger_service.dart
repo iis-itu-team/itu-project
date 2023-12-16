@@ -82,4 +82,14 @@ class BurgerService {
 
     return HttpResult(response.statusCode, json["status"], createdBurger);
   }
+
+  Future<HttpResult<void>> deleteBurger(String id) async {
+    final HttpClient client = HttpClient.fromEnv();
+
+    final response = await client.delete(client.route('/burgers/$id'));
+
+    final json = jsonDecode(response.body) as Map<String, dynamic>;
+
+    return HttpResult(response.statusCode, json["status"], null);
+  }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/events/burger_created_event.dart';
+import 'package:food_blueprint/src/events/burger_deleted_event.dart';
 import 'package:food_blueprint/src/events/burger_updated_event.dart';
 import 'package:food_blueprint/src/models/burger.dart';
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_arguments.dart';
@@ -156,6 +157,14 @@ class _BurgerListState extends State<BurgerList> {
 
       setState(() {
         _burgers[idx] = burger;
+      });
+    });
+
+    EventHandler.listen<BurgerDeletedEvent>((event) {
+      Burger burger = event.burger;
+
+      setState(() {
+        _burgers.removeWhere((element) => element.id == burger.id);
       });
     });
   }

@@ -1,6 +1,7 @@
 import 'dart:developer' as developer;
 
 import 'package:food_blueprint/src/events/burger_created_event.dart';
+import 'package:food_blueprint/src/events/burger_deleted_event.dart';
 import 'package:food_blueprint/src/events/burger_updated_event.dart';
 import 'package:food_blueprint/src/http/result.dart';
 import 'package:food_blueprint/src/models/burger.dart';
@@ -12,12 +13,12 @@ import 'package:food_blueprint/src/services/ingredient_service.dart';
 import 'package:food_blueprint/src/utils/event_handler.dart';
 
 class BurgerEditController {
-  final BurgerService foodService;
+  final BurgerService burgerService;
   final IngredientService ingredientService;
 
   Burger? editedBurger;
 
-  BurgerEditController(this.foodService, this.ingredientService);
+  BurgerEditController(this.burgerService, this.ingredientService);
 
   void enter(BurgerEditArguments? args, List<Ingredient> availableIngredients) {
     if (args?.burger != null) {
@@ -38,6 +39,21 @@ class BurgerEditController {
     }
   }
 
+  Future<void> handleDelete() async {
+    if (editedBurger?.id == null) {
+      return;
+    }
+
+    HttpResult<void> result =
+        await burgerService.deleteBurger(editedBurger!.id!);
+
+    if (result.status != "success") {
+      throw "Couldn't delete burger. code: ${result.status}";
+    }
+
+    EventHandler.fire(BurgerDeletedEvent(editedBurger!));
+  }
+
   Future<void> handleSave() async {
     developer.log(editedBurger!.name.toString());
 
@@ -49,9 +65,10 @@ class BurgerEditController {
     HttpResult<Burger> result;
     bool newBurger = editedBurger!.id == null;
     if (newBurger) {
-      result = await foodService.createBurger(editedBurger!);
+      result = await burgerService.createBurger(editedBurger!);
     } else {
-      result = await foodService.updateBurger(editedBurger!.id!, editedBurger!);
+      result =
+          await burgerService.updateBurger(editedBurger!.id!, editedBurger!);
     }
 
     if (result.status == "success") {

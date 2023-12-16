@@ -23,15 +23,22 @@ class BurgerEditPage extends StatelessWidget {
     final args =
         ModalRoute.of(context)!.settings.arguments as BurgerEditArguments?;
 
-    Widget buildButtons(BuildContext context) {
+    Widget buildButtons(BuildContext context, bool canDelete) {
       return Row(children: [
         Expanded(
-            child: Align(
-                alignment: Alignment.centerLeft,
-                child: GestureDetector(
-                    child: SvgPicture.asset("assets/images/BurgerDelete.svg",
-                        height: 70, width: 70),
-                    onTap: () {}))),
+            child: Visibility(
+                visible: canDelete,
+                child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: GestureDetector(
+                        child: SvgPicture.asset(
+                            "assets/images/BurgerDelete.svg",
+                            height: 70,
+                            width: 70),
+                        onTap: () {
+                          controller.handleDelete();
+                          Navigator.pushNamed(context, HomePage.routeName);
+                        })))),
         Expanded(
             child: Align(
                 alignment: Alignment.centerRight,
@@ -89,7 +96,7 @@ class BurgerEditPage extends StatelessWidget {
                   Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 10),
-                      child: buildButtons(context)),
+                      child: buildButtons(context, args?.burger.id != null)),
                   Expanded(
                       flex: 6,
                       child: IngredientTray(
