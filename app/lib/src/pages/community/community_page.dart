@@ -10,6 +10,7 @@ import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/widgets/bottom_navigation_widget.dart';
 import 'package:food_blueprint/src/widgets/burger_rating_widget.dart';
 import 'package:food_blueprint/src/widgets/burger_select_floating_page.dart';
+import 'package:food_blueprint/src/widgets/button_share.dart';
 import 'package:food_blueprint/src/widgets/custom_app_bar.dart';
 import 'package:food_blueprint/src/widgets/custom_row_menu.dart';
 import 'package:food_blueprint/src/widgets/rating_searchbar.dart';
@@ -38,7 +39,14 @@ class CommunityPageState extends State<CommunityPage> {
     super.initState();
     _searchBurgersFuture = widget.burgerService.listCommunityBurgers();
     _topBurgersFuture = widget.burgerService.listBestCommunityBurgers();
-    openSelectPage();
+  }
+
+  void fetchData() {
+    setState(() {
+      _searchBurgersFuture =
+          widget.burgerService.listCommunityBurgers(searchQuery: _search);
+      _topBurgersFuture = widget.burgerService.listBestCommunityBurgers();
+    });
   }
 
   void searchChanged(String newSearch) {
@@ -70,6 +78,7 @@ class CommunityPageState extends State<CommunityPage> {
 
   // Close selection page
   void onSelectClose() {
+    fetchData();
     closeSelectPage();
   }
 
@@ -156,10 +165,10 @@ class CommunityPageState extends State<CommunityPage> {
                           List<Widget> activeRow = [];
                           if (_search == '') {
                             activeRow = [
-                              const SizedBox(
+                              SizedBox(
                                   height: BurgerRatingWidget.height,
                                   width: BurgerRatingWidget.width,
-                                  child: Placeholder())
+                                  child: ShareWidget(onTap: openSelectPage))
                             ];
                             rowCnt++;
                           }
