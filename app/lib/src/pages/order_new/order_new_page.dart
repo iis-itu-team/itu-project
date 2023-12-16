@@ -10,6 +10,7 @@ import 'package:food_blueprint/src/widgets/custom_checkbox.dart';
 import 'package:food_blueprint/src/widgets/custom_text_form.dart';
 
 import 'package:food_blueprint/src/widgets/header_widget.dart';
+import 'package:food_blueprint/src/widgets/three_checkboxs_widget.dart';
 
 late final OrderService orderService;
 final Order order = Order();
@@ -56,29 +57,34 @@ class OrderNewPage extends StatelessWidget {
               HeaderWidget(text: "doručení"),
               CustomTextForm(
                   text: "Město", controller: sigUpController['city']),
+              const SizedBox(height: 10),
               CustomTextForm(
                   text: "Ulice", controller: sigUpController['street']),
+              const SizedBox(height: 10),
               CustomTextForm(
                   text: "č.p.", controller: sigUpController['houseNumber']),
+              const SizedBox(height: 10),
               CustomTextForm(
                   text: "poznámka pro řidiče",
                   controller: sigUpController['note']),
-              const CustomCheckboxListTile(text: "před dum", value: false),
-              const CustomCheckboxListTile(
-                  text: "ke dveřím domu", value: false),
-              const CustomCheckboxListTile(
-                  text: "ke dveřím bytu", value: false),
+              const ThreeCheckboxsWidget(
+                text1: "před dum",
+                text2: "ke dveřím domu",
+                text3: "ke dveřím bytu",
+              ),
               CustomTextForm(
                   text: "patro", controller: sigUpController['floor']),
+              const SizedBox(height: 10),
               CustomTextForm(
                   text: "číslo bytu",
                   controller: sigUpController['flatNumber']),
-              const CustomCheckboxListTile(text: "zazvonit", value: false),
+              const CheckboxWidget(text: "zazvonit", value: false),
               HeaderWidget(text: "platba"),
-              const CustomCheckboxListTile(
-                  text: "při doručení (hotově / kartou)", value: false),
-              const CustomCheckboxListTile(text: "online kartou", value: false),
-              const CustomCheckboxListTile(text: "paypal", value: false),
+              const ThreeCheckboxsWidget(
+                text1: "při doručení (hotově / kartou)",
+                text2: "online kartou",
+                text3: "paypal",
+              ),
             ],
           ),
         ),

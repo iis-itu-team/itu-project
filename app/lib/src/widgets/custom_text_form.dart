@@ -21,22 +21,24 @@ class _CustomTextFormState extends State<CustomTextForm> {
     return TextFormField(
       controller: widget.controller,
       keyboardType: TextInputType.text,
-      style: TextStyle(
-        fontSize: 14,
+      style: const TextStyle(
+        fontSize: 18,
+        color: ThemeColors.colorMeat,
+        fontWeight: FontWeight.bold,
       ),
       decoration: InputDecoration(
         labelText: widget.text,
+        fillColor: ThemeColors.colorBunLight,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(5.0),
           borderSide: BorderSide(
             color: ThemeColors.colorMeat,
-            width: 5,
+            width: 10.0,
           ),
         ),
       ),
     );
   }
 
-  @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

@@ -21,10 +21,10 @@ class SettingsPage extends StatelessWidget {
             child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CustomCheckboxListTile(
+            CheckboxWidget(
                 text: "Uchovávanie údajov pre sledovanie vašich detí",
                 value: false),
-            CustomCheckboxListTile(
+            CheckboxWidget(
                 text:
                     "Uchovávanie údajov ktoré môže jednoduche deanonymizovať užívatela",
                 value: false),
