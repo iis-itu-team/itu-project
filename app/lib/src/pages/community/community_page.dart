@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
+import 'dart:async';
 
 import 'package:food_blueprint/src/http/result.dart';
 import 'package:food_blueprint/src/models/burger.dart';
@@ -29,8 +30,10 @@ class CommunityPage extends StatefulWidget {
 }
 
 class CommunityPageState extends State<CommunityPage> {
+  Timer? _searchTimeoutTimer;
   String _search = '';
   List<Widget> _stack = [];
+
   late Future<HttpResult<List<Burger>>> _searchBurgersFuture;
   late Future<HttpResult<List<Burger>>> _topBurgersFuture;
 
@@ -39,6 +42,13 @@ class CommunityPageState extends State<CommunityPage> {
     super.initState();
     _searchBurgersFuture = widget.burgerService.listCommunityBurgers();
     _topBurgersFuture = widget.burgerService.listBestCommunityBurgers();
+  }
+
+  void fetchSearchQuery() {
+    setState(() {
+      _searchBurgersFuture =
+          widget.burgerService.listCommunityBurgers(searchQuery: _search);
+    });
   }
 
   void fetchData() {
@@ -50,11 +60,10 @@ class CommunityPageState extends State<CommunityPage> {
   }
 
   void searchChanged(String newSearch) {
-    setState(() {
-      _search = newSearch;
-      _searchBurgersFuture =
-          widget.burgerService.listCommunityBurgers(searchQuery: _search);
-    });
+    _search = newSearch;
+    _searchTimeoutTimer?.cancel();
+    _searchTimeoutTimer =
+        Timer(const Duration(milliseconds: 1500), fetchSearchQuery);
   }
 
   void openSelectPage() {
