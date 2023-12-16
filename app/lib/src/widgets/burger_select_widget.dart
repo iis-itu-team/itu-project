@@ -4,7 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_blueprint/src/models/burger.dart';
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_page.dart';
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_arguments.dart';
-import 'package:food_blueprint/src/services/rating_service.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/utils/image_loader.dart';
 import 'package:food_blueprint/src/widgets/common/image_with_fallback.dart';
@@ -29,13 +28,9 @@ final Widget _radioButtonSelected = SvgPicture.asset(
 
 class BurgerSelectWidget extends StatefulWidget {
   const BurgerSelectWidget(
-      {super.key,
-      required this.burger,
-      required this.ratingService,
-      required this.onSelect});
+      {super.key, required this.burger, required this.onSelect});
 
   final Burger burger;
-  final RatingService ratingService;
   final Function(Burger, bool) onSelect;
 
   static const height = _burgerHeight;
