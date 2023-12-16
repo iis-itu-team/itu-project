@@ -27,16 +27,22 @@ class CommunityPage extends StatefulWidget {
 
 class CommunityPageState extends State<CommunityPage> {
   String _search = '';
-  late Future<HttpResult<List<Burger>>> _communityBurgersFuture;
+  late Future<HttpResult<List<Burger>>> _searchBurgersFuture;
+  late Future<HttpResult<List<Burger>>> _topBurgersFuture;
 
   @override
   void initState() {
     super.initState();
-    _communityBurgersFuture = widget.burgerService.listCommunityBurgers();
+    _searchBurgersFuture = widget.burgerService.listCommunityBurgers();
+    _topBurgersFuture = widget.burgerService.listBestCommunityBurgers();
   }
 
   void searchChanged(String newSearch) {
-    _search = newSearch;
+    setState(() {
+      _search = newSearch;
+      _searchBurgersFuture =
+          widget.burgerService.listCommunityBurgers(searchQuery: _search);
+    });
   }
 
   @override
@@ -57,7 +63,7 @@ class CommunityPageState extends State<CommunityPage> {
               ])),
           const SizedBox(height: 5),
           FutureBuilder(
-              future: _communityBurgersFuture,
+              future: _topBurgersFuture,
               builder: (BuildContext context,
                   AsyncSnapshot<HttpResult<List<Burger>>> snapshot) {
                 List<Burger> communityBurgers = [];
@@ -105,7 +111,7 @@ class CommunityPageState extends State<CommunityPage> {
           const SizedBox(height: 5),
           Expanded(
               child: FutureBuilder(
-                  future: _communityBurgersFuture,
+                  future: _searchBurgersFuture,
                   builder: (BuildContext context,
                       AsyncSnapshot<HttpResult<List<Burger>>> snapshot) {
                     List<Burger> communityBurgers = [];
