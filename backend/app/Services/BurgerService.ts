@@ -260,7 +260,7 @@ export default class BurgerService {
         }
 
         await burger.related('ratings').detach()
-        
+
         await Database.from('burger_ingredients')
             .where('burger_id', burger.id)
             .delete()
@@ -268,7 +268,11 @@ export default class BurgerService {
         await burger.delete()
 
         if (burger.icon) {
-            await fs.unlink(Application.makePath('public', burger.icon))
+            const iconPath = Application.makePath('public', burger.icon)
+
+            if ((await fs.stat(iconPath)).isFile()) {
+                await fs.unlink(iconPath)
+            }
         }
     }
 
