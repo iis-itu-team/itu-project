@@ -7,7 +7,9 @@ import 'package:food_blueprint/src/services/burger_service.dart';
 class HomeController {
   final BurgerService foodService;
 
-  const HomeController(this.foodService);
+  List<Burger>? cachedBurgers;
+
+  HomeController(this.foodService);
 
   Future<List<Burger>> listBurgers() async {
     final result =
@@ -20,6 +22,11 @@ class HomeController {
       throw "Couldn't fetch burgers.";
     }
 
+    if (cachedBurgers != null) {
+      return cachedBurgers!;
+    }
+
+    cachedBurgers = List.from(result.data!);
     return result.data!;
   }
 }

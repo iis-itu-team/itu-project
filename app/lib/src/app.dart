@@ -22,6 +22,7 @@ import 'package:food_blueprint/src/services/ingredient_service.dart';
 import 'package:food_blueprint/src/services/order_service.dart';
 import 'package:food_blueprint/src/services/rating_service.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
+import 'package:food_blueprint/src/types/cart.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 /// The Widget that configures your application.
@@ -66,6 +67,8 @@ class MyApp extends StatelessWidget {
         OrderShowController(orderService);
 
     const SettingsController settingsController = SettingsController();
+
+    final Cart cart = Cart();
 
     ThemeData themeData = ThemeData(
         useMaterial3: true,
@@ -125,7 +128,7 @@ class MyApp extends StatelessWidget {
           builder: (BuildContext context) {
             switch (routeSettings.name) {
               case HomePage.routeName:
-                return HomePage(controller: homeController);
+                return HomePage(controller: homeController, cart: cart);
               case BurgerEditPage.routeName:
                 return BurgerEditPage(controller: foodEditController);
               case OrderNewPage.routeName:
@@ -138,16 +141,18 @@ class MyApp extends StatelessWidget {
                 return const SettingsPage(controller: settingsController);
               case MinePage.routeName:
                 return MinePage(
-                  mineController: mineController,
-                  homeController: homeController,
-                );
+                    mineController: mineController,
+                    homeController: homeController,
+                    cart: cart);
               case CommunityPage.routeName:
                 return CommunityPage(
-                    burgerService: burgerService, ratingService: ratingService);
+                    burgerService: burgerService,
+                    ratingService: ratingService,
+                    cart: cart);
               case BasicPage.routeName:
-                return BasicPage(controller: homeController);
+                return BasicPage(controller: homeController, cart: cart);
               default:
-                return HomePage(controller: homeController);
+                return HomePage(controller: homeController, cart: cart);
             }
           },
         );

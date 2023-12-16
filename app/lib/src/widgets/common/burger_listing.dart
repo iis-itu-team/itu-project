@@ -3,11 +3,10 @@ import 'package:food_blueprint/src/events/burger_created_event.dart';
 import 'package:food_blueprint/src/events/burger_deleted_event.dart';
 import 'package:food_blueprint/src/events/burger_updated_event.dart';
 import 'package:food_blueprint/src/models/burger.dart';
-import 'package:food_blueprint/src/pages/burger_edit/burger_edit_arguments.dart';
-import 'package:food_blueprint/src/pages/burger_edit/burger_edit_page.dart';
 import 'package:food_blueprint/src/pages/mine/mine_page.dart';
 import 'package:food_blueprint/src/utils/event_handler.dart';
 import 'package:food_blueprint/src/utils/image_loader.dart';
+import 'package:food_blueprint/src/widgets/cart/burger_item.dart';
 import 'package:food_blueprint/src/widgets/common/image_with_fallback.dart';
 import 'package:food_blueprint/src/widgets/common/loading.dart';
 
@@ -51,7 +50,6 @@ class _BurgerListState extends State<BurgerList> {
     _burgersLoading();
     Future.wait([
       widget.fetchBurgers(),
-      Future.delayed(const Duration(milliseconds: 2000))
     ]).then((data) {
       _burgersLoaded(data[0]);
     });
@@ -150,30 +148,18 @@ class BurgerListing extends StatefulWidget {
 
 class _BurgerListingState extends State<BurgerListing> {
   Widget _buildBurgerItem(BuildContext context, Burger burger) {
-    return GestureDetector(
-        onTap: () {
-          Navigator.pushNamed(
-            context,
-            BurgerEditPage.routeName,
-            arguments: BurgerEditArguments(burger),
-          );
+    return Draggable(
+        data: burger,
+        dragAnchorStrategy: (object, context, offset) {
+          return const Offset(40, 40);
         },
-        child: SizedBox(
-            width: 100,
-            height: 120,
-            child: Column(children: [
-              Text(burger.name ?? '',
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(fontWeight: FontWeight.w800)),
-              Expanded(
-                  child: ImageWithFallback(
-                      key: ValueKey(burger.hashCode),
-                      icon: burger.icon,
-                      width: 80,
-                      height: 80,
-                      fallback: ImageUrlLoader.prefixUrl('/icons/burger.png'))),
-              Text('${burger.price} Kč', textAlign: TextAlign.end)
-            ])));
+        feedback: ImageWithFallback(
+            key: ValueKey(burger.hashCode),
+            icon: burger.icon,
+            width: 80,
+            height: 80,
+            fallback: ImageUrlLoader.prefixUrl('/icons/burger.png')),
+        child: BurgerItem(burger: burger));
   }
 
   Widget _buildSeparator(BuildContext context, String title) {

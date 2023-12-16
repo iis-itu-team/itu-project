@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/pages/home/home_controller.dart';
 import 'package:food_blueprint/src/pages/mine/mine_controller.dart';
+import 'package:food_blueprint/src/types/cart.dart';
 import 'package:food_blueprint/src/widgets/bottom_navigation_widget.dart';
 import 'package:food_blueprint/src/widgets/common/burger_listing.dart';
 import 'package:food_blueprint/src/widgets/common/create_burger.dart';
@@ -15,8 +16,13 @@ class MinePage extends StatelessWidget {
   final MineController mineController;
   final HomeController homeController;
 
+  final Cart cart;
+
   const MinePage(
-      {super.key, required this.mineController, required this.homeController});
+      {super.key,
+      required this.mineController,
+      required this.homeController,
+      required this.cart});
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +36,6 @@ class MinePage extends StatelessWidget {
             extraChildren: const [CreateBurgerButton()],
           ))
         ]),
-        bottomNavigationBar: const BottomNavigationWidget());
+        bottomNavigationBar: BottomNavigationWidget(cart: cart));
   }
 }

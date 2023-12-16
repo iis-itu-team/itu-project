@@ -1,13 +1,13 @@
-import 'package:flutter/material.dart';
-import 'dart:ui' as ui;
 import 'dart:async';
+import 'dart:ui' as ui;
 
+import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/http/result.dart';
 import 'package:food_blueprint/src/models/burger.dart';
 import 'package:food_blueprint/src/services/burger_service.dart';
 import 'package:food_blueprint/src/services/rating_service.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
-
+import 'package:food_blueprint/src/types/cart.dart';
 import 'package:food_blueprint/src/widgets/bottom_navigation_widget.dart';
 import 'package:food_blueprint/src/widgets/burger_rating_widget.dart';
 import 'package:food_blueprint/src/widgets/burger_select_floating_page.dart';
@@ -19,8 +19,13 @@ import 'package:food_blueprint/src/widgets/rating_searchbar.dart';
 class CommunityPage extends StatefulWidget {
   static const routeName = '/community';
 
+  final Cart cart;
+
   const CommunityPage(
-      {super.key, required this.burgerService, required this.ratingService});
+      {super.key,
+      required this.burgerService,
+      required this.ratingService,
+      required this.cart});
 
   final BurgerService burgerService;
   final RatingService ratingService;
@@ -218,7 +223,7 @@ class CommunityPageState extends State<CommunityPage> {
                       }
                     }))
           ]),
-          bottomNavigationBar: const BottomNavigationWidget()),
+          bottomNavigationBar: BottomNavigationWidget(cart: widget.cart)),
       ..._stack
     ]);
   }
