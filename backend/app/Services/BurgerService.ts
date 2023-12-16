@@ -211,7 +211,12 @@ export default class BurgerService {
         }
 
         // same path, no need to update
-        await this.createBurgerIcon(res)
+        const icon = await this.createBurgerIcon(res)
+
+        if (!res.icon && icon) {
+            res.icon = icon
+            await res.save()
+        }
 
         return res
     }
