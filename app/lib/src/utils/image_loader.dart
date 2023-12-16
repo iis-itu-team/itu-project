@@ -4,6 +4,10 @@ class ImageUrlLoader {
   static final String baseUrl = Environment().baseUrl;
 
   static String getServedImageUrl(String? icon, String defaultIcon) {
-    return icon != null ? '$baseUrl/$icon' : defaultIcon;
+    return icon != null ? '$baseUrl$icon' : defaultIcon;
+  }
+
+  static String prefixUrl(String? url) {
+    return '$baseUrl$url';
   }
 }

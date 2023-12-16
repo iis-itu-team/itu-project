@@ -9,6 +9,7 @@ import 'package:food_blueprint/src/utils/image_loader.dart';
 import 'package:food_blueprint/src/widgets/burger_edit/ingredient_builder.dart';
 import 'package:food_blueprint/src/widgets/burger_edit/ingredient_tray.dart';
 import 'package:food_blueprint/src/widgets/burger_edit/name.dart';
+import 'package:food_blueprint/src/widgets/common/image_with_fallback.dart';
 import 'package:food_blueprint/src/widgets/custom_app_bar.dart';
 
 class BurgerEditPage extends StatelessWidget {
@@ -57,15 +58,12 @@ class BurgerEditPage extends StatelessWidget {
                         width: 160,
                         height: 320,
                         child: Column(children: [
-                          Container(
+                          ImageWithFallback(
+                              icon: args?.burger.icon,
                               width: 160,
                               height: 160,
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image: NetworkImage(
-                                          ImageUrlLoader.getServedImageUrl(
-                                              args?.burger.icon,
-                                              '${ImageUrlLoader.baseUrl}/icons/burger.png'))))),
+                              fallback: ImageUrlLoader.prefixUrl(
+                                  '/icons/burger.png')),
                           const Text("Loading burger assembler...",
                               textAlign: TextAlign.center)
                         ])));
@@ -112,7 +110,10 @@ class BurgerEditPage extends StatelessWidget {
                 ],
               );
             },
-            future: Future.wait(
-                [controller.listIngredients(), controller.listCategories(), Future.delayed(const Duration(milliseconds: 300))])));
+            future: Future.wait([
+              controller.listIngredients(),
+              controller.listCategories(),
+              Future.delayed(const Duration(milliseconds: 300))
+            ])));
   }
 }
