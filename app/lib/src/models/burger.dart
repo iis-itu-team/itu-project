@@ -37,7 +37,7 @@ class Burger {
     price = json['price'];
     image = json['image'];
     icon = json["icon"];
-    rating = json['rating'] as int;
+    rating = json['rating'];
 
     ingredients = [];
 

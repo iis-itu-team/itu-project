@@ -1,5 +1,7 @@
 import 'dart:developer' as developer;
 
+import 'package:food_blueprint/src/events/burger_created_event.dart';
+import 'package:food_blueprint/src/events/burger_updated_event.dart';
 import 'package:food_blueprint/src/http/result.dart';
 import 'package:food_blueprint/src/models/burger.dart';
 import 'package:food_blueprint/src/models/ingredient.dart';
@@ -7,6 +9,7 @@ import 'package:food_blueprint/src/models/ingredient_in_food.dart';
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_arguments.dart';
 import 'package:food_blueprint/src/services/burger_service.dart';
 import 'package:food_blueprint/src/services/ingredient_service.dart';
+import 'package:food_blueprint/src/utils/event_handler.dart';
 
 class BurgerEditController {
   final BurgerService foodService;
@@ -37,21 +40,24 @@ class BurgerEditController {
 
   Future<void> handleSave() async {
     developer.log(editedBurger!.name.toString());
-    
+
     // update indexes on ingredients according to their position in the list
     for (int index = 0; index < editedBurger!.ingredients.length; index++) {
       editedBurger!.ingredients[index].index = index;
     }
 
-    HttpResult<void> result;
-    if (editedBurger!.id != null) {
-      result = await foodService.updateBurger(editedBurger!.id!, editedBurger!);
-    } else {
+    HttpResult<Burger> result;
+    bool newBurger = editedBurger!.id == null;
+    if (newBurger) {
       result = await foodService.createBurger(editedBurger!);
+    } else {
+      result = await foodService.updateBurger(editedBurger!.id!, editedBurger!);
     }
 
     if (result.status == "success") {
-      //
+      Burger burger = result.data!;
+      EventHandler.fire(
+          newBurger ? BurgerCreatedEvent(burger) : BurgerUpdatedEvent(burger));
     } else {
       throw "Couldn't save burger.";
     }

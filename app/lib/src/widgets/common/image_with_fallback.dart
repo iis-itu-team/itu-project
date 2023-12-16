@@ -1,5 +1,3 @@
-import 'dart:developer' as developer;
-
 import 'package:flutter/cupertino.dart';
 import 'package:food_blueprint/src/utils/image_loader.dart';
 
@@ -12,7 +10,7 @@ class ImageWithFallback extends StatefulWidget {
   const ImageWithFallback(
       {super.key,
       required this.fallback,
-      this.icon,
+      required this.icon,
       required this.height,
       required this.width});
 
@@ -26,9 +24,12 @@ class _ImageWithFallback extends State<ImageWithFallback> {
   @override
   void initState() {
     super.initState();
-    developer.log(widget.fallback);
-    _image = NetworkImage(
-        ImageUrlLoader.getServedImageUrl(widget.icon, widget.fallback));
+
+    int nowParam = DateTime.now().millisecond;
+    String iconUrl =
+        ImageUrlLoader.getServedImageUrl(widget.icon, widget.fallback);
+    String url = '$iconUrl#$nowParam';
+    _image = NetworkImage(url);
   }
 
   @override
@@ -42,7 +43,6 @@ class _ImageWithFallback extends State<ImageWithFallback> {
                   setState(() {
                     _image = NetworkImage(widget.fallback);
                   });
-                  developer.log(error.toString());
                 },
                 image: _image!)));
   }

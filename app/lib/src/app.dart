@@ -29,6 +29,25 @@ class MyApp extends StatelessWidget {
 
   MyApp({super.key});
 
+  TextTheme generateSingleColorTextTheme(Color textColor) {
+    return TextTheme(
+        bodyLarge: TextStyle(color: textColor),
+        bodyMedium: TextStyle(color: textColor),
+        bodySmall: TextStyle(color: textColor),
+        displaySmall: TextStyle(color: textColor),
+        displayMedium: TextStyle(color: textColor),
+        displayLarge: TextStyle(color: textColor),
+        labelSmall: TextStyle(color: textColor),
+        labelMedium: TextStyle(color: textColor),
+        labelLarge: TextStyle(color: textColor),
+        titleSmall: TextStyle(color: textColor),
+        titleMedium: TextStyle(color: textColor),
+        titleLarge: TextStyle(color: textColor),
+        headlineSmall: TextStyle(color: textColor),
+        headlineMedium: TextStyle(color: textColor),
+        headlineLarge: TextStyle(color: textColor));
+  }
+
   @override
   Widget build(BuildContext context) {
     final BurgerService burgerService = BurgerService();
@@ -50,22 +69,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         scaffoldBackgroundColor: ThemeColors.colorOnion,
         fontFamily: GoogleFonts.outfit().fontFamily,
-        textTheme: const TextTheme(
-            bodyLarge: TextStyle(color: ThemeColors.colorMeat),
-            bodyMedium: TextStyle(color: ThemeColors.colorMeat),
-            bodySmall: TextStyle(color: ThemeColors.colorMeat),
-            displaySmall: TextStyle(color: ThemeColors.colorMeat),
-            displayMedium: TextStyle(color: ThemeColors.colorMeat),
-            displayLarge: TextStyle(color: ThemeColors.colorMeat),
-            labelSmall: TextStyle(color: ThemeColors.colorMeat),
-            labelMedium: TextStyle(color: ThemeColors.colorMeat),
-            labelLarge: TextStyle(color: ThemeColors.colorMeat),
-            titleSmall: TextStyle(color: ThemeColors.colorMeat),
-            titleMedium: TextStyle(color: ThemeColors.colorMeat),
-            titleLarge: TextStyle(color: ThemeColors.colorMeat),
-            headlineSmall: TextStyle(color: ThemeColors.colorMeat),
-            headlineMedium: TextStyle(color: ThemeColors.colorMeat),
-            headlineLarge: TextStyle(color: ThemeColors.colorMeat)));
+        textTheme: generateSingleColorTextTheme(ThemeColors.colorMeat));
 
     // Glue the SettingsController to the MaterialApp.
     //
@@ -107,9 +111,7 @@ class MyApp extends StatelessWidget {
       theme: themeData,
       darkTheme: themeData.copyWith(
           scaffoldBackgroundColor: Colors.black,
-          textTheme: themeData.textTheme.copyWith(
-              bodyMedium: const TextStyle(color: ThemeColors.colorOnion),
-              bodySmall: const TextStyle(color: ThemeColors.colorOnion))),
+          textTheme: generateSingleColorTextTheme(ThemeColors.colorOnion)),
 
       // Define a function to handle named routes in order to support
       // Flutter web url navigation and deep linking.

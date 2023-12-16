@@ -5,11 +5,10 @@ import 'package:food_blueprint/src/pages/burger_edit/burger_edit_arguments.dart'
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_controller.dart';
 import 'package:food_blueprint/src/pages/home/home_page.dart';
 import 'package:food_blueprint/src/utils/category_names.dart';
-import 'package:food_blueprint/src/utils/image_loader.dart';
 import 'package:food_blueprint/src/widgets/burger_edit/ingredient_builder.dart';
 import 'package:food_blueprint/src/widgets/burger_edit/ingredient_tray.dart';
 import 'package:food_blueprint/src/widgets/burger_edit/name.dart';
-import 'package:food_blueprint/src/widgets/common/image_with_fallback.dart';
+import 'package:food_blueprint/src/widgets/common/loading.dart';
 import 'package:food_blueprint/src/widgets/custom_app_bar.dart';
 
 class BurgerEditPage extends StatelessWidget {
@@ -54,19 +53,9 @@ class BurgerEditPage extends StatelessWidget {
             builder: (context, future) {
               if (!future.hasData) {
                 return Center(
-                    child: SizedBox(
-                        width: 160,
-                        height: 320,
-                        child: Column(children: [
-                          ImageWithFallback(
-                              icon: args?.burger.icon,
-                              width: 160,
-                              height: 160,
-                              fallback: ImageUrlLoader.prefixUrl(
-                                  '/icons/burger.png')),
-                          const Text("Loading burger assembler...",
-                              textAlign: TextAlign.center)
-                        ])));
+                    child: Loading(
+                        icon: args?.burger.icon,
+                        text: 'Loading burger assembler...'));
               }
 
               List<Ingredient> availableIngredients =
