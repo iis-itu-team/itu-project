@@ -5,14 +5,13 @@ import 'package:food_blueprint/src/models/burger.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 
 import 'package:food_blueprint/src/services/rating_service.dart';
+import 'package:food_blueprint/src/utils/image_loader.dart';
+import 'package:food_blueprint/src/widgets/common/image_with_fallback.dart';
 
 const double _burgerHeight = 100;
 const double _burgerWidth = 90;
 const double _borderWidth = 2;
 const double _borderRadius = 3;
-
-const Image _defaultImage =
-    Image(image: AssetImage('assets/images/flutter_logo.png'));
 
 const double _voteButtonHeight = 10;
 const double _voteButtonWidth = 10;
@@ -129,18 +128,11 @@ class BurgerRatingWidgetState extends State<BurgerRatingWidget> {
                     ])),
                 Flexible(
                     flex: 3,
-                    child: burger?.image != null
-                        ? Image.network('${burger?.image}', loadingBuilder:
-                            (BuildContext context, Widget child,
-                                ImageChunkEvent? loadingProgress) {
-                            return CircularProgressIndicator(
-                                value:
-                                    (loadingProgress?.cumulativeBytesLoaded ??
-                                            0) /
-                                        (loadingProgress?.expectedTotalBytes ??
-                                            100000000));
-                          })
-                        : _defaultImage)
+                    child: ImageWithFallback(
+                        icon: burger?.icon,
+                        fallback: ImageUrlLoader.prefixUrl('/icons/burger.png'),
+                        height: 80,
+                        width: 80))
               ])),
           Flexible(
               flex: 1,
