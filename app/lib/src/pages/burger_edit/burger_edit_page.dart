@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_blueprint/src/models/ingredient.dart';
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_arguments.dart';
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_controller.dart';
-import 'package:food_blueprint/src/pages/home/home_page.dart';
 import 'package:food_blueprint/src/utils/category_names.dart';
 import 'package:food_blueprint/src/widgets/burger_edit/ingredient_builder.dart';
 import 'package:food_blueprint/src/widgets/burger_edit/ingredient_tray.dart';
@@ -37,7 +36,7 @@ class BurgerEditPage extends StatelessWidget {
                             width: 70),
                         onTap: () {
                           controller.handleDelete();
-                          Navigator.pushNamed(context, HomePage.routeName);
+                          Navigator.pop(context);
                         })))),
         Expanded(
             child: Align(
@@ -45,7 +44,7 @@ class BurgerEditPage extends StatelessWidget {
                 child: GestureDetector(
                     onTap: () {
                       controller.handleSave();
-                      Navigator.pushNamed(context, HomePage.routeName);
+                      Navigator.pop(context);
                       // Navigate to a different page here
                     },
                     child: SvgPicture.asset("assets/images/BurgerDone.svg",
