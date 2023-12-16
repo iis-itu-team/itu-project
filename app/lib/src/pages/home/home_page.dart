@@ -3,13 +3,11 @@ import 'package:food_blueprint/src/events/burger_created_event.dart';
 import 'package:food_blueprint/src/events/burger_deleted_event.dart';
 import 'package:food_blueprint/src/events/burger_updated_event.dart';
 import 'package:food_blueprint/src/models/burger.dart';
-import 'package:food_blueprint/src/pages/burger_edit/burger_edit_arguments.dart';
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_page.dart';
 import 'package:food_blueprint/src/pages/home/home_controller.dart';
 import 'package:food_blueprint/src/utils/event_handler.dart';
-import 'package:food_blueprint/src/utils/image_loader.dart';
 import 'package:food_blueprint/src/widgets/bottom_navigation_widget.dart';
-import 'package:food_blueprint/src/widgets/common/image_with_fallback.dart';
+import 'package:food_blueprint/src/widgets/common/burger_listing.dart';
 import 'package:food_blueprint/src/widgets/common/loading.dart';
 import 'package:food_blueprint/src/widgets/custom_app_bar.dart';
 import 'package:food_blueprint/src/widgets/custom_row_menu.dart';
@@ -68,31 +66,9 @@ class _BurgerListState extends State<BurgerList> {
   bool _loaded = false;
 
   Widget _buildBurgerList(BuildContext context) {
-    List<Widget> children = [];
-
-    for (int index = 0; index < _burgers.length; index++) {
-      Burger burger = _burgers[index];
-
-      children.add(GestureDetector(
-          onTap: () {
-            Navigator.pushNamed(
-              context,
-              BurgerEditPage.routeName,
-              arguments: BurgerEditArguments(burger),
-            );
-          },
-          child: Row(children: [
-            ImageWithFallback(
-                key: ValueKey(burger.hashCode),
-                icon: burger.icon,
-                width: 80,
-                height: 80,
-                fallback: ImageUrlLoader.prefixUrl('/icons/burger.png')),
-            Expanded(child: Text(burger.name ?? ''))
-          ])));
-    }
-
-    return SingleChildScrollView(child: Column(children: children));
+    return SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: BurgerListing(burgers: _burgers));
   }
 
   void _burgersLoaded(List<Burger> burgers) {
@@ -122,8 +98,7 @@ class _BurgerListState extends State<BurgerList> {
   @override
   Widget build(BuildContext context) {
     if (_loaded) {
-      return Padding(
-          padding: const EdgeInsets.all(8), child: _buildBurgerList(context));
+      return _buildBurgerList(context);
     }
 
     return const Center(child: Loading(text: 'Loading burgers...'));

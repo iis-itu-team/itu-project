@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class NameWidget extends StatefulWidget {
   final String? initialName;
@@ -35,6 +36,7 @@ class _TitleState extends State<NameWidget> {
               onTapOutside: (value) {
                 widget.onSubmit(_name);
               },
+              inputFormatters: [LengthLimitingTextInputFormatter(20)],
               decoration: const InputDecoration(labelText: 'Název'))),
     ]);
   }
