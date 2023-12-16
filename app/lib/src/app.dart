@@ -112,6 +112,7 @@ class MyApp extends StatelessWidget {
       darkTheme: themeData.copyWith(
           scaffoldBackgroundColor: Colors.black,
           textTheme: generateSingleColorTextTheme(ThemeColors.colorOnion)),
+      themeMode: ThemeMode.light, // always light
 
       // Define a function to handle named routes in order to support
       // Flutter web url navigation and deep linking.
