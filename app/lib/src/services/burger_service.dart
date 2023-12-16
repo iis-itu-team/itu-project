@@ -5,11 +5,39 @@ import 'package:food_blueprint/src/http/client.dart';
 import 'package:food_blueprint/src/http/result.dart';
 import 'package:food_blueprint/src/models/burger.dart';
 
+class GetBurgersInput {
+  String? keeperId;
+  bool? published;
+
+  GetBurgersInput();
+
+  GetBurgersInput.from(this.keeperId, this.published);
+
+  @override
+  String toString() =>
+      'GetBurgersInput keeperId=$keeperId,published=$published';
+}
+
 class BurgerService {
-  Future<HttpResult<List<Burger>>> listBurgers() async {
+  Future<HttpResult<List<Burger>>> listBurgers(GetBurgersInput? input) async {
     final HttpClient client = HttpClient.fromEnv();
 
-    final response = await client.get(client.route("/burgers"));
+    developer.log("bef: ${input.toString()}");
+    GetBurgersInput realInput = input ?? GetBurgersInput();
+    developer.log(realInput.toString());
+
+    Map<String, String> queryParams = {};
+
+    if (realInput.keeperId != null) {
+      queryParams["keeperId"] = realInput.keeperId!;
+    }
+
+    if (realInput.published != null) {
+      queryParams["published"] = realInput.published.toString();
+    }
+
+    final response =
+        await client.get(client.route("/burgers", query: queryParams));
 
     final json = jsonDecode(response.body) as Map<String, dynamic>;
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/pages/home/home_controller.dart';
+import 'package:food_blueprint/src/utils/keeper_store.dart';
 import 'package:food_blueprint/src/widgets/bottom_navigation_widget.dart';
 import 'package:food_blueprint/src/widgets/common/burger_listing.dart';
 import 'package:food_blueprint/src/widgets/common/create_burger.dart';
@@ -25,7 +26,19 @@ class HomePage extends StatelessWidget {
           Expanded(
             child: BurgerList(
                 limit: 10,
-                controller: controller,
+                fetchBurgers: () {
+                  return controller.listBurgers().then((burgers) async {
+                    String? keeperId = await KeeperStore.getKeeperId();
+
+                    if (keeperId == null) {
+                      return [];
+                    }
+
+                    return burgers
+                        .where((element) => element.keeperId == keeperId)
+                        .toList();
+                  });
+                },
                 title: "moje burgříky",
                 extraChildren: const [CreateBurgerButton()]),
           )

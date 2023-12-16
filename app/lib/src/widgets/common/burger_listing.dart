@@ -5,7 +5,6 @@ import 'package:food_blueprint/src/events/burger_updated_event.dart';
 import 'package:food_blueprint/src/models/burger.dart';
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_arguments.dart';
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_page.dart';
-import 'package:food_blueprint/src/pages/home/home_controller.dart';
 import 'package:food_blueprint/src/pages/mine/mine_page.dart';
 import 'package:food_blueprint/src/utils/event_handler.dart';
 import 'package:food_blueprint/src/utils/image_loader.dart';
@@ -13,7 +12,7 @@ import 'package:food_blueprint/src/widgets/common/image_with_fallback.dart';
 import 'package:food_blueprint/src/widgets/common/loading.dart';
 
 class BurgerList extends StatefulWidget {
-  final HomeController controller;
+  final Future<List<Burger>> Function() fetchBurgers;
 
   final int? limit;
   final List<Widget>? extraChildren;
@@ -21,10 +20,10 @@ class BurgerList extends StatefulWidget {
 
   const BurgerList(
       {super.key,
+      required this.fetchBurgers,
       this.title,
       this.extraChildren,
-      this.limit,
-      required this.controller});
+      this.limit});
 
   @override
   State<StatefulWidget> createState() => _BurgerListState();
@@ -51,7 +50,7 @@ class _BurgerListState extends State<BurgerList> {
   void _fetchList() {
     _burgersLoading();
     Future.wait([
-      widget.controller.listBurgers(),
+      widget.fetchBurgers(),
       Future.delayed(const Duration(milliseconds: 2000))
     ]).then((data) {
       _burgersLoaded(data[0]);
@@ -71,7 +70,8 @@ class _BurgerListState extends State<BurgerList> {
                 extraChildren: widget.extraChildren),
             const SizedBox(height: 20),
             Visibility(
-                visible: _burgers.length > 10,
+                visible:
+                    widget.limit != null && _burgers.length > widget.limit!,
                 child: Align(
                     alignment: Alignment.bottomRight,
                     child: Padding(
@@ -81,7 +81,7 @@ class _BurgerListState extends State<BurgerList> {
                               Navigator.pushNamed(context, MinePage.routeName);
                             },
                             child: Text(
-                                "procházet dalších ${_burgers.length - 10}...",
+                                "procházet dalších ${_burgers.length - (widget.limit ?? 0)}...",
                                 style: const TextStyle(
                                     fontWeight: FontWeight.w800)))))),
           ]));

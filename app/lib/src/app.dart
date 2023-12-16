@@ -8,6 +8,7 @@ import 'package:food_blueprint/src/pages/burger_edit/burger_edit_page.dart';
 import 'package:food_blueprint/src/pages/community/community_page.dart';
 import 'package:food_blueprint/src/pages/home/home_controller.dart';
 import 'package:food_blueprint/src/pages/home/home_page.dart';
+import 'package:food_blueprint/src/pages/mine/mine_controller.dart';
 import 'package:food_blueprint/src/pages/mine/mine_page.dart';
 import 'package:food_blueprint/src/pages/order_new/order_confirm_page.dart';
 import 'package:food_blueprint/src/pages/order_new/order_new_controller.dart';
@@ -54,6 +55,7 @@ class MyApp extends StatelessWidget {
     final RatingService ratingService = RatingService();
     final IngredientService ingredientService = IngredientService();
     final HomeController homeController = HomeController(burgerService);
+    final MineController mineController = MineController(burgerService);
     final BurgerEditController foodEditController =
         BurgerEditController(burgerService, ingredientService);
 
@@ -112,7 +114,8 @@ class MyApp extends StatelessWidget {
       darkTheme: themeData.copyWith(
           scaffoldBackgroundColor: Colors.black,
           textTheme: generateSingleColorTextTheme(ThemeColors.colorOnion)),
-      themeMode: ThemeMode.light, // always light
+      themeMode: ThemeMode.light,
+      // always light
 
       // Define a function to handle named routes in order to support
       // Flutter web url navigation and deep linking.
@@ -134,7 +137,10 @@ class MyApp extends StatelessWidget {
               case SettingsPage.routeName:
                 return const SettingsPage(controller: settingsController);
               case MinePage.routeName:
-                return MinePage(controller: homeController);
+                return MinePage(
+                  mineController: mineController,
+                  homeController: homeController,
+                );
               case CommunityPage.routeName:
                 return CommunityPage(
                     burgerService: burgerService, ratingService: ratingService);
