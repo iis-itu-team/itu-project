@@ -1,13 +1,14 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'package:flutter/material.dart';
-import 'package:food_blueprint/src/models/burger.dart';
-import 'package:food_blueprint/src/theme/theme.dart';
+import 'dart:developer' as developer;
 
+import 'package:food_blueprint/src/interfaces/irating_changed.dart';
+import 'package:food_blueprint/src/models/burger.dart';
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_page.dart';
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_arguments.dart';
-
 import 'package:food_blueprint/src/services/rating_service.dart';
+import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/utils/image_loader.dart';
 import 'package:food_blueprint/src/widgets/common/image_with_fallback.dart';
 
@@ -54,24 +55,47 @@ class BurgerRatingWidget extends StatefulWidget {
   BurgerRatingWidgetState createState() => BurgerRatingWidgetState();
 }
 
-class BurgerRatingWidgetState extends State<BurgerRatingWidget> {
+class BurgerRatingWidgetState extends State<BurgerRatingWidget>
+    implements IRatingChanged {
   late Burger burger;
   BurgerRating pressed = BurgerRating.none;
+
+  @override
+  void onRatingChanged(
+      String burgerId, BurgerRating currentDirection, int totalRating) async {
+    if (burgerId == burger.id) {
+      setState(() {
+        pressed = currentDirection;
+        burger.rating = totalRating;
+      });
+    }
+  }
 
   @override
   void initState() {
     super.initState();
     burger = widget.burger;
     pressed = widget.burger.currentRating ?? BurgerRating.none;
+    widget.ratingService.registerListener(this);
   }
 
-  rate(BurgerRating motion) async {
+  @override
+  void dispose() {
+    widget.ratingService.unregisterListener(this);
+    super.dispose();
+  }
+
+  Future<void> rate(BurgerRating motion) async {
     if (pressed == motion) {
       pressed = BurgerRating.none;
     } else {
       pressed = motion;
     }
 
+    await rateBurger();
+  }
+
+  Future<void> rateBurger() async {
     final response = await widget.ratingService.rateBurger(burger.id, pressed);
     // TODO check status for error
     setState(() {
