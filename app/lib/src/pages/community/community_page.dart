@@ -100,8 +100,67 @@ class CommunityPageState extends State<CommunityPage> {
                         color: ThemeColors.colorMeat,
                         indent: 5.0))
               ])),
+          const SizedBox(height: 8),
+          RatingSearchBarWidget(onInputChanged: searchChanged),
           const SizedBox(height: 5),
-          RatingSearchBarWidget(onInputChanged: searchChanged)
+          Expanded(
+              child: FutureBuilder(
+                  future: _communityBurgersFuture,
+                  builder: (BuildContext context,
+                      AsyncSnapshot<HttpResult<List<Burger>>> snapshot) {
+                    List<Burger> communityBurgers = [];
+                    List<List<Widget>> rowContents = [];
+
+                    if (snapshot.hasData) {
+                      if (snapshot.data?.statusCode == 200) {
+                        communityBurgers = snapshot.data?.data ?? [];
+                        int rowCnt = 0;
+                        List<Widget> activeRow = [];
+                        if (_search == '') {
+                          activeRow = [
+                            const SizedBox(
+                                height: BurgerRatingWidget.height,
+                                width: BurgerRatingWidget.width,
+                                child: Placeholder())
+                          ];
+                          rowCnt++;
+                        }
+                        rowContents.add(activeRow);
+                        for (int i = 0; i < communityBurgers.length; i++) {
+                          if (rowCnt % 3 == 0) {
+                            rowCnt = 0;
+                            activeRow = [];
+                            rowContents.add(activeRow);
+                          }
+
+                          activeRow.add(BurgerRatingWidget(
+                              burger: communityBurgers[i],
+                              ratingService: widget.ratingService));
+                          rowCnt++;
+                        }
+
+                        return ListView.builder(
+                            scrollDirection: Axis.vertical,
+                            itemCount: rowContents.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(5, 5, 5, 5),
+                                  child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: rowContents[index]));
+                            });
+                      } else {
+                        return Text(
+                            'Niečo sa nepovedlo - ${snapshot.data?.status}',
+                            style: const TextStyle(
+                                color: ThemeColors.colorKetchup));
+                      }
+                    } else {
+                      return const Text('Čakám na dáta');
+                    }
+                  }))
         ]),
         bottomNavigationBar: const BottomNavigationWidget());
   }
