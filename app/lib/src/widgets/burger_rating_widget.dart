@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/models/burger.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 
+import 'package:food_blueprint/src/pages/burger_edit/burger_edit_page.dart';
+import 'package:food_blueprint/src/pages/burger_edit/burger_edit_arguments.dart';
+
 import 'package:food_blueprint/src/services/rating_service.dart';
 import 'package:food_blueprint/src/utils/image_loader.dart';
 import 'package:food_blueprint/src/widgets/common/image_with_fallback.dart';
@@ -52,7 +55,7 @@ class BurgerRatingWidget extends StatefulWidget {
 }
 
 class BurgerRatingWidgetState extends State<BurgerRatingWidget> {
-  Burger? burger;
+  late Burger burger;
   BurgerRating pressed = BurgerRating.none;
 
   @override
@@ -69,10 +72,10 @@ class BurgerRatingWidgetState extends State<BurgerRatingWidget> {
       pressed = motion;
     }
 
-    final response = await widget.ratingService.rateBurger(burger?.id, pressed);
+    final response = await widget.ratingService.rateBurger(burger.id, pressed);
     // TODO check status for error
     setState(() {
-      burger = response.data;
+      burger = response.data ?? burger;
     });
   }
 
@@ -90,7 +93,7 @@ class BurgerRatingWidgetState extends State<BurgerRatingWidget> {
                 Border.all(width: _borderWidth, color: ThemeColors.colorMeat),
             borderRadius: BorderRadius.circular(_borderRadius)),
         child: Column(children: <Widget>[
-          Flexible(flex: 1, child: FittedBox(child: Text(burger?.name ?? ''))),
+          Flexible(flex: 1, child: FittedBox(child: Text(burger.name ?? ''))),
           Flexible(
               flex: 6,
               child: Row(children: <Widget>[
@@ -112,7 +115,7 @@ class BurgerRatingWidgetState extends State<BurgerRatingWidget> {
                       Flexible(
                           flex: 2,
                           child:
-                              FittedBox(child: Text('${burger?.rating ?? 0}'))),
+                              FittedBox(child: Text('${burger.rating ?? 0}'))),
                       Flexible(
                           flex: 3,
                           child: FittedBox(
@@ -128,15 +131,20 @@ class BurgerRatingWidgetState extends State<BurgerRatingWidget> {
                     ])),
                 Flexible(
                     flex: 3,
-                    child: ImageWithFallback(
-                        icon: burger?.icon,
-                        fallback: ImageUrlLoader.prefixUrl('/icons/burger.png'),
-                        height: 80,
-                        width: 80))
+                    child: GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, BurgerEditPage.routeName,
+                              arguments: BurgerEditArguments(burger));
+                        },
+                        child: ImageWithFallback(
+                            icon: burger.icon,
+                            fallback:
+                                ImageUrlLoader.prefixUrl('/icons/burger.png'),
+                            height: 80,
+                            width: 80)))
               ])),
           Flexible(
-              flex: 1,
-              child: FittedBox(child: Text('${burger?.price ?? 0} Kč')))
+              flex: 1, child: FittedBox(child: Text('${burger.price ?? 0} Kč')))
         ]));
   }
 }
