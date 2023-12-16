@@ -276,16 +276,16 @@ export default class BurgerService {
 
         // get icons for ingredients
 
-        const offset = 40;
+        const offset = 50;
 
-        const n = burger.ingredients.length;
-        const finalHeight = (n - 1) * offset + 100;
+        let y = 100;
 
-        let y = finalHeight - 100;
+        // place items from bottom, y at the end is the final height
+        // move all items down by final height
 
-        const images: any[] = [];
+        const images: any[] = []
         burger.ingredients.sort((a, b) => {
-            return a.index > b.index ? -1 : 1;
+            return a.index > b.index ? -1 : 1
         }).forEach((ingredient, idx) => {
 
             let iconPath: string | null = null;
@@ -295,9 +295,17 @@ export default class BurgerService {
                 iconPath = Application.makePath('public/icons/ingredients/top_bun.png')
             } else {
                 if (ingredient.icon == null) {
-                    return;
+                    return
                 } else {
                     iconPath = Application.makePath('public', ingredient.icon)
+                }
+            }
+
+            if (idx != 0) {
+                if (ingredient.category == 'cheese') {
+                    y += 0
+                } else {
+                    y += offset
                 }
             }
 
@@ -306,13 +314,16 @@ export default class BurgerService {
                 y,
                 x: 0
             })
-            y -= offset
+        })
+
+        images.forEach((image) => {
+            image.y = y - image.y
         })
 
         const b64 = await mergeImages(images, {
             Canvas,
             Image,
-            height: finalHeight,
+            height: y,
             width: 400
         })
 
