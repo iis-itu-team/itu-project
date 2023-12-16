@@ -9,6 +9,8 @@ import 'package:food_blueprint/src/utils/event_handler.dart';
 import 'package:food_blueprint/src/widgets/cart/burger_item.dart';
 import 'package:food_blueprint/src/widgets/common/image_with_fallback.dart';
 
+import 'dart:developer' as developer;
+
 import '../utils/image_loader.dart';
 
 class BottomNavigationWidget extends StatefulWidget {
@@ -27,6 +29,8 @@ class BottomNavigationWidgetState extends State<BottomNavigationWidget> {
   void initState() {
     super.initState();
     _items = widget.cart.items;
+
+    developer.log('Items in cart: ${widget.cart.items.length}');
 
     EventHandler.listen<CartItemRemoved>((event) {
       setState(() {

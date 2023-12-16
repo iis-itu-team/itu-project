@@ -29,6 +29,8 @@ import 'package:google_fonts/google_fonts.dart';
 class MyApp extends StatelessWidget {
   final Environment env = Environment();
 
+  final Cart cart = Cart();
+
   MyApp({super.key});
 
   TextTheme generateSingleColorTextTheme(Color textColor) {
@@ -67,8 +69,6 @@ class MyApp extends StatelessWidget {
         OrderShowController(orderService);
 
     const SettingsController settingsController = SettingsController();
-
-    final Cart cart = Cart();
 
     ThemeData themeData = ThemeData(
         useMaterial3: true,
