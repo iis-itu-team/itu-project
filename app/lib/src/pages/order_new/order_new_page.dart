@@ -1,51 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:food_blueprint/src/widgets/custom_text_form.dart';
+import 'package:food_blueprint/src/models/order.dart';
 import 'package:food_blueprint/src/services/order_service.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/pages/order_new/order_new_controller.dart';
 import 'package:food_blueprint/src/pages/order_new/order_confirm_page.dart';
 import 'package:food_blueprint/src/widgets/custom_app_bar.dart';
 import 'package:food_blueprint/src/widgets/custom_checkbox.dart';
-
-import 'dart:developer' as developer;
+import 'package:food_blueprint/src/widgets/custom_text_form.dart';
 
 import 'package:food_blueprint/src/widgets/header_widget.dart';
 
-class BorderedTextFormField extends StatelessWidget {
-  final Widget child;
+late final OrderService orderService;
+final Order order = Order();
 
-  const BorderedTextFormField({super.key, required this.child});
+final Map<String, TextEditingController> sigUpController = {
+  'city': TextEditingController(),
+  'street': TextEditingController(),
+  'postalCode': TextEditingController(),
+  'flatNumber': TextEditingController(),
+  'floor': TextEditingController(),
+  'note': TextEditingController(),
+  'ring': TextEditingController(),
+  'deliveryType': TextEditingController(),
+  'paymentType': TextEditingController(),
+};
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.black, // Set the border color
-          width: 1.0, // Set the border width
-        ),
-        borderRadius: const BorderRadius.all(
-            Radius.circular(8.0)), // Set the border radius
-      ),
-      child: child,
-    );
+extension Data on Map<String, TextEditingController> {
+  Map<String, dynamic> data() {
+    final res = <String, dynamic>{};
+    for (MapEntry e in entries) {
+      res.putIfAbsent(e.key, () => e.value?.text);
+    }
+    return res;
   }
 }
-
-String? city = '';
-String? street = '';
-String? houseNumber = '';
-String? zipCode = '';
-int? flatNumber = 0;
-String? floor = '';
-String? notes = '';
-bool? ring = false;
-bool? toHouse = false;
-bool? toDoors = false;
-bool? toFlatDoors = false;
-
-late final OrderService orderService;
 
 class OrderNewPage extends StatelessWidget {
   final OrderNewController controller;
@@ -59,187 +48,37 @@ class OrderNewPage extends StatelessWidget {
     return Scaffold(
       appBar: const CustomAppBar(text: 'Nová objednávka'),
       body: Container(
-        padding: const EdgeInsets.only(left: 10),
+        padding: const EdgeInsets.all(10),
         child: SingleChildScrollView(
           child: Column(
             children: [
               HeaderWidget(text: "shrnututí"),
-              Column(
-                children: [
-                  HeaderWidget(text: "doručení"),
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment
-                          .start, // Adjust this based on your layout requirements
-                      children: [
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Column(
-                                children: [
-                                  const Text(
-                                    "Mesto",
-                                    style: TextStyle(
-                                        color: ThemeColors.colorMeat,
-                                        fontSize: 25),
-                                  ),
-                                  const SizedBox(height: 10),
-                                  CustomTextForm(variable: city),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(width: 16),
-                            Expanded(
-                              child: Column(
-                                children: [
-                                  const Text(
-                                    "PSČ",
-                                    style: TextStyle(
-                                        color: ThemeColors.colorMeat,
-                                        fontSize: 25),
-                                  ),
-                                  const SizedBox(height: 10),
-                                  CustomTextForm(variable: zipCode),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment
-                          .start, // Adjust this based on your layout requirements
-                      children: [
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Column(
-                                children: [
-                                  const Text(
-                                    "Ulica",
-                                    style: TextStyle(
-                                        color: ThemeColors.colorMeat,
-                                        fontSize: 25),
-                                  ),
-                                  const SizedBox(height: 10),
-                                  CustomTextForm(variable: street),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(width: 16),
-                            Expanded(
-                              child: Column(
-                                children: [
-                                  const Text(
-                                    "č. p.",
-                                    style: TextStyle(
-                                        color: ThemeColors.colorMeat,
-                                        fontSize: 25),
-                                  ),
-                                  const SizedBox(height: 10),
-                                  CustomTextForm(variable: houseNumber),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment
-                          .start, // Adjust this based on your layout requirements
-                      children: [
-                        const Text(
-                          "poznámka pro řidiče",
-                          style: TextStyle(
-                              color: ThemeColors.colorMeat, fontSize: 25),
-                        ),
-                        const SizedBox(height: 10),
-                        CustomTextForm(variable: notes),
-                      ],
-                    ),
-                  ),
-                  const CustomCheckboxListTile(text: "pred dom", value: false),
-                  const CustomCheckboxListTile(text: "ku dverám", value: false),
-                  const CustomCheckboxListTile(
-                      text: "ku dverám bytu", value: false),
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment
-                          .start, // Adjust this based on your layout requirements
-                      children: [
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Column(
-                                children: [
-                                  const Text(
-                                    "poschodie",
-                                    style: TextStyle(
-                                        color: ThemeColors.colorMeat,
-                                        fontSize: 25),
-                                  ),
-                                  const SizedBox(height: 10),
-                                  CustomTextForm(variable: floor),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(width: 16),
-                            Expanded(
-                              child: Column(
-                                children: [
-                                  const Text(
-                                    "číslo bytu",
-                                    style: TextStyle(
-                                        color: ThemeColors.colorMeat,
-                                        fontSize: 25),
-                                  ),
-                                  const SizedBox(height: 10),
-                                  CustomTextForm(variable: houseNumber),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          padding: const EdgeInsets.all(10),
-                          child: const Column(
-                            children: [
-                              CustomCheckboxListTile(
-                                  text: "zazvoniť", value: false),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  HeaderWidget(text: "platba"),
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    child: const Column(
-                      children: [
-                        CustomCheckboxListTile(
-                            text: "pri doručení (karta/hotovosť)",
-                            value: false),
-                        CustomCheckboxListTile(
-                            text: "kartou online", value: false),
-                        CustomCheckboxListTile(
-                            text: "paypal / google pay / apple pay",
-                            value: false),
-                      ],
-                    ),
-                  )
-                ],
-              ),
+              HeaderWidget(text: "doručení"),
+              CustomTextForm(
+                  text: "Město", controller: sigUpController['city']),
+              CustomTextForm(
+                  text: "Ulice", controller: sigUpController['street']),
+              CustomTextForm(
+                  text: "č.p.", controller: sigUpController['houseNumber']),
+              CustomTextForm(
+                  text: "poznámka pro řidiče",
+                  controller: sigUpController['note']),
+              const CustomCheckboxListTile(text: "před dum", value: false),
+              const CustomCheckboxListTile(
+                  text: "ke dveřím domu", value: false),
+              const CustomCheckboxListTile(
+                  text: "ke dveřím bytu", value: false),
+              CustomTextForm(
+                  text: "patro", controller: sigUpController['floor']),
+              CustomTextForm(
+                  text: "číslo bytu",
+                  controller: sigUpController['flatNumber']),
+              const CustomCheckboxListTile(text: "zazvonit", value: false),
+              HeaderWidget(text: "platba"),
+              const CustomCheckboxListTile(
+                  text: "při doručení (hotově / kartou)", value: false),
+              const CustomCheckboxListTile(text: "online kartou", value: false),
+              const CustomCheckboxListTile(text: "paypal", value: false),
             ],
           ),
         ),
@@ -253,22 +92,18 @@ class OrderNewPage extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-                developer.log("here");
-                developer.log(houseNumber!);
-                developer.log(zipCode!);
-                developer.log("end");
-                controller.handleSave(
-                    houseNumber!,
-                    street!,
-                    zipCode!,
-                    city!,
-                    floor!,
-                    flatNumber!,
-                    notes!,
-                    ring!,
-                    toHouse!,
-                    toDoors!,
-                    toFlatDoors!);
+                final data = sigUpController.data();
+
+                order.city = data['city'];
+                order.street = data['street'];
+                order.houseNumber = data['houseNumber'];
+                order.flatNumber = data['flatNumber'];
+                order.postalCode = data['postalCode'];
+                order.floor = data['floor'];
+                order.note = data['note'];
+
+                controller.handleSave(order);
+
                 Navigator.pushNamed(context, OrderConfirmPage.routeName);
               },
               child: SvgPicture.asset("assets/images/BurgerOrder.svg",

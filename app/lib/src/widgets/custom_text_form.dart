@@ -1,26 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 
-class CustomTextForm extends StatelessWidget implements PreferredSizeWidget {
-  String? variable;
+class CustomTextForm extends StatefulWidget implements PreferredSizeWidget {
+  String? text;
 
-  CustomTextForm({
-    super.key,
-    required this.variable,
-  });
+  final TextEditingController? controller;
 
+  CustomTextForm({super.key, required this.text, required this.controller});
+
+  @override
+  State<CustomTextForm> createState() => _CustomTextFormState();
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+}
+
+class _CustomTextFormState extends State<CustomTextForm> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      onSaved: (String? value) {
-        variable = value;
-      },
+      controller: widget.controller,
+      keyboardType: TextInputType.text,
+      style: TextStyle(
+        fontSize: 14,
+      ),
       decoration: InputDecoration(
-        focusColor: ThemeColors.colorBun,
+        labelText: widget.text,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
-          borderSide: const BorderSide(
-            color: ThemeColors.colorBun,
+          borderSide: BorderSide(
+            color: ThemeColors.colorMeat,
+            width: 5,
           ),
         ),
       ),

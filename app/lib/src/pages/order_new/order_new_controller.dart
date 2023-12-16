@@ -1,38 +1,22 @@
 import 'package:food_blueprint/src/http/result.dart';
-import 'package:food_blueprint/src/models/order.dart';
 import 'package:food_blueprint/src/services/order_service.dart';
+
+import 'dart:developer' as developer;
+
+import 'package:food_blueprint/src/utils/keeper_store.dart';
 
 class OrderNewController {
   final OrderService orderService;
 
   OrderNewController(this.orderService);
 
-  Future<void> handleSave(
-      String houseNumber,
-      String street,
-      String zipCode,
-      String city,
-      String floor,
-      int flatNumber,
-      String notes,
-      bool ring,
-      bool toHouse,
-      bool toDoors,
-      bool toFlatDoors) async {
-    Order? order = Order();
-
-    order.city = city;
-    order.street = street;
-    order.houseNumber = houseNumber;
-    order.flatNumber = flatNumber;
-    order.postalCode = zipCode;
-    order.deliveryType = "house";
-    order.floor = floor;
-    order.note = notes;
-    order.ring = ring;
-    order.paymentType = "card";
-
+  Future<void> handleSave(order) async {
     HttpResult<void> result;
+
+    developer.log("controller");
+    developer.log(order.city.toString());
+
+    order.keeperId = await KeeperStore.getKeeperId();
 
     result = await orderService.createOrder(order);
 

@@ -19,7 +19,7 @@ class Order {
   String? city;
   String? street;
   String? houseNumber;
-  int? flatNumber;
+  String? flatNumber;
   String? postalCode;
   String? deliveryType;
   String? floor;
@@ -28,12 +28,24 @@ class Order {
   bool? ring;
   String? paymentType;
   String? date;
+  String? keeperId;
 
   List<Burger> burgers = [];
 
   List<_PrivateBurger> privateBurgers = [];
 
-  Order();
+  Order({
+    this.city = '',
+    this.street = '',
+    this.houseNumber = '',
+    this.postalCode = '',
+    this.flatNumber = '',
+    this.floor = '',
+    this.note = '',
+    this.ring = false,
+    this.deliveryType = '',
+    this.paymentType = '',
+  });
 
   Order.fromJson(Map<String, dynamic> json) {
     id = json["id"];
@@ -48,17 +60,17 @@ class Order {
   }
 
   Map<String, dynamic> toJson() => {
+        'burgers': burgers.map((e) => e.toJson()).toList(),
         "city": city,
         'street': street,
-        'postalCode': postalCode,
         'houseNumber': houseNumber,
+        'postalCode': postalCode,
         'flatNumber': flatNumber,
-        'deliveryType': deliveryType,
         'floor': floor,
         'note': note,
+        'deliveryType': deliveryType,
         'ring': ring,
-        'date': date,
         'paymentType': paymentType,
-        'burgers': burgers.map((e) => e.toJson()).toList(),
+        'keeperId': keeperId,
       };
 }
