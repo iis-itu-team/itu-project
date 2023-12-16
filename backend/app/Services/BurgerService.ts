@@ -259,6 +259,12 @@ export default class BurgerService {
             throw FailureException.notFound("burger", id)
         }
 
+        await burger.related('ratings').detach()
+        
+        await Database.from('burger_ingredients')
+            .where('burger_id', burger.id)
+            .delete()
+
         await burger.delete()
 
         if (burger.icon) {
