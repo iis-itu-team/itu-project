@@ -10,6 +10,8 @@ import 'package:food_blueprint/src/widgets/custom_checkbox.dart';
 
 import 'dart:developer' as developer;
 
+import 'package:food_blueprint/src/widgets/header_widget.dart';
+
 class BorderedTextFormField extends StatelessWidget {
   final Widget child;
 
@@ -61,210 +63,182 @@ class OrderNewPage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Container(
-                padding: const EdgeInsets.all(10),
-                child: const Text(
-                  "Shrnutí",
-                  style: TextStyle(
-                      color: ThemeColors.colorText,
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(10),
-                child: Column(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(10),
-                      child: const Text("Doručení",
-                          style: TextStyle(
-                              color: ThemeColors.colorText,
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold)),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.all(10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment
-                            .start, // Adjust this based on your layout requirements
-                        children: [
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Column(
-                                  children: [
-                                    const Text(
-                                      "Mesto",
-                                      style: TextStyle(
-                                          color: ThemeColors.colorText,
-                                          fontSize: 18),
-                                    ),
-                                    const SizedBox(height: 10),
-                                    CustomTextForm(variable: city),
-                                  ],
-                                ),
+              HeaderWidget(text: "shrnututí"),
+              Column(
+                children: [
+                  HeaderWidget(text: "doručení"),
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment
+                          .start, // Adjust this based on your layout requirements
+                      children: [
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  const Text(
+                                    "Mesto",
+                                    style: TextStyle(
+                                        color: ThemeColors.colorMeat,
+                                        fontSize: 25),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  CustomTextForm(variable: city),
+                                ],
                               ),
-                              const SizedBox(width: 16),
-                              Expanded(
-                                child: Column(
-                                  children: [
-                                    const Text(
-                                      "PSČ",
-                                      style: TextStyle(
-                                          color: ThemeColors.colorText,
-                                          fontSize: 18),
-                                    ),
-                                    const SizedBox(height: 10),
-                                    CustomTextForm(variable: zipCode),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.all(10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment
-                            .start, // Adjust this based on your layout requirements
-                        children: [
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Column(
-                                  children: [
-                                    const Text(
-                                      "Ulica",
-                                      style: TextStyle(
-                                          color: ThemeColors.colorText,
-                                          fontSize: 18),
-                                    ),
-                                    const SizedBox(height: 10),
-                                    CustomTextForm(variable: street),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(width: 16),
-                              Expanded(
-                                child: Column(
-                                  children: [
-                                    const Text(
-                                      "č. p.",
-                                      style: TextStyle(
-                                          color: ThemeColors.colorText,
-                                          fontSize: 18),
-                                    ),
-                                    const SizedBox(height: 10),
-                                    CustomTextForm(variable: houseNumber),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment
-                            .start, // Adjust this based on your layout requirements
-                        children: [
-                          const Text(
-                            "poznámka pro řidiče",
-                            style: TextStyle(
-                                color: ThemeColors.colorText, fontSize: 18),
-                          ),
-                          const SizedBox(height: 10),
-                          CustomTextForm(variable: notes),
-                        ],
-                      ),
-                    ),
-                    const CustomCheckboxListTile(
-                        text: "pred dom", value: false),
-                    const CustomCheckboxListTile(
-                        text: "ku dverám", value: false),
-                    const CustomCheckboxListTile(
-                        text: "ku dverám bytu", value: false),
-                    Container(
-                      padding: const EdgeInsets.all(10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment
-                            .start, // Adjust this based on your layout requirements
-                        children: [
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Column(
-                                  children: [
-                                    const Text(
-                                      "poschodie",
-                                      style: TextStyle(
-                                          color: ThemeColors.colorText,
-                                          fontSize: 18),
-                                    ),
-                                    const SizedBox(height: 10),
-                                    CustomTextForm(variable: floor),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(width: 16),
-                              Expanded(
-                                child: Column(
-                                  children: [
-                                    const Text(
-                                      "číslo bytu",
-                                      style: TextStyle(
-                                          color: ThemeColors.colorText,
-                                          fontSize: 18),
-                                    ),
-                                    const SizedBox(height: 10),
-                                    CustomTextForm(variable: houseNumber),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          Container(
-                            padding: const EdgeInsets.all(10),
-                            child: const Column(
-                              children: [
-                                CustomCheckboxListTile(
-                                    text: "zazvoniť", value: false),
-                              ],
                             ),
-                          ),
-                        ],
-                      ),
+                            const SizedBox(width: 16),
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  const Text(
+                                    "PSČ",
+                                    style: TextStyle(
+                                        color: ThemeColors.colorMeat,
+                                        fontSize: 25),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  CustomTextForm(variable: zipCode),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                    Container(
-                      padding: const EdgeInsets.all(20),
-                      child: const Text("Platba",
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment
+                          .start, // Adjust this based on your layout requirements
+                      children: [
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  const Text(
+                                    "Ulica",
+                                    style: TextStyle(
+                                        color: ThemeColors.colorMeat,
+                                        fontSize: 25),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  CustomTextForm(variable: street),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(width: 16),
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  const Text(
+                                    "č. p.",
+                                    style: TextStyle(
+                                        color: ThemeColors.colorMeat,
+                                        fontSize: 25),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  CustomTextForm(variable: houseNumber),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment
+                          .start, // Adjust this based on your layout requirements
+                      children: [
+                        const Text(
+                          "poznámka pro řidiče",
                           style: TextStyle(
-                              color: ThemeColors.colorText,
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold)),
+                              color: ThemeColors.colorMeat, fontSize: 25),
+                        ),
+                        const SizedBox(height: 10),
+                        CustomTextForm(variable: notes),
+                      ],
                     ),
-                    Container(
-                      padding: const EdgeInsets.all(10),
-                      child: const Column(
-                        children: [
-                          CustomCheckboxListTile(
-                              text: "pri doručení (karta/hotovosť)",
-                              value: false),
-                          CustomCheckboxListTile(
-                              text: "kartou online", value: false),
-                          CustomCheckboxListTile(
-                              text: "paypal / google pay / apple pay",
-                              value: false),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
+                  ),
+                  const CustomCheckboxListTile(text: "pred dom", value: false),
+                  const CustomCheckboxListTile(text: "ku dverám", value: false),
+                  const CustomCheckboxListTile(
+                      text: "ku dverám bytu", value: false),
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment
+                          .start, // Adjust this based on your layout requirements
+                      children: [
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  const Text(
+                                    "poschodie",
+                                    style: TextStyle(
+                                        color: ThemeColors.colorMeat,
+                                        fontSize: 25),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  CustomTextForm(variable: floor),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(width: 16),
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  const Text(
+                                    "číslo bytu",
+                                    style: TextStyle(
+                                        color: ThemeColors.colorMeat,
+                                        fontSize: 25),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  CustomTextForm(variable: houseNumber),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        Container(
+                          padding: const EdgeInsets.all(10),
+                          child: const Column(
+                            children: [
+                              CustomCheckboxListTile(
+                                  text: "zazvoniť", value: false),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  HeaderWidget(text: "platba"),
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    child: const Column(
+                      children: [
+                        CustomCheckboxListTile(
+                            text: "pri doručení (karta/hotovosť)",
+                            value: false),
+                        CustomCheckboxListTile(
+                            text: "kartou online", value: false),
+                        CustomCheckboxListTile(
+                            text: "paypal / google pay / apple pay",
+                            value: false),
+                      ],
+                    ),
+                  )
+                ],
               ),
             ],
           ),

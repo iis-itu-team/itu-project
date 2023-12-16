@@ -22,6 +22,10 @@ class _CustomCheckboxListTileState extends State<CustomCheckboxListTile> {
   @override
   Widget build(BuildContext context) {
     return CheckboxListTile(
+      title: Text(
+        widget.text,
+        style: const TextStyle(color: ThemeColors.colorMeat, fontSize: 25),
+      ),
       value: isChecked,
       onChanged: (bool? value) {
         value != value;
@@ -29,13 +33,12 @@ class _CustomCheckboxListTileState extends State<CustomCheckboxListTile> {
           isChecked = value;
         });
       },
-      title: Text(
-        widget.text,
-        style: const TextStyle(color: ThemeColors.colorText, fontSize: 18),
-      ),
       activeColor: ThemeColors.colorBun,
     );
   }
 
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
+
+
+//       colorr: ThemeColors.colorBun,
