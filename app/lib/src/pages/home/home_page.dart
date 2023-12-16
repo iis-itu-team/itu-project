@@ -57,17 +57,6 @@ class HomePage extends StatelessWidget {
                                       '/icons/burger.png')),
                               Expanded(child: Text(burger.name ?? ''))
                             ]));
-
-                        return ListTile(
-                          title: Text(burger.name ?? ''),
-                          onTap: () {
-                            Navigator.pushNamed(
-                              context,
-                              BurgerEditPage.routeName,
-                              arguments: BurgerEditArguments(burger),
-                            );
-                          },
-                        );
                       },
                     );
                   },
