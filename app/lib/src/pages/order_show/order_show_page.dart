@@ -1,3 +1,5 @@
+import 'package:food_blueprint/src/utils/image_loader.dart';
+import 'package:food_blueprint/src/widgets/common/image_with_fallback.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
@@ -6,9 +8,6 @@ import 'package:food_blueprint/src/widgets/custom_app_bar.dart';
 import 'package:food_blueprint/src/widgets/custom_order_text.dart';
 
 import 'dart:developer' as developer;
-
-const Image _defaultImage =
-    Image(image: AssetImage('assets/images/flutter_logo.png'));
 
 class OrderShowPage extends StatelessWidget {
   final OrderShowController controller;
@@ -58,60 +57,50 @@ class OrderShowPage extends StatelessWidget {
                   return Container(
                     margin: const EdgeInsets.all(15.0),
                     padding: const EdgeInsets.all(3.0),
-                    decoration: const BoxDecoration(
-                      border: Border(
-                        top: BorderSide(
-                          color: Colors.black,
-                          width: 5.0,
-                        ),
-                      ),
-                      borderRadius: BorderRadius.all(Radius.circular(
-                              5.0) //                 <--- border radius here
-                          ),
-                    ),
                     child: Column(
                       children: [
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            CustomOrderText(input: date),
-                            CustomOrderText(input: "${order.street}"),
-                            CustomOrderText(input: "${order.price!} Kč"),
+                          children: <Widget>[
+                            Text(date),
+                            const SizedBox(width: 10),
+                            const Expanded(
+                              child: Divider(
+                                  thickness: 4.0,
+                                  color: ThemeColors.colorMeat,
+                                  indent: 5.0),
+                            ),
+                            const SizedBox(width: 10),
+                            Text("${order.street}"),
+                            const SizedBox(width: 10),
+                            const Expanded(
+                              child: Divider(
+                                  thickness: 4.0,
+                                  color: ThemeColors.colorMeat,
+                                  indent: 5.0),
+                            ),
+                            const SizedBox(width: 10),
+                            Text("${order.price!} Kč"),
                           ],
                         ),
                         Row(
                           children: [
-                            CustomOrderText(
-                                input: "${order.privateBurgers[0].name}"),
+                            Text("${order.privateBurgers[0].name}"),
                           ],
                         ),
                         Row(
                           children: [
-                            Flexible(
-                                flex: 3,
-                                child: order.privateBurgers[0].image != null
-                                    ? Image.network(
-                                        '${order.privateBurgers[0].image}',
-                                        loadingBuilder: (BuildContext context,
-                                            Widget child,
-                                            ImageChunkEvent? loadingProgress) {
-                                          return CircularProgressIndicator(
-                                            value: (loadingProgress
-                                                        ?.cumulativeBytesLoaded ??
-                                                    0) /
-                                                (loadingProgress
-                                                        ?.expectedTotalBytes ??
-                                                    100000000),
-                                          );
-                                        },
-                                      )
-                                    : _defaultImage),
+                            ImageWithFallback(
+                                icon: order.privateBurgers[0].icon,
+                                width: 80,
+                                height: 80,
+                                fallback: ImageUrlLoader.prefixUrl(
+                                    '/icons/burger.png')),
                           ],
                         ),
                         Row(
                           children: [
-                            CustomOrderText(
-                                input: "${order.privateBurgers[0].price} Kč"),
+                            const SizedBox(width: 20),
+                            Text("${order.privateBurgers[0].price} Kč"),
                           ],
                         ),
                       ],
