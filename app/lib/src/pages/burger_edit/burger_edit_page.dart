@@ -5,6 +5,7 @@ import 'package:food_blueprint/src/pages/burger_edit/burger_edit_arguments.dart'
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_controller.dart';
 import 'package:food_blueprint/src/pages/home/home_page.dart';
 import 'package:food_blueprint/src/utils/category_names.dart';
+import 'package:food_blueprint/src/utils/image_loader.dart';
 import 'package:food_blueprint/src/widgets/burger_edit/ingredient_builder.dart';
 import 'package:food_blueprint/src/widgets/burger_edit/ingredient_tray.dart';
 import 'package:food_blueprint/src/widgets/burger_edit/name.dart';
@@ -51,7 +52,23 @@ class BurgerEditPage extends StatelessWidget {
         body: FutureBuilder(
             builder: (context, future) {
               if (!future.hasData) {
-                return const Center(child: Text("Loading Burger Assembler..."));
+                return Center(
+                    child: SizedBox(
+                        width: 160,
+                        height: 320,
+                        child: Column(children: [
+                          Container(
+                              width: 160,
+                              height: 160,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: NetworkImage(
+                                          ImageUrlLoader.getServedImageUrl(
+                                              args?.burger.icon,
+                                              '${ImageUrlLoader.baseUrl}/icons/burger.png'))))),
+                          const Text("Loading burger assembler...",
+                              textAlign: TextAlign.center)
+                        ])));
               }
 
               List<Ingredient> availableIngredients =
@@ -96,6 +113,6 @@ class BurgerEditPage extends StatelessWidget {
               );
             },
             future: Future.wait(
-                [controller.listIngredients(), controller.listCategories()])));
+                [controller.listIngredients(), controller.listCategories(), Future.delayed(const Duration(milliseconds: 300))])));
   }
 }

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_arguments.dart';
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_page.dart';
 import 'package:food_blueprint/src/pages/home/home_controller.dart';
-import 'package:food_blueprint/src/pages/order_new/order_new_page.dart';
-import 'package:food_blueprint/src/theme/theme.dart';
+import 'package:food_blueprint/src/utils/image_loader.dart';
 import 'package:food_blueprint/src/widgets/bottom_navigation_widget.dart';
 import 'package:food_blueprint/src/widgets/custom_app_bar.dart';
 import 'package:food_blueprint/src/widgets/custom_row_menu.dart';
@@ -40,6 +38,28 @@ class HomePage extends StatelessWidget {
                         if (burger == null) {
                           return const ListTile();
                         }
+
+                        return GestureDetector(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                context,
+                                BurgerEditPage.routeName,
+                                arguments: BurgerEditArguments(burger),
+                              );
+                            },
+                            child: Row(children: [
+                              Container(
+                                  width: 40,
+                                  height: 40,
+                                  decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          fit: BoxFit.contain,
+                                          image: NetworkImage(
+                                              ImageUrlLoader.getServedImageUrl(
+                                                  burger.icon,
+                                                  '${ImageUrlLoader.baseUrl}/icons/burger.png'))))),
+                              Expanded(child: Text(burger.name ?? ''))
+                            ]));
 
                         return ListTile(
                           title: Text(burger.name ?? ''),

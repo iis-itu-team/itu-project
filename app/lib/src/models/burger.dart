@@ -11,6 +11,7 @@ class Burger {
   String? keeperId;
   int? price;
   String? image;
+  String? icon;
   int? rating;
   BurgerRating? currentRating;
 
@@ -25,7 +26,8 @@ class Burger {
         image = burger.image,
         price = burger.price,
         rating = burger.rating,
-        currentRating = burger.currentRating;
+        currentRating = burger.currentRating,
+        icon = burger.icon;
 
   Burger.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -34,6 +36,7 @@ class Burger {
     keeperId = json['keeper_id'];
     price = json['price'];
     image = json['image'];
+    icon = json["icon"];
     rating = json['rating'] as int;
 
     ingredients = [];
@@ -44,7 +47,7 @@ class Burger {
 
     // sort ingredients
     ingredients.sort((a, b) {
-      return a.index > b.index ? -1 : 1;
+      return a.index > b.index ? 1 : -1;
     });
 
     switch (json['currentRating'] as int) {

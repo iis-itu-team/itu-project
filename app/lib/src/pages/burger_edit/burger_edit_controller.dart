@@ -40,7 +40,7 @@ class BurgerEditController {
     
     // update indexes on ingredients according to their position in the list
     for (int index = 0; index < editedBurger!.ingredients.length; index++) {
-      editedBurger!.ingredients[index].index = editedBurger!.ingredients.length - index;
+      editedBurger!.ingredients[index].index = index;
     }
 
     HttpResult<void> result;
