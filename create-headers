@@ -1,0 +1,51 @@
+#!/bin/bash
+
+FILES=$(find ./app/lib -name 'main.dart')
+FILES=$(echo "$FILES" | tr '\n' ' ')
+echo "$FILES"
+
+IFS=', ' read -r -a FILES <<< "$FILES"
+
+for FILE in "${FILES[@]}"; do
+    COMMIT_INFO=$(git log --format="format:%ci;%cN;%ce" --name-only --diff-filter=A -- "$FILE" | head -n 1)
+
+    #echo "First commit info for $FILE: $COMMIT_INFO"
+
+    DATE=$(echo "$COMMIT_INFO" | awk -F";" '{ print $1 }' | awk -F" " '{ print $1 }' | awk -F"-" '{ print $3". "$2". "$1 }')
+
+    NAME=$(echo "$COMMIT_INFO" | awk -F";" '{ print $2 }')
+
+    EMAIL=$(echo "$COMMIT_INFO" | awk -F";" '{ print $3 }')
+
+    #echo "Date: $DATE, name: $NAME, email: $EMAIL"
+
+    if [ "$NAME" == "Wertik1206" ]; then
+        NAME="Martin Otradovec"
+    fi
+
+    if [ "$EMAIL" == "jregvx@gmail.com" ]; then
+        EMAIL="xotrad00@fit.vutbr.cz"
+    fi
+
+    if [ "$EMAIL" == "matus.hubinsky@scot.sk" ]; then
+        EMAIL="xhubin04@fit.vutbr.cz"
+    fi
+
+    if [ "$EMAIL" == "marek.vandik@gmail.com" ]; then
+        EMAIL="xvandi01@fit.vutbr.cz"
+    fi
+
+    read -r -d '' HEADER << EOM
+///
+///  Author: $NAME
+///  Author e-mail: $EMAIL
+///  Date: $DATE
+///
+EOM
+
+    echo "$FILE"
+    echo "$HEADER"
+
+    cat <(echo "$HEADER") "$FILE" > "$FILE".tmp
+    mv "$FILE".tmp $FILE
+done
