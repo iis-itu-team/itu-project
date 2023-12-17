@@ -6,14 +6,14 @@
 ///
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:food_blueprint/src/interfaces/irating_changed.dart';
 import 'package:food_blueprint/src/models/burger.dart';
-import 'package:food_blueprint/src/pages/burger_edit/burger_edit_page.dart';
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_arguments.dart';
+import 'package:food_blueprint/src/pages/burger_edit/burger_edit_page.dart';
 import 'package:food_blueprint/src/services/rating_service.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/utils/image_loader.dart';
+import 'package:food_blueprint/src/utils/keeper_store.dart';
 import 'package:food_blueprint/src/widgets/common/image_with_fallback.dart';
 
 const double _burgerHeight = 100;
@@ -162,8 +162,15 @@ class BurgerRatingWidgetState extends State<BurgerRatingWidget>
                     flex: 3,
                     child: GestureDetector(
                         onTap: () {
-                          Navigator.pushNamed(context, BurgerEditPage.routeName,
-                              arguments: BurgerEditArguments(burger));
+                          // only allow to enter the editor if we're the owner of the burger
+                          // Author: Martin Otradovec
+                          KeeperStore.getKeeperId().then((keeperId) {
+                            if (keeperId == burger.keeperId) {
+                              Navigator.pushNamed(
+                                  context, BurgerEditPage.routeName,
+                                  arguments: BurgerEditArguments(burger));
+                            }
+                          });
                         },
                         child: ImageWithFallback(
                             icon: burger.icon,

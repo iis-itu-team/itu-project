@@ -6,10 +6,7 @@
 ///
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:food_blueprint/src/models/burger.dart';
-import 'package:food_blueprint/src/pages/burger_edit/burger_edit_page.dart';
-import 'package:food_blueprint/src/pages/burger_edit/burger_edit_arguments.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/utils/image_loader.dart';
 import 'package:food_blueprint/src/widgets/common/image_with_fallback.dart';
@@ -93,17 +90,11 @@ class BurgerSelectWidgetState extends State<BurgerSelectWidget> {
                     ])),
                 Flexible(
                     flex: 3,
-                    child: GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(context, BurgerEditPage.routeName,
-                              arguments: BurgerEditArguments(burger));
-                        },
-                        child: ImageWithFallback(
-                            icon: burger.icon,
-                            fallback:
-                                ImageUrlLoader.prefixUrl('/icons/burger.png'),
-                            height: 80,
-                            width: 80)))
+                    child: ImageWithFallback(
+                        icon: burger.icon,
+                        fallback: ImageUrlLoader.prefixUrl('/icons/burger.png'),
+                        height: 80,
+                        width: 80))
               ])),
           Flexible(
               flex: 1, child: FittedBox(child: Text('${burger.price ?? 0} Kč')))

@@ -14,6 +14,7 @@ import 'package:food_blueprint/src/pages/burger_edit/burger_edit_page.dart';
 import 'package:food_blueprint/src/pages/mine/mine_page.dart';
 import 'package:food_blueprint/src/utils/event_handler.dart';
 import 'package:food_blueprint/src/utils/image_loader.dart';
+import 'package:food_blueprint/src/utils/keeper_store.dart';
 import 'package:food_blueprint/src/widgets/cart/burger_item.dart';
 import 'package:food_blueprint/src/widgets/common/image_with_fallback.dart';
 import 'package:food_blueprint/src/widgets/common/loading.dart';
@@ -168,8 +169,13 @@ class _BurgerListState extends State<BurgerList> {
         child: GestureDetector(
             child: BurgerItem(burger: burger),
             onTap: () {
-              Navigator.pushNamed(context, BurgerEditPage.routeName,
-                  arguments: BurgerEditArguments(burger));
+              // only allow to enter the editor if we're the owner of the burger
+              KeeperStore.getKeeperId().then((keeperId) {
+                if (keeperId == burger.keeperId) {
+                  Navigator.pushNamed(context, BurgerEditPage.routeName,
+                      arguments: BurgerEditArguments(burger));
+                }
+              });
             }));
   }
 
