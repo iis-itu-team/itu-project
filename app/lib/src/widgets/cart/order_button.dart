@@ -1,3 +1,8 @@
+///
+///  Author: Martin Otradovec
+///  Author e-mail: xotrad00@fit.vutbr.cz
+///  Date: 17. 12. 2023
+///
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_blueprint/src/pages/order_new/order_new_page.dart';

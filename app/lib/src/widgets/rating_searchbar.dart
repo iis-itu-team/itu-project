@@ -1,3 +1,8 @@
+///
+///  Author: Marek Vandík
+///  Author e-mail: xvandi01@fit.vutbr.cz
+///  Date: 16. 12. 2023
+///
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

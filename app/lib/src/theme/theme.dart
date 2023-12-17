@@ -1,3 +1,8 @@
+///
+///  Author: Matúš Hubinský
+///  Author e-mail: xhubin04@fit.vutbr.cz
+///  Date: 10. 12. 2023
+///
 import 'package:flutter/material.dart';
 
 class ThemeColors {

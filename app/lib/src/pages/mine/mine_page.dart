@@ -1,3 +1,8 @@
+///
+///  Author: Matúš Hubinský
+///  Author e-mail: xhubin04@fit.vutbr.cz
+///  Date: 14. 12. 2023
+///
 import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/pages/home/home_controller.dart';
 import 'package:food_blueprint/src/pages/mine/mine_controller.dart';

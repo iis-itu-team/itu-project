@@ -1,3 +1,8 @@
+///
+///  Author: Marek Vandík
+///  Author e-mail: xvandi01@fit.vutbr.cz
+///  Date: 14. 12. 2023
+///
 import 'dart:async';
 
 import 'package:flutter/material.dart';

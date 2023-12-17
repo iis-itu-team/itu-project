@@ -1,3 +1,8 @@
+///
+///  Author: Martin Otradovec
+///  Author e-mail: xotrad00@fit.vutbr.cz
+///  Date: 17. 12. 2023
+///
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/svg.dart';

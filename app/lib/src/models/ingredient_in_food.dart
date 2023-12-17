@@ -1,3 +1,8 @@
+///
+///  Author: Matúš Hubinský
+///  Author e-mail: xhubin04@fit.vutbr.cz
+///  Date: 06. 12. 2023
+///
 import 'package:food_blueprint/src/models/ingredient.dart';
 
 class IngredientInFood {

@@ -1,3 +1,8 @@
+///
+///  Author: Martin Otradovec
+///  Author e-mail: xotrad00@fit.vutbr.cz
+///  Date: 16. 12. 2023
+///
 import '../models/burger.dart';
 
 class BurgerDeletedEvent {

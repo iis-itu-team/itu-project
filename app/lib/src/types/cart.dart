@@ -1,3 +1,8 @@
+///
+///  Author: Martin Otradovec
+///  Author e-mail: xotrad00@fit.vutbr.cz
+///  Date: 17. 12. 2023
+///
 // A cart object that contains burgers we want to order and their amounts
 import 'package:food_blueprint/src/models/burger.dart';
 

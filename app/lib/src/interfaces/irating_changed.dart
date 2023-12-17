@@ -1,3 +1,8 @@
+///
+///  Author: Marek Vandík
+///  Author e-mail: xvandi01@fit.vutbr.cz
+///  Date: 16. 12. 2023
+///
 import 'package:food_blueprint/src/models/burger.dart';
 
 abstract class IRatingChanged {

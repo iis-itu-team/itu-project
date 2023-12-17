@@ -1,3 +1,8 @@
+///
+///  Author: Matúš Hubinský
+///  Author e-mail: xhubin04@fit.vutbr.cz
+///  Date: 07. 12. 2023
+///
 import 'dart:developer' as developer;
 
 import 'package:food_blueprint/src/events/burger_created_event.dart';

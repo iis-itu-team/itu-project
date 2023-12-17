@@ -1,3 +1,8 @@
+///
+///  Author: Matúš Hubinský
+///  Author e-mail: xhubin04@fit.vutbr.cz
+///  Date: 14. 12. 2023
+///
 import 'dart:async';
 import 'dart:ui' as ui;
 

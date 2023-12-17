@@ -1,3 +1,8 @@
+///
+///  Author: Martin Otradovec
+///  Author e-mail: xotrad00@fit.vutbr.cz
+///  Date: 05. 11. 2023
+///
 import 'package:food_blueprint/src/models/ingredient_in_food.dart';
 
 class Ingredient {

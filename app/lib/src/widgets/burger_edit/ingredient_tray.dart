@@ -1,3 +1,8 @@
+///
+///  Author: Martin Otradovec
+///  Author e-mail: xotrad00@fit.vutbr.cz
+///  Date: 14. 12. 2023
+///
 import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/env/env.dart';
 import 'package:food_blueprint/src/models/ingredient.dart';

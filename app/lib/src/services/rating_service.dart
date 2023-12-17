@@ -1,3 +1,8 @@
+///
+///  Author: Marek Vandík
+///  Author e-mail: xvandi01@fit.vutbr.cz
+///  Date: 13. 12. 2023
+///
 import 'dart:convert';
 
 import 'dart:developer' as developer;

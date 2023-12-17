@@ -1,3 +1,8 @@
+///
+///  Author: Martin Otradovec
+///  Author e-mail: xotrad00@fit.vutbr.cz
+///  Date: 05. 11. 2023
+///
 import 'dart:developer' as developer;
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';

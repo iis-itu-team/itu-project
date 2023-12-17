@@ -1,3 +1,8 @@
+///
+///  Author: Martin Otradovec
+///  Author e-mail: xotrad00@fit.vutbr.cz
+///  Date: 12. 12. 2023
+///
 import 'dart:convert';
 import 'dart:developer' as developer;
 

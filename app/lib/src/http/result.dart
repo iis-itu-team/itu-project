@@ -1,3 +1,8 @@
+///
+///  Author: Martin Otradovec
+///  Author e-mail: xotrad00@fit.vutbr.cz
+///  Date: 05. 11. 2023
+///
 class HttpResult<T> {
   final int _statusCode;
   final String _status;
