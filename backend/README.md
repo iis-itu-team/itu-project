@@ -27,7 +27,11 @@ Nainstalování balíčků aplikace \
 
 Vytvoření `.env` konfiguračního souboru z templatu \
 `cp .env.template .env` \
-(nastavte připojení k databázi - všechny proměnné začínající s `PG_`)
+
+Nastavte připojení k databázi v `.env` \
+`PG_USER=postgres` \
+`PG_PASSWORD=postgres` \
+`PG_DB_NAME=foodblue`
 
 Vytvoření aplikačního klíče \
 `node ace generate:key` \
