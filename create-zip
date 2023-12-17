@@ -14,6 +14,7 @@ cp "./itu-project/doc/${ITU_XLOGIN}_video.mp4" "./${ITU_XLOGIN}_video.mp4"
 
 zip "./itu-project/${ITU_XLOGIN}.zip" -r \
 	"./${ITU_XLOGIN}_tz.pdf" "./${ITU_XLOGIN}_zn.pdf" "./${ITU_XLOGIN}_video.mp4" \
+	"./itu-project/app/.env.template" \
 	"./itu-project/LICENSE" "./itu-project/copyright_notice.txt" "./itu-project/app/README.md" "./itu-project/app/analysis_options.yaml" \
 	"./itu-project/app/android/" \
 	"./itu-project/app/assets/" \
@@ -22,6 +23,10 @@ zip "./itu-project/${ITU_XLOGIN}.zip" -r \
 	"./itu-project/app/licenses/" \
 	"./itu-project/app/pubspec.yaml" \
 	"./itu-project/app/test/" \
+	"./itu-project/backend/.adonisrc.json" \
+	"./itu-project/backend/.editorconfig" \
+	"./itu-project/backend/.env.template" \
+	"./itu-project/backend/.prettierignore" \
 	"./itu-project/backend/README.md" \
 	"./itu-project/backend/ace" \
 	"./itu-project/backend/ace-manifest.json" \
