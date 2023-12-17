@@ -1,6 +1,8 @@
 zn.pdf
 *_zn.pdf
 
+*.zip
+
 doc/*pdf
 doc/*mp4
 

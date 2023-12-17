@@ -1,0 +1,21 @@
+#!/bin/bash
+
+echo "Ujisti se, že to spouštíš z root dir a máš v doc/ svoje .pdf a .mp4 (včetně zprávy návrhu)"
+echo "Zadej svůj xlogin:"
+read ITU_XLOGIN
+
+echo $ITU_XLOGIN
+
+cd "../"
+
+cp "./itu-project/doc/${ITU_XLOGIN}_tz.pdf" "./${ITU_XLOGIN}_tz.pdf"
+cp "./itu-project/doc/${ITU_XLOGIN}_zn.pdf" "./${ITU_XLOGIN}_zn.pdf"
+cp "./itu-project/doc/${ITU_XLOGIN}.mp4" "./${ITU_XLOGIN}.mp4"
+
+zip "./itu-project/${ITU_XLOGIN}.zip" -r "./${ITU_XLOGIN}_tz.pdf" "./${ITU_XLOGIN}_zn.pdf" "./${ITU_XLOGIN}.mp4" "./itu-project/LICENSE" "./itu-project/copyright_notice.txt" "./itu-project/app/README.md" "./itu-project/app/analysis_options.yaml" "./itu-project/app/android/" "./itu-project/app/assets/" "./itu-project/app/l10n.yaml" "./itu-project/app/lib/" "./itu-project/app/licenses/" "./itu-project/app/pubspec.yaml" "./itu-project/app/test/" "./itu-project/backend/"
+
+rm "./${ITU_XLOGIN}_tz.pdf"
+rm "./${ITU_XLOGIN}_zn.pdf"
+rm "./${ITU_XLOGIN}.mp4"
+
+echo "${ITU_XLOGIN}.zip created"
