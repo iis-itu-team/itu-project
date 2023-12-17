@@ -117,7 +117,7 @@ class BurgerService {
         return -1;
       }
     });
-    if (topBurgersCount > burgers.length) {
+    if (burgers.length > topBurgersCount) {
       burgers.removeRange(topBurgersCount, burgers.length);
     }
 
