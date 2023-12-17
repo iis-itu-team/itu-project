@@ -17,6 +17,7 @@ dependencies:
   flutter_launcher_icons: ^0.13.1
   flutter_localizations:
     sdk: flutter
+  flutter_native_splash: ^2.3.8
   flutter_svg: ^2.0.9
   google_fonts: ^6.1.0
   http: ^1.1.0
@@ -42,3 +43,12 @@ flutter:
 flutter_launcher_icons:
   android: "launcher_icon"
   image_path: "assets/images/BurgerIcon.png"
+
+flutter_native_splash:
+  color: "#F4EBDC"
+  android_12:
+    color: "#F4EBDC"
+
+    # Weird behaviour, icon gets zoomed in, background doesn't get applied
+    #icon_background_color: "#F4EBDC"
+    #image: assets/icon.png
