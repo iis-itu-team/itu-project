@@ -31,7 +31,7 @@ class ShareWidget extends StatelessWidget {
         constraints: const BoxConstraints(
             maxHeight: _componentHeight, maxWidth: _componentWidth),
         child: Column(children: <Widget>[
-          const Flexible(flex: 1, child: Text('Sdielaj svuj')),
+          const Flexible(flex: 1, child: Text('Sdílej svůj')),
           const Flexible(flex: 1, child: Text('burger!')),
           Flexible(
               flex: 2,

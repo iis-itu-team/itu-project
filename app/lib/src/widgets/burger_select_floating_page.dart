@@ -124,7 +124,7 @@ class BurgerSelectFloatingPageState extends State<BurgerSelectFloatingPage> {
                             AsyncSnapshot<HttpResult<void>> snapshot) {
                           if (snapshot.hasData) {
                             if (snapshot.data?.statusCode == 200) {
-                              return const Text('Data se úspěšně odeslaly');
+                              return const Text('Data se úspěšně odeslala');
                             } else {
                               return Text(
                                   'Při odesílání nastala chyba: ${snapshot.data?.status}');
@@ -161,8 +161,8 @@ class BurgerSelectFloatingPageState extends State<BurgerSelectFloatingPage> {
                                         }
 
                                         activeRow.add(Padding(
-                                            padding:
-                                                EdgeInsets.fromLTRB(5, 0, 5, 0),
+                                            padding: const EdgeInsets.fromLTRB(
+                                                5, 0, 5, 0),
                                             child: BurgerSelectWidget(
                                                 burger: myBurgers[i],
                                                 onSelect: onSelect)));

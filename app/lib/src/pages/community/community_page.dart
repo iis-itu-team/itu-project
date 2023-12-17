@@ -184,7 +184,7 @@ class CommunityPageState extends State<CommunityPage> {
               const Padding(
                   padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
                   child: Row(children: <Widget>[
-                    Text('vyhledáváví'),
+                    Text('vyhledávání'),
                     Expanded(
                         child: Divider(
                             thickness: 4.0,
