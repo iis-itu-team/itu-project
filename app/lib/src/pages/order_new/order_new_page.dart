@@ -1,8 +1,3 @@
-///
-///  Author: Matúš Hubinský
-///  Author e-mail: xhubin04@fit.vutbr.cz
-///  Date: 12. 12. 2023
-///
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:food_blueprint/src/models/burger.dart';
@@ -40,11 +35,11 @@ final Map<String, TextEditingController> sigUpController = {
 
 extension Data on Map<String, TextEditingController> {
   Map<String, dynamic> data() {
-    final res = <String, dynamic>{};
+    final result = <String, dynamic>{};
     for (MapEntry e in entries) {
-      res.putIfAbsent(e.key, () => e.value?.text);
+      result.putIfAbsent(e.key, () => e.value?.text);
     }
-    return res;
+    return result;
   }
 }
 
@@ -80,10 +75,33 @@ class _OrderNewPageState extends State<OrderNewPage> {
     });
   }
 
+  int price = 0;
+
+  Widget _builderBurgerIcon(BuildContext context, CartBurger item) => Column(
+        children: [
+          Text("${item.burger.name}"),
+          ImageWithFallback(
+            icon: item.burger.icon,
+            width: 80,
+            height: 80,
+            fallback: ImageUrlLoader.prefixUrl('/icons/burger.png'),
+          ),
+          Text("${item.burger.price} Kč"),
+        ],
+      );
+
+  Widget _buildBurgerRow(BuildContext context) {
+    return Container(
+      child: Row(
+        children: widget.cart.items
+            .map((item) => _builderBurgerIcon(context, item))
+            .toList(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    Burger burger = widget.cart.items[0].burger;
-
     return Scaffold(
       appBar: const AppBarWidget(text: 'Nová objednávka'),
       body: Container(
@@ -93,26 +111,13 @@ class _OrderNewPageState extends State<OrderNewPage> {
             children: [
               HeaderWidget(text: "shrnututí"),
               Column(
-                children: [
-                  Column(
-                    children: [
-                      Text("${burger.name}"),
-                      ImageWithFallback(
-                        icon: burger.icon,
-                        width: 80,
-                        height: 80,
-                        fallback: ImageUrlLoader.prefixUrl('/icons/burger.png'),
-                      ),
-                      Text("${burger.price} Kč"),
-                    ],
-                  ),
-                ],
+                children: [_buildBurgerRow(context)],
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "celkovo: ${burger.price} Kč",
+                    "celkovo: ${price} Kč",
                     style: const TextStyle(
                         color: ThemeColors.colorMeat,
                         fontSize: 24,
