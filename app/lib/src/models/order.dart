@@ -59,8 +59,8 @@ class Order {
     }
   }
 
-  Map<String, dynamic> toJson() => {
-        'burgers': burgers.map((e) => e.toJson()).toList(),
+  Map<String, dynamic> toJson(amount) => {
+        'burgers': burgers.map((e) => e.toOrderJson(amount)).toList(),
         "city": city,
         'street': street,
         'houseNumber': houseNumber,

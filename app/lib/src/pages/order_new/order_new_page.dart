@@ -1,23 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:food_blueprint/src/models/burger.dart';
 import 'package:food_blueprint/src/models/order.dart';
 import 'package:food_blueprint/src/services/order_service.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/pages/order_new/order_new_controller.dart';
 import 'package:food_blueprint/src/pages/order_new/order_confirm_page.dart';
+import 'package:food_blueprint/src/utils/image_loader.dart';
 import 'package:food_blueprint/src/widgets/app_bar_widget.dart';
 import 'package:food_blueprint/src/widgets/checkbox_widget.dart';
+import 'package:food_blueprint/src/widgets/common/image_with_fallback.dart';
 import 'package:food_blueprint/src/widgets/text_form_widget.dart';
 
 import 'package:food_blueprint/src/widgets/header_widget.dart';
 import 'package:food_blueprint/src/widgets/three_checkboxs_widget.dart';
 
+import 'package:food_blueprint/src/types/cart.dart';
+
 late final OrderService orderService;
-final Order order = Order();
+Order order = Order();
 
 final Map<String, TextEditingController> sigUpController = {
   'city': TextEditingController(),
   'street': TextEditingController(),
+  'houseNumber': TextEditingController(),
   'postalCode': TextEditingController(),
   'flatNumber': TextEditingController(),
   'floor': TextEditingController(),
@@ -39,10 +45,12 @@ extension Data on Map<String, TextEditingController> {
 
 class OrderNewPage extends StatefulWidget {
   final OrderNewController controller;
+  Cart cart = Cart();
 
-  const OrderNewPage({
+  OrderNewPage({
     required this.controller,
     super.key,
+    required this.cart,
   });
 
   static const routeName = '/order-new';
@@ -69,6 +77,8 @@ class _OrderNewPageState extends State<OrderNewPage> {
 
   @override
   Widget build(BuildContext context) {
+    Burger burger = widget.cart.items[0].burger;
+
     return Scaffold(
       appBar: const AppBarWidget(text: 'Nová objednávka'),
       body: Container(
@@ -76,6 +86,22 @@ class _OrderNewPageState extends State<OrderNewPage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              Column(
+                children: [
+                  Column(
+                    children: [
+                      Text("${burger.name}"),
+                      ImageWithFallback(
+                        icon: burger.icon,
+                        width: 80,
+                        height: 80,
+                        fallback: ImageUrlLoader.prefixUrl('/icons/burger.png'),
+                      ),
+                      Text("${burger.price} Kč"),
+                    ],
+                  ),
+                ],
+              ),
               HeaderWidget(text: "shrnututí"),
               HeaderWidget(text: "doručení"),
               TextFormWidget(
@@ -86,6 +112,9 @@ class _OrderNewPageState extends State<OrderNewPage> {
               const SizedBox(height: 10),
               TextFormWidget(
                   text: "č.p.", controller: sigUpController['houseNumber']),
+              const SizedBox(height: 10),
+              TextFormWidget(
+                  text: "PSČ", controller: sigUpController['postalCode']),
               const SizedBox(height: 10),
               TextFormWidget(
                   text: "poznámka pro řidiče",
@@ -125,7 +154,9 @@ class _OrderNewPageState extends State<OrderNewPage> {
               onTap: () {
                 final data = sigUpController.data();
 
-                // callbackFunction(payment);
+                List<Burger> burgers = [widget.cart.items[0].burger];
+
+                order.burgers = burgers;
                 order.city = data['city'];
                 order.street = data['street'];
                 order.houseNumber = data['houseNumber'];
@@ -133,7 +164,33 @@ class _OrderNewPageState extends State<OrderNewPage> {
                 order.postalCode = data['postalCode'];
                 order.floor = data['floor'];
                 order.note = data['note'];
+
+                switch (payment) {
+                  case ("při doručení (hotově / kartou)"):
+                    payment = "on_delivery";
+                    break;
+                  case ("online kartou"):
+                    payment = "card";
+                    break;
+                  case ("při doručení (hotově / kartou)"):
+                    payment = "paypal";
+                    break;
+                }
+
                 order.paymentType = payment;
+
+                switch (delivery) {
+                  case ("před dum"):
+                    delivery = "house";
+                    break;
+                  case ("ke dveřím domu"):
+                    delivery = "house_door";
+                    break;
+                  case ("ke dveřím bytu"):
+                    delivery = "flat_door";
+                    break;
+                }
+
                 order.deliveryType = delivery;
 
                 widget.controller.handleSave(order);
