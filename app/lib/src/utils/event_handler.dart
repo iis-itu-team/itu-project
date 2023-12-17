@@ -4,6 +4,8 @@
 ///  Author e-mail: xotrad00@fit.vutbr.cz
 ///  Date: 16. 12. 2023
 ///
+import 'dart:async';
+
 import 'package:event_bus/event_bus.dart';
 
 class EventHandler {
@@ -17,5 +19,11 @@ class EventHandler {
 
   static fire(event) {
     eventBus.fire(event);
+  }
+
+  static cancelAll(Iterable<StreamSubscription> subs) {
+    for (var element in subs) {
+      element.cancel();
+    }
   }
 }

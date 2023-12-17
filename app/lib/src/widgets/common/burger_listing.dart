@@ -4,6 +4,8 @@
 ///  Author e-mail: xotrad00@fit.vutbr.cz
 ///  Date: 16. 12. 2023
 ///
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/events/burger_created_event.dart';
 import 'package:food_blueprint/src/events/burger_deleted_event.dart';
@@ -51,21 +53,30 @@ class _BurgerListState extends State<BurgerList> {
   List<Burger> _burgers = [];
   bool _loaded = false;
 
+  final List<StreamSubscription> _subs = [];
+
+  @override
+  void dispose() {
+    EventHandler.cancelAll(_subs);
+    _subs.clear();
+    super.dispose();
+  }
+
   @override
   void initState() {
     super.initState();
     _fetchList();
 
     // Listen to burger updates and creations, update the list
-    EventHandler.listen<BurgerCreatedEvent>((event) {
+    _subs.add(EventHandler.listen<BurgerCreatedEvent>((event) {
       Burger burger = event.burger;
 
       setState(() {
         _burgers.insert(0, burger);
       });
-    });
+    }));
 
-    EventHandler.listen<BurgerUpdatedEvent>((event) {
+    _subs.add(EventHandler.listen<BurgerUpdatedEvent>((event) {
       // find index of the burger that got updated
       Burger burger = event.burger;
 
@@ -80,15 +91,15 @@ class _BurgerListState extends State<BurgerList> {
       setState(() {
         _burgers[idx] = burger;
       });
-    });
+    }));
 
-    EventHandler.listen<BurgerDeletedEvent>((event) {
+    _subs.add(EventHandler.listen<BurgerDeletedEvent>((event) {
       Burger burger = event.burger;
 
       setState(() {
         _burgers.removeWhere((element) => element.id == burger.id);
       });
-    });
+    }));
   }
 
   void _burgersLoaded(List<Burger> burgers) {
