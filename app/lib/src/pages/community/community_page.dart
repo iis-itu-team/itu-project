@@ -147,7 +147,9 @@ class CommunityPageState extends State<CommunityPage> {
                                                   milliseconds: 150),
                                               data: communityBurgers[index],
                                               dragAnchorStrategy:
-                                                  pointerDragAnchorStrategy,
+                                                  (object, context, offset) {
+                                                return const Offset(40, 40);
+                                              },
                                               feedback: ImageWithFallback(
                                                   icon: communityBurgers[index]
                                                       .icon,
@@ -220,7 +222,10 @@ class CommunityPageState extends State<CommunityPage> {
                               activeRow.add(LongPressDraggable(
                                   delay: const Duration(milliseconds: 150),
                                   data: communityBurgers[i],
-                                  dragAnchorStrategy: pointerDragAnchorStrategy,
+                                  dragAnchorStrategy:
+                                      (object, context, offset) {
+                                    return const Offset(40, 40);
+                                  },
                                   feedback: ImageWithFallback(
                                       icon: communityBurgers[i].icon,
                                       width: 80,
