@@ -1,8 +1,6 @@
 ///
-///  Author: Matúš Hubinský
-///  Author e-mail: xhubin04@fit.vutbr.cz
-///  Collaborator: Martin Otradovec
-///  Collaborator e-mail: xotrad00@fit.vutbr.cz
+///  Author: Martin Otradovec
+///  Author e-mail: xotrad00@fit.vutbr.cz
 ///  Collaborator: Marek Vandík
 ///  Collaborator e-mail: xvandi01@fit.vutbr.cz
 ///  Date: 12. 12. 2023
@@ -14,6 +12,8 @@ import 'package:food_blueprint/src/http/client.dart';
 import 'package:food_blueprint/src/http/result.dart';
 import 'package:food_blueprint/src/models/burger.dart';
 
+///  Author: Martin Otradovec
+///  Class to abstract GET /burgers query parameters.
 class GetBurgersInput {
   String? keeperId;
   bool? published;
@@ -28,6 +28,7 @@ class GetBurgersInput {
 }
 
 class BurgerService {
+  ///  Author: Martin Otradovec
   Future<HttpResult<List<Burger>>> listBurgers(GetBurgersInput? input) async {
     final HttpClient client = HttpClient.fromEnv();
 
@@ -64,7 +65,7 @@ class BurgerService {
     return HttpResult(response.statusCode, json["status"], burgers);
   }
 
-  // Author: Marek Vandík
+  /// Author: Marek Vandík
   Future<HttpResult<List<Burger>>> listCommunityBurgers(
       {String searchQuery = ''}) async {
     final HttpClient client = HttpClient.fromEnv();
@@ -97,7 +98,7 @@ class BurgerService {
     return HttpResult(response.statusCode, json["status"], burgers);
   }
 
-  // Author: Marek Vandík
+  /// Author: Marek Vandík
   Future<HttpResult<List<Burger>>> listBestCommunityBurgers(
       {int topBurgersCount = 10}) async {
     final HttpClient client = HttpClient.fromEnv();
@@ -137,6 +138,7 @@ class BurgerService {
     return HttpResult(response.statusCode, json["status"], burgers);
   }
 
+  ///  Author: Martin Otradovec
   Future<HttpResult<Burger>> updateBurger(String id, Burger burger) async {
     final HttpClient client = HttpClient.fromEnv();
 
@@ -154,7 +156,7 @@ class BurgerService {
     return HttpResult(response.statusCode, json["status"], updatedBurger);
   }
 
-  // Author: Marek Vandík
+  /// Author: Marek Vandík
   Future<HttpResult<void>> publishBurgers(List<Burger> burgers) async {
     final HttpClient client = HttpClient.fromEnv();
 
@@ -180,6 +182,7 @@ class BurgerService {
         statusCode ?? response.statusCode, status ?? json['status'], null);
   }
 
+  ///  Author: Martin Otradovec
   Future<HttpResult<Burger>> createBurger(Burger burger) async {
     final HttpClient client = HttpClient.fromEnv();
 
@@ -197,6 +200,7 @@ class BurgerService {
     return HttpResult(response.statusCode, json["status"], createdBurger);
   }
 
+  ///  Author: Martin Otradovec
   Future<HttpResult<void>> deleteBurger(String id) async {
     final HttpClient client = HttpClient.fromEnv();
 

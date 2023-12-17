@@ -18,12 +18,18 @@ import 'package:food_blueprint/src/widgets/common/image_with_fallback.dart';
 import 'package:food_blueprint/src/widgets/common/loading.dart';
 
 class BurgerList extends StatefulWidget {
+  // Function to call to fetch burgers
   final Future<List<Burger>> Function() fetchBurgers;
 
-  final int? limit;
-  final List<Widget>? extraChildren;
   final String? title;
 
+  // How many burgers to display
+  final int? limit;
+
+  // Extra children to display after the burgers in the Wrap
+  final List<Widget>? extraChildren;
+
+  // Whether to display a loading screen when burgers are loading
   final bool displayLoadingScreen;
 
   const BurgerList(
@@ -42,6 +48,46 @@ class _BurgerListState extends State<BurgerList> {
   List<Burger> _burgers = [];
   bool _loaded = false;
 
+  @override
+  void initState() {
+    super.initState();
+    _fetchList();
+
+    // Listen to burger updates and creations, update the list
+    EventHandler.listen<BurgerCreatedEvent>((event) {
+      Burger burger = event.burger;
+
+      setState(() {
+        _burgers.insert(0, burger);
+      });
+    });
+
+    EventHandler.listen<BurgerUpdatedEvent>((event) {
+      // find index of the burger that got updated
+      Burger burger = event.burger;
+
+      int idx = _burgers.indexWhere((element) => element.id == burger.id);
+
+      if (idx == -1) {
+        // fail to find it, re-fetch all burgers
+        _fetchList();
+        return;
+      }
+
+      setState(() {
+        _burgers[idx] = burger;
+      });
+    });
+
+    EventHandler.listen<BurgerDeletedEvent>((event) {
+      Burger burger = event.burger;
+
+      setState(() {
+        _burgers.removeWhere((element) => element.id == burger.id);
+      });
+    });
+  }
+
   void _burgersLoaded(List<Burger> burgers) {
     setState(() {
       _loaded = true;
@@ -49,6 +95,7 @@ class _BurgerListState extends State<BurgerList> {
     });
   }
 
+  // burgers started loading
   void _burgersLoading() {
     setState(() {
       _loaded = false;
@@ -63,6 +110,44 @@ class _BurgerListState extends State<BurgerList> {
     ]).then((data) {
       _burgersLoaded(data[0]);
     });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    List<Widget> content;
+
+    if (_loaded || !widget.displayLoadingScreen) {
+      content = [
+        _buildListing(context),
+        const SizedBox(height: 20),
+        Visibility(
+            visible: widget.limit != null && _burgers.length > widget.limit!,
+            child: Align(
+                alignment: Alignment.bottomRight,
+                child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, MinePage.routeName);
+                        },
+                        child: Text(
+                            "procházet dalších ${_burgers.length - (widget.limit ?? 0)}...",
+                            style: const TextStyle(
+                                fontWeight: FontWeight.w800)))))),
+      ];
+    } else {
+      content = [const Center(child: Loading(text: 'Loading burgers...'))];
+    }
+
+    return Column(children: [
+      widget.title != null
+          ? _buildSeparator(context, widget.title!)
+          : Container(),
+      const SizedBox(
+        height: 20,
+      ),
+      ...content
+    ]);
   }
 
   Widget _buildBurgerItem(BuildContext context, Burger burger) {
@@ -120,83 +205,5 @@ class _BurgerListState extends State<BurgerList> {
     }
 
     return Wrap(direction: Axis.horizontal, children: children);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    List<Widget> content;
-
-    if (_loaded || !widget.displayLoadingScreen) {
-      content = [
-        _buildListing(context),
-        const SizedBox(height: 20),
-        Visibility(
-            visible: widget.limit != null && _burgers.length > widget.limit!,
-            child: Align(
-                alignment: Alignment.bottomRight,
-                child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(context, MinePage.routeName);
-                        },
-                        child: Text(
-                            "procházet dalších ${_burgers.length - (widget.limit ?? 0)}...",
-                            style: const TextStyle(
-                                fontWeight: FontWeight.w800)))))),
-      ];
-    } else {
-      content = [const Center(child: Loading(text: 'Loading burgers...'))];
-    }
-
-    return Column(children: [
-      widget.title != null
-          ? _buildSeparator(context, widget.title!)
-          : Container(),
-      const SizedBox(
-        height: 20,
-      ),
-      ...content
-    ]);
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _fetchList();
-
-    // Listen to burger updates and creations, update the list
-    EventHandler.listen<BurgerCreatedEvent>((event) {
-      Burger burger = event.burger;
-
-      setState(() {
-        _burgers.insert(0, burger);
-      });
-    });
-
-    EventHandler.listen<BurgerUpdatedEvent>((event) {
-      // find index of the burger that got updated
-      Burger burger = event.burger;
-
-      int idx = _burgers.indexWhere((element) => element.id == burger.id);
-
-      if (idx == -1) {
-        // fail to find it, re-fetch all burgers
-        _fetchList();
-        return;
-      }
-
-      setState(() {
-        _burgers[idx] = burger;
-      });
-    });
-
-    EventHandler.listen<BurgerDeletedEvent>((event) {
-      Burger burger = event.burger;
-
-      setState(() {
-        _burgers.removeWhere((element) => element.id == burger.id);
-      });
-    });
   }
 }

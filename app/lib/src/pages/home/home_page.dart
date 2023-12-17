@@ -27,36 +27,34 @@ class HomePage extends StatelessWidget {
 
   HomePage({super.key, required this.controller, required this.cart});
 
-  Widget _buildPage(BuildContext context) {
-    return SizedBox(
-        height: MediaQuery.of(context).size.height,
-        child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Column(
-              children: <Widget>[
-                const RowMenuWidget(),
-                BurgerList(
-                    limit: 10,
-                    displayLoadingScreen: !controller.isCached(),
-                    fetchBurgers: controller.listMyBurgers,
-                    title: "moje burgříky",
-                    extraChildren: const [CreateBurgerButton()]),
-                BurgerList(
-                    limit: 10,
-                    displayLoadingScreen: !controller.isCached(),
-                    fetchBurgers: controller.listCommunityBurgers,
-                    title: "komunitní burgříky"),
-                // extra padding to scroll content from behind the order button
-                const SizedBox(height: 120)
-              ],
-            )));
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const AppBarWidget(text: 'Domov'),
-      body: CartDropProvider(layerLink: layerLink, child: _buildPage(context)),
+      body: CartDropProvider(
+          layerLink: layerLink,
+          child: SizedBox(
+              height: MediaQuery.of(context).size.height,
+              child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Column(
+                    children: <Widget>[
+                      const RowMenuWidget(),
+                      BurgerList(
+                          limit: 10,
+                          displayLoadingScreen: !controller.isCached(),
+                          fetchBurgers: controller.listMyBurgers,
+                          title: "moje burgříky",
+                          extraChildren: const [CreateBurgerButton()]),
+                      BurgerList(
+                          limit: 10,
+                          displayLoadingScreen: !controller.isCached(),
+                          fetchBurgers: controller.listCommunityBurgers,
+                          title: "komunitní burgříky"),
+                      // extra padding to scroll content from behind the order button
+                      const SizedBox(height: 120)
+                    ],
+                  )))),
       bottomNavigationBar: BottomNavigationWidget(cart: cart),
       floatingActionButton: const OrderButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
