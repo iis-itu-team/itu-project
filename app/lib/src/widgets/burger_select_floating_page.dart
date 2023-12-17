@@ -119,13 +119,13 @@ class BurgerSelectFloatingPageState extends State<BurgerSelectFloatingPage> {
                             AsyncSnapshot<HttpResult<void>> snapshot) {
                           if (snapshot.hasData) {
                             if (snapshot.data?.statusCode == 200) {
-                              return const Text('Dáta sa úspešne odoslali');
+                              return const Text('Data se úspěšně odeslaly');
                             } else {
                               return Text(
-                                  'Pri odosielaní sa stala chyba: ${snapshot.data?.status}');
+                                  'Při odesílání nastala chyba: ${snapshot.data?.status}');
                             }
                           } else {
-                            return const Text('Odosielam dáta');
+                            return const Text('Odesílám data');
                           }
                         })
                     : FutureBuilder(
@@ -180,19 +180,19 @@ class BurgerSelectFloatingPageState extends State<BurgerSelectFloatingPage> {
                                                             index]));
                                               })
                                           : const Text(
-                                              'Zatial nemáte vlastné burgre');
+                                              'Zatím nemáte vlastní burgery');
                                     } else {
                                       return Text(
-                                          'Niečo sa nepovedlo - ${snapshot.data?.status}',
+                                          'Něco se nepovedlo - ${snapshot.data?.status}',
                                           style: const TextStyle(
                                               color: ThemeColors.colorKetchup));
                                     }
                                   } else {
-                                    return const Text('Čakám na dáta');
+                                    return const Text('Čekám na data');
                                   }
                                 });
                           } else {
-                            return const Text('Čakám na keeperId');
+                            return const Text('Čekám na keeperId');
                           }
                         }))
           ]),

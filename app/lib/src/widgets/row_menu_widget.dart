@@ -32,13 +32,13 @@ class RowMenuWidget extends StatelessWidget implements PreferredSizeWidget {
         Flexible(
             child: FittedBox(
                 child: ButtonWidget(
-                    text: 'Komunitné',
+                    text: 'Komunitní',
                     route: CommunityPage.routeName,
                     underline: currentRoute == CommunityPage.routeName))),
         Flexible(
             child: FittedBox(
                 child: ButtonWidget(
-                    text: 'Základné',
+                    text: 'Základní',
                     route: BasicPage.routeName,
                     underline: currentRoute == BasicPage.routeName))),
       ],

@@ -106,7 +106,7 @@ class CommunityPageState extends State<CommunityPage> {
   Widget build(BuildContext context) {
     return Stack(alignment: Alignment.center, children: <Widget>[
       Scaffold(
-        appBar: const AppBarWidget(text: 'Komunitný Workshop'),
+        appBar: const AppBarWidget(text: 'Komunitní Workshop'),
         body: CartDropProvider(
             layerLink: _layerLink,
             child: Column(children: <Widget>[
@@ -114,7 +114,7 @@ class CommunityPageState extends State<CommunityPage> {
               const Padding(
                   padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
                   child: Row(children: <Widget>[
-                    Text('top týždňa'),
+                    Text('top týdne'),
                     Expanded(
                         child: Divider(
                             thickness: 4.0,
@@ -162,22 +162,22 @@ class CommunityPageState extends State<CommunityPage> {
                                                   ratingService:
                                                       widget.ratingService)));
                                     }))
-                            : const Text('Ve workshope nejsou žiadné burgre');
+                            : const Text('Ve workshopu nejsou žádné burgery');
                       } else {
                         return Text(
-                            'Niečo sa nepovedlo - ${snapshot.data?.status}',
+                            'Něco se nepovedlo - ${snapshot.data?.status}',
                             style: const TextStyle(
                                 color: ThemeColors.colorKetchup));
                       }
                     } else {
-                      return const Text('Čakám na dáta');
+                      return const Text('Čekám na data');
                     }
                   }),
               const SizedBox(height: 20),
               const Padding(
                   padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
                   child: Row(children: <Widget>[
-                    Text('vyhledávanie'),
+                    Text('vyhledáváví'),
                     Expanded(
                         child: Divider(
                             thickness: 4.0,
@@ -247,12 +247,12 @@ class CommunityPageState extends State<CommunityPage> {
                                 });
                           } else {
                             return Text(
-                                'Niečo sa nepovedlo - ${snapshot.data?.status}',
+                                'Něco se nepovedlo - ${snapshot.data?.status}',
                                 style: const TextStyle(
                                     color: ThemeColors.colorKetchup));
                           }
                         } else {
-                          return const Text('Čakám na dáta');
+                          return const Text('Čekám na data');
                         }
                       }))
             ])),
