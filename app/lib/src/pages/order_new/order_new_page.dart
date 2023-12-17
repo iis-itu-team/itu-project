@@ -4,7 +4,6 @@
 ///  Author e-mail: xhubin04@fit.vutbr.cz
 ///  Date: 12. 12. 2023
 ///
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:food_blueprint/src/models/burger.dart';
@@ -15,6 +14,7 @@ import 'package:food_blueprint/src/pages/order_new/order_new_controller.dart';
 import 'package:food_blueprint/src/pages/order_new/order_confirm_page.dart';
 import 'package:food_blueprint/src/utils/image_loader.dart';
 import 'package:food_blueprint/src/widgets/app_bar_widget.dart';
+import 'package:food_blueprint/src/widgets/cart/burger_item.dart';
 import 'package:food_blueprint/src/widgets/checkbox_widget.dart';
 import 'package:food_blueprint/src/widgets/common/image_with_fallback.dart';
 import 'package:food_blueprint/src/widgets/text_form_widget.dart';
@@ -183,7 +183,10 @@ class _OrderNewPageState extends State<OrderNewPage> {
               onTap: () {
                 final data = sigUpController.data();
 
-                List<Burger> burgers = [widget.cart.items[0].burger];
+                List<Burger> burgers = [];
+                for (CartBurger item in widget.cart.items) {
+                  burgers.add(item.burger as Burger);
+                }
 
                 order.burgers = burgers;
                 order.city = data['city'];
