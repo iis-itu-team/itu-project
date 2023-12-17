@@ -86,6 +86,7 @@ class _OrderNewPageState extends State<OrderNewPage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              HeaderWidget(text: "shrnututí"),
               Column(
                 children: [
                   Column(
@@ -102,7 +103,18 @@ class _OrderNewPageState extends State<OrderNewPage> {
                   ),
                 ],
               ),
-              HeaderWidget(text: "shrnututí"),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "celkovo: ${burger.price} Kč",
+                    style: const TextStyle(
+                        color: ThemeColors.colorMeat,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
               HeaderWidget(text: "doručení"),
               TextFormWidget(
                   text: "Město", controller: sigUpController['city']),
