@@ -3,6 +3,8 @@ import 'package:food_blueprint/src/events/burger_created_event.dart';
 import 'package:food_blueprint/src/events/burger_deleted_event.dart';
 import 'package:food_blueprint/src/events/burger_updated_event.dart';
 import 'package:food_blueprint/src/models/burger.dart';
+import 'package:food_blueprint/src/pages/burger_edit/burger_edit_arguments.dart';
+import 'package:food_blueprint/src/pages/burger_edit/burger_edit_page.dart';
 import 'package:food_blueprint/src/pages/mine/mine_page.dart';
 import 'package:food_blueprint/src/utils/event_handler.dart';
 import 'package:food_blueprint/src/utils/image_loader.dart';
@@ -148,7 +150,8 @@ class BurgerListing extends StatefulWidget {
 
 class _BurgerListingState extends State<BurgerListing> {
   Widget _buildBurgerItem(BuildContext context, Burger burger) {
-    return Draggable(
+    return LongPressDraggable(
+        delay: const Duration(milliseconds: 150),
         data: burger,
         dragAnchorStrategy: (object, context, offset) {
           return const Offset(40, 40);
@@ -159,7 +162,12 @@ class _BurgerListingState extends State<BurgerListing> {
             width: 80,
             height: 80,
             fallback: ImageUrlLoader.prefixUrl('/icons/burger.png')),
-        child: BurgerItem(burger: burger));
+        child: GestureDetector(
+            child: BurgerItem(burger: burger),
+            onTap: () {
+              Navigator.pushNamed(context, BurgerEditPage.routeName,
+                  arguments: BurgerEditArguments(burger));
+            }));
   }
 
   Widget _buildSeparator(BuildContext context, String title) {
