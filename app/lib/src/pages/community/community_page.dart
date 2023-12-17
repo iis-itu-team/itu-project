@@ -14,6 +14,7 @@ import 'package:food_blueprint/src/services/burger_service.dart';
 import 'package:food_blueprint/src/services/rating_service.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/types/cart.dart';
+import 'package:food_blueprint/src/utils/image_loader.dart';
 import 'package:food_blueprint/src/widgets/app_bar_widget.dart';
 import 'package:food_blueprint/src/widgets/bottom_navigation_widget.dart';
 import 'package:food_blueprint/src/widgets/burger_rating_widget.dart';
@@ -24,7 +25,6 @@ import 'package:food_blueprint/src/widgets/cart/order_button.dart';
 import 'package:food_blueprint/src/widgets/common/image_with_fallback.dart';
 import 'package:food_blueprint/src/widgets/rating_searchbar.dart';
 import 'package:food_blueprint/src/widgets/row_menu_widget.dart';
-import 'package:food_blueprint/src/utils/image_loader.dart';
 
 class CommunityPage extends StatefulWidget {
   static const routeName = '/community';
@@ -269,7 +269,7 @@ class CommunityPageState extends State<CommunityPage> {
                       }))
             ])),
         bottomNavigationBar: BottomNavigationWidget(cart: widget.cart),
-        floatingActionButton: const OrderButton(),
+        floatingActionButton: OrderButton(cart: widget.cart),
         floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       ),
       ..._stack

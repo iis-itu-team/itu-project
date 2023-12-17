@@ -56,7 +56,7 @@ class MinePage extends StatelessWidget {
                         ])))
               ]))),
       bottomNavigationBar: BottomNavigationWidget(cart: cart),
-      floatingActionButton: const OrderButton(),
+      floatingActionButton: OrderButton(cart: cart),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
     );
   }
