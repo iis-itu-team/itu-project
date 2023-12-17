@@ -82,8 +82,6 @@ class _OrderNewPageState extends State<OrderNewPage> {
     });
   }
 
-  int price = 0;
-
   Widget _builderBurgerIcon(BuildContext context, CartBurger item) => Column(
         children: [
           Text("${item.burger.name}"),
@@ -124,7 +122,7 @@ class _OrderNewPageState extends State<OrderNewPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "celkovo: ${price} Kč",
+                    "celkovo:${widget.cart.getTotalPrice()}Kč",
                     style: const TextStyle(
                         color: ThemeColors.colorMeat,
                         fontSize: 24,
