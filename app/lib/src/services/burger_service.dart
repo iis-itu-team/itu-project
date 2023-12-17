@@ -72,7 +72,7 @@ class BurgerService {
     final HttpClient client = HttpClient.fromEnv();
 
     final response = await client
-        .get(client.route("/burgers"), headers: {'published': 'true'});
+        .get(client.route("/burgers", query: {'published': 'true'}));
 
     final json = jsonDecode(response.body) as Map<String, dynamic>;
 
@@ -105,7 +105,7 @@ class BurgerService {
     final HttpClient client = HttpClient.fromEnv();
 
     final response = await client
-        .get(client.route("/burgers"), headers: {'published': 'true'});
+        .get(client.route("/burgers", query: {'published': 'true'}));
 
     final json = jsonDecode(response.body) as Map<String, dynamic>;
 
