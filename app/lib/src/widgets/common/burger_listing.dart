@@ -103,11 +103,6 @@ class _BurgerListState extends State<BurgerList> {
 
   Widget _buildListing(BuildContext context) {
     List<Burger> burgers = _burgers;
-    burgers.sort((a, b) => a.createdAt != null &&
-            b.createdAt != null &&
-            a.createdAt!.isBefore(b.createdAt!)
-        ? 1
-        : -1);
     List<Widget> children = burgers
         .take(widget.limit ?? burgers.length)
         .map((burger) => _buildBurgerItem(context, burger))
@@ -131,9 +126,7 @@ class _BurgerListState extends State<BurgerList> {
   @override
   Widget build(BuildContext context) {
     if (_loaded) {
-      return SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(children: [
+      return Column(children: [
             _buildListing(context),
             const SizedBox(height: 20),
             Visibility(
@@ -151,7 +144,7 @@ class _BurgerListState extends State<BurgerList> {
                                 "procházet dalších ${_burgers.length - (widget.limit ?? 0)}...",
                                 style: const TextStyle(
                                     fontWeight: FontWeight.w800)))))),
-          ]));
+          ]);
     }
 
     return const Center(child: Loading(text: 'Loading burgers...'));
