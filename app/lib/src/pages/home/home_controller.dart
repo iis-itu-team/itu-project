@@ -12,13 +12,17 @@ import 'package:food_blueprint/src/http/result.dart';
 import 'package:food_blueprint/src/models/burger.dart';
 import 'package:food_blueprint/src/services/burger_service.dart';
 import 'package:food_blueprint/src/utils/event_handler.dart';
+import 'package:food_blueprint/src/utils/keeper_store.dart';
 
 class HomeController {
-  final BurgerService foodService;
+  final BurgerService burgerService;
 
+  // cache burgers to reduce API calls
   List<Burger>? cachedBurgers;
 
-  HomeController(this.foodService) {
+  HomeController(this.burgerService) {
+    // -- listen to Burger CUD events, revalidate cached burgers
+
     EventHandler.listen<BurgerDeletedEvent>((event) {
       cachedBurgers?.removeWhere((element) => element.id == event.burger.id);
     });
@@ -42,9 +46,10 @@ class HomeController {
     });
   }
 
+  // List all burgers.
   Future<List<Burger>> listBurgers() async {
     final result =
-        await foodService.listBurgers(null).catchError((error, stack) {
+        await burgerService.listBurgers(null).catchError((error, stack) {
       developer.log(stack.toString());
       return HttpResult(600, "fail", List<Burger>.from([]));
     });
@@ -59,6 +64,49 @@ class HomeController {
 
     cachedBurgers = List.from(result.data!);
     return result.data!;
+  }
+
+  // LIst burgers owned by this keeper.
+  Future<List<Burger>> listMyBurgers() async {
+    return listBurgers().then((burgers) async {
+      String? keeperId = await KeeperStore.getKeeperId();
+
+      if (keeperId == null) {
+        return [];
+      }
+
+      burgers =
+          burgers.where((element) => element.keeperId == keeperId).toList();
+
+      burgers.sort((a, b) => a.createdAt != null &&
+              b.createdAt != null &&
+              a.createdAt!.isBefore(b.createdAt!)
+          ? 1
+          : -1);
+
+      return burgers;
+    });
+  }
+
+  Future<List<Burger>> listCommunityBurgers() async {
+    return listBurgers().then((burgers) async {
+      String? keeperId = await KeeperStore.getKeeperId();
+
+      if (keeperId == null) {
+        return [];
+      }
+
+      burgers = burgers
+          .where((element) =>
+              element.published == true && keeperId != element.keeperId)
+          .toList();
+
+      burgers.sort((a, b) =>
+          a.rating != null && b.rating != null && a.rating! > b.rating!
+              ? -1
+              : 1);
+      return burgers;
+    });
   }
 
   void clearCache() {

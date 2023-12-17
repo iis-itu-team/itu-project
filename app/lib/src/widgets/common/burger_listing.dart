@@ -110,9 +110,8 @@ class _BurgerListState extends State<BurgerList> {
   }
 
   Widget _buildListing(BuildContext context) {
-    List<Burger> burgers = _burgers;
-    List<Widget> children = burgers
-        .take(widget.limit ?? burgers.length)
+    List<Widget> children = _burgers
+        .take(widget.limit ?? _burgers.length)
         .map((burger) => _buildBurgerItem(context, burger))
         .toList();
 
@@ -171,7 +170,7 @@ class _BurgerListState extends State<BurgerList> {
       Burger burger = event.burger;
 
       setState(() {
-        _burgers.add(burger);
+        _burgers.insert(0, burger);
       });
     });
 

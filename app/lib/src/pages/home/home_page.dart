@@ -6,7 +6,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/pages/home/home_controller.dart';
 import 'package:food_blueprint/src/types/cart.dart';
-import 'package:food_blueprint/src/utils/keeper_store.dart';
 import 'package:food_blueprint/src/widgets/app_bar_widget.dart';
 import 'package:food_blueprint/src/widgets/bottom_navigation_widget.dart';
 import 'package:food_blueprint/src/widgets/cart/cart_drop_provider.dart';
@@ -39,54 +38,13 @@ class HomePage extends StatelessWidget {
                 BurgerList(
                     limit: 10,
                     displayLoadingScreen: !controller.isCached(),
-                    fetchBurgers: () {
-                      return controller.listBurgers().then((burgers) async {
-                        String? keeperId = await KeeperStore.getKeeperId();
-
-                        if (keeperId == null) {
-                          return [];
-                        }
-
-                        burgers = burgers
-                            .where((element) => element.keeperId == keeperId)
-                            .toList();
-
-                        burgers.sort((a, b) => a.createdAt != null &&
-                                b.createdAt != null &&
-                                a.createdAt!.isBefore(b.createdAt!)
-                            ? 1
-                            : -1);
-
-                        return burgers;
-                      });
-                    },
+                    fetchBurgers: controller.listMyBurgers,
                     title: "moje burgříky",
                     extraChildren: const [CreateBurgerButton()]),
                 BurgerList(
                     limit: 10,
                     displayLoadingScreen: !controller.isCached(),
-                    fetchBurgers: () {
-                      return controller.listBurgers().then((burgers) async {
-                        String? keeperId = await KeeperStore.getKeeperId();
-
-                        if (keeperId == null) {
-                          return [];
-                        }
-
-                        burgers = burgers
-                            .where((element) =>
-                                element.published == true &&
-                                keeperId != element.keeperId)
-                            .toList();
-
-                        burgers.sort((a, b) => a.rating != null &&
-                                b.rating != null &&
-                                a.rating! > b.rating!
-                            ? -1
-                            : 1);
-                        return burgers;
-                      });
-                    },
+                    fetchBurgers: controller.listCommunityBurgers,
                     title: "komunitní burgříky"),
                 // extra padding to scroll content from behind the order button
                 const SizedBox(height: 120)
