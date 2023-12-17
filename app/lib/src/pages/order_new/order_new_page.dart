@@ -122,7 +122,7 @@ class _OrderNewPageState extends State<OrderNewPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "celkovo:${widget.cart.getTotalPrice()}Kč",
+                    "celkem:${widget.cart.getTotalPrice()}Kč",
                     style: const TextStyle(
                         color: ThemeColors.colorMeat,
                         fontSize: 24,
