@@ -1,6 +1,8 @@
 ///
 ///  Author: Matúš Hubinský
 ///  Author e-mail: xhubin04@fit.vutbr.cz
+///  Collaborator: Marek Vandík - complete overhaul
+///  Collaborator e-mail: xvandi01@fit.vutbr.cz
 ///  Date: 17. 12. 2023
 ///
 import 'package:flutter/material.dart';

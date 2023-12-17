@@ -1,6 +1,6 @@
 ///
-///  Author: Matúš Hubinský
-///  Author e-mail: xhubin04@fit.vutbr.cz
+///  Author: Marek Vandík
+///  Author e-mail: xvandi01@fit.vutbr.cz
 ///  Date: 14. 12. 2023
 ///
 import 'dart:async';
@@ -75,6 +75,7 @@ class CommunityPageState extends State<CommunityPage> {
     });
   }
 
+  // Callback for when search query changes - 1.5s timeout before sending request
   void searchChanged(String newSearch) {
     _search = newSearch;
     _searchTimeoutTimer?.cancel();
@@ -101,7 +102,7 @@ class CommunityPageState extends State<CommunityPage> {
     });
   }
 
-  // Close selection page
+  // Callback for when floating select share page closes
   void onSelectClose() {
     fetchData();
     closeSelectPage();

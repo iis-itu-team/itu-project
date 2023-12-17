@@ -3,6 +3,8 @@
 ///  Author e-mail: xhubin04@fit.vutbr.cz
 ///  Collaborator: Martin Otradovec
 ///  Collaborator e-mail: xotrad00@fit.vutbr.cz
+///  Collaborator: Marek Vandík
+///  Collaborator e-mail: xvandi01@fit.vutbr.cz
 ///  Date: 12. 12. 2023
 ///
 import 'dart:convert';
@@ -62,6 +64,7 @@ class BurgerService {
     return HttpResult(response.statusCode, json["status"], burgers);
   }
 
+  // Author: Marek Vandík
   Future<HttpResult<List<Burger>>> listCommunityBurgers(
       {String searchQuery = ''}) async {
     final HttpClient client = HttpClient.fromEnv();
@@ -94,6 +97,7 @@ class BurgerService {
     return HttpResult(response.statusCode, json["status"], burgers);
   }
 
+  // Author: Marek Vandík
   Future<HttpResult<List<Burger>>> listBestCommunityBurgers(
       {int topBurgersCount = 10}) async {
     final HttpClient client = HttpClient.fromEnv();
@@ -150,6 +154,7 @@ class BurgerService {
     return HttpResult(response.statusCode, json["status"], updatedBurger);
   }
 
+  // Author: Marek Vandík
   Future<HttpResult<void>> publishBurgers(List<Burger> burgers) async {
     final HttpClient client = HttpClient.fromEnv();
 

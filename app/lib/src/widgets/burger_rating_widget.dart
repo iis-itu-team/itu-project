@@ -63,6 +63,7 @@ class BurgerRatingWidgetState extends State<BurgerRatingWidget>
   late Burger burger;
   BurgerRating pressed = BurgerRating.none;
 
+  // Gets called when rating changes for some burgers
   @override
   void onRatingChanged(
       String burgerId, BurgerRating currentDirection, int totalRating) async {
@@ -106,7 +107,7 @@ class BurgerRatingWidgetState extends State<BurgerRatingWidget>
     });
   }
 
-  // If you want to change layout aspect, change flex value in Flexible
+  // If you want to change layout aspect, change flex value in Flexibles
   @override
   Widget build(BuildContext context) {
     return Container(
