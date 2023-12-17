@@ -1,3 +1,4 @@
+/// Copyright (C) -> see copyright_notice.txt in root dir
 ///
 ///  Author: Marek Vandík
 ///  Author e-mail: xvandi01@fit.vutbr.cz

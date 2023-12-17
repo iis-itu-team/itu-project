@@ -1,3 +1,4 @@
+/// Copyright (C) -> see copyright_notice.txt in root dir
 // This is an example unit test.
 //
 // A unit test tests a single function, method, or class. To learn more about
