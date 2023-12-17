@@ -61,10 +61,25 @@ class _IngredientBuilderState extends State<IngredientBuilder> {
       icon = "/icons/ingredients/bottom_bun.png";
     }
 
-    return SizedBox(
-        width: 200,
-        child: Image.network(ImageUrlLoader.getServedImageUrl(
-            icon, "https://i.imgur.com/aZjDYBS.jpeg")));
+    Widget layerIcon = Image.network(ImageUrlLoader.getServedImageUrl(
+        icon, "https://i.imgur.com/aZjDYBS.jpeg"));
+
+    bool draggable = index != 0 && index != len - 1;
+
+    return draggable
+        ? LongPressDraggable(
+            data: Ingredient.fromInFood(ingredient),
+            delay: const Duration(milliseconds: 150),
+            dragAnchorStrategy: (Draggable<Object> draggable,
+                BuildContext context, Offset position) {
+              return const Offset(100, 25);
+            },
+            onDragStarted: () {
+              _removeIngredient(ingredient, index);
+            },
+            feedback: SizedBox(width: 200, height: 50, child: layerIcon),
+            child: layerIcon)
+        : layerIcon;
   }
 
   Widget _buildIngredientLayer(BuildContext context, int index) {
@@ -137,30 +152,46 @@ class _IngredientBuilderState extends State<IngredientBuilder> {
                 child: Column(children: _buildIngredients(context)))));
   }
 
-  Widget _buildDropZone(
-      BuildContext context, double height, int index, bool visible, bool expand) {
+  Widget _buildDropZoneIndicator(BuildContext context, int index, double height,
+      bool visibleWhenEmpty, bool highlighted) {
+    return Container(
+        key: ValueKey("ingredient-layer-$index-$highlighted"),
+        height: height,
+        padding: EdgeInsets.symmetric(vertical: height / 8),
+        child: Container(
+            width: 300,
+            decoration: visibleWhenEmpty || highlighted
+                ? BoxDecoration(
+                    color: Colors.green.withOpacity(highlighted ? 0.5 : 0.1),
+                    border: Border.all(color: Colors.greenAccent),
+                    borderRadius: const BorderRadius.all(Radius.circular(8)))
+                : const BoxDecoration(),
+            child: Visibility(
+                visible: highlighted || visibleWhenEmpty,
+                child: Center(
+                    child: Text("+",
+                        style: TextStyle(
+                            color: Colors.green,
+                            fontSize: (height * 1.2) % 32,
+                            fontWeight: FontWeight.bold))))));
+  }
+
+  Widget _buildDropZone(BuildContext context, double height, int index,
+      bool visibleWhenEmpty, bool expand) {
     return DragTarget<Ingredient>(
         builder: (context, candidateItems, rejectedItems) {
-      return Container(
-          height: candidateItems.isEmpty || !expand ? height : height * 2,
-          padding: EdgeInsets.symmetric(vertical: height / 8),
-          child: Container(
-              width: 300,
-              decoration: (() => candidateItems.isNotEmpty || visible
-                  ? BoxDecoration(
-                      color: Colors.green
-                          .withOpacity(candidateItems.isEmpty ? 0.1 : 0.5),
-                      border: Border.all(color: Colors.greenAccent),
-                      borderRadius: const BorderRadius.all(Radius.circular(8)))
-                  : const BoxDecoration())(),
-              child: (() => candidateItems.isNotEmpty || visible
-                  ? Center(
-                      child: Text("+",
-                          style: TextStyle(
-                              color: Colors.green,
-                              fontSize: (height * 1.2) % 32,
-                              fontWeight: FontWeight.bold)))
-                  : Container())()));
+      return AnimatedSwitcher(
+          reverseDuration: const Duration(milliseconds: 100),
+          duration: const Duration(milliseconds: 100),
+          child: AnimatedSize(
+              duration: const Duration(milliseconds: 100),
+              curve: Curves.fastOutSlowIn,
+              child: _buildDropZoneIndicator(
+                  context,
+                  index,
+                  candidateItems.isEmpty || !expand ? height : height * 2,
+                  visibleWhenEmpty,
+                  candidateItems.isNotEmpty)));
     }, onAccept: (ingredient) {
       _addBurgerIngredient(ingredient, index + 1);
     });
@@ -180,7 +211,9 @@ class _IngredientBuilderState extends State<IngredientBuilder> {
           child: Text('$_totalPrice Kč',
               style: TextStyle(
                   shadows: [
-                    Shadow(color: Theme.of(context).textTheme.bodyMedium!.color!, offset: const Offset(0, 6))
+                    Shadow(
+                        color: Theme.of(context).textTheme.bodyMedium!.color!,
+                        offset: const Offset(0, 6))
                   ],
                   fontWeight: FontWeight.w600,
                   decoration: TextDecoration.overline,
