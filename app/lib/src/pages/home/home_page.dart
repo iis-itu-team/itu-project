@@ -17,7 +17,6 @@ class HomePage extends StatelessWidget {
 
   final HomeController controller;
 
-  OverlayEntry? overlayEntry;
   final LayerLink layerLink = LayerLink();
 
   final Cart cart;

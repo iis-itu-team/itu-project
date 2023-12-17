@@ -57,17 +57,84 @@ class _BurgerListState extends State<BurgerList> {
     });
   }
 
+  Widget _buildBurgerItem(BuildContext context, Burger burger) {
+    return LongPressDraggable(
+        delay: const Duration(milliseconds: 150),
+        data: burger,
+        dragAnchorStrategy: (object, context, offset) {
+          return const Offset(40, 40);
+        },
+        feedback: ImageWithFallback(
+            key: ValueKey(burger.hashCode),
+            icon: burger.icon,
+            width: 80,
+            height: 80,
+            fallback: ImageUrlLoader.prefixUrl('/icons/burger.png')),
+        child: GestureDetector(
+            child: BurgerItem(burger: burger),
+            onTap: () {
+              Navigator.pushNamed(context, BurgerEditPage.routeName,
+                  arguments: BurgerEditArguments(burger));
+            }));
+  }
+
+  Widget _buildSeparator(BuildContext context, String title) {
+    return Row(children: [
+      const SizedBox(
+        width: 20,
+      ),
+      Text(title, style: const TextStyle(fontWeight: FontWeight.w800)),
+      const SizedBox(
+        width: 20,
+      ),
+      Expanded(
+          child: Container(
+              height: 4,
+              decoration: BoxDecoration(
+                border: Border.all(),
+                borderRadius: BorderRadius.circular(10),
+                color: Theme.of(context).textTheme.bodyMedium!.color,
+              ))),
+      const SizedBox(
+        width: 20,
+      ),
+    ]);
+  }
+
+  Widget _buildListing(BuildContext context) {
+    List<Burger> burgers = _burgers;
+    burgers.sort((a, b) => a.createdAt != null &&
+            b.createdAt != null &&
+            a.createdAt!.isBefore(b.createdAt!)
+        ? 1
+        : -1);
+    List<Widget> children = burgers
+        .take(widget.limit ?? burgers.length)
+        .map((burger) => _buildBurgerItem(context, burger))
+        .toList();
+
+    if (widget.extraChildren != null) {
+      children.addAll(widget.extraChildren!);
+    }
+
+    return Column(children: [
+      widget.title != null
+          ? _buildSeparator(context, widget.title!)
+          : Container(),
+      const SizedBox(
+        height: 20,
+      ),
+      Wrap(direction: Axis.horizontal, children: children)
+    ]);
+  }
+
   @override
   Widget build(BuildContext context) {
     if (_loaded) {
       return SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(children: [
-            BurgerListing(
-                burgers: _burgers,
-                title: widget.title,
-                limit: widget.limit,
-                extraChildren: widget.extraChildren),
+            _buildListing(context),
             const SizedBox(height: 20),
             Visibility(
                 visible:
@@ -128,90 +195,5 @@ class _BurgerListState extends State<BurgerList> {
         _burgers.removeWhere((element) => element.id == burger.id);
       });
     });
-  }
-}
-
-class BurgerListing extends StatefulWidget {
-  final List<Burger> burgers;
-  final int? limit;
-  final List<Widget>? extraChildren;
-  final String? title;
-
-  const BurgerListing(
-      {super.key,
-      this.title,
-      required this.burgers,
-      this.limit,
-      this.extraChildren});
-
-  @override
-  State<StatefulWidget> createState() => _BurgerListingState();
-}
-
-class _BurgerListingState extends State<BurgerListing> {
-  Widget _buildBurgerItem(BuildContext context, Burger burger) {
-    return LongPressDraggable(
-        delay: const Duration(milliseconds: 150),
-        data: burger,
-        dragAnchorStrategy: (object, context, offset) {
-          return const Offset(40, 40);
-        },
-        feedback: ImageWithFallback(
-            key: ValueKey(burger.hashCode),
-            icon: burger.icon,
-            width: 80,
-            height: 80,
-            fallback: ImageUrlLoader.prefixUrl('/icons/burger.png')),
-        child: GestureDetector(
-            child: BurgerItem(burger: burger),
-            onTap: () {
-              Navigator.pushNamed(context, BurgerEditPage.routeName,
-                  arguments: BurgerEditArguments(burger));
-            }));
-  }
-
-  Widget _buildSeparator(BuildContext context, String title) {
-    return Row(children: [
-      const SizedBox(
-        width: 20,
-      ),
-      Text(title, style: const TextStyle(fontWeight: FontWeight.w800)),
-      const SizedBox(
-        width: 20,
-      ),
-      Expanded(
-          child: Container(
-              height: 4,
-              decoration: BoxDecoration(
-                border: Border.all(),
-                borderRadius: BorderRadius.circular(10),
-                color: Theme.of(context).textTheme.bodyMedium!.color,
-              ))),
-      const SizedBox(
-        width: 20,
-      ),
-    ]);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    List<Widget> children = widget.burgers
-        .take(widget.limit ?? widget.burgers.length)
-        .map((burger) => _buildBurgerItem(context, burger))
-        .toList();
-
-    if (widget.extraChildren != null) {
-      children.addAll(widget.extraChildren!);
-    }
-
-    return Column(children: [
-      widget.title != null
-          ? _buildSeparator(context, widget.title!)
-          : Container(),
-      const SizedBox(
-        height: 20,
-      ),
-      Wrap(direction: Axis.horizontal, children: children)
-    ]);
   }
 }

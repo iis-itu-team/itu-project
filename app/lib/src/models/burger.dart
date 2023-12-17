@@ -15,6 +15,8 @@ class Burger {
   int? rating;
   BurgerRating? currentRating;
 
+  DateTime? createdAt;
+
   Burger();
 
   Burger.fromBurger(Burger burger)
@@ -27,7 +29,8 @@ class Burger {
         price = burger.price,
         rating = burger.rating,
         currentRating = burger.currentRating,
-        icon = burger.icon;
+        icon = burger.icon,
+        createdAt = burger.createdAt;
 
   Burger.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -38,6 +41,8 @@ class Burger {
     image = json['image'];
     icon = json["icon"];
     rating = json['rating'];
+
+    createdAt = DateTime.parse(json["created_at"]);
 
     ingredients = [];
 
