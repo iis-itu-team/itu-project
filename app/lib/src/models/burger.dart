@@ -80,4 +80,9 @@ class Burger {
         'ingredients': ingredients.map((e) => e.toJson()).toList(),
         'keeperId': keeperId,
       };
+
+  Map<String, dynamic> toOrderJson(amount) => {
+        'id': id,
+        'amount': amount,
+      };
 }
