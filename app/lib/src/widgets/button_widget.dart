@@ -1,37 +1,39 @@
 import 'package:flutter/material.dart';
+
 import 'package:food_blueprint/src/theme/theme.dart';
-import 'dart:ui';
 
 class ButtonWidget extends StatelessWidget implements PreferredSizeWidget {
-  String? text;
+  final String text;
+  final String route;
+  final bool underline;
 
-  // route to another page
-  var route;
-
-  ButtonWidget({
-    super.key,
-    required this.text,
-    required this.route,
-  });
+  const ButtonWidget(
+      {super.key,
+      required this.text,
+      required this.route,
+      required this.underline});
 
   @override
   Widget build(BuildContext context) {
+    TextStyle? style = Theme.of(context).textTheme.titleSmall;
+    TextStyle? modifiedStyle = underline
+        ? style?.copyWith(
+            decoration: TextDecoration.combine([
+              style.decoration ?? TextDecoration.none,
+              TextDecoration.underline
+            ]),
+            decorationColor: ThemeColors.colorCheese)
+        : style;
     return OutlinedButton(
       onPressed: () {
-        Navigator.pushNamed(context, route);
+        Navigator.pushReplacementNamed(context, route);
       },
       style: OutlinedButton.styleFrom(
         side: const BorderSide(
           color: Colors.transparent,
         ),
       ),
-      child: Text(
-        text!,
-        style: const TextStyle(
-            color: ThemeColors.colorText,
-            fontSize: 12,
-            fontWeight: FontWeight.bold),
-      ),
+      child: Text(text, style: modifiedStyle),
     );
   }
 

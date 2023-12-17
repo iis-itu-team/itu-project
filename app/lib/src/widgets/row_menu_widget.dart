@@ -12,13 +12,35 @@ class RowMenuWidget extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    String currentRoute =
+        ModalRoute.of(context)?.settings.name ?? HomePage.routeName;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        ButtonWidget(text: 'Domov', route: HomePage.routeName),
-        ButtonWidget(text: 'Moje', route: MinePage.routeName),
-        ButtonWidget(text: 'Komunitné', route: CommunityPage.routeName),
-        ButtonWidget(text: 'Základné', route: BasicPage.routeName),
+        Flexible(
+            child: FittedBox(
+                child: ButtonWidget(
+                    text: 'Domov',
+                    route: HomePage.routeName,
+                    underline: currentRoute == HomePage.routeName))),
+        Flexible(
+            child: FittedBox(
+                child: ButtonWidget(
+                    text: 'Moje',
+                    route: MinePage.routeName,
+                    underline: currentRoute == MinePage.routeName))),
+        Flexible(
+            child: FittedBox(
+                child: ButtonWidget(
+                    text: 'Komunitné',
+                    route: CommunityPage.routeName,
+                    underline: currentRoute == CommunityPage.routeName))),
+        Flexible(
+            child: FittedBox(
+                child: ButtonWidget(
+                    text: 'Základné',
+                    route: BasicPage.routeName,
+                    underline: currentRoute == BasicPage.routeName))),
       ],
     );
   }
