@@ -17,7 +17,8 @@ Vytvořte nový soubor `.env` z templatu \
 
 Nastavte proměnné `BASE_URL` a `API_Key` v `.env` \
 `BASE_URL` podle URL dostupné API, kterou chcete využívat. (např.: `https://api.foodblue.devport.space`) \
-`API_KEY` podle hodnoty proměnné `API_Key` v `.env` backendu. (pro využití veřejné API je hodnota `d3pl0y3d#14`)
+`API_KEY` podle hodnoty proměnné `API_Key` v `.env` backendu. (pro využití veřejné API je hodnota `d3pl0y3d#14`) \
+Pokud chcete použít lokální API v kombinaci s emulátorem, MUSÍTE použít adresu `http://10.0.2.2` s portem z npm serveru.
 
 Připojte zařízení pro spuštění aplikace (emulátor nebo fyzické zařízení) podle návodu na https://docs.flutter.dev/get-started/install/linux#set-up-your-android-device
 
