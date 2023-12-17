@@ -1,6 +1,8 @@
 ///
 ///  Author: Marek Vandík
 ///  Author e-mail: xvandi01@fit.vutbr.cz
+///  Collaborator: Martin Otradovec
+///  Collaborator e-mail: xotrad00@fit.vutbr.cz
 ///  Date: 14. 12. 2023
 ///
 import 'dart:async';
