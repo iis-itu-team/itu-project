@@ -6,12 +6,14 @@ class ThreeCheckboxsWidget extends StatefulWidget
   final String text1;
   final String text2;
   final String text3;
+  final Function callbackFunction;
 
   const ThreeCheckboxsWidget({
     super.key,
     required this.text1,
     required this.text2,
     required this.text3,
+    required this.callbackFunction,
   });
 
   @override
@@ -45,6 +47,7 @@ class _CustomCheckboxListTileState extends State<ThreeCheckboxsWidget> {
                 value1 = value!;
                 value2 = false;
                 value3 = false;
+                widget.callbackFunction(widget.text1);
               },
             );
           },
@@ -65,6 +68,7 @@ class _CustomCheckboxListTileState extends State<ThreeCheckboxsWidget> {
                 value2 = value!;
                 value1 = false;
                 value3 = false;
+                widget.callbackFunction(widget.text2);
               },
             );
           },
@@ -85,6 +89,7 @@ class _CustomCheckboxListTileState extends State<ThreeCheckboxsWidget> {
                 value3 = value!;
                 value1 = false;
                 value2 = false;
+                widget.callbackFunction(widget.text3);
               },
             );
           },

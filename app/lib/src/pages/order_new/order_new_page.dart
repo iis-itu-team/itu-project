@@ -37,12 +37,35 @@ extension Data on Map<String, TextEditingController> {
   }
 }
 
-class OrderNewPage extends StatelessWidget {
+class OrderNewPage extends StatefulWidget {
   final OrderNewController controller;
 
-  const OrderNewPage({required this.controller, super.key});
+  const OrderNewPage({
+    required this.controller,
+    super.key,
+  });
 
   static const routeName = '/order-new';
+
+  @override
+  State<OrderNewPage> createState() => _OrderNewPageState();
+}
+
+class _OrderNewPageState extends State<OrderNewPage> {
+  String payment = "cash";
+  String delivery = "house";
+
+  callbackPayment(variable) async {
+    setState(() {
+      payment = variable;
+    });
+  }
+
+  callbackDelivery(variable) async {
+    setState(() {
+      delivery = variable;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,10 +90,11 @@ class OrderNewPage extends StatelessWidget {
               CustomTextForm(
                   text: "poznámka pro řidiče",
                   controller: sigUpController['note']),
-              const ThreeCheckboxsWidget(
+              ThreeCheckboxsWidget(
                 text1: "před dum",
                 text2: "ke dveřím domu",
                 text3: "ke dveřím bytu",
+                callbackFunction: callbackDelivery,
               ),
               CustomTextForm(
                   text: "patro", controller: sigUpController['floor']),
@@ -80,10 +104,11 @@ class OrderNewPage extends StatelessWidget {
                   controller: sigUpController['flatNumber']),
               const CheckboxWidget(text: "zazvonit", value: false),
               HeaderWidget(text: "platba"),
-              const ThreeCheckboxsWidget(
+              ThreeCheckboxsWidget(
                 text1: "při doručení (hotově / kartou)",
                 text2: "online kartou",
                 text3: "paypal",
+                callbackFunction: callbackPayment,
               ),
             ],
           ),
@@ -100,6 +125,7 @@ class OrderNewPage extends StatelessWidget {
               onTap: () {
                 final data = sigUpController.data();
 
+                // callbackFunction(payment);
                 order.city = data['city'];
                 order.street = data['street'];
                 order.houseNumber = data['houseNumber'];
@@ -107,8 +133,10 @@ class OrderNewPage extends StatelessWidget {
                 order.postalCode = data['postalCode'];
                 order.floor = data['floor'];
                 order.note = data['note'];
+                order.paymentType = payment;
+                order.deliveryType = delivery;
 
-                controller.handleSave(order);
+                widget.controller.handleSave(order);
 
                 Navigator.pushNamed(context, OrderConfirmPage.routeName);
               },
