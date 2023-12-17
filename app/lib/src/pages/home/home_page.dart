@@ -38,6 +38,7 @@ class HomePage extends StatelessWidget {
                 const RowMenuWidget(),
                 BurgerList(
                     limit: 10,
+                    displayLoadingScreen: !controller.isCached(),
                     fetchBurgers: () {
                       return controller.listBurgers().then((burgers) async {
                         String? keeperId = await KeeperStore.getKeeperId();
@@ -63,6 +64,7 @@ class HomePage extends StatelessWidget {
                     extraChildren: const [CreateBurgerButton()]),
                 BurgerList(
                     limit: 10,
+                    displayLoadingScreen: !controller.isCached(),
                     fetchBurgers: () {
                       return controller.listBurgers().then((burgers) async {
                         String? keeperId = await KeeperStore.getKeeperId();

@@ -24,9 +24,12 @@ class BurgerList extends StatefulWidget {
   final List<Widget>? extraChildren;
   final String? title;
 
+  final bool displayLoadingScreen;
+
   const BurgerList(
       {super.key,
       required this.fetchBurgers,
+      this.displayLoadingScreen = true,
       this.title,
       this.extraChildren,
       this.limit});
@@ -124,7 +127,7 @@ class _BurgerListState extends State<BurgerList> {
   Widget build(BuildContext context) {
     List<Widget> content;
 
-    if (_loaded) {
+    if (_loaded || !widget.displayLoadingScreen) {
       content = [
         _buildListing(context),
         const SizedBox(height: 20),
