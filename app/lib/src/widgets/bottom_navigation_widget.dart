@@ -9,8 +9,6 @@ import 'package:food_blueprint/src/utils/event_handler.dart';
 import 'package:food_blueprint/src/widgets/cart/burger_item.dart';
 import 'package:food_blueprint/src/widgets/common/image_with_fallback.dart';
 
-import 'dart:developer' as developer;
-
 import '../utils/image_loader.dart';
 
 class BottomNavigationWidget extends StatefulWidget {
@@ -29,8 +27,6 @@ class BottomNavigationWidgetState extends State<BottomNavigationWidget> {
   void initState() {
     super.initState();
     _items = widget.cart.items;
-
-    developer.log('Items in cart: ${widget.cart.items.length}');
 
     EventHandler.listen<CartItemRemoved>((event) {
       setState(() {
@@ -108,16 +104,21 @@ class BottomNavigationWidgetState extends State<BottomNavigationWidget> {
                             .withOpacity(candidateItems.isEmpty ? 0.2 : 0.4),
                         border: Border.all(color: ThemeColors.colorCheese),
                         borderRadius: BorderRadius.circular(10)),
-                    child: Column(children: [
-                      const Text("hod burgry do kosiku"),
-                      SvgPicture.asset(
-                        "assets/images/Basket.svg",
-                        width: 40,
-                        height: 40,
-                        colorFilter: const ColorFilter.mode(
-                            ThemeColors.colorCheese, BlendMode.srcIn),
-                      )
-                    ]),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          const Text("hoď burgry do košíku", style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16,
+                          )),
+                          SvgPicture.asset(
+                            "assets/images/Basket.svg",
+                            width: 40,
+                            height: 40,
+                            colorFilter: const ColorFilter.mode(
+                                ThemeColors.colorCheese, BlendMode.srcIn),
+                          )
+                        ]),
                   );
                 }
 

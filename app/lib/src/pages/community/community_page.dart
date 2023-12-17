@@ -12,6 +12,8 @@ import 'package:food_blueprint/src/widgets/bottom_navigation_widget.dart';
 import 'package:food_blueprint/src/widgets/burger_rating_widget.dart';
 import 'package:food_blueprint/src/widgets/burger_select_floating_page.dart';
 import 'package:food_blueprint/src/widgets/button_share.dart';
+import 'package:food_blueprint/src/widgets/cart/cart_drop_provider.dart';
+import 'package:food_blueprint/src/widgets/cart/order_button.dart';
 import 'package:food_blueprint/src/widgets/custom_app_bar.dart';
 import 'package:food_blueprint/src/widgets/custom_row_menu.dart';
 import 'package:food_blueprint/src/widgets/rating_searchbar.dart';
@@ -38,6 +40,8 @@ class CommunityPageState extends State<CommunityPage> {
   Timer? _searchTimeoutTimer;
   String _search = '';
   List<Widget> _stack = [];
+
+  final LayerLink _layerLink = LayerLink();
 
   late Future<HttpResult<List<Burger>>> _searchBurgersFuture;
   late Future<HttpResult<List<Burger>>> _topBurgersFuture;
@@ -100,130 +104,135 @@ class CommunityPageState extends State<CommunityPage> {
   Widget build(BuildContext context) {
     return Stack(alignment: Alignment.center, children: <Widget>[
       Scaffold(
-          appBar: const CustomAppBar(text: 'Komunitný Workshop'),
-          body: Column(children: <Widget>[
-            const CustomRowMenu(),
-            const Padding(
-                padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
-                child: Row(children: <Widget>[
-                  Text('top týždňa'),
-                  Expanded(
-                      child: Divider(
-                          thickness: 4.0,
-                          color: ThemeColors.colorMeat,
-                          indent: 5.0))
-                ])),
-            const SizedBox(height: 5),
-            FutureBuilder(
-                future: _topBurgersFuture,
-                builder: (BuildContext context,
-                    AsyncSnapshot<HttpResult<List<Burger>>> snapshot) {
-                  List<Burger> communityBurgers = [];
+        appBar: const CustomAppBar(text: 'Komunitný Workshop'),
+        body: CartDropProvider(
+            layerLink: _layerLink,
+            child: Column(children: <Widget>[
+              const CustomRowMenu(),
+              const Padding(
+                  padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
+                  child: Row(children: <Widget>[
+                    Text('top týždňa'),
+                    Expanded(
+                        child: Divider(
+                            thickness: 4.0,
+                            color: ThemeColors.colorMeat,
+                            indent: 5.0))
+                  ])),
+              const SizedBox(height: 5),
+              FutureBuilder(
+                  future: _topBurgersFuture,
+                  builder: (BuildContext context,
+                      AsyncSnapshot<HttpResult<List<Burger>>> snapshot) {
+                    List<Burger> communityBurgers = [];
 
-                  if (snapshot.hasData) {
-                    if (snapshot.data?.statusCode == 200) {
-                      communityBurgers = snapshot.data?.data ?? [];
-                      return communityBurgers.isNotEmpty
-                          ? SizedBox(
-                              height: BurgerRatingWidget.height,
-                              child: ListView.builder(
-                                  scrollDirection: Axis.horizontal,
-                                  itemCount: communityBurgers.length,
-                                  itemBuilder:
-                                      (BuildContext context, int index) {
-                                    return Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            5, 0, 0, 0),
-                                        child: BurgerRatingWidget(
-                                            burger: communityBurgers[index],
-                                            ratingService:
-                                                widget.ratingService));
-                                  }))
-                          : const Text('Ve workshope nejsou žiadné burgre');
+                    if (snapshot.hasData) {
+                      if (snapshot.data?.statusCode == 200) {
+                        communityBurgers = snapshot.data?.data ?? [];
+                        return communityBurgers.isNotEmpty
+                            ? SizedBox(
+                                height: BurgerRatingWidget.height,
+                                child: ListView.builder(
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount: communityBurgers.length,
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      return Padding(
+                                          padding: const EdgeInsets.fromLTRB(
+                                              5, 0, 0, 0),
+                                          child: BurgerRatingWidget(
+                                              burger: communityBurgers[index],
+                                              ratingService:
+                                                  widget.ratingService));
+                                    }))
+                            : const Text('Ve workshope nejsou žiadné burgre');
+                      } else {
+                        return Text(
+                            'Niečo sa nepovedlo - ${snapshot.data?.status}',
+                            style: const TextStyle(
+                                color: ThemeColors.colorKetchup));
+                      }
                     } else {
-                      return Text(
-                          'Niečo sa nepovedlo - ${snapshot.data?.status}',
-                          style:
-                              const TextStyle(color: ThemeColors.colorKetchup));
+                      return const Text('Čakám na dáta');
                     }
-                  } else {
-                    return const Text('Čakám na dáta');
-                  }
-                }),
-            const SizedBox(height: 20),
-            const Padding(
-                padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
-                child: Row(children: <Widget>[
-                  Text('vyhledávanie'),
-                  Expanded(
-                      child: Divider(
-                          thickness: 4.0,
-                          color: ThemeColors.colorMeat,
-                          indent: 5.0))
-                ])),
-            const SizedBox(height: 8),
-            RatingSearchBarWidget(onInputChanged: searchChanged),
-            const SizedBox(height: 5),
-            Expanded(
-                child: FutureBuilder(
-                    future: _searchBurgersFuture,
-                    builder: (BuildContext context,
-                        AsyncSnapshot<HttpResult<List<Burger>>> snapshot) {
-                      List<Burger> communityBurgers = [];
-                      List<List<Widget>> rowContents = [];
+                  }),
+              const SizedBox(height: 20),
+              const Padding(
+                  padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
+                  child: Row(children: <Widget>[
+                    Text('vyhledávanie'),
+                    Expanded(
+                        child: Divider(
+                            thickness: 4.0,
+                            color: ThemeColors.colorMeat,
+                            indent: 5.0))
+                  ])),
+              const SizedBox(height: 8),
+              RatingSearchBarWidget(onInputChanged: searchChanged),
+              const SizedBox(height: 5),
+              Expanded(
+                  child: FutureBuilder(
+                      future: _searchBurgersFuture,
+                      builder: (BuildContext context,
+                          AsyncSnapshot<HttpResult<List<Burger>>> snapshot) {
+                        List<Burger> communityBurgers = [];
+                        List<List<Widget>> rowContents = [];
 
-                      if (snapshot.hasData) {
-                        if (snapshot.data?.statusCode == 200) {
-                          communityBurgers = snapshot.data?.data ?? [];
-                          int rowCnt = 0;
-                          List<Widget> activeRow = [];
-                          if (_search == '') {
-                            activeRow = [
-                              SizedBox(
-                                  height: BurgerRatingWidget.height,
-                                  width: BurgerRatingWidget.width,
-                                  child: ShareWidget(onTap: openSelectPage))
-                            ];
-                            rowCnt++;
-                          }
-                          rowContents.add(activeRow);
-                          for (int i = 0; i < communityBurgers.length; i++) {
-                            if (rowCnt % 3 == 0) {
-                              rowCnt = 0;
-                              activeRow = [];
-                              rowContents.add(activeRow);
+                        if (snapshot.hasData) {
+                          if (snapshot.data?.statusCode == 200) {
+                            communityBurgers = snapshot.data?.data ?? [];
+                            int rowCnt = 0;
+                            List<Widget> activeRow = [];
+                            if (_search == '') {
+                              activeRow = [
+                                SizedBox(
+                                    height: BurgerRatingWidget.height,
+                                    width: BurgerRatingWidget.width,
+                                    child: ShareWidget(onTap: openSelectPage))
+                              ];
+                              rowCnt++;
+                            }
+                            rowContents.add(activeRow);
+                            for (int i = 0; i < communityBurgers.length; i++) {
+                              if (rowCnt % 3 == 0) {
+                                rowCnt = 0;
+                                activeRow = [];
+                                rowContents.add(activeRow);
+                              }
+
+                              activeRow.add(BurgerRatingWidget(
+                                  burger: communityBurgers[i],
+                                  ratingService: widget.ratingService));
+                              rowCnt++;
                             }
 
-                            activeRow.add(BurgerRatingWidget(
-                                burger: communityBurgers[i],
-                                ratingService: widget.ratingService));
-                            rowCnt++;
+                            return ListView.builder(
+                                scrollDirection: Axis.vertical,
+                                itemCount: rowContents.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return Padding(
+                                      padding:
+                                          const EdgeInsets.fromLTRB(5, 5, 5, 5),
+                                      child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: rowContents[index]));
+                                });
+                          } else {
+                            return Text(
+                                'Niečo sa nepovedlo - ${snapshot.data?.status}',
+                                style: const TextStyle(
+                                    color: ThemeColors.colorKetchup));
                           }
-
-                          return ListView.builder(
-                              scrollDirection: Axis.vertical,
-                              itemCount: rowContents.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                return Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(5, 5, 5, 5),
-                                    child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        children: rowContents[index]));
-                              });
                         } else {
-                          return Text(
-                              'Niečo sa nepovedlo - ${snapshot.data?.status}',
-                              style: const TextStyle(
-                                  color: ThemeColors.colorKetchup));
+                          return const Text('Čakám na dáta');
                         }
-                      } else {
-                        return const Text('Čakám na dáta');
-                      }
-                    }))
-          ]),
-          bottomNavigationBar: BottomNavigationWidget(cart: widget.cart)),
+                      }))
+            ])),
+        bottomNavigationBar: BottomNavigationWidget(cart: widget.cart),
+        floatingActionButton: const OrderButton(),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      ),
       ..._stack
     ]);
   }
