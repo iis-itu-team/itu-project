@@ -112,6 +112,36 @@ class _BurgerListState extends State<BurgerList> {
       children.addAll(widget.extraChildren!);
     }
 
+    return Wrap(direction: Axis.horizontal, children: children);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    List<Widget> content;
+
+    if (_loaded) {
+      content = [
+        _buildListing(context),
+        const SizedBox(height: 20),
+        Visibility(
+            visible: widget.limit != null && _burgers.length > widget.limit!,
+            child: Align(
+                alignment: Alignment.bottomRight,
+                child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, MinePage.routeName);
+                        },
+                        child: Text(
+                            "procházet dalších ${_burgers.length - (widget.limit ?? 0)}...",
+                            style: const TextStyle(
+                                fontWeight: FontWeight.w800)))))),
+      ];
+    } else {
+      content = [const Center(child: Loading(text: 'Loading burgers...'))];
+    }
+
     return Column(children: [
       widget.title != null
           ? _buildSeparator(context, widget.title!)
@@ -119,35 +149,8 @@ class _BurgerListState extends State<BurgerList> {
       const SizedBox(
         height: 20,
       ),
-      Wrap(direction: Axis.horizontal, children: children)
+      ...content
     ]);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    if (_loaded) {
-      return Column(children: [
-            _buildListing(context),
-            const SizedBox(height: 20),
-            Visibility(
-                visible:
-                    widget.limit != null && _burgers.length > widget.limit!,
-                child: Align(
-                    alignment: Alignment.bottomRight,
-                    child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: GestureDetector(
-                            onTap: () {
-                              Navigator.pushNamed(context, MinePage.routeName);
-                            },
-                            child: Text(
-                                "procházet dalších ${_burgers.length - (widget.limit ?? 0)}...",
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.w800)))))),
-          ]);
-    }
-
-    return const Center(child: Loading(text: 'Loading burgers...'));
   }
 
   @override
