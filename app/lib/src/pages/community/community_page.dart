@@ -8,15 +8,17 @@ import 'package:food_blueprint/src/services/burger_service.dart';
 import 'package:food_blueprint/src/services/rating_service.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/types/cart.dart';
+import 'package:food_blueprint/src/widgets/app_bar_widget.dart';
 import 'package:food_blueprint/src/widgets/bottom_navigation_widget.dart';
 import 'package:food_blueprint/src/widgets/burger_rating_widget.dart';
 import 'package:food_blueprint/src/widgets/burger_select_floating_page.dart';
 import 'package:food_blueprint/src/widgets/button_share.dart';
 import 'package:food_blueprint/src/widgets/cart/cart_drop_provider.dart';
 import 'package:food_blueprint/src/widgets/cart/order_button.dart';
-import 'package:food_blueprint/src/widgets/app_bar_widget.dart';
-import 'package:food_blueprint/src/widgets/row_menu_widget.dart';
+import 'package:food_blueprint/src/widgets/common/image_with_fallback.dart';
 import 'package:food_blueprint/src/widgets/rating_searchbar.dart';
+import 'package:food_blueprint/src/widgets/row_menu_widget.dart';
+import 'package:food_blueprint/src/utils/image_loader.dart';
 
 class CommunityPage extends StatefulWidget {
   static const routeName = '/community';
@@ -140,10 +142,25 @@ class CommunityPageState extends State<CommunityPage> {
                                       return Padding(
                                           padding: const EdgeInsets.fromLTRB(
                                               5, 0, 0, 0),
-                                          child: BurgerRatingWidget(
-                                              burger: communityBurgers[index],
-                                              ratingService:
-                                                  widget.ratingService));
+                                          child: LongPressDraggable(
+                                              delay: const Duration(
+                                                  milliseconds: 150),
+                                              data: communityBurgers[index],
+                                              dragAnchorStrategy:
+                                                  pointerDragAnchorStrategy,
+                                              feedback: ImageWithFallback(
+                                                  icon: communityBurgers[index]
+                                                      .icon,
+                                                  width: 80,
+                                                  height: 80,
+                                                  fallback:
+                                                      ImageUrlLoader.prefixUrl(
+                                                          '/icons/burger.png')),
+                                              child: BurgerRatingWidget(
+                                                  burger:
+                                                      communityBurgers[index],
+                                                  ratingService:
+                                                      widget.ratingService)));
                                     }))
                             : const Text('Ve workshope nejsou žiadné burgre');
                       } else {
@@ -200,9 +217,19 @@ class CommunityPageState extends State<CommunityPage> {
                                 rowContents.add(activeRow);
                               }
 
-                              activeRow.add(BurgerRatingWidget(
-                                  burger: communityBurgers[i],
-                                  ratingService: widget.ratingService));
+                              activeRow.add(LongPressDraggable(
+                                  delay: const Duration(milliseconds: 150),
+                                  data: communityBurgers[i],
+                                  dragAnchorStrategy: pointerDragAnchorStrategy,
+                                  feedback: ImageWithFallback(
+                                      icon: communityBurgers[i].icon,
+                                      width: 80,
+                                      height: 80,
+                                      fallback: ImageUrlLoader.prefixUrl(
+                                          '/icons/burger.png')),
+                                  child: BurgerRatingWidget(
+                                      burger: communityBurgers[i],
+                                      ratingService: widget.ratingService)));
                               rowCnt++;
                             }
 
