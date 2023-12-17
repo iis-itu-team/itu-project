@@ -22,7 +22,8 @@ class ButtonWidget extends StatelessWidget implements PreferredSizeWidget {
               style.decoration ?? TextDecoration.none,
               TextDecoration.underline
             ]),
-            decorationColor: ThemeColors.colorCheese)
+            decorationColor: ThemeColors.colorCheese,
+            decorationThickness: 3)
         : style;
     return OutlinedButton(
       onPressed: () {
