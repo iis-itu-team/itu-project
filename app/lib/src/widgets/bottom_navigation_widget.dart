@@ -1,7 +1,7 @@
 ///
 ///  Author: Marek Vandík
 ///  Author e-mail: xvandi01@fit.vutbr.cz
-///  Collaborator: Martin Otradovec
+///  Collaborator: Martin Otradovec - added cart functionality
 ///  Collaborator e-mail: xotrad00@fit.vutbr.cz
 ///  Date: 14. 12. 2023
 ///
@@ -9,8 +9,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:food_blueprint/src/events/cart_item_dropped.dart';
-import 'package:food_blueprint/src/events/cart_item_removed.dart';
+import 'package:food_blueprint/src/events/cart_item_dropped_event.dart';
+import 'package:food_blueprint/src/events/cart_item_removed_event.dart';
 import 'package:food_blueprint/src/models/burger.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/types/cart.dart';
@@ -39,7 +39,7 @@ class BottomNavigationWidgetState extends State<BottomNavigationWidget> {
     super.initState();
     _items = widget.cart.items;
 
-    _subs = EventHandler.listen<CartItemRemoved>((event) {
+    _subs = EventHandler.listen<CartItemRemovedEvent>((event) {
       setState(() {
         widget.cart.items.remove(event.item);
       });
@@ -71,7 +71,7 @@ class BottomNavigationWidgetState extends State<BottomNavigationWidget> {
     return LongPressDraggable(
         data: item,
         onDragEnd: (details) {
-          EventHandler.fire(CartItemDropped(item));
+          EventHandler.fire(CartItemDroppedEvent(item));
         },
         feedback: ImageWithFallback(
             key: ValueKey(item.burger.hashCode),

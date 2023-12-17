@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_blueprint/src/pages/burger_edit/burger_edit_page.dart';
 
+/// Button that creates a new burger.
 class CreateBurgerButton extends StatelessWidget {
   const CreateBurgerButton({super.key});
 

@@ -66,7 +66,7 @@ class HomeController {
     return result.data!;
   }
 
-  // LIst burgers owned by this keeper.
+  // List burgers owned by this keeper.
   Future<List<Burger>> listMyBurgers() async {
     return listBurgers().then((burgers) async {
       String? keeperId = await KeeperStore.getKeeperId();

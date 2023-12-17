@@ -5,8 +5,8 @@
 ///
 import 'package:food_blueprint/src/types/cart.dart';
 
-class CartItemRemoved {
+class CartItemRemovedEvent {
   final CartBurger item;
 
-  CartItemRemoved(this.item);
+  CartItemRemovedEvent(this.item);
 }

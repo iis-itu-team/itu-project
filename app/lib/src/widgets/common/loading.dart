@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:food_blueprint/src/utils/image_loader.dart';
 import 'package:food_blueprint/src/widgets/common/image_with_fallback.dart';
 
+/// Displays a loading icon and text.
 class Loading extends StatelessWidget {
   final String? icon;
   final String? text;

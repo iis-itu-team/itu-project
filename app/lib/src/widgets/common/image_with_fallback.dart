@@ -6,6 +6,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:food_blueprint/src/utils/image_loader.dart';
 
+/// Displays an icon, fallback if anything bad happens or icon is null.
 class ImageWithFallback extends StatefulWidget {
   final String? icon;
   final String fallback;

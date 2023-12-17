@@ -6,8 +6,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:food_blueprint/src/events/cart_item_dropped.dart';
-import 'package:food_blueprint/src/events/cart_item_removed.dart';
+import 'package:food_blueprint/src/events/cart_item_dropped_event.dart';
+import 'package:food_blueprint/src/events/cart_item_removed_event.dart';
 import 'package:food_blueprint/src/types/cart.dart';
 import 'package:food_blueprint/src/utils/event_handler.dart';
 
@@ -50,7 +50,7 @@ class _CartDropProviderState extends State<CartDropProvider> {
                           offset: Offset(MediaQuery.of(context).size.width / 6,
                               MediaQuery.of(context).size.height / 3),
                           child: DragTarget<CartBurger>(onAccept: (item) {
-                            EventHandler.fire(CartItemRemoved(item));
+                            EventHandler.fire(CartItemRemovedEvent(item));
 
                             _removeOverlay();
                           }, builder: (context, candidateItems, rejectedItems) {
@@ -82,7 +82,7 @@ class _CartDropProviderState extends State<CartDropProvider> {
                 });
                 Overlay.of(context).insert(_overlayEntry!);
 
-                EventHandler.listen<CartItemDropped>((event) {
+                EventHandler.listen<CartItemDroppedEvent>((event) {
                   _removeOverlay();
                 });
               }

@@ -113,6 +113,7 @@ class BurgerEditPage extends StatelessWidget {
             future: Future.wait([
               controller.listIngredients(),
               controller.listCategories(),
+              // artificial delay to show off the icon loading screen
               Future.delayed(const Duration(milliseconds: 300))
             ])));
   }

@@ -3,8 +3,6 @@
 ///  Author e-mail: xotrad00@fit.vutbr.cz
 ///  Date: 07. 12. 2023
 ///
-import 'dart:developer' as developer;
-
 import 'package:food_blueprint/src/events/burger_created_event.dart';
 import 'package:food_blueprint/src/events/burger_deleted_event.dart';
 import 'package:food_blueprint/src/events/burger_updated_event.dart';
@@ -25,6 +23,7 @@ class BurgerEditController {
 
   BurgerEditController(this.burgerService, this.ingredientService);
 
+  /// Enter the editor, load state into editedBurger
   void enter(BurgerEditArguments? args, List<Ingredient> availableIngredients) {
     if (args?.burger != null) {
       editedBurger = Burger.fromBurger(args!.burger);
@@ -60,8 +59,6 @@ class BurgerEditController {
   }
 
   Future<void> handleSave() async {
-    developer.log(editedBurger!.name.toString());
-
     // update indexes on ingredients according to their position in the list
     for (int index = 0; index < editedBurger!.ingredients.length; index++) {
       editedBurger!.ingredients[index].index = index;
@@ -89,22 +86,17 @@ class BurgerEditController {
     final result = await ingredientService.listIngredients();
 
     if (result.status != "success") {
-      // todo: error? popup?
-      return [];
+      throw "Failed to load ingredients.";
     }
 
     return result.data!;
   }
 
   Future<List<String>> listCategories() async {
-    final result = await ingredientService.listCategories().catchError((error) {
-      developer.log(error.toString());
-      throw error;
-    });
+    final result = await ingredientService.listCategories();
 
     if (result.status != "success") {
-      // todo: error? popup?
-      return [];
+      throw "Failed to load categories.";
     }
 
     return result.data!;

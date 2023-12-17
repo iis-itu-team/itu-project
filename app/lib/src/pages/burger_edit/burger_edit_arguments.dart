@@ -5,6 +5,7 @@
 ///
 import 'package:food_blueprint/src/models/burger.dart';
 
+/// Arguments passed to the page through routing.
 class BurgerEditArguments {
   final Burger burger;
 

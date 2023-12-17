@@ -17,6 +17,7 @@ import 'package:food_blueprint/src/widgets/cart/burger_item.dart';
 import 'package:food_blueprint/src/widgets/common/image_with_fallback.dart';
 import 'package:food_blueprint/src/widgets/common/loading.dart';
 
+/// Shows a list of burgers.
 class BurgerList extends StatefulWidget {
   // Function to call to fetch burgers
   final Future<List<Burger>> Function() fetchBurgers;
