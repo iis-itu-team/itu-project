@@ -1,4 +1,6 @@
 zn.pdf
 *_zn.pdf
 
+doc/*pdf
+
 app/.vim/
