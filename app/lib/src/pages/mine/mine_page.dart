@@ -42,16 +42,19 @@ class MinePage extends StatelessWidget {
           layerLink: layerLink,
           child: SizedBox(
               height: MediaQuery.of(context).size.height,
-              child: SingleChildScrollView(
-                  scrollDirection: Axis.vertical,
-                  child: Column(children: [
-                    const RowMenuWidget(),
-                    BurgerList(
-                      fetchBurgers: mineController.listBurgers,
-                      extraChildren: const [CreateBurgerButton()],
-                    ),
-                    const SizedBox(height: 120)
-                  ])))),
+              child: Column(children: [
+                const RowMenuWidget(),
+                Expanded(
+                    child: SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
+                        child: Column(children: [
+                          BurgerList(
+                            fetchBurgers: mineController.listBurgers,
+                            extraChildren: const [CreateBurgerButton()],
+                          ),
+                          const SizedBox(height: 120)
+                        ])))
+              ]))),
       bottomNavigationBar: BottomNavigationWidget(cart: cart),
       floatingActionButton: const OrderButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
