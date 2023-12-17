@@ -18,7 +18,7 @@ class CustomButton extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return OutlinedButton(
       onPressed: () {
-        Navigator.pushNamed(context, route);
+        Navigator.pushReplacementNamed(context, route);
       },
       style: OutlinedButton.styleFrom(
         side: const BorderSide(

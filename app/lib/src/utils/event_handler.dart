@@ -5,7 +5,7 @@ class EventHandler {
 
   static listen<T>(void Function(T event)? onData,
       {Function? onError, void Function()? onDone, bool? cancelOnError}) {
-    eventBus.on<T>().listen(
+    return eventBus.on<T>().listen(
         onDone: onDone, onData, onError: onError, cancelOnError: cancelOnError);
   }
 

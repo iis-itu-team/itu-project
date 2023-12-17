@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_blueprint/src/events/cart_item_dropped.dart';
@@ -23,16 +25,24 @@ class BottomNavigationWidget extends StatefulWidget {
 class BottomNavigationWidgetState extends State<BottomNavigationWidget> {
   List<CartBurger> _items = [];
 
+  StreamSubscription? _subs;
+
   @override
   void initState() {
     super.initState();
     _items = widget.cart.items;
 
-    EventHandler.listen<CartItemRemoved>((event) {
+    _subs = EventHandler.listen<CartItemRemoved>((event) {
       setState(() {
         widget.cart.items.remove(event.item);
       });
     });
+  }
+
+  @override
+  void dispose() {
+    _subs?.cancel();
+    super.dispose();
   }
 
   int _getTotalPrice() {

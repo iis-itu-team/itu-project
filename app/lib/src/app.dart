@@ -25,6 +25,20 @@ import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/types/cart.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+class MyRoute<T> extends MaterialPageRoute<T> {
+  @override
+  Duration get transitionDuration => const Duration(milliseconds: 1000);
+
+  MyRoute({required WidgetBuilder builder, required RouteSettings settings})
+      : super(builder: builder, settings: settings);
+
+  @override
+  Widget buildTransitions(BuildContext context, Animation<double> animation,
+      Animation<double> secondaryAnimation, Widget child) {
+    return child;
+  }
+}
+
 /// The Widget that configures your application.
 class MyApp extends StatelessWidget {
   final Environment env = Environment();
@@ -123,7 +137,7 @@ class MyApp extends StatelessWidget {
       // Define a function to handle named routes in order to support
       // Flutter web url navigation and deep linking.
       onGenerateRoute: (RouteSettings routeSettings) {
-        return MaterialPageRoute<void>(
+        return MyRoute<void>(
           settings: routeSettings,
           builder: (BuildContext context) {
             switch (routeSettings.name) {
