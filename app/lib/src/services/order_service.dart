@@ -10,11 +10,11 @@ class OrderService {
   Future<HttpResult<void>> createOrder(Order order) async {
     final HttpClient client = HttpClient.fromEnv();
 
-    developer.log(jsonEncode(order.toJson()));
+    developer.log(jsonEncode(order.toJson(1)));
 
     final response = await client.post(client.route('/orders'),
         headers: {'Content-Type': "application/json"},
-        body: jsonEncode(order.toJson()).toString());
+        body: jsonEncode(order.toJson(1)).toString());
 
     final json = jsonDecode(response.body) as Map<String, dynamic>;
 
