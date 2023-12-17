@@ -10,12 +10,41 @@ cd "../"
 
 cp "./itu-project/doc/${ITU_XLOGIN}_tz.pdf" "./${ITU_XLOGIN}_tz.pdf"
 cp "./itu-project/doc/${ITU_XLOGIN}_zn.pdf" "./${ITU_XLOGIN}_zn.pdf"
-cp "./itu-project/doc/${ITU_XLOGIN}.mp4" "./${ITU_XLOGIN}.mp4"
+cp "./itu-project/doc/${ITU_XLOGIN}_video.mp4" "./${ITU_XLOGIN}_video.mp4"
 
-zip "./itu-project/${ITU_XLOGIN}.zip" -r "./${ITU_XLOGIN}_tz.pdf" "./${ITU_XLOGIN}_zn.pdf" "./${ITU_XLOGIN}.mp4" "./itu-project/LICENSE" "./itu-project/copyright_notice.txt" "./itu-project/app/README.md" "./itu-project/app/analysis_options.yaml" "./itu-project/app/android/" "./itu-project/app/assets/" "./itu-project/app/l10n.yaml" "./itu-project/app/lib/" "./itu-project/app/licenses/" "./itu-project/app/pubspec.yaml" "./itu-project/app/test/" "./itu-project/backend/"
+zip "./itu-project/${ITU_XLOGIN}.zip" -r \
+	"./${ITU_XLOGIN}_tz.pdf" "./${ITU_XLOGIN}_zn.pdf" "./${ITU_XLOGIN}_video.mp4" \
+	"./itu-project/LICENSE" "./itu-project/copyright_notice.txt" "./itu-project/app/README.md" "./itu-project/app/analysis_options.yaml" \
+	"./itu-project/app/android/" \
+	"./itu-project/app/assets/" \
+	"./itu-project/app/l10n.yaml" \
+	"./itu-project/app/lib/" \
+	"./itu-project/app/licenses/" \
+	"./itu-project/app/pubspec.yaml" \
+	"./itu-project/app/test/" \
+	"./itu-project/backend/README.md" \
+	"./itu-project/backend/ace" \
+	"./itu-project/backend/ace-manifest.json" \
+	"./itu-project/backend/app/" \
+	"./itu-project/backend/commands/" \
+	"./itu-project/backend/config/" \
+	"./itu-project/backend/contracts/" \
+	"./itu-project/backend/database/factories/" "./itu-project/backend/database/migrations/" "./itu-project/backend/database/seeders/" \
+	"./itu-project/backend/docker-compose.yml" \
+	"./itu-project/backend/env.ts" \
+	"./itu-project/backend/licenses/" \
+	"./itu-project/backend/package.json" \
+	"./itu-project/backend/providers/" \
+	"./itu-project/backend/public/" \
+	"./itu-project/backend/server.ts" \
+	"./itu-project/backend/start/" \
+	"./itu-project/backend/tests/" \
+	"./itu-project/backend/test.ts" \
+	"./itu-project/backend/tsconfig.json" \
+	"./itu-project/backend/utils/"
 
 rm "./${ITU_XLOGIN}_tz.pdf"
 rm "./${ITU_XLOGIN}_zn.pdf"
-rm "./${ITU_XLOGIN}.mp4"
+rm "./${ITU_XLOGIN}_video.mp4"
 
 echo "${ITU_XLOGIN}.zip created"
