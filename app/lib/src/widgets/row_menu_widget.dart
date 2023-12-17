@@ -3,10 +3,10 @@ import 'package:food_blueprint/src/pages/basic/basic_page.dart';
 import 'package:food_blueprint/src/pages/community/community_page.dart';
 import 'package:food_blueprint/src/pages/home/home_page.dart';
 import 'package:food_blueprint/src/pages/mine/mine_page.dart';
-import 'package:food_blueprint/src/widgets/custom_button.dart';
+import 'package:food_blueprint/src/widgets/button_widget.dart';
 
-class CustomRowMenu extends StatelessWidget implements PreferredSizeWidget {
-  const CustomRowMenu({
+class RowMenuWidget extends StatelessWidget implements PreferredSizeWidget {
+  const RowMenuWidget({
     super.key,
   });
 
@@ -15,10 +15,10 @@ class CustomRowMenu extends StatelessWidget implements PreferredSizeWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        CustomButton(text: 'Domov', route: HomePage.routeName),
-        CustomButton(text: 'Moje', route: MinePage.routeName),
-        CustomButton(text: 'Komunitné', route: CommunityPage.routeName),
-        CustomButton(text: 'Základné', route: BasicPage.routeName),
+        ButtonWidget(text: 'Domov', route: HomePage.routeName),
+        ButtonWidget(text: 'Moje', route: MinePage.routeName),
+        ButtonWidget(text: 'Komunitné', route: CommunityPage.routeName),
+        ButtonWidget(text: 'Základné', route: BasicPage.routeName),
       ],
     );
   }

@@ -7,8 +7,8 @@ import 'package:food_blueprint/src/widgets/cart/cart_drop_provider.dart';
 import 'package:food_blueprint/src/widgets/cart/order_button.dart';
 import 'package:food_blueprint/src/widgets/common/burger_listing.dart';
 import 'package:food_blueprint/src/widgets/common/create_burger.dart';
-import 'package:food_blueprint/src/widgets/custom_app_bar.dart';
-import 'package:food_blueprint/src/widgets/custom_row_menu.dart';
+import 'package:food_blueprint/src/widgets/app_bar_widget.dart';
+import 'package:food_blueprint/src/widgets/row_menu_widget.dart';
 
 class HomePage extends StatelessWidget {
   static const routeName = '/';
@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
   Widget _buildPage(BuildContext context) {
     return Column(
       children: <Widget>[
-        const CustomRowMenu(),
+        const RowMenuWidget(),
         Expanded(
           child: BurgerList(
               limit: 10,
@@ -54,7 +54,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(text: 'Domov'),
+      appBar: const AppBarWidget(text: 'Domov'),
       body: CartDropProvider(layerLink: layerLink, child: _buildPage(context)),
       bottomNavigationBar: BottomNavigationWidget(cart: cart),
       floatingActionButton: const OrderButton(),

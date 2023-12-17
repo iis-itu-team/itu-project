@@ -5,9 +5,9 @@ import 'package:food_blueprint/src/services/order_service.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/pages/order_new/order_new_controller.dart';
 import 'package:food_blueprint/src/pages/order_new/order_confirm_page.dart';
-import 'package:food_blueprint/src/widgets/custom_app_bar.dart';
-import 'package:food_blueprint/src/widgets/custom_checkbox.dart';
-import 'package:food_blueprint/src/widgets/custom_text_form.dart';
+import 'package:food_blueprint/src/widgets/app_bar_widget.dart';
+import 'package:food_blueprint/src/widgets/checkbox_widget.dart';
+import 'package:food_blueprint/src/widgets/text_form_widget.dart';
 
 import 'package:food_blueprint/src/widgets/header_widget.dart';
 import 'package:food_blueprint/src/widgets/three_checkboxs_widget.dart';
@@ -70,7 +70,7 @@ class _OrderNewPageState extends State<OrderNewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(text: 'Nová objednávka'),
+      appBar: const AppBarWidget(text: 'Nová objednávka'),
       body: Container(
         padding: const EdgeInsets.all(10),
         child: SingleChildScrollView(
@@ -78,16 +78,16 @@ class _OrderNewPageState extends State<OrderNewPage> {
             children: [
               HeaderWidget(text: "shrnututí"),
               HeaderWidget(text: "doručení"),
-              CustomTextForm(
+              TextFormWidget(
                   text: "Město", controller: sigUpController['city']),
               const SizedBox(height: 10),
-              CustomTextForm(
+              TextFormWidget(
                   text: "Ulice", controller: sigUpController['street']),
               const SizedBox(height: 10),
-              CustomTextForm(
+              TextFormWidget(
                   text: "č.p.", controller: sigUpController['houseNumber']),
               const SizedBox(height: 10),
-              CustomTextForm(
+              TextFormWidget(
                   text: "poznámka pro řidiče",
                   controller: sigUpController['note']),
               ThreeCheckboxsWidget(
@@ -96,13 +96,13 @@ class _OrderNewPageState extends State<OrderNewPage> {
                 text3: "ke dveřím bytu",
                 callbackFunction: callbackDelivery,
               ),
-              CustomTextForm(
+              TextFormWidget(
                   text: "patro", controller: sigUpController['floor']),
               const SizedBox(height: 10),
-              CustomTextForm(
+              TextFormWidget(
                   text: "číslo bytu",
                   controller: sigUpController['flatNumber']),
-              const CheckboxWidget(text: "zazvonit", value: false),
+              const CheckBoxWidget(text: "zazvonit", value: false),
               HeaderWidget(text: "platba"),
               ThreeCheckboxsWidget(
                 text1: "při doručení (hotově / kartou)",

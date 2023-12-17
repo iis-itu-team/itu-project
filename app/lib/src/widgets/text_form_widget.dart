@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 
-class CustomTextForm extends StatefulWidget implements PreferredSizeWidget {
+class TextFormWidget extends StatefulWidget implements PreferredSizeWidget {
   String? text;
 
   final TextEditingController? controller;
 
-  CustomTextForm({super.key, required this.text, required this.controller});
+  TextFormWidget({super.key, required this.text, required this.controller});
 
   @override
-  State<CustomTextForm> createState() => _CustomTextFormState();
+  State<TextFormWidget> createState() => _CustomTextFormState();
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 
-class _CustomTextFormState extends State<CustomTextForm> {
+class _CustomTextFormState extends State<TextFormWidget> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(

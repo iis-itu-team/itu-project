@@ -8,7 +8,7 @@ import 'package:food_blueprint/src/widgets/burger_edit/ingredient_builder.dart';
 import 'package:food_blueprint/src/widgets/burger_edit/ingredient_tray.dart';
 import 'package:food_blueprint/src/widgets/burger_edit/name.dart';
 import 'package:food_blueprint/src/widgets/common/loading.dart';
-import 'package:food_blueprint/src/widgets/custom_app_bar.dart';
+import 'package:food_blueprint/src/widgets/app_bar_widget.dart';
 
 class BurgerEditPage extends StatelessWidget {
   final BurgerEditController controller;
@@ -54,7 +54,7 @@ class BurgerEditPage extends StatelessWidget {
 
     return Scaffold(
         resizeToAvoidBottomInset: false,
-        appBar: const CustomAppBar(text: 'Burger'),
+        appBar: const AppBarWidget(text: 'Burger'),
         body: FutureBuilder(
             builder: (context, future) {
               if (!future.hasData) {

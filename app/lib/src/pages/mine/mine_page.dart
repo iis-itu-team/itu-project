@@ -7,8 +7,8 @@ import 'package:food_blueprint/src/widgets/cart/cart_drop_provider.dart';
 import 'package:food_blueprint/src/widgets/cart/order_button.dart';
 import 'package:food_blueprint/src/widgets/common/burger_listing.dart';
 import 'package:food_blueprint/src/widgets/common/create_burger.dart';
-import 'package:food_blueprint/src/widgets/custom_app_bar.dart';
-import 'package:food_blueprint/src/widgets/custom_row_menu.dart';
+import 'package:food_blueprint/src/widgets/app_bar_widget.dart';
+import 'package:food_blueprint/src/widgets/row_menu_widget.dart';
 
 class MinePage extends StatelessWidget {
   static const routeName = '/mine';
@@ -31,11 +31,11 @@ class MinePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(text: 'Moje'),
+      appBar: const AppBarWidget(text: 'Moje'),
       body: CartDropProvider(
           layerLink: layerLink,
           child: Column(children: [
-            const CustomRowMenu(),
+            const RowMenuWidget(),
             Expanded(
                 child: BurgerList(
               fetchBurgers: mineController.listBurgers,

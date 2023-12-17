@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 
-class CheckboxWidget extends StatefulWidget implements PreferredSizeWidget {
+class CheckBoxWidget extends StatefulWidget implements PreferredSizeWidget {
   final String text;
   final bool value;
 
-  const CheckboxWidget({super.key, required this.text, required this.value});
+  const CheckBoxWidget({super.key, required this.text, required this.value});
 
   @override
-  State<CheckboxWidget> createState() => _CustomCheckboxListTileState();
+  State<CheckBoxWidget> createState() => _CustomCheckboxListTileState();
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 
-class _CustomCheckboxListTileState extends State<CheckboxWidget> {
+class _CustomCheckboxListTileState extends State<CheckBoxWidget> {
   bool? isChecked = false;
 
   @override

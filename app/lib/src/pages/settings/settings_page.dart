@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/pages/settings/settings_controller.dart';
-import 'package:food_blueprint/src/widgets/custom_app_bar.dart';
-import 'package:food_blueprint/src/widgets/custom_checkbox.dart';
+import 'package:food_blueprint/src/widgets/app_bar_widget.dart';
+import 'package:food_blueprint/src/widgets/checkbox_widget.dart';
 
 class SettingsPage extends StatelessWidget {
   final SettingsController controller;
@@ -14,17 +14,17 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(text: 'Nastavenia'),
+      appBar: const AppBarWidget(text: 'Nastavenia'),
       body: Container(
         color: ThemeColors.colorOnion,
         child: const Center(
             child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CheckboxWidget(
+            CheckBoxWidget(
                 text: "Uchovávanie údajov pre sledovanie vašich detí",
                 value: false),
-            CheckboxWidget(
+            CheckBoxWidget(
                 text:
                     "Uchovávanie údajov ktoré môže jednoduche deanonymizovať užívatela",
                 value: false),

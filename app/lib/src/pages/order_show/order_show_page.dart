@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
 import 'package:food_blueprint/src/pages/order_show/order_show_controller.dart';
-import 'package:food_blueprint/src/widgets/custom_app_bar.dart';
+import 'package:food_blueprint/src/widgets/app_bar_widget.dart';
 
 import 'dart:developer' as developer;
 
@@ -18,7 +18,7 @@ class OrderShowPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(text: 'Moje objednávky'),
+      appBar: const AppBarWidget(text: 'Moje objednávky'),
       body: Container(
         padding: const EdgeInsets.only(left: 10),
         child: FutureBuilder(

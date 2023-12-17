@@ -14,8 +14,8 @@ import 'package:food_blueprint/src/widgets/burger_select_floating_page.dart';
 import 'package:food_blueprint/src/widgets/button_share.dart';
 import 'package:food_blueprint/src/widgets/cart/cart_drop_provider.dart';
 import 'package:food_blueprint/src/widgets/cart/order_button.dart';
-import 'package:food_blueprint/src/widgets/custom_app_bar.dart';
-import 'package:food_blueprint/src/widgets/custom_row_menu.dart';
+import 'package:food_blueprint/src/widgets/app_bar_widget.dart';
+import 'package:food_blueprint/src/widgets/row_menu_widget.dart';
 import 'package:food_blueprint/src/widgets/rating_searchbar.dart';
 
 class CommunityPage extends StatefulWidget {
@@ -104,11 +104,11 @@ class CommunityPageState extends State<CommunityPage> {
   Widget build(BuildContext context) {
     return Stack(alignment: Alignment.center, children: <Widget>[
       Scaffold(
-        appBar: const CustomAppBar(text: 'Komunitný Workshop'),
+        appBar: const AppBarWidget(text: 'Komunitný Workshop'),
         body: CartDropProvider(
             layerLink: _layerLink,
             child: Column(children: <Widget>[
-              const CustomRowMenu(),
+              const RowMenuWidget(),
               const Padding(
                   padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
                   child: Row(children: <Widget>[

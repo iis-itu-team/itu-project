@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_blueprint/src/theme/theme.dart';
-import 'package:food_blueprint/src/widgets/custom_app_bar.dart';
+import 'package:food_blueprint/src/widgets/app_bar_widget.dart';
 
 enum SampleItem { itemOne, itemTwo, itemThree }
 
@@ -14,7 +14,7 @@ class OrderConfirmPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(text: 'Potvrdenie objednávky'),
+      appBar: const AppBarWidget(text: 'Potvrdenie objednávky'),
       body: Container(
         child: const Center(
           child: Column(
