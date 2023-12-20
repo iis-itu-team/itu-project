@@ -26,9 +26,19 @@ jobs:
       - run: flutter pub get
       - run: echo ${{ vars.API_KEY }} > .env \ echo ${{ vars.BASE_URL }} >> .env
       - run: flutter build apk
-      - name: Upload apk to artifacts
+      - name: Upload APK to artifacts
         uses: actions/upload-artifact@v4.0.0
         with:
           name: 'app-release'
           path: app/build/app/outputs/flutter-apk/app-release.apk
-  
+      - name: Setup SSH
+        run: |
+          install -m 600 -D /dev/null ~/.ssh/id_rsa
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
+      - name: Upload APK to distro web
+        run: |
+          scp build/app/outputs/flutter-apk/app-release.apk ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/apps/food-blueprint/apk-web/app-release.apk
+          echo ${{ github.sha }} | ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} -T "cat > ~/apps/food-blueprint/apk-web/sha"
+      - name: cleanup
+        run: rm -rf ~/.ssh
