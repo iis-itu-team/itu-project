@@ -13,7 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.1.1
         with:
-          filter: app/*
+          sparse-checkout: app
       - name: Flutter
         uses: subosito/flutter-action@v2.12.0
         with:
