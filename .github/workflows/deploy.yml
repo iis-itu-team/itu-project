@@ -32,10 +32,9 @@ jobs:
           name: 'app-release'
           path: app/build/app/outputs/flutter-apk/app-release.apk
       - name: Setup SSH
-        run: |
-          install -m 600 -D /dev/null ~/.ssh/id_rsa
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
+        run: install -m 600 -D /dev/null ~/.ssh/id_rsa
+      - run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+      - run: ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
       - name: Upload APK to distro web
         run: |
           scp build/app/outputs/flutter-apk/app-release.apk ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/apps/food-blueprint/apk-web/app-release.apk
