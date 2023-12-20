@@ -23,7 +23,6 @@ jobs:
         with:
           flutter-version: '3.16.5'
           channel: 'stable'
-      - run: cd app/
       - run: flutter pub get
       - run: echo ${{ vars.API_KEY }} > .env \ echo ${{ vars.BASE_URL }} >> .env
       - run: flutter build apk
