@@ -1,0 +1,14 @@
+name: 'Deploy APK'
+
+on:
+  push:
+    branches:
+      - main
+      - pipelines
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
