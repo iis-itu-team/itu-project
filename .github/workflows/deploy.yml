@@ -1,0 +1,43 @@
+name: 'Deploy APK'
+
+on:
+  push:
+    branches:
+      - main
+      - pipelines
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app/
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+        with:
+          sparse-checkout: app
+          working-directory: .
+      - name: Flutter
+        uses: subosito/flutter-action@v2.12.0
+        with:
+          flutter-version: '3.16.5'
+          channel: 'stable'
+      - run: flutter pub get
+      - run: echo ${{ vars.API_KEY }} > .env \ echo ${{ vars.BASE_URL }} >> .env
+      - run: flutter build apk
+      - name: Upload APK to artifacts
+        uses: actions/upload-artifact@v4.0.0
+        with:
+          name: 'app-release'
+          path: app/build/app/outputs/flutter-apk/app-release.apk
+      - name: Setup SSH
+        run: install -m 600 -D /dev/null ~/.ssh/id_rsa
+      - run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+      - run: ssh-keyscan -p 1048 -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
+      - name: Upload APK to distro web
+        run: |
+          scp -P 1048 build/app/outputs/flutter-apk/app-release.apk ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/apps/food-blueprint/foodblue-apk-web/files/app-release.apk
+          echo ${{ github.sha }} | ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} -p 1048 -T "cat > ~/apps/food-blueprint/foodblue-apk-web/commit"
+      - name: cleanup
+        run: rm -rf ~/.ssh
